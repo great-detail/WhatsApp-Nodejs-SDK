@@ -27,7 +27,7 @@
 		"check-copyright-headers": "node ./scripts/check_copyright_headers.mjs",
 		"create-version-file": "node ./scripts/create_version_file.mjs",
 		"test": "run-s build test:*",
-		"test:spelling": "cspell \"{README.md,.github/*.md,website/docs/**/*.md}\"",
+		"test:spelling": "cspell \"{README.md,.github/*.md,docs/**/*.md}\"",
 		"test:prettier": "run-s prettier-format",
 		"test:lint": "eslint .",
 		"test:jest": "jest",
@@ -53,15 +53,17 @@
 		"Cloud API"
 	],
 	"author": "Rashed Talukder",
+	"contributors": [
+		"Dom Webber <dom.webber@hotmail.com>",
+		"Great Detail Ltd <info@greatdetail.com>"
+	],
 	"license": "SEE LICENSE IN LICENSE FILE",
 	"bugs": {
 		"url": "https://github.com/WhatsApp/WhatsApp-Nodejs-SDK/issues"
 	},
 	"homepage": "https://whatsapp.github.io/WhatsApp-Nodejs-SDK/",
-	"dependencies": {
-		"@types/node": "~18.11.18"
-	},
 	"devDependencies": {
+		"@types/node": "~18.11.18",
 		"@babel/cli": "^7.21.0",
 		"@babel/core": "^7.21.4",
 		"@babel/plugin-proposal-dynamic-import": "^7.18.6",
