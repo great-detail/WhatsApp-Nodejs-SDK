@@ -16,9 +16,7 @@ if (
 import { WAConfigType } from './types/config';
 import { WhatsAppClass } from './types/WhatsApp';
 import * as SDKEnums from './types/enums';
-import { semanticVersionString } from './types/version';
 import { importConfig } from './utils';
-import { SDKVersion } from './version';
 import Logger from './logger';
 import Requester from './requester';
 import MessagesAPI from './api/messages';
@@ -34,7 +32,6 @@ const headerPrefix = 'WA_SDK';
 
 export default class WhatsApp implements WhatsAppClass {
 	config: WAConfigType;
-	sdkVersion: Readonly<semanticVersionString>;
 	requester: Readonly<Requester>;
 
 	readonly messages: MessagesAPI;
@@ -44,7 +41,6 @@ export default class WhatsApp implements WhatsAppClass {
 	static readonly Enums = SDKEnums;
 
 	constructor(senderNumberId?: number) {
-		this.sdkVersion = SDKVersion;
 		this.config = importConfig(senderNumberId);
 		this.requester = new Requester(
 			this.config[SDKEnums.WAConfigEnum.BaseURL],
@@ -70,14 +66,8 @@ export default class WhatsApp implements WhatsAppClass {
 		LOGGER.log('WhatsApp Node.js SDK instantiated!');
 	}
 
-	version(): semanticVersionString {
-		return this.sdkVersion;
-	}
-
 	private userAgent(): string {
-		const userAgentString = `${headerPrefix}/${this.version()} (Node.js ${
-			process.version
-		})`;
+		const userAgentString = `${headerPrefix}/fork (Node.js ${process.version})`;
 		return userAgentString;
 	}
 

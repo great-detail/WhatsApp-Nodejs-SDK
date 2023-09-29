@@ -8,7 +8,6 @@
 
 import { WAConfigType } from '../types/config';
 import WhatsApp from '../index';
-import { SDKVersion } from '../version';
 
 describe('WhatsApp SDK class', () => {
 	const sdkConfig: WAConfigType = (global as any).sdkConfig;
@@ -29,11 +28,6 @@ describe('WhatsApp SDK class', () => {
 
 		const wa = new WhatsApp();
 		expect(wa).toBeInstanceOf(WhatsApp);
-	});
-
-	it('verify SDK version', () => {
-		const wa = new WhatsApp();
-		expect(wa.version()).toBe(SDKVersion);
 	});
 
 	it('update request timeout config', () => {

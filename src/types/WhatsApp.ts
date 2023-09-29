@@ -6,11 +6,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { semanticVersionString } from './version';
-
 export declare class WhatsAppClass {
 	constructor(senderNumberId?: number);
-	version: () => semanticVersionString;
 	updateTimeout(ms: number): boolean;
 	updateSenderNumberId(phoneNumberId: number): boolean;
 	updateAccessToken(accessToken: string): boolean;
