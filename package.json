@@ -88,5 +88,8 @@
   },
   "bugs": {
     "url": "https://github.com/great-detail/WhatsApp-Nodejs-SDK/issues"
+  },
+  "dependencies": {
+    "winston": "^3.10.0"
   }
 }
