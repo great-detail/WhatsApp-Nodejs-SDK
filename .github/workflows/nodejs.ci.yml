@@ -1,4 +1,4 @@
-name: 'lint, prettify, spellcheck, test, and build'
+name: Lint, Format, Test & Build
 
 on:
   push:
