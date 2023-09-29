@@ -5,7 +5,7 @@
  * This source code is licensed under the license found in the
  * LICENSE file in the root directory of this source tree.
  */
-import { DEFAULT_GRAPH_API_BASE_URL } from "./constants";
+import { DEFAULT_GRAPH_API_BASE_URL, DEFAULT_GRAPH_VERSION } from "./constants";
 import { WAConfigType } from "./types/config";
 import { WARequiredConfigEnum, WAConfigEnum } from "./types/enums";
 import * as crypto from "crypto";
@@ -50,7 +50,8 @@ export const importConfig = (senderNumberId?: number, logger?: Logger) => {
     [WAConfigEnum.PhoneNumberId]:
       senderNumberId || parseInt(process.env.WA_PHONE_NUMBER_ID || ""),
     [WAConfigEnum.BusinessAcctId]: process.env.WA_BUSINESS_ACCOUNT_ID || "",
-    [WAConfigEnum.APIVersion]: process.env.CLOUD_API_VERSION || "",
+    [WAConfigEnum.APIVersion]:
+      process.env.CLOUD_API_VERSION || DEFAULT_GRAPH_VERSION,
     [WAConfigEnum.AccessToken]: process.env.CLOUD_API_ACCESS_TOKEN || "",
     [WAConfigEnum.WebhookEndpoint]: process.env.WEBHOOK_ENDPOINT || "",
     [WAConfigEnum.WebhookVerificationToken]:

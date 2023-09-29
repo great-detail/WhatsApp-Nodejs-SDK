@@ -78,7 +78,6 @@ export enum WAConfigEnum {
 }
 
 export enum WARequiredConfigEnum {
-  APIVersion = "CLOUD_API_VERSION",
   AccessToken = "CLOUD_API_ACCESS_TOKEN",
 }
 
