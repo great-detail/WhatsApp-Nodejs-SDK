@@ -6,7 +6,7 @@ on:
       - main
   pull_request:
     branches:
-      - '**'
+      - "**"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}

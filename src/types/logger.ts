@@ -7,5 +7,5 @@
  */
 
 export interface LoggerInterface {
-	log(...data: any[]): void;
+  log(...data: any[]): void;
 }

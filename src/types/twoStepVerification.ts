@@ -6,19 +6,19 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { BaseClass } from './base';
-import { RequesterResponseInterface } from './requester';
+import { BaseClass } from "./base";
+import { RequesterResponseInterface } from "./requester";
 
 export type TwoStepVerificationObject = {
-	pin: string;
+  pin: string;
 };
 
 export type SetPinResponseObject = {
-	success: boolean;
+  success: boolean;
 };
 
 export declare class TwoStepVerificationClass extends BaseClass {
-	setPin(
-		pin: number,
-	): Promise<RequesterResponseInterface<SetPinResponseObject>>;
+  setPin(
+    pin: number,
+  ): Promise<RequesterResponseInterface<SetPinResponseObject>>;
 }

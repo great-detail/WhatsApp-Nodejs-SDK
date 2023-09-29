@@ -7,85 +7,85 @@
  */
 
 if (
-	process.env.NODE_ENV !== 'production' ||
-	process.env.TS_NODE_DEV === 'true'
+  process.env.NODE_ENV !== "production" ||
+  process.env.TS_NODE_DEV === "true"
 ) {
-	import('dotenv').then((dotenv) => dotenv.config());
+  import("dotenv").then((dotenv) => dotenv.config());
 }
 
-import { WAConfigType } from './types/config';
-import { WhatsAppClass } from './types/WhatsApp';
-import * as SDKEnums from './types/enums';
-import { importConfig } from './utils';
-import Logger from './logger';
-import Requester from './requester';
-import MessagesAPI from './api/messages';
-import PhoneNumbersAPI from './api/phoneNumbers';
-import TwoStepVerificationAPI from './api/twoStepVerification';
-import WebhooksAPI from './api/webhooks';
+import { WAConfigType } from "./types/config";
+import { WhatsAppClass } from "./types/WhatsApp";
+import * as SDKEnums from "./types/enums";
+import { importConfig } from "./utils";
+import Logger from "./logger";
+import Requester from "./requester";
+import MessagesAPI from "./api/messages";
+import PhoneNumbersAPI from "./api/phoneNumbers";
+import TwoStepVerificationAPI from "./api/twoStepVerification";
+import WebhooksAPI from "./api/webhooks";
 
-const LIB_NAME = 'WHATSAPP';
+const LIB_NAME = "WHATSAPP";
 const LOG_LOCAL = false;
-const LOGGER = new Logger(LIB_NAME, process.env.DEBUG === 'true' || LOG_LOCAL);
+const LOGGER = new Logger(LIB_NAME, process.env.DEBUG === "true" || LOG_LOCAL);
 
-const headerPrefix = 'WA_SDK';
+const headerPrefix = "WA_SDK";
 
 export default class WhatsApp implements WhatsAppClass {
-	config: WAConfigType;
-	requester: Readonly<Requester>;
+  config: WAConfigType;
+  requester: Readonly<Requester>;
 
-	readonly messages: MessagesAPI;
-	readonly phoneNumbers: PhoneNumbersAPI;
-	readonly twoStepVerification: TwoStepVerificationAPI;
-	readonly webhooks: WebhooksAPI;
-	static readonly Enums = SDKEnums;
+  readonly messages: MessagesAPI;
+  readonly phoneNumbers: PhoneNumbersAPI;
+  readonly twoStepVerification: TwoStepVerificationAPI;
+  readonly webhooks: WebhooksAPI;
+  static readonly Enums = SDKEnums;
 
-	constructor(senderNumberId?: number) {
-		this.config = importConfig(senderNumberId);
-		this.requester = new Requester(
-			this.config[SDKEnums.WAConfigEnum.BaseURL],
-			this.config[SDKEnums.WAConfigEnum.APIVersion],
-			this.config[SDKEnums.WAConfigEnum.PhoneNumberId],
-			this.config[SDKEnums.WAConfigEnum.AccessToken],
-			this.config[SDKEnums.WAConfigEnum.BusinessAcctId],
-			this.userAgent(),
-		);
+  constructor(senderNumberId?: number) {
+    this.config = importConfig(senderNumberId);
+    this.requester = new Requester(
+      this.config[SDKEnums.WAConfigEnum.BaseURL],
+      this.config[SDKEnums.WAConfigEnum.APIVersion],
+      this.config[SDKEnums.WAConfigEnum.PhoneNumberId],
+      this.config[SDKEnums.WAConfigEnum.AccessToken],
+      this.config[SDKEnums.WAConfigEnum.BusinessAcctId],
+      this.userAgent(),
+    );
 
-		this.messages = new MessagesAPI(this.config, this.requester);
-		this.phoneNumbers = new PhoneNumbersAPI(this.config, this.requester);
-		this.twoStepVerification = new TwoStepVerificationAPI(
-			this.config,
-			this.requester,
-		);
-		this.webhooks = new WebhooksAPI(
-			this.config,
-			this.requester,
-			this.userAgent(),
-		);
+    this.messages = new MessagesAPI(this.config, this.requester);
+    this.phoneNumbers = new PhoneNumbersAPI(this.config, this.requester);
+    this.twoStepVerification = new TwoStepVerificationAPI(
+      this.config,
+      this.requester,
+    );
+    this.webhooks = new WebhooksAPI(
+      this.config,
+      this.requester,
+      this.userAgent(),
+    );
 
-		LOGGER.log('WhatsApp Node.js SDK instantiated!');
-	}
+    LOGGER.log("WhatsApp Node.js SDK instantiated!");
+  }
 
-	private userAgent(): string {
-		const userAgentString = `${headerPrefix}/fork (Node.js ${process.version})`;
-		return userAgentString;
-	}
+  private userAgent(): string {
+    const userAgentString = `${headerPrefix}/fork (Node.js ${process.version})`;
+    return userAgentString;
+  }
 
-	updateTimeout(ms: number): boolean {
-		this.config[SDKEnums.WAConfigEnum.RequestTimeout] = ms;
-		LOGGER.log(`Updated request timeout to ${ms}ms`);
-		return true;
-	}
+  updateTimeout(ms: number): boolean {
+    this.config[SDKEnums.WAConfigEnum.RequestTimeout] = ms;
+    LOGGER.log(`Updated request timeout to ${ms}ms`);
+    return true;
+  }
 
-	updateSenderNumberId(phoneNumberId: number): boolean {
-		this.config[SDKEnums.WAConfigEnum.PhoneNumberId] = phoneNumberId;
-		LOGGER.log(`Updated sender phone number id to ${phoneNumberId}`);
-		return true;
-	}
+  updateSenderNumberId(phoneNumberId: number): boolean {
+    this.config[SDKEnums.WAConfigEnum.PhoneNumberId] = phoneNumberId;
+    LOGGER.log(`Updated sender phone number id to ${phoneNumberId}`);
+    return true;
+  }
 
-	updateAccessToken(accessToken: string): boolean {
-		this.config[SDKEnums.WAConfigEnum.AccessToken] = accessToken;
-		LOGGER.log(`Updated access token`);
-		return true;
-	}
+  updateAccessToken(accessToken: string): boolean {
+    this.config[SDKEnums.WAConfigEnum.AccessToken] = accessToken;
+    LOGGER.log(`Updated access token`);
+    return true;
+  }
 }

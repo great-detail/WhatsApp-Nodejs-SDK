@@ -6,13 +6,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import http from 'http';
+import http from "http";
 
 export declare class HttpserverClass {
-	constructor(
-		port: number,
-		cb: (req: http.IncomingMessage, res: http.ServerResponse) => any,
-	);
-	isListening: () => boolean;
-	close: (cb: (err?: Error) => any) => void;
+  constructor(
+    port: number,
+    cb: (req: http.IncomingMessage, res: http.ServerResponse) => any,
+  );
+  isListening: () => boolean;
+  close: (cb: (err?: Error) => any) => void;
 }

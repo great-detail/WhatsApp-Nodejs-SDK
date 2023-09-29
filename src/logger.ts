@@ -6,24 +6,24 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { LoggerInterface } from './types/logger';
+import { LoggerInterface } from "./types/logger";
 
 export default class Logger implements LoggerInterface {
-	private name: string;
-	private debug: boolean | undefined;
+  private name: string;
+  private debug: boolean | undefined;
 
-	constructor(name: string, debug?: boolean) {
-		this.name = name;
-		this.debug = debug;
-	}
+  constructor(name: string, debug?: boolean) {
+    this.name = name;
+    this.debug = debug;
+  }
 
-	log(...data: any[]) {
-		if (this.debug) {
-			let prefix = `[ ${Date.now()} ]`;
-			if (this.name) {
-				prefix += ` - ${this.name}`;
-			}
-			console.log.apply(console, [prefix, ': ', ...data]);
-		}
-	}
+  log(...data: any[]) {
+    if (this.debug) {
+      let prefix = `[ ${Date.now()} ]`;
+      if (this.name) {
+        prefix += ` - ${this.name}`;
+      }
+      console.log.apply(console, [prefix, ": ", ...data]);
+    }
+  }
 }

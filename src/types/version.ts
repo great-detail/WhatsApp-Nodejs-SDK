@@ -6,6 +6,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-type semanticVersionLabels = '-Alpha' | '-Beta' | '';
+type semanticVersionLabels = "-Alpha" | "-Beta" | "";
 export type semanticVersionString =
-	`${number}.${number}.${number}${semanticVersionLabels}`;
+  `${number}.${number}.${number}${semanticVersionLabels}`;
