@@ -49,7 +49,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 
 - Update docusaurus.
-- Update styling to use pascal or camel case and other suggestions from https://google.github.io/styleguide/tsguide.html#identifiers to resolve https://github.com/WhatsApp/WhatsApp-Nodejs-SDK/issues/1.
+- Update styling to use pascal or camel case and other suggestions from <https://google.github.io/styleguide/tsguide.html#identifiers> to resolve <https://github.com/WhatsApp/WhatsApp-Nodejs-SDK/issues/1>.
 - Fix broken types for reply buttons.
 - Reduce number of "any" for variable types.
 - Improve docs.
