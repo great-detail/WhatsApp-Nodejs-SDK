@@ -4,7 +4,6 @@
 // This source code is licensed under the license found in the
 // LICENSE file in the root directory of this source tree.
 //
-
 {
 	"compilerOptions": {
 		"baseUrl": "./",
@@ -14,7 +13,10 @@
 		"module": "CommonJS",
 		"checkJs": true,
 		"strict": true,
-		"types": ["node", "jest"],
+		"types": [
+			"node",
+			"jest"
+		],
 		"declaration": true,
 		"incremental": true,
 		"noImplicitReturns": true,
@@ -26,5 +28,7 @@
 		"resolveJsonModule": true,
 		"forceConsistentCasingInFileNames": true
 	},
-	"include": ["src/**/*"]
+	"include": [
+		"src/**/*"
+	]
 }
