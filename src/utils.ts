@@ -5,12 +5,12 @@
  * This source code is licensed under the license found in the
  * LICENSE file in the root directory of this source tree.
  */
+import { DEFAULT_GRAPH_API_BASE_URL } from "./constants";
 import { WAConfigType } from "./types/config";
 import { WARequiredConfigEnum, WAConfigEnum } from "./types/enums";
 import * as crypto from "crypto";
 import { Logger } from "winston";
 
-const DEFAULT_BASE_URL = "graph.facebook.com";
 const DEFAULT_LISTENER_PORT = 3000;
 const DEFAULT_MAX_RETRIES_AFTER_WAIT = 30;
 const DEFAULT_REQUEST_TIMEOUT = 20000;
@@ -43,7 +43,8 @@ export const importConfig = (senderNumberId?: number, logger?: Logger) => {
   emptyConfigChecker(senderNumberId, logger);
 
   const config: WAConfigType = {
-    [WAConfigEnum.BaseURL]: process.env.WA_BASE_URL || DEFAULT_BASE_URL,
+    [WAConfigEnum.BaseURL]:
+      process.env.WA_BASE_URL || DEFAULT_GRAPH_API_BASE_URL,
     [WAConfigEnum.AppId]: process.env.M4D_APP_ID || "",
     [WAConfigEnum.AppSecret]: process.env.M4D_APP_SECRET || "",
     [WAConfigEnum.PhoneNumberId]:
