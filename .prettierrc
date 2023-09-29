@@ -3,5 +3,15 @@
   "singleQuote": false,
   "quoteProps": "consistent",
   "tabWidth": 2,
-  "endOfLine": "lf"
+  "endOfLine": "lf",
+  "plugins": ["@trivago/prettier-plugin-sort-imports"],
+  "importOrder": [
+    "",
+    "<THIRD_PARTY_MODULES>",
+    "^[./]",
+    "^@/src/(.*)$",
+    "^@/__tests__/(.*)$",
+    "<THIRD_PARTY_TS_TYPES>",
+    "<TS_TYPES>^[./]"
+  ]
 }

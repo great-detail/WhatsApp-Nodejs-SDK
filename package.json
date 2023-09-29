@@ -49,7 +49,6 @@
     "format-ci:prettier": "prettier . --check"
   },
   "devDependencies": {
-    "@types/node": "~18.11.18",
     "@babel/cli": "^7.21.0",
     "@babel/core": "^7.21.4",
     "@babel/plugin-proposal-dynamic-import": "^7.18.6",
@@ -57,8 +56,10 @@
     "@babel/preset-env": "^7.21.4",
     "@babel/preset-typescript": "^7.21.4",
     "@jest/globals": "~29.5.0",
+    "@trivago/prettier-plugin-sort-imports": "^4.2.0",
     "@types/jest": "^29.5.0",
     "@types/module-alias": "~2.0.1",
+    "@types/node": "~18.11.18",
     "@typescript-eslint/eslint-plugin": "~5.57.1",
     "@typescript-eslint/parser": "~5.57.1",
     "babel-jest": "^29.5.0",
