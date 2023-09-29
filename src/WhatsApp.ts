@@ -2,6 +2,7 @@ import MessagesAPI from "./api/messages";
 import PhoneNumbersAPI from "./api/phoneNumbers";
 import TwoStepVerificationAPI from "./api/twoStepVerification";
 import WebhooksAPI from "./api/webhooks";
+import defaultLogger from "./logger";
 import Requester from "./requester";
 import { WhatsAppClass } from "./types/WhatsApp";
 import { WAConfigType } from "./types/config";
@@ -37,7 +38,10 @@ export default class WhatsApp implements WhatsAppClass {
   static readonly Enums = SDKEnums;
   protected _logger?: Logger;
 
-  constructor(senderNumberId?: number, logger?: Logger) {
+  constructor(
+    senderNumberId?: number,
+    logger: Logger | undefined = defaultLogger,
+  ) {
     this._logger = logger;
     this.config = importConfig(senderNumberId);
     this.requester = new Requester(
