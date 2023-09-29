@@ -33,6 +33,6 @@ jobs:
       - name: lint
         run: yarn lint
       - name: format
-        run: yarn format --check
+        run: yarn format-ci
       - name: run tests using jest
         run: yarn test --shard=${{ matrix.shard }}

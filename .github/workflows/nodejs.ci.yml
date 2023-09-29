@@ -46,16 +46,10 @@ jobs:
         run: yarn --immutable
       - name: build
         run: yarn build
-      - name: run cspell
-        run: yarn test:spelling
-      - name: run prettier
-        run: yarn test:prettier
-      - name: run eslint
-        run: yarn test:lint
-      - name: check changelog
-        run: yarn check-changelog
-      - name: check copyright headers
-        run: yarn check-copyright-headers
+      - name: lint
+        run: yarn lint
+      - name: format
+        run: yarn format-ci
 
   test-ubuntu:
     uses: ./.github/workflows/test.yml
