@@ -8,7 +8,7 @@
 import { HttpMethodsEnum, WAConfigEnum } from "../types/enums";
 import { RequesterResponseInterface } from "../types/requester";
 import * as tsv from "../types/twoStepVerification";
-import BaseAPI from "./base";
+import BaseAPI from "./AbstractAPI";
 
 export default class TwoStepVerificationAPI
   extends BaseAPI

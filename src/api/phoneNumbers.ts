@@ -8,7 +8,7 @@
 import { HttpMethodsEnum, WAConfigEnum } from "../types/enums";
 import * as pn from "../types/phoneNumbers";
 import { RequesterResponseInterface } from "../types/requester";
-import BaseAPI from "./base";
+import BaseAPI from "./AbstractAPI";
 
 export default class PhoneNumbersAPI
   extends BaseAPI

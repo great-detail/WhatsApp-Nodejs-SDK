@@ -11,7 +11,7 @@ import { WAConfigEnum } from "../types/enums";
 import { RequesterClass } from "../types/requester";
 import * as w from "../types/webhooks";
 import { generateXHub256Sig } from "../utils";
-import BaseAPI from "./base";
+import BaseAPI from "./AbstractAPI";
 import { IncomingMessage, ServerResponse } from "http";
 import { Logger } from "winston";
 
