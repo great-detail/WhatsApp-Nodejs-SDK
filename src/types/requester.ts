@@ -17,12 +17,14 @@ export type GeneralRequestBody = Record<string, any>;
 export interface GeneralHeaderInterface extends RequestHeaders {
   /**
    * Authorization token. This is required for all HTTP requests made to the graph API.
+   *
    * @default 'Bearer '
    */
   "Authorization": string;
 
   /**
    * Content type of the message being sent. This is required for all HTTP requests made to the graph API.
+   *
    * @default 'application/json'
    */
   "Content-Type": string;
@@ -30,6 +32,7 @@ export interface GeneralHeaderInterface extends RequestHeaders {
   /**
    * User agent field sent in all requests. This is used to gather SDK usage metrics and help
    * better triage support requests.
+   *
    * @default `WA_SDK/${ SDK_version } (Node.js ${ process.version })`
    */
   "User-Agent": string;

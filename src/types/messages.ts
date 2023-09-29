@@ -21,6 +21,7 @@ import { GeneralRequestBody, RequesterResponseInterface } from "./requester";
 export type GeneralMessageBody = GeneralRequestBody & {
   /**
    * The Meta messaging product name.
+   *
    * @default 'whatsapp'
    */
   messaging_product: "whatsapp";
