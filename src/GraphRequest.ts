@@ -38,4 +38,8 @@ export default class GraphRequest extends Request {
     this.headers.append("Content-Type", "application/json");
     this.headers.append("Authorization", `Bearer ${accessToken}`);
   }
+
+  public static async send(request: GraphRequest): Promise<Response> {
+    return fetch(request);
+  }
 }
