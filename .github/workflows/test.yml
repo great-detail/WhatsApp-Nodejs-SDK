@@ -30,5 +30,9 @@ jobs:
         run: yarn --immutable
       - name: build
         run: yarn build
+      - name: lint
+        run: yarn lint
+      - name: format
+        run: yarn format --check
       - name: run tests using jest
         run: yarn test --shard=${{ matrix.shard }}
