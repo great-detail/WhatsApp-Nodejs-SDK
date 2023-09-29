@@ -1,7 +1,26 @@
 {
 	"name": "whatsapp",
 	"version": "0.0.5-Alpha",
+	"license": "SEE LICENSE IN LICENSE FILE",
 	"description": "SDK for interfacing with WhatsApp Business Platform in Typescript or Node.js using the Cloud API, hosted by Meta.",
+	"homepage": "https://github.com/great-detail/WhatsApp-Nodejs-SDK",
+	"author": "Great Detail Ltd <info@greatdetail.com>",
+	"contributors": [
+		"Rashed Talukder",
+		"Dom Webber <dom.webber@hotmail.com>",
+		"Great Detail Ltd <info@greatdetail.com>"
+	],
+	"keywords": [
+		"WhatsApp",
+		"SDK",
+		"Business",
+		"Platform",
+		"secure",
+		"messaging",
+		"NodeJS",
+		"Cloud API"
+	],
+	"type": "commonjs",
 	"main": "./build/index.js",
 	"types": "./build/index.d.ts",
 	"exports": {
@@ -15,10 +34,6 @@
 		"build",
 		"src"
 	],
-	"type": "commonjs",
-	"engines": {
-		"node": ">=16.19.1"
-	},
 	"scripts": {
 		"start": "ts-node -r tsconfig-paths/register ./src/WhatsApp.ts",
 		"build": "rimraf ./build && tsc -p tsconfig.json && ./node_modules/.bin/babel build --out-dir build && rimraf ./build/__tests__/",
@@ -33,30 +48,6 @@
 		"format-ci": "npm-run-all format-ci:*",
 		"format-ci:prettier": "prettier . --check"
 	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/WhatsApp/WhatsApp-Nodejs-SDK.git"
-	},
-	"keywords": [
-		"WhatsApp",
-		"SDK",
-		"Business",
-		"Platform",
-		"secure",
-		"messaging",
-		"NodeJS",
-		"Cloud API"
-	],
-	"author": "Rashed Talukder",
-	"contributors": [
-		"Dom Webber <dom.webber@hotmail.com>",
-		"Great Detail Ltd <info@greatdetail.com>"
-	],
-	"license": "SEE LICENSE IN LICENSE FILE",
-	"bugs": {
-		"url": "https://github.com/WhatsApp/WhatsApp-Nodejs-SDK/issues"
-	},
-	"homepage": "https://whatsapp.github.io/WhatsApp-Nodejs-SDK/",
 	"devDependencies": {
 		"@types/node": "~18.11.18",
 		"@babel/cli": "^7.21.0",
@@ -89,5 +80,15 @@
 		"ts-jest": "~29.1.0",
 		"ts-node": "~10.9.1",
 		"typescript": "~5.0.3"
+	},
+	"engines": {
+		"node": ">=16.19.1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/WhatsApp/WhatsApp-Nodejs-SDK.git"
+	},
+	"bugs": {
+		"url": "https://github.com/great-detail/WhatsApp-Nodejs-SDK/issues"
 	}
 }
