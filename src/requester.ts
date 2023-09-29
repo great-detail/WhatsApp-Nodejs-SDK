@@ -6,13 +6,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 import HttpsClient from "./httpsClient";
-import Logger from "./logger";
 import { HttpMethodsEnum } from "./types/enums";
 import { RequesterClass, GeneralHeaderInterface } from "./types/requester";
-
-const LIB_NAME = "REQUESTER";
-const LOG_LOCAL = false;
-const LOGGER = new Logger(LIB_NAME, process.env.DEBUG === "true" || LOG_LOCAL);
+import { Logger } from "winston";
 
 export default class Requester implements RequesterClass {
   client: Readonly<HttpsClient>;
@@ -24,6 +20,7 @@ export default class Requester implements RequesterClass {
   host: Readonly<string>;
   protocol: Readonly<string> = "https:";
   port: Readonly<number> = 443;
+  protected _logger?: Logger;
 
   constructor(
     host: string,
@@ -32,6 +29,7 @@ export default class Requester implements RequesterClass {
     accessToken: string,
     businessAcctId: string,
     userAgent: string,
+    logger?: Logger,
   ) {
     this.client = new HttpsClient();
     this.host = host;
@@ -40,6 +38,7 @@ export default class Requester implements RequesterClass {
     this.accessToken = accessToken;
     this.businessAcctId = businessAcctId;
     this.userAgent = userAgent;
+    this._logger = logger;
   }
 
   buildHeader(contentType: string): GeneralHeaderInterface {
@@ -63,7 +62,7 @@ export default class Requester implements RequesterClass {
   ) {
     const contentType = "application/json";
 
-    LOGGER.log(
+    this._logger?.debug(
       `${method} : ${this.protocol.toLowerCase()}//${this.host}:${
         this.port
       }/${this.buildCAPIPath(endpoint)}`,

@@ -5,23 +5,25 @@
  * This source code is licensed under the license found in the
  * LICENSE file in the root directory of this source tree.
  */
-import Logger from "../logger";
 import { BaseClass } from "../types/base";
 import { WAConfigType } from "../types/config";
 import { RequesterClass } from "../types/requester";
-
-const LIB_NAME = "BaseAPI";
-const LOG_LOCAL = false;
-const LOGGER = new Logger(LIB_NAME, process.env.DEBUG === "true" || LOG_LOCAL);
+import { Logger } from "winston";
 
 export default class BaseAPI implements BaseClass {
   protected client: RequesterClass;
   protected config: WAConfigType;
+  protected _logger?: Logger;
 
-  constructor(config: WAConfigType, HttpsClient: RequesterClass) {
+  constructor(
+    config: WAConfigType,
+    HttpsClient: RequesterClass,
+    logger?: Logger,
+  ) {
     this.client = HttpsClient;
     this.config = config;
+    this._logger = logger;
 
-    LOGGER.log(`Initialized with HTTPSClient`);
+    this._logger?.info(`Initialized with HTTPSClient`);
   }
 }

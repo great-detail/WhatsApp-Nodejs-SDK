@@ -5,7 +5,6 @@
  * This source code is licensed under the license found in the
  * LICENSE file in the root directory of this source tree.
  */
-import Logger from "../logger";
 import {
   ComponentTypesEnum,
   HttpMethodsEnum,
@@ -16,10 +15,6 @@ import { RequestData } from "../types/httpsClient";
 import * as m from "../types/messages";
 import { RequesterResponseInterface } from "../types/requester";
 import BaseAPI from "./base";
-
-const LIB_NAME = "MESSAGES_API";
-const LOG_LOCAL = false;
-const LOGGER = new Logger(LIB_NAME, process.env.DEBUG === "true" || LOG_LOCAL);
 
 export default class MessagesAPI extends BaseAPI implements m.MessagesClass {
   private readonly commonMethod = HttpMethodsEnum.Post;
@@ -206,7 +201,7 @@ export default class MessagesAPI extends BaseAPI implements m.MessagesClass {
     recipient: number,
     replyMessageId?: string,
   ): Promise<RequesterResponseInterface<m.MessagesResponse>> {
-    LOGGER.log(body);
+    this._logger?.debug(body);
     return this.send(
       JSON.stringify(
         this.bodyBuilder(

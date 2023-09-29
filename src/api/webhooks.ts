@@ -6,7 +6,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 import HttpsServer from "../httpsServer";
-import Logger from "../logger";
 import { WAConfigType } from "../types/config";
 import { WAConfigEnum } from "../types/enums";
 import { RequesterClass } from "../types/requester";
@@ -14,22 +13,22 @@ import * as w from "../types/webhooks";
 import { generateXHub256Sig } from "../utils";
 import BaseAPI from "./base";
 import { IncomingMessage, ServerResponse } from "http";
-
-const LIB_NAME = "WEBHOOKS";
-const LOG_LOCAL = true;
-const LOGGER = new Logger(LIB_NAME, process.env.DEBUG === "true" || LOG_LOCAL);
+import { Logger } from "winston";
 
 export default class WebhooksAPI extends BaseAPI implements w.WebhooksClass {
   userAgent: string;
   server?: HttpsServer;
+  protected _logger?: Logger;
 
   constructor(
     config: WAConfigType,
     HttpsClient: RequesterClass,
     userAgent: string,
+    logger?: Logger,
   ) {
     super(config, HttpsClient);
     this.userAgent = userAgent;
+    this._logger = logger;
   }
 
   start(cb: w.WebhookCallback): boolean {
@@ -40,7 +39,7 @@ export default class WebhooksAPI extends BaseAPI implements w.WebhooksClass {
 
         if (req.url) {
           const requestPath = new URL(req.url, `https://${req.headers.host}`);
-          LOGGER.log(
+          this._logger?.debug(
             `received request (method: ${req.method}) for URL ${requestPath}`,
           );
 
@@ -56,14 +55,14 @@ export default class WebhooksAPI extends BaseAPI implements w.WebhooksClass {
               ) {
                 res.write(requestPath.searchParams.get("hub.challenge"));
                 res.end();
-                LOGGER.log(
+                this._logger?.info(
                   `webhook subscription request from ${requestPath.href} successfully verified`,
                 );
               } else {
                 const errorMessage = `webhook subscription request from ${requestPath.href} has either missing or non-matching verify token`;
                 const responseStatus = 401;
 
-                LOGGER.log(errorMessage);
+                this._logger?.error(errorMessage);
                 res.writeHead(responseStatus);
                 res.end();
                 cb(
@@ -102,7 +101,7 @@ export default class WebhooksAPI extends BaseAPI implements w.WebhooksClass {
 
                 if (generatedSignature == xHubSignature) {
                   const responseStatus = 200;
-                  LOGGER.log(
+                  this._logger?.verbose(
                     "x-hub-signature-256 header matches generated signature",
                   );
                   cb(responseStatus, req.headers, cbBody, res, undefined);
@@ -110,7 +109,7 @@ export default class WebhooksAPI extends BaseAPI implements w.WebhooksClass {
                   const errorMessage = "error: x-hub signature doesn't match";
                   const responseStatus = 401;
 
-                  LOGGER.log(errorMessage);
+                  this._logger?.error(errorMessage);
                   res.writeHead(responseStatus);
                   res.end(errorMessage);
 

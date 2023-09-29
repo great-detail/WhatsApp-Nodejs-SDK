@@ -5,7 +5,6 @@
  * This source code is licensed under the license found in the
  * LICENSE file in the root directory of this source tree.
  */
-import Logger from "./logger";
 import { HttpMethodsEnum } from "./types/enums";
 import {
   HttpsClientClass,
@@ -17,16 +16,15 @@ import {
 } from "./types/httpsClient";
 import { IncomingMessage } from "http";
 import { request, Agent } from "https";
-
-const LIB_NAME = "HttpsClient";
-const LOG_LOCAL = false;
-const LOGGER = new Logger(LIB_NAME, process.env.DEBUG === "true" || LOG_LOCAL);
+import { Logger } from "winston";
 
 export default class HttpsClient implements HttpsClientClass {
   agent: Agent;
+  protected _logger?: Logger;
 
-  constructor() {
+  constructor(logger?: Logger) {
     this.agent = new Agent({ keepAlive: true });
+    this._logger = logger;
   }
 
   clearSockets(): boolean {
@@ -55,7 +53,7 @@ export default class HttpsClient implements HttpsClientClass {
         headers: headers,
       });
 
-      LOGGER.log({
+      this._logger?.http({
         hostname: hostname,
         port: port,
         path,
@@ -80,7 +78,7 @@ export default class HttpsClient implements HttpsClientClass {
       req.once("socket", (socket) => {
         if (socket.connecting) {
           socket.once("secureConnect", () => {
-            LOGGER.log(requestData);
+            this._logger?.debug(requestData);
             if (
               method === HttpMethodsEnum.Post ||
               method == HttpMethodsEnum.Put

@@ -2,12 +2,12 @@ import MessagesAPI from "./api/messages";
 import PhoneNumbersAPI from "./api/phoneNumbers";
 import TwoStepVerificationAPI from "./api/twoStepVerification";
 import WebhooksAPI from "./api/webhooks";
-import Logger from "./logger";
 import Requester from "./requester";
 import { WhatsAppClass } from "./types/WhatsApp";
 import { WAConfigType } from "./types/config";
 import * as SDKEnums from "./types/enums";
 import { importConfig } from "./utils";
+import { Logger } from "winston";
 
 /**
  * Copyright (c) Meta Platforms, Inc. and affiliates.
@@ -24,10 +24,6 @@ if (
   import("dotenv").then((dotenv) => dotenv.config());
 }
 
-const LIB_NAME = "WHATSAPP";
-const LOG_LOCAL = false;
-const LOGGER = new Logger(LIB_NAME, process.env.DEBUG === "true" || LOG_LOCAL);
-
 const headerPrefix = "WA_SDK";
 
 export default class WhatsApp implements WhatsAppClass {
@@ -39,8 +35,10 @@ export default class WhatsApp implements WhatsAppClass {
   readonly twoStepVerification: TwoStepVerificationAPI;
   readonly webhooks: WebhooksAPI;
   static readonly Enums = SDKEnums;
+  protected _logger?: Logger;
 
-  constructor(senderNumberId?: number) {
+  constructor(senderNumberId?: number, logger?: Logger) {
+    this._logger = logger;
     this.config = importConfig(senderNumberId);
     this.requester = new Requester(
       this.config[SDKEnums.WAConfigEnum.BaseURL],
@@ -62,8 +60,6 @@ export default class WhatsApp implements WhatsAppClass {
       this.requester,
       this.userAgent(),
     );
-
-    LOGGER.log("WhatsApp Node.js SDK instantiated!");
   }
 
   private userAgent(): string {
@@ -73,19 +69,19 @@ export default class WhatsApp implements WhatsAppClass {
 
   updateTimeout(ms: number): boolean {
     this.config[SDKEnums.WAConfigEnum.RequestTimeout] = ms;
-    LOGGER.log(`Updated request timeout to ${ms}ms`);
+    this._logger?.debug(`Updated request timeout to ${ms}ms`);
     return true;
   }
 
   updateSenderNumberId(phoneNumberId: number): boolean {
     this.config[SDKEnums.WAConfigEnum.PhoneNumberId] = phoneNumberId;
-    LOGGER.log(`Updated sender phone number id to ${phoneNumberId}`);
+    this._logger?.debug(`Updated sender phone number id to ${phoneNumberId}`);
     return true;
   }
 
   updateAccessToken(accessToken: string): boolean {
     this.config[SDKEnums.WAConfigEnum.AccessToken] = accessToken;
-    LOGGER.log(`Updated access token`);
+    this._logger?.debug(`Updated access token`);
     return true;
   }
 }

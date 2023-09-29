@@ -5,24 +5,31 @@
  * This source code is licensed under the license found in the
  * LICENSE file in the root directory of this source tree.
  */
-import { LoggerInterface } from "./types/logger";
+import { createLogger, format, transports } from "winston";
 
-export default class Logger implements LoggerInterface {
-  private name: string;
-  private debug: boolean | undefined;
+/**
+ * Logging channel.
+ *
+ *
+ * @since 0.0.6
+ */
+const logger = createLogger({
+  level: "info",
+  format: format.combine(
+    format.splat(),
+    format.align(),
+    format.colorize(),
+    format.timestamp(), // ISO-8601 Datetime format
+    format.printf(({ level, message, timestamp }) => {
+      return [
+        timestamp + " ",
+        level && `[${level}]`.padEnd(8, " "),
+        ": ",
+        message,
+      ].join("");
+    }),
+  ),
+  transports: [new transports.Console()],
+});
 
-  constructor(name: string, debug?: boolean) {
-    this.name = name;
-    this.debug = debug;
-  }
-
-  log(...data: any[]) {
-    if (this.debug) {
-      let prefix = `[ ${Date.now()} ]`;
-      if (this.name) {
-        prefix += ` - ${this.name}`;
-      }
-      console.log.apply(console, [prefix, ": ", ...data]);
-    }
-  }
-}
+export default logger;
