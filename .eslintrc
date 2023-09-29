@@ -1,15 +1,14 @@
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "prettier", "jest"],
+  "plugins": ["@typescript-eslint", "jest"],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier"
   ],
   "rules": {
-    "no-console": 1,
-    "prettier/prettier": 2
+    "no-console": 1
   },
   "env": {
     "es2015": true,
