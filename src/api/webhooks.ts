@@ -5,16 +5,15 @@
  * This source code is licensed under the license found in the
  * LICENSE file in the root directory of this source tree.
  */
-
-import { IncomingMessage, ServerResponse } from "http";
-import * as w from "../types/webhooks";
-import { RequesterClass } from "../types/requester";
+import HttpsServer from "../httpsServer";
+import Logger from "../logger";
 import { WAConfigType } from "../types/config";
 import { WAConfigEnum } from "../types/enums";
+import { RequesterClass } from "../types/requester";
+import * as w from "../types/webhooks";
 import { generateXHub256Sig } from "../utils";
-import HttpsServer from "../httpsServer";
 import BaseAPI from "./base";
-import Logger from "../logger";
+import { IncomingMessage, ServerResponse } from "http";
 
 const LIB_NAME = "WEBHOOKS";
 const LOG_LOCAL = true;

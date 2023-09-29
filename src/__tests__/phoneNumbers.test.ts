@@ -5,16 +5,15 @@
  * This source code is licensed under the license found in the
  * LICENSE file in the root directory of this source tree.
  */
-
-import nock from "nock";
-import { WAConfigType } from "../types/config";
 import WhatsApp from "../WhatsApp";
+import PhoneNumbersAPI from "../api/phoneNumbers";
+import { WAConfigType } from "../types/config";
 import {
   PhoneNumbersResponseObject,
   RequestCodeObject,
   VerifyCodeObject,
 } from "../types/phoneNumbers";
-import PhoneNumbersAPI from "../api/phoneNumbers";
+import nock from "nock";
 
 describe("WhatsApp phone numbers API", () => {
   const sdkConfig: WAConfigType = (global as any).sdkConfig;

@@ -5,12 +5,11 @@
  * This source code is licensed under the license found in the
  * LICENSE file in the root directory of this source tree.
  */
-
-import { RequesterResponseInterface } from "../types/requester";
-import BaseAPI from "./base";
+import Logger from "../logger";
 import { HttpMethodsEnum, WAConfigEnum } from "../types/enums";
 import * as pn from "../types/phoneNumbers";
-import Logger from "../logger";
+import { RequesterResponseInterface } from "../types/requester";
+import BaseAPI from "./base";
 
 const LIB_NAME = "PHONENUMBERS_API";
 const LOG_LOCAL = false;

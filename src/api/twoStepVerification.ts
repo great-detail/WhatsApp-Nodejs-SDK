@@ -5,12 +5,11 @@
  * This source code is licensed under the license found in the
  * LICENSE file in the root directory of this source tree.
  */
-
-import { RequesterResponseInterface } from "../types/requester";
-import BaseAPI from "./base";
-import { HttpMethodsEnum, WAConfigEnum } from "../types/enums";
-import * as tsv from "../types/twoStepVerification";
 import Logger from "../logger";
+import { HttpMethodsEnum, WAConfigEnum } from "../types/enums";
+import { RequesterResponseInterface } from "../types/requester";
+import * as tsv from "../types/twoStepVerification";
+import BaseAPI from "./base";
 
 const LIB_NAME = "TWOSTEPVERIFICATION_API";
 const LOG_LOCAL = false;

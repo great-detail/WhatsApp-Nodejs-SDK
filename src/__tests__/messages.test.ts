@@ -5,11 +5,10 @@
  * This source code is licensed under the license found in the
  * LICENSE file in the root directory of this source tree.
  */
-
-import nock from "nock";
-import { WAConfigType } from "../types/config";
-import MessagesAPI from "../api/messages";
 import WhatsApp from "../WhatsApp";
+import MessagesAPI from "../api/messages";
+import { WAConfigType } from "../types/config";
+import nock from "nock";
 
 describe("WhatsApp Messages API", () => {
   const testRecipient = 1234;

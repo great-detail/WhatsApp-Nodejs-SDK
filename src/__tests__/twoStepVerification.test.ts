@@ -5,12 +5,11 @@
  * This source code is licensed under the license found in the
  * LICENSE file in the root directory of this source tree.
  */
-
-import nock from "nock";
-import { WAConfigType } from "../types/config";
 import WhatsApp from "../WhatsApp";
-import { SetPinResponseObject } from "../types/twoStepVerification";
 import TwoStepVerificationAPI from "../api/twoStepVerification";
+import { WAConfigType } from "../types/config";
+import { SetPinResponseObject } from "../types/twoStepVerification";
+import nock from "nock";
 
 describe("WhatsApp Two-Step Verification API", () => {
   const sdkConfig: WAConfigType = (global as any).sdkConfig;

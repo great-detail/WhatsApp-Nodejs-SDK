@@ -5,10 +5,9 @@
  * This source code is licensed under the license found in the
  * LICENSE file in the root directory of this source tree.
  */
-
+import * as h from "./types/httpsServer";
 import { createServer, IncomingMessage, Server, ServerResponse } from "http";
 import { Socket } from "net";
-import * as h from "./types/httpsServer";
 
 export default class Httpserver implements h.HttpserverClass {
   sockets: Set<Socket>;

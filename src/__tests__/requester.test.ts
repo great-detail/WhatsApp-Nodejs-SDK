@@ -5,12 +5,10 @@
  * This source code is licensed under the license found in the
  * LICENSE file in the root directory of this source tree.
  */
-
-import nock from "nock";
+import requester from "../requester";
 import { WAConfigType } from "../types/config";
 import { HttpMethodsEnum } from "../types/enums";
-
-import requester from "../requester";
+import nock from "nock";
 
 describe("HTTP requester tests", () => {
   const sdkConfig: WAConfigType = (global as any).sdkConfig;

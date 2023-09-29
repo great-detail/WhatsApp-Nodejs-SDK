@@ -5,9 +5,8 @@
  * This source code is licensed under the license found in the
  * LICENSE file in the root directory of this source tree.
  */
-
-import { IncomingMessage } from "http";
-import { request, Agent } from "https";
+import Logger from "./logger";
+import { HttpMethodsEnum } from "./types/enums";
 import {
   HttpsClientClass,
   HttpsClientResponseClass,
@@ -16,8 +15,8 @@ import {
   ResponseHeaders,
   ResponseJSONBody,
 } from "./types/httpsClient";
-import Logger from "./logger";
-import { HttpMethodsEnum } from "./types/enums";
+import { IncomingMessage } from "http";
+import { request, Agent } from "https";
 
 const LIB_NAME = "HttpsClient";
 const LOG_LOCAL = false;

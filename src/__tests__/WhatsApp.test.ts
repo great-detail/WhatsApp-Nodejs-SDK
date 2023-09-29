@@ -5,9 +5,8 @@
  * This source code is licensed under the license found in the
  * LICENSE file in the root directory of this source tree.
  */
-
-import { WAConfigType } from "../types/config";
 import WhatsApp from "../index";
+import { WAConfigType } from "../types/config";
 
 describe("WhatsApp SDK class", () => {
   const sdkConfig: WAConfigType = (global as any).sdkConfig;

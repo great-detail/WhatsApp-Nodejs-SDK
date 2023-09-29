@@ -5,9 +5,7 @@
  * This source code is licensed under the license found in the
  * LICENSE file in the root directory of this source tree.
  */
-
-import { ServerResponse } from "http";
-import { IncomingHttpHeaders } from "http";
+import { BaseClass } from "./base";
 import { WAConfigType } from "./config";
 import {
   ConversationTypesEnum,
@@ -21,7 +19,8 @@ import {
   ImageMediaTypesEnum,
   DocumentMediaTypesEnum,
 } from "./enums";
-import { BaseClass } from "./base";
+import { ServerResponse } from "http";
+import { IncomingHttpHeaders } from "http";
 
 type PricingObject = {
   category: ConversationTypesEnum;

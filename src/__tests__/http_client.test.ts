@@ -5,11 +5,10 @@
  * This source code is licensed under the license found in the
  * LICENSE file in the root directory of this source tree.
  */
-
-import nock from "nock";
+import HttpsClient from "../httpsClient";
 import { WAConfigType } from "../types/config";
 import { HttpMethodsEnum } from "../types/enums";
-import HttpsClient from "../httpsClient";
+import nock from "nock";
 
 describe("HTTPS client tests", () => {
   const sdkConfig: WAConfigType = (global as any).sdkConfig;

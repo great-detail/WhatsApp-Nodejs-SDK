@@ -5,9 +5,8 @@
  * This source code is licensed under the license found in the
  * LICENSE file in the root directory of this source tree.
  */
-
-import { RequesterClass } from "./requester";
 import { WAConfigType } from "./config";
+import { RequesterClass } from "./requester";
 
 export declare class BaseClass {
   constructor(config: WAConfigType, HttpsClient?: RequesterClass);

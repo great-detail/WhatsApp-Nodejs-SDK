@@ -5,13 +5,12 @@
  * This source code is licensed under the license found in the
  * LICENSE file in the root directory of this source tree.
  */
-
+import { HttpMethodsEnum } from "./enums";
 import {
   RequestHeaders,
   HttpsClientResponseClass,
   ResponseJSONBody,
 } from "./httpsClient";
-import { HttpMethodsEnum } from "./enums";
 
 export type GeneralRequestBody = Record<string, any>;
 
