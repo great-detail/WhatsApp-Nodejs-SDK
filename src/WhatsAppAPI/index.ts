@@ -16,7 +16,7 @@ export default class WhatsAppAPI extends AbstractAPI {
   public message: MessageAPI;
 
   constructor(
-    public businessId: string,
+    businessId: string,
     public version: string = DEFAULT_GRAPH_VERSION,
     public baseUrl: string = DEFAULT_GRAPH_API_BASE_URL,
     logger?: Logger,
