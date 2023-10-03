@@ -13,7 +13,7 @@ import type { Logger } from "winston";
  * @author Dom Webber <dom.webber@hotmail.com>
  */
 export default class WhatsAppAPI extends AbstractAPI {
-  message = new MessageAPI(this.businessId, this, this._logger);
+  public message: MessageAPI;
 
   constructor(
     public businessId: string,
@@ -24,6 +24,8 @@ export default class WhatsAppAPI extends AbstractAPI {
     super(businessId, undefined, logger);
     this.version = version;
     this.baseUrl = baseUrl;
+
+    this.message = new MessageAPI(this.businessId, this, this._logger);
   }
 
   protected getEndpoint(): string {
