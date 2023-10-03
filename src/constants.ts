@@ -12,7 +12,7 @@
  *
  * @since 2.0.0
  */
-export const DEFAULT_GRAPH_API_BASE_URL = "graph.facebook.com";
+export const DEFAULT_GRAPH_API_BASE_URL = "https://graph.facebook.com";
 
 /**
  * Default version for the Facebook Graph API.
