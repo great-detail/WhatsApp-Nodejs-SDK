@@ -20,6 +20,7 @@
     "NodeJS",
     "Cloud API"
   ],
+  "type": "module",
   "main": "./src/index.ts",
   "exports": {
     ".": {
