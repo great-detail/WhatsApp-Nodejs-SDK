@@ -20,7 +20,7 @@
     "NodeJS",
     "Cloud API"
   ],
-  "type": "module",
+  "type": "commonjs",
   "main": "./src/index.ts",
   "types": "./src/index.d.ts",
   "exports": {
