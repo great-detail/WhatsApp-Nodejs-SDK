@@ -25,14 +25,14 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: yarn
+          cache: npm
       - name: install
-        run: yarn --immutable
+        run: npm ci
       - name: build
-        run: yarn build
+        run: npm run build
       - name: lint
-        run: yarn lint
+        run: npm run lint
       - name: format
-        run: yarn format-ci
+        run: npm run format-ci
       - name: run tests using jest
-        run: yarn test --shard=${{ matrix.shard }}
+        run: npm run test -- --shard=${{ matrix.shard }}

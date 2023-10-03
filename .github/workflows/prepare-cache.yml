@@ -9,7 +9,7 @@ on:
 
 jobs:
   prepare-yarn-cache:
-    name: Prepare yarn cache for ${{ inputs.os }}
+    name: Prepare npm cache for ${{ inputs.os }}
     runs-on: ${{ inputs.os }}
 
     steps:
@@ -19,13 +19,8 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: lts/*
-          cache: yarn
+          node-version: 20
+          cache: npm
 
       - name: Validate cache
-        env:
-          # Use PnP and disable postinstall scripts as this just needs to
-          # populate the cache for the other jobs
-          YARN_NODE_LINKER: pnp
-          YARN_ENABLE_SCRIPTS: false
-        run: yarn --immutable
+        run: npm ci
