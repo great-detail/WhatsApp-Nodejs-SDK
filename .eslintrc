@@ -1,7 +1,11 @@
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "jest", "jsdoc"],
+  "plugins": [
+    "@typescript-eslint",
+    "jest",
+    "jsdoc"
+  ],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
@@ -22,7 +26,7 @@
       }
     ],
     "jsdoc/require-returns": "off",
-    "@typescript-eslint/no-duplicate-enum-values": "warn",
+    "@typescript-eslint/no-duplicate-enum-values": "off",
     "@typescript-eslint/no-explicit-any": "warn"
   },
   "env": {
