@@ -1,22 +1,22 @@
 import AbstractAPI from "../API/AbstractAPI";
+import GraphRequest, { GraphRequestProps } from "../GraphRequest";
 import ComponentTypesEnum from "../Message/ComponentTypesEnum";
+import { ContactsObjectMessageType } from "../Message/ContactsMessageType";
+import { InteractiveObjectMessageType } from "../Message/InteractiveMessageType";
+import { LocationObjectMessageType } from "../Message/LocationMessageType";
+import { AudioObjectMediaMessageType } from "../Message/MediaMessage/AudioMediaMessageType";
+import { DocumentObjectMediaMessageType } from "../Message/MediaMessage/DocumentMediaMessageType";
+import { ImageObjectMediaMessageType } from "../Message/MediaMessage/ImageMediaMessageType";
+import { StickerObjectMediaMessageType } from "../Message/MediaMessage/StickerMediaMessageType";
+import { VideoObjectMediaMessageType } from "../Message/MediaMessage/VideoMediaMessageType";
+import MessageResponseType from "../Message/MessageResponseType";
+import MessageType from "../Message/MessageType";
 import MessageTypesEnum from "../Message/MessageTypesEnum";
-import GraphRequest, { GraphRequestProps } from "src/GraphRequest";
-import { ContactsObjectMessageType } from "src/Message/ContactsMessageType";
-import { InteractiveObjectMessageType } from "src/Message/InteractiveMessageType";
-import { LocationObjectMessageType } from "src/Message/LocationMessageType";
-import { AudioObjectMediaMessageType } from "src/Message/MediaMessage/AudioMediaMessageType";
-import { DocumentObjectMediaMessageType } from "src/Message/MediaMessage/DocumentMediaMessageType";
-import { ImageObjectMediaMessageType } from "src/Message/MediaMessage/ImageMediaMessageType";
-import { StickerObjectMediaMessageType } from "src/Message/MediaMessage/StickerMediaMessageType";
-import { VideoObjectMediaMessageType } from "src/Message/MediaMessage/VideoMediaMessageType";
-import MessageResponseType from "src/Message/MessageResponseType";
-import MessageType from "src/Message/MessageType";
 import StatusMessageType, {
   StatusObjectMessageType,
-} from "src/Message/StatusMessageType";
-import { TemplateObjectMessageType } from "src/Message/TemplateMessageType";
-import { TextObjectMessageType } from "src/Message/TextObjectMessageType";
+} from "../Message/StatusMessageType";
+import { TemplateObjectMessageType } from "../Message/TemplateMessageType";
+import { TextObjectMessageType } from "../Message/TextObjectMessageType";
 
 /**
  * WhatsApp Message API.

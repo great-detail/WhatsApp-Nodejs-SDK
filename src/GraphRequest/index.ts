@@ -1,9 +1,9 @@
-import EndpointType from "src/API/EndpointType";
-import GraphResponse from "src/GraphResponse";
+import EndpointType from "../API/EndpointType";
+import GraphResponse from "../GraphResponse";
 import {
   DEFAULT_GRAPH_API_BASE_URL,
   DEFAULT_GRAPH_VERSION,
-} from "src/constants";
+} from "../constants";
 
 export interface GraphRequestProps extends RequestInit {
   endpoint?: EndpointType;

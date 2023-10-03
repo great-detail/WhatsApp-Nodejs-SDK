@@ -3,7 +3,7 @@ import MessageAPI from "../MessageAPI";
 import {
   DEFAULT_GRAPH_API_BASE_URL,
   DEFAULT_GRAPH_VERSION,
-} from "src/constants";
+} from "../constants";
 import type { Logger } from "winston";
 
 /**
