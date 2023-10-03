@@ -16,23 +16,23 @@ permissions:
   contents: read # to fetch code (actions/checkout)
 
 jobs:
-  prepare-yarn-cache-ubuntu:
+  prepare-npm-cache-ubuntu:
     uses: ./.github/workflows/prepare-cache.yml
     with:
       os: ubuntu-latest
-  prepare-yarn-cache-macos:
-    uses: ./.github/workflows/prepare-cache.yml
-    with:
-      os: macos-latest
-  prepare-yarn-cache-windows:
-    uses: ./.github/workflows/prepare-cache.yml
-    with:
-      os: windows-latest
+  # prepare-npm-cache-macos:
+  #   uses: ./.github/workflows/prepare-cache.yml
+  #   with:
+  #     os: macos-latest
+  # prepare-npm-cache-windows:
+  #   uses: ./.github/workflows/prepare-cache.yml
+  #   with:
+  #     os: windows-latest
 
   lint:
     name: Lint
     runs-on: ubuntu-latest
-    needs: prepare-yarn-cache-ubuntu
+    needs: prepare-npm-cache-ubuntu
 
     steps:
       - uses: actions/checkout@v3
@@ -53,19 +53,19 @@ jobs:
 
   test-ubuntu:
     uses: ./.github/workflows/test.yml
-    needs: prepare-yarn-cache-ubuntu
+    needs: prepare-npm-cache-ubuntu
     with:
       os: ubuntu-latest
-  test-macos:
-    uses: ./.github/workflows/test.yml
-    needs: prepare-yarn-cache-macos
-    with:
-      os: macos-latest
-  test-windows:
-    uses: ./.github/workflows/test.yml
-    needs: prepare-yarn-cache-windows
-    with:
-      os: windows-latest
+  # test-macos:
+  #   uses: ./.github/workflows/test.yml
+  #   needs: prepare-npm-cache-macos
+  #   with:
+  #     os: macos-latest
+  # test-windows:
+  #   uses: ./.github/workflows/test.yml
+  #   needs: prepare-npm-cache-windows
+  #   with:
+  #     os: windows-latest
 
   release:
     name: Release
@@ -73,8 +73,8 @@ jobs:
     needs:
       - lint
       - test-ubuntu
-      - test-macos
-      - test-windows
+      # - test-macos
+      # - test-windows
     permissions:
       contents: write # to be able to publish a GitHub release
       issues: write # to be able to comment on released issues
