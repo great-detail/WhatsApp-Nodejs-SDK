@@ -40,16 +40,16 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-node@v3
         with:
-          node-version: lts/*
-          cache: yarn
+          node-version: 20
+          cache: npm
       - name: install
-        run: yarn --immutable
+        run: npm ci
       - name: build
-        run: yarn build
+        run: npm run build
       - name: lint
-        run: yarn lint
+        run: npm run lint
       - name: format
-        run: yarn format-ci
+        run: npm run format-ci
 
   test-ubuntu:
     uses: ./.github/workflows/test.yml

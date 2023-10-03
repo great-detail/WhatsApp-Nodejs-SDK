@@ -30,9 +30,5 @@ jobs:
         run: npm ci
       - name: build
         run: npm run build
-      - name: lint
-        run: npm run lint
-      - name: format
-        run: npm run format-ci
       - name: run tests using jest
         run: npm run test -- --shard=${{ matrix.shard }}
