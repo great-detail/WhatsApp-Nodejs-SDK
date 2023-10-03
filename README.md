@@ -18,13 +18,13 @@ View the [quick start documentation](https://whatsapp.github.io/WhatsApp-Nodejs-
 Install the WhatsApp Business Platform SDK using yarn:
 
 ```shell
-yarn add great-detail/WhatsApp-Nodejs-SDK
+yarn add @great-detail/WhatsApp-Nodejs-SDK
 ```
 
 Or npm:
 
 ```shell
-npm install great-detail/WhatsApp-Nodejs-SDK
+npm install @great-detail/WhatsApp-Nodejs-SDK
 ```
 
 ## Configuration
