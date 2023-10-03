@@ -45,8 +45,7 @@
     "format": "npm-run-all format:*",
     "format:prettier": "prettier . --write",
     "format-ci": "npm-run-all format-ci:*",
-    "format-ci:prettier": "prettier . --check",
-    "postinstall": "npm run build"
+    "format-ci:prettier": "prettier . --check"
   },
   "devDependencies": {
     "@babel/cli": "^7.23.0",
