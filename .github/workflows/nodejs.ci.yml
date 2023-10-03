@@ -43,7 +43,7 @@ jobs:
           node-version: 20
           cache: npm
       - name: install
-        run: npm ci
+        run: npm ci --prefer-offline --no-audit --no-fund
       - name: build
         run: npm run build
       - name: lint
@@ -90,7 +90,7 @@ jobs:
           node-version: 20
           cache: npm
       - name: install
-        run: npm ci
+        run: npm ci --prefer-offline --no-audit --no-fund
       - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
         run: npm audit signatures
       - name: build

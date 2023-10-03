@@ -23,4 +23,4 @@ jobs:
           cache: npm
 
       - name: Validate cache
-        run: npm ci
+        run: npm ci --prefer-offline --no-audit --no-fund
