@@ -40,7 +40,7 @@
     ]
   },
   "scripts": {
-    "start": "ts-node ./src/WhatsApp.ts",
+    "start": "ts-node ./src/index.ts",
     "build": "tsc -p tsconfig.json && babel dist --out-dir dist",
     "lint": "npm-run-all lint:*",
     "lint:eslint": "eslint . --fix",
