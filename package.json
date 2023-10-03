@@ -34,6 +34,11 @@
     "build",
     "src"
   ],
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
   "scripts": {
     "start": "ts-node ./src/WhatsApp.ts",
     "build": "rimraf ./build && tsc -p tsconfig.json && ./node_modules/.bin/babel build --out-dir build && rimraf ./build/__tests__/",
@@ -76,6 +81,7 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^3.0.3",
     "rimraf": "^5.0.5",
+    "semantic-release": "^22.0.5",
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2",
