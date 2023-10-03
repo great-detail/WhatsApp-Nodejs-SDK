@@ -9,7 +9,7 @@ import type { Logger } from "winston";
 /**
  * WhatsApp API.
  *
- * @since 0.0.6
+ * @since 2.0.0
  * @author Dom Webber <dom.webber@hotmail.com>
  */
 export default class WhatsAppAPI extends AbstractAPI {

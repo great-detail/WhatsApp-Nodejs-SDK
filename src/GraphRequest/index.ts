@@ -11,6 +11,14 @@ export interface GraphRequestProps extends RequestInit {
   baseUrl?: string;
 }
 
+/**
+ * Graph API Request.
+ * Provides a simple wrapper around the native Request API to simplify access
+ * via HTTP request to the Facebook Graph API.
+ *
+ * @since 2.0.0
+ * @author Dom Webber <dom.webber@hotmail.com>
+ */
 export default class GraphRequest<T = unknown> extends Request {
   public endpoint: EndpointType;
   public version: string;
@@ -31,6 +39,12 @@ export default class GraphRequest<T = unknown> extends Request {
     this.baseUrl = baseUrl;
   }
 
+  /**
+   * Send Request using Fetch.
+   *
+   * @since 2.0.0
+   * @author Dom Webber <dom.webber@hotmail.com>
+   */
   public async send(): Promise<GraphResponse<T>> {
     return await fetch(this).then(
       ({ body, status, statusText, headers }) =>
