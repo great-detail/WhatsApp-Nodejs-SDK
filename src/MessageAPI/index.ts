@@ -16,7 +16,7 @@ import StatusMessageType, {
   StatusObjectMessageType,
 } from "src/Message/StatusMessageType";
 import { TemplateObjectMessageType } from "src/Message/TemplateMessageType";
-import TextObjectMessageType from "src/Message/TextObjectMessageType";
+import { TextObjectMessageType } from "src/Message/TextObjectMessageType";
 
 /**
  * WhatsApp Message API.
