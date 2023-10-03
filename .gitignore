@@ -60,7 +60,7 @@ node_modules/
 jspm_packages/
 
 # Dependency lock files
-package-lock.json
+# package-lock.json
 
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/

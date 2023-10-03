@@ -24,13 +24,13 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 20
-          cache: yarn
+          cache: npm
       - name: install
-        run: yarn --immutable
+        run: npm ci
       - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
-        run: yarn audit signatures
+        run: npm audit signatures
       - name: build
-        run: yarn build
+        run: npm run build
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
