@@ -37,6 +37,6 @@ export default class WhatsAppAPI extends AbstractAPI {
   }
 
   protected getEndpoint(): string {
-    return `${this.version}/`;
+    return "/";
   }
 }
