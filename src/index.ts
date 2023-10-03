@@ -1,10 +1,14 @@
-/**
- * Copyright (c) Meta Platforms, Inc. and affiliates.
- * All rights reserved.
- *
- * This source code is licensed under the license found in the
- * LICENSE file in the root directory of this source tree.
- */
-import WhatsApp from "./WhatsApp";
+import MessageTypesEnum from "./Message/MessageTypesEnum";
+import WhatsAppAPI from "./WhatsAppAPI";
 
-export default WhatsApp;
+const instance = new WhatsAppAPI();
+instance.message.createMessage(
+  MessageTypesEnum.Text,
+  {
+    body: "hello",
+  },
+  "12345",
+);
+
+export default WhatsAppAPI;
+export type { MessageTypesEnum };
