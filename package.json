@@ -104,5 +104,8 @@
     "winston": {
       "optional": true
     }
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
