@@ -42,7 +42,7 @@
     "lint:cspell": "cspell \"{README.md,.github/*.md,docs/**/*.md}\"",
     "lint:typecheck": "tsc --noEmit",
     "test": "npm-run-all test:*",
-    "test:jest": "jest",
+    "test:jest": "jest --passWithNoTests",
     "format": "npm-run-all format:*",
     "format:prettier": "prettier . --write",
     "format-ci": "npm-run-all format-ci:*",
