@@ -2,4 +2,4 @@ import MessageTypesEnum from "./Message/MessageTypesEnum";
 import WhatsAppAPI from "./WhatsAppAPI";
 
 export default WhatsAppAPI;
-export type { MessageTypesEnum };
+export { MessageTypesEnum };
