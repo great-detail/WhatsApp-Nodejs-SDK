@@ -1,7 +1,7 @@
 import AbstractAPI from "../API/AbstractAPI";
 import ComponentTypesEnum from "../Message/ComponentTypesEnum";
 import MessageTypesEnum from "../Message/MessageTypesEnum";
-import GraphRequest from "src/GraphRequest";
+import GraphRequest, { GraphRequestProps } from "src/GraphRequest";
 import { ContactsObjectMessageType } from "src/Message/ContactsMessageType";
 import { InteractiveObjectMessageType } from "src/Message/InteractiveMessageType";
 import { LocationObjectMessageType } from "src/Message/LocationMessageType";
@@ -33,17 +33,22 @@ export default class MessageAPI extends AbstractAPI {
     );
   }
 
-  public createStatusRead(payload: StatusObjectMessageType) {
+  public createStatusRead(
+    payload: StatusObjectMessageType,
+    requestProps: GraphRequestProps = {},
+  ) {
     const body: StatusMessageType = {
       messaging_product: "whatsapp",
       ...payload,
     };
 
     return new GraphRequest({
+      ...requestProps,
       endpoint: this.getEndpoint(),
       method: "POST",
       body: JSON.stringify(body),
       headers: {
+        ...requestProps.headers,
         "Content-Type": "application/json",
       },
     });
@@ -67,6 +72,7 @@ export default class MessageAPI extends AbstractAPI {
       | VideoObjectMediaMessageType,
     toNumber: string,
     replyMessageId?: string,
+    requestProps: GraphRequestProps = {},
   ) {
     const body: MessageType<T> = {
       messaging_product: "whatsapp",
@@ -79,10 +85,12 @@ export default class MessageAPI extends AbstractAPI {
     if (replyMessageId) body["context"] = { message_id: replyMessageId };
 
     return new GraphRequest<MessageResponseType>({
+      ...requestProps,
       endpoint: this.getEndpoint(),
       method: "POST",
       body: JSON.stringify(body),
       headers: {
+        ...requestProps.headers,
         "Content-Type": "application/json",
       },
     });
