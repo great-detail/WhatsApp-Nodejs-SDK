@@ -7,7 +7,13 @@ LICENSE file in the root directory of this source tree.
 
 # WhatsApp Business Platform Node.js SDK for the Cloud API, hosted by Meta
 
-Welcome to SDK for the [WhatsApp Business Platform](https://business.whatsapp.com/products/business-platform/). This SDK is written for Node.js framework to simplify access to the [Cloud API](https://developers.facebook.com/docs/whatsapp/cloud-api/). The source code itself is written in Typescript with TypeScript declaration files to type-check usage of the WhatsApp Business Platform Node.js SDK in your code, along with hints and code completion in TypeScript compatible IDEs.
+This is a Fork of the Official
+[Meta Business Messaging WhatsApp Cloud API](https://business.whatsapp.com/products/business-platform/)
+Node.js SDK. This SDK is written for Node.js framework to simplify access to
+the [Cloud API](https://developers.facebook.com/docs/whatsapp/cloud-api/). The
+source code itself is written in Typescript with TypeScript declaration files
+to type-check usage of the WhatsApp Business Platform Node.js SDK in your code,
+along with hints and code completion in TypeScript compatible IDEs.
 
 ## Getting started
 
