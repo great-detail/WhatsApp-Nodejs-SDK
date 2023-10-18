@@ -15,7 +15,7 @@ import VideoObjectMediaMessageType from "./MediaMessage/VideoMediaMessageType";
 import MessageRequestBodyType from "./MessageType";
 import MessageTypesEnum from "./MessageTypesEnum";
 
-export const enum ParametersTypesEnum {
+export enum ParametersTypesEnum {
   Currency = "currency",
   DateTime = "date_time",
   Document = "document",
@@ -93,12 +93,12 @@ type ComponentObject<T extends ComponentTypesEnum> = {
   )[];
 };
 
-const enum ButtonTypesEnum {
+enum ButtonTypesEnum {
   QuickReply = "quick_reply",
   URL = "url",
 }
 
-const enum ButtonPositionEnum {
+enum ButtonPositionEnum {
   First,
   Second,
   Third,

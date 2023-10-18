@@ -6,7 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-const enum LanguagesEnum {
+enum LanguagesEnum {
   Afrikaans = "af",
   Albanian = "sq",
   Arabic = "ar",

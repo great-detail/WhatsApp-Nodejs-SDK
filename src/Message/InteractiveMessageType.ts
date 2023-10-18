@@ -12,7 +12,7 @@ import VideoObjectMediaMessageType from "./MediaMessage/VideoMediaMessageType";
 import MessageRequestBodyType from "./MessageType";
 import MessageTypesEnum from "./MessageTypesEnum";
 
-export const enum InteractiveTypesEnum {
+export enum InteractiveTypesEnum {
   Button = "button",
   List = "list",
   Product = "product",

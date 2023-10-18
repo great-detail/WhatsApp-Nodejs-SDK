@@ -6,7 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-const enum ComponentTypesEnum {
+enum ComponentTypesEnum {
   Header = "header",
   Body = "body",
   Button = "button",

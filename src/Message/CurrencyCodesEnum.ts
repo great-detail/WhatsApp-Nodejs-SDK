@@ -6,7 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-const enum CurrencyCodesEnum {
+enum CurrencyCodesEnum {
   AFN = "AFN",
   EUR = "EUR",
   ALL = "ALL",
