@@ -74,7 +74,7 @@ export default class MessageAPI extends AbstractAPI {
       ...payload,
     };
 
-    return new GraphRequest({
+    return new GraphRequest<MessageResponseType>({
       ...requestProps,
       endpoint: this.getEndpoint(),
       method: "POST",
