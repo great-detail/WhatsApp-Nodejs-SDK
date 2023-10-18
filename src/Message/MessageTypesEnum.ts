@@ -6,7 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-const enum MessageTypesEnum {
+enum MessageTypesEnum {
   Audio = "audio", // for audio messages.
   Contacts = "contacts", // for contact messages.
   Document = "document", // for document messages.
