@@ -26,6 +26,12 @@ import StatusMessageType, {
 import { TemplateObjectMessageType } from "../Message/TemplateMessageType";
 import { TextObjectMessageType } from "../Message/TextObjectMessageType";
 
+type CreateMessageOptionsType = {
+  toNumber: string,
+  replyMessageId?: string,
+  requestProps?: GraphRequestProps,
+};
+
 /**
  * WhatsApp Message API.
  *
@@ -68,19 +74,17 @@ export default class MessageAPI extends AbstractAPI {
   >(
     type: T,
     payload:
-      | AudioObjectMediaMessageType
-      | [ContactsObjectMessageType]
-      | DocumentObjectMediaMessageType
-      | ImageObjectMediaMessageType
-      | InteractiveObjectMessageType
-      | LocationObjectMessageType
-      | TemplateObjectMessageType<C>
-      | StickerObjectMediaMessageType
-      | TextObjectMessageType
-      | VideoObjectMediaMessageType,
-    toNumber: string,
-    replyMessageId?: string,
-    requestProps: GraphRequestProps = {},
+    | AudioObjectMediaMessageType
+    | [ContactsObjectMessageType]
+    | DocumentObjectMediaMessageType
+    | ImageObjectMediaMessageType
+    | InteractiveObjectMessageType
+    | LocationObjectMessageType
+    | TemplateObjectMessageType<C>
+    | StickerObjectMediaMessageType
+    | TextObjectMessageType
+    | VideoObjectMediaMessageType,
+    { toNumber, replyMessageId, requestProps = {} }: CreateMessageOptionsType
   ) {
     const body: MessageType<T> = {
       messaging_product: "whatsapp",
