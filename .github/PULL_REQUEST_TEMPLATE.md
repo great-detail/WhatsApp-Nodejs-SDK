@@ -1,4 +1,4 @@
-# Description
+#
 
 Summary of the change and if it fixes an existing filed issue, make sure to reference it here. Include details on why this change is important.
 
@@ -19,7 +19,7 @@ Please provide clear instructions on how the changes were verified. Attach scree
 
 Describe any known/tested performance impact (+/-) of this PR. Also include how you characterized/tested the performance impact?
 
-## Checklist:
+## Checklist
 
 - [ ] My code doesn't have any type casts or non-null assertions.
 - [ ] I all made corresponding changes or additions to the documentation to successfully generate accurate Docusaurus docs.
