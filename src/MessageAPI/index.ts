@@ -60,12 +60,12 @@ export default class MessageAPI extends AbstractAPI {
   }
 
   /**
-   * Create Status Read Message.
+   * Create Status Message.
    *
    * @since 2.0.0
    * @author Dom Webber <dom.webber@hotmail.com>
    */
-  public createStatusRead(
+  public createStatus(
     payload: StatusObjectMessageType,
     requestProps: GraphRequestProps = {},
   ) {
