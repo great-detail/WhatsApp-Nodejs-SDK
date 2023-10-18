@@ -15,6 +15,8 @@ source code itself is written in Typescript with TypeScript declaration files
 to type-check usage of the WhatsApp Business Platform Node.js SDK in your code,
 along with hints and code completion in TypeScript compatible IDEs.
 
+[![npm (scoped)](https://img.shields.io/npm/v/%40great-detail/whatsapp)](https://www.npmjs.com/package/@great-detail/whatsapp)
+
 ## Getting started
 
 View the [quick start documentation](https://whatsapp.github.io/WhatsApp-Nodejs-SDK/) to learn how to use the SDK and get started.
