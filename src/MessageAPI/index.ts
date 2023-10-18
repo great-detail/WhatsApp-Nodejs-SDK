@@ -26,10 +26,22 @@ import StatusMessageType, {
 import { TemplateObjectMessageType } from "../Message/TemplateMessageType";
 import { TextObjectMessageType } from "../Message/TextObjectMessageType";
 
+type CreateMessagePayloadType<C extends ComponentTypesEnum> =
+  | AudioObjectMediaMessageType
+  | [ContactsObjectMessageType]
+  | DocumentObjectMediaMessageType
+  | ImageObjectMediaMessageType
+  | InteractiveObjectMessageType
+  | LocationObjectMessageType
+  | TemplateObjectMessageType<C>
+  | StickerObjectMediaMessageType
+  | TextObjectMessageType
+  | VideoObjectMediaMessageType;
+
 type CreateMessageOptionsType = {
-  toNumber: string,
-  replyMessageId?: string,
-  requestProps?: GraphRequestProps,
+  toNumber: string;
+  replyMessageId?: string;
+  requestProps?: GraphRequestProps;
 };
 
 /**
@@ -47,6 +59,12 @@ export default class MessageAPI extends AbstractAPI {
     );
   }
 
+  /**
+   * Create Status Read Message.
+   *
+   * @since 2.0.0
+   * @author Dom Webber <dom.webber@hotmail.com>
+   */
   public createStatusRead(
     payload: StatusObjectMessageType,
     requestProps: GraphRequestProps = {},
@@ -68,23 +86,19 @@ export default class MessageAPI extends AbstractAPI {
     });
   }
 
+  /**
+   * Create Message.
+   *
+   * @since 2.0.0
+   * @author Dom Webber <dom.webber@hotmail.com>
+   */
   public createMessage<
     T extends MessageTypesEnum,
     C extends ComponentTypesEnum,
   >(
     type: T,
-    payload:
-    | AudioObjectMediaMessageType
-    | [ContactsObjectMessageType]
-    | DocumentObjectMediaMessageType
-    | ImageObjectMediaMessageType
-    | InteractiveObjectMessageType
-    | LocationObjectMessageType
-    | TemplateObjectMessageType<C>
-    | StickerObjectMediaMessageType
-    | TextObjectMessageType
-    | VideoObjectMediaMessageType,
-    { toNumber, replyMessageId, requestProps = {} }: CreateMessageOptionsType
+    payload: CreateMessagePayloadType<C>,
+    { toNumber, replyMessageId, requestProps = {} }: CreateMessageOptionsType,
   ) {
     const body: MessageType<T> = {
       messaging_product: "whatsapp",
@@ -107,4 +121,31 @@ export default class MessageAPI extends AbstractAPI {
       },
     });
   }
+
+  protected _shorthandAlias<
+    T extends MessageTypesEnum,
+    C extends ComponentTypesEnum,
+    P extends CreateMessagePayloadType<C>,
+  >(type: T) {
+    const shorthandAliasFunction = function (
+      this: MessageAPI,
+      payload: P,
+      options: CreateMessageOptionsType,
+    ) {
+      return this.createMessage(type, payload, options);
+    };
+
+    return shorthandAliasFunction.bind(this);
+  }
+
+  public audio = this._shorthandAlias(MessageTypesEnum.Audio);
+  public contacts = this._shorthandAlias(MessageTypesEnum.Contacts);
+  public document = this._shorthandAlias(MessageTypesEnum.Document);
+  public image = this._shorthandAlias(MessageTypesEnum.Image);
+  public interactive = this._shorthandAlias(MessageTypesEnum.Interactive);
+  public location = this._shorthandAlias(MessageTypesEnum.Location);
+  public sticker = this._shorthandAlias(MessageTypesEnum.Sticker);
+  public template = this._shorthandAlias(MessageTypesEnum.Template);
+  public text = this._shorthandAlias(MessageTypesEnum.Text);
+  public video = this._shorthandAlias(MessageTypesEnum.Video);
 }
