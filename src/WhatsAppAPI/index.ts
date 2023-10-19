@@ -8,6 +8,7 @@
  */
 import AbstractAPI from "../API/AbstractAPI";
 import MessageAPI from "../MessageAPI";
+import WebhookAPI from "../WebhookAPI";
 import {
   DEFAULT_GRAPH_API_BASE_URL,
   DEFAULT_GRAPH_VERSION,
@@ -22,6 +23,7 @@ import type { Logger } from "winston";
  */
 export default class WhatsAppAPI extends AbstractAPI {
   public message: MessageAPI;
+  public webhook: WebhookAPI;
 
   constructor(
     businessId: string,
@@ -34,6 +36,7 @@ export default class WhatsAppAPI extends AbstractAPI {
     this.baseUrl = baseUrl;
 
     this.message = new MessageAPI(this.businessId, this, this._logger);
+    this.webhook = new WebhookAPI(this.businessId, this, this._logger);
   }
 
   protected getEndpoint(): string {
