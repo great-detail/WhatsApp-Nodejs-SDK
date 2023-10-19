@@ -14,10 +14,7 @@
     "module": "CommonJS",
     "checkJs": true,
     "strict": true,
-    "types": [
-      "node",
-      "jest"
-    ],
+    "types": ["node", "jest"],
     "declaration": true,
     "incremental": true,
     "noImplicitReturns": true,
@@ -29,7 +26,5 @@
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": [
-    "src/**/*"
-  ]
+  "include": ["src/**/*"]
 }
