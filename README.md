@@ -50,6 +50,10 @@ npm install great-detail/WhatsApp-Nodejs-SDK
 | ----------- | ------------------ |
 | v4.x.x      | v18.0              |
 
+Whilst the SDK may work with alternative versions of the Graph API, it is
+designed to work with the above. If you find any compatibility issues, please
+report them via [GitHub Issues](https://github.com/great-detail/WhatsApp-Nodejs-SDK/issues).
+
 ## Code of Conduct
 
 Meta has adopted a Code of Conduct that we expect project participants to adhere to. Please read the full text so that you can understand what actions will and will not be tolerated.
