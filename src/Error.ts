@@ -81,7 +81,6 @@ const Error = {
     "Please wait a few minutes before attempting to register this phone number",
   135000: "Generic user error",
 
-  // On-Premeses Error Codes:
   400: "Media download error",
   402: "Business eligibility — Payment issue",
   408: "Message is not valid",
