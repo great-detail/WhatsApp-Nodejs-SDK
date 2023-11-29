@@ -20,14 +20,6 @@ jobs:
     uses: ./.github/workflows/prepare-cache.yml
     with:
       os: ubuntu-latest
-  # prepare-npm-cache-macos:
-  #   uses: ./.github/workflows/prepare-cache.yml
-  #   with:
-  #     os: macos-latest
-  # prepare-npm-cache-windows:
-  #   uses: ./.github/workflows/prepare-cache.yml
-  #   with:
-  #     os: windows-latest
 
   lint:
     name: Lint
@@ -56,16 +48,6 @@ jobs:
     needs: prepare-npm-cache-ubuntu
     with:
       os: ubuntu-latest
-  # test-macos:
-  #   uses: ./.github/workflows/test.yml
-  #   needs: prepare-npm-cache-macos
-  #   with:
-  #     os: macos-latest
-  # test-windows:
-  #   uses: ./.github/workflows/test.yml
-  #   needs: prepare-npm-cache-windows
-  #   with:
-  #     os: windows-latest
 
   release:
     name: Release
@@ -73,8 +55,6 @@ jobs:
     needs:
       - lint
       - test-ubuntu
-      # - test-macos
-      # - test-windows
     permissions:
       contents: write # to be able to publish a GitHub release
       issues: write # to be able to comment on released issues
