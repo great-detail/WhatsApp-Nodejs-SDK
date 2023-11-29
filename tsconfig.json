@@ -13,10 +13,7 @@
     "module": "CommonJS",
     "checkJs": true,
     "strict": true,
-    "types": [
-      "node",
-      "jest"
-    ],
+    "types": ["node", "jest"],
     "declaration": true,
     "incremental": true,
     "noImplicitReturns": true,
@@ -27,9 +24,7 @@
     "skipLibCheck": false,
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
-    "sourceMap": true,
+    "sourceMap": true
   },
-  "include": [
-    "src/**/*"
-  ]
+  "include": ["src/**/*"]
 }

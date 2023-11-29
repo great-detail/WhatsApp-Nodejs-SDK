@@ -1,13 +1,7 @@
 {
   "version": "0.2",
   "language": "en",
-  "dictionaries": [
-    "softwareTerms",
-    "typescript",
-    "node",
-    "filetypes",
-    "npm"
-  ],
+  "dictionaries": ["softwareTerms", "typescript", "node", "filetypes", "npm"],
   "words": [
     "FODT",
     "FODP",
@@ -24,17 +18,9 @@
     "typecheck",
     "Kinyarwanda",
     "unmocked",
-    "lcov",
+    "lcov"
   ],
-  "ignoreWords": [
-    "xddt",
-  ],
-  "flagWords": [
-    "hte"
-  ],
-  "ignorePaths": [
-    "tsconfig.tsbuildinfo",
-    "coverage",
-    "cspell.json"
-  ]
+  "ignoreWords": ["xddt"],
+  "flagWords": ["hte"],
+  "ignorePaths": ["tsconfig.tsbuildinfo", "coverage", "cspell.json"]
 }
