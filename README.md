@@ -16,6 +16,7 @@ to type-check usage of the WhatsApp Business Platform Node.js SDK in your code,
 along with hints and code completion in TypeScript compatible IDEs.
 
 [![npm (scoped)](https://img.shields.io/npm/v/%40great-detail/whatsapp)](https://www.npmjs.com/package/@great-detail/whatsapp)
+[![Lint, Format, Test & Build](https://github.com/great-detail/WhatsApp-Nodejs-SDK/actions/workflows/nodejs.ci.yml/badge.svg)](https://github.com/great-detail/WhatsApp-Nodejs-SDK/actions/workflows/nodejs.ci.yml)
 
 ## Getting started
 
