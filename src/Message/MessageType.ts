@@ -8,6 +8,8 @@
  */
 import MessageTypesEnum from "./MessageTypesEnum";
 
+export type MessageID = string;
+
 export type RequestBodyType = Record<string, unknown>;
 export type WhatsAppMessageType = RequestBodyType & {
   /**
@@ -19,7 +21,7 @@ export type WhatsAppMessageType = RequestBodyType & {
 };
 
 type MessageRequestContext = {
-  message_id: string;
+  message_id: MessageID;
 };
 
 type MessageType<T extends MessageTypesEnum> = WhatsAppMessageType & {

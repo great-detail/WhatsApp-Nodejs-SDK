@@ -6,13 +6,14 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
+import { WhatsAppAccountID } from "../API/AbstractAPI";
 import { WhatsAppMessageType } from "./MessageType";
 
 type MessageResponseType = WhatsAppMessageType & {
   contacts: [
     {
       input: string;
-      wa_id: string;
+      wa_id: WhatsAppAccountID;
     },
   ];
   messages: [
