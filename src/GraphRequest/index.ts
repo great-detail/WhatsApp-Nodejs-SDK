@@ -27,14 +27,14 @@ export default class GraphRequest<T = unknown> extends Request {
   /**
    * Default base URL for the Facebook Graph API.
    *
-   * @since 3.0.0
+   * @since 4.0.0
    */
   public static DEFAULT_GRAPH_API_BASE_URL = "https://graph.facebook.com";
 
   /**
    * Default version for the Facebook Graph API.
    *
-   * @since 3.0.0
+   * @since 4.0.0
    */
   public static DEFAULT_GRAPH_VERSION = "v18.0";
 
