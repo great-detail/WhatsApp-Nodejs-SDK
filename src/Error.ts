@@ -31,10 +31,10 @@ const Error = {
   3: "API Method",
   10: "Permission Denied",
   190: "Access token has expired",
+  200: "API Permission",
   // 200-299 are general "API Permission" error codes and will be treated as
   // unknown error codes for now.
-  // 200: "API Permission",
-  // 299: "API Permission",
+  299: "API Permission",
   4: "API Too Many Calls",
   80007: "Rate limit issues",
   130429: "Rate limit hit",
