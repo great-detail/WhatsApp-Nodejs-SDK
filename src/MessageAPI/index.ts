@@ -25,6 +25,7 @@ import StatusMessageType, {
 } from "../Message/StatusMessageType";
 import { TemplateObjectMessageType } from "../Message/TemplateMessageType";
 import { TextObjectMessageType } from "../Message/TextObjectMessageType";
+import EndpointType from "src/API/EndpointType";
 
 type CreateMessagePayloadType<C extends ComponentTypesEnum> =
   | AudioObjectMediaMessageType
@@ -51,12 +52,12 @@ type CreateMessageOptionsType = {
  * @author Dom Webber <dom.webber@hotmail.com>
  */
 export default class MessageAPI extends AbstractAPI {
-  protected getEndpoint(): string {
-    return this.joinEndpoints(
+  protected getEndpoint(): EndpointType {
+    return `/${this.joinEndpoints(
       this.getParentEndpoint(),
       this.businessId,
       "messages",
-    );
+    )}`;
   }
 
   /**

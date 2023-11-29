@@ -7,5 +7,5 @@
  * @see    https://greatdetail.com
  */
 
-type EndpointType = string;
+type EndpointType = `/${string}`;
 export default EndpointType;

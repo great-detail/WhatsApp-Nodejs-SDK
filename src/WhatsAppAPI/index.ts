@@ -7,6 +7,7 @@
  * @see    https://greatdetail.com
  */
 import AbstractAPI from "../API/AbstractAPI";
+import EndpointType from "../API/EndpointType";
 import GraphRequest from "../GraphRequest";
 import MessageAPI from "../MessageAPI";
 import type { Logger } from "winston";
@@ -39,7 +40,7 @@ export default class WhatsAppAPI extends AbstractAPI {
     this.message = new MessageAPI(this.businessId, this, this._logger);
   }
 
-  protected getEndpoint(): string {
+  protected getEndpoint(): EndpointType {
     return "/";
   }
 }

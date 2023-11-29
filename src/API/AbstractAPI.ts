@@ -37,7 +37,7 @@ export default abstract class AbstractAPI implements APIInterface {
    * @since 2.0.0
    * @author Dom Webber <dom.webber@hotmail.com>
    */
-  protected getParentEndpoint(): string | undefined {
+  protected getParentEndpoint(): EndpointType | undefined {
     if (this.#parent instanceof AbstractAPI) {
       return this.#parent.getEndpoint();
     }
@@ -53,7 +53,7 @@ export default abstract class AbstractAPI implements APIInterface {
    * @since 2.0.0
    * @author Dom Webber <dom.webber@hotmail.com>
    */
-  protected joinEndpoints(...endpoints: (string | undefined)[]) {
+  protected joinEndpoints(...endpoints: (string | EndpointType | undefined)[]) {
     return endpoints
       .filter<string>(
         (endpoint): endpoint is string => typeof endpoint === "string",
