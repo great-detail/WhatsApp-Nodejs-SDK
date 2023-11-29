@@ -7,9 +7,8 @@
  * @see    https://greatdetail.com
  */
 import AbstractAPI from "../API/AbstractAPI";
-import EndpointType from "../API/EndpointType";
-import GraphRequest from "../GraphRequest";
 import MessageAPI from "../MessageAPI";
+import WebhookAPI from "../WebhookAPI";
 import type { Logger } from "winston";
 
 /**
@@ -26,21 +25,12 @@ import type { Logger } from "winston";
  */
 export default class WhatsAppAPI extends AbstractAPI {
   public message: MessageAPI;
+  public webhook: WebhookAPI;
 
-  constructor(
-    businessId: string,
-    public version: string = GraphRequest.DEFAULT_GRAPH_VERSION,
-    public baseUrl: string = GraphRequest.DEFAULT_GRAPH_API_BASE_URL,
-    logger?: Logger,
-  ) {
-    super(businessId, undefined, logger);
-    this.version = version;
-    this.baseUrl = baseUrl;
+  constructor(businessId: string, logger?: Logger) {
+    super(businessId, logger);
 
-    this.message = new MessageAPI(this.businessId, this, this._logger);
-  }
-
-  protected getEndpoint(): EndpointType {
-    return "/";
+    this.message = new MessageAPI(this.businessId, this._logger);
+    this.webhook = new WebhookAPI(this.businessId, this._logger);
   }
 }

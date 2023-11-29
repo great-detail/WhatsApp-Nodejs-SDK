@@ -7,6 +7,7 @@
  * @see    https://greatdetail.com
  */
 import AbstractAPI from "../API/AbstractAPI";
+import EndpointType from "../API/EndpointType";
 import GraphRequest, { GraphRequestCreateParams } from "../GraphRequest";
 import ComponentTypesEnum from "../Message/ComponentTypesEnum";
 import { ContactsObjectMessageType } from "../Message/ContactsMessageType";
@@ -25,7 +26,6 @@ import StatusMessageType, {
 } from "../Message/StatusMessageType";
 import { TemplateObjectMessageType } from "../Message/TemplateMessageType";
 import { TextObjectMessageType } from "../Message/TextObjectMessageType";
-import EndpointType from "src/API/EndpointType";
 
 type CreateMessagePayloadType<C extends ComponentTypesEnum> =
   | AudioObjectMediaMessageType
@@ -53,11 +53,7 @@ type CreateMessageOptionsType = {
  */
 export default class MessageAPI extends AbstractAPI {
   protected getEndpoint(): EndpointType {
-    return `/${this.joinEndpoints(
-      this.getParentEndpoint(),
-      this.businessId,
-      "messages",
-    )}`;
+    return `/${this.businessId}/messages`;
   }
 
   /**
