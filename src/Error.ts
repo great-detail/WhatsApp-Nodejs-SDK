@@ -158,14 +158,80 @@ const Error = {
 export default Error;
 export type ErrorCode = keyof typeof Error;
 export type ErrorMessage = (typeof Error)[ErrorCode];
-export type ErrorObject = {
+
+export type BaseErrorObject = {
+  /**
+   * Error code.
+   *
+   * @since 4.2.0
+   */
   code: ErrorCode;
-  error_subcode?: number;
-  message: ErrorMessage;
+
+  /**
+   * Error code message.
+   *
+   * @since 4.2.0, Graph API v16.0
+   */
+  message?: string;
+};
+
+export type ErrorObject = BaseErrorObject & {
+  /**
+   * Error type.
+   *
+   * @since 4.2.0
+   */
   type: string;
+
+  /**
+   * Graph API subcode. Not all responses will include a subcode.
+   *
+   * @since 4.2.0
+   * @deprecated since Graph API v16.0
+   */
+  error_subcode?: number;
+
   error_data?: {
     messaging_product: "whatsapp";
+
+    /**
+     * Error description and a description of the most likely reason for the
+     * error. May also contain information on how to address the error, such as
+     * which parameter is invalid or what values are acceptable.
+     *
+     * @since 4.2.0
+     */
     details: string;
   };
+
+  /**
+   * Trace ID you can include when contacting Direct Support. The ID may help
+   * support to debug the error.
+   *
+   * @since 4.2.0
+   */
   fbtrace_id: string;
+};
+
+export type EventNotificationError = BaseErrorObject & {
+  /**
+   * Error code title.
+   *
+   * @since 4.2.0
+   */
+  title: ErrorMessage;
+
+  /**
+   * An error data object.
+   *
+   * @since 4.2.0, Graph API v16.0
+   */
+  error_data?: {
+    /**
+     * Describes the error.
+     *
+     * @since 4.2.0, Graph API v16.0
+     */
+    details: string;
+  };
 };
