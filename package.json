@@ -21,8 +21,8 @@
     "Cloud API"
   ],
   "type": "commonjs",
-  "main": "./src/index.ts",
-  "types": "./src/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "default": "./dist/index.js",
