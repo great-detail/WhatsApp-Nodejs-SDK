@@ -18,9 +18,12 @@
     "typecheck",
     "Kinyarwanda",
     "unmocked",
-    "lcov"
+    "lcov",
+    "fbtrace_id",
+    "Deregistration",
+    "subcode"
   ],
-  "ignoreWords": ["xddt"],
+  "ignoreWords": ["xddt", "Coreapp"],
   "flagWords": ["hte"],
   "ignorePaths": ["tsconfig.tsbuildinfo", "coverage", "cspell.json"]
 }
