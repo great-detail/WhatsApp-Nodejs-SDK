@@ -74,23 +74,7 @@ const config: Config = {
   // globalTeardown: undefined,
 
   // A set of global variables that need to be available in all test environments
-  globals: {
-    sdkConfig: {
-      WA_BASE_URL: `example.com`,
-      M4D_APP_ID: "TEST_APP_ID",
-      M4D_APP_SECRET: "TEST_APP_SECRET",
-      WA_PHONE_NUMBER_ID: 1234567890,
-      WA_BUSINESS_ACCOUNT_ID: "TEST_WA_BUSINESS_ACCOUNT_ID",
-      CLOUD_API_ACCESS_TOKEN: "TEST_CLOUD_API_ACCESS_TOKEN",
-      CLOUD_API_VERSION: "TEST_v16",
-      WEBHOOK_ENDPOINT: "TEST_WEBHOOK_ENDPOINT",
-      WEBHOOK_VERIFICATION_TOKEN: "TEST_WEBHOOK_VERIFICATION_TOKEN",
-      LISTENER_PORT: 3000,
-      DEBUG: true,
-      MAX_RETRIES_AFTER_WAIT: 30,
-      REQUEST_TIMEOUT: 900,
-    },
-  },
+  // globals: {},
 
   // The maximum amount of workers used to run your tests. Can be specified as % or a number. E.g. maxWorkers: 10% will use 10% of your CPU amount + 1 as the maximum worker number. maxWorkers: 2 will use a maximum of 2 workers.
   // maxWorkers: "50%",
