@@ -1,7 +1,13 @@
 {
   "version": "0.2",
   "language": "en",
-  "dictionaries": ["softwareTerms", "typescript", "node", "filetypes", "npm"],
+  "dictionaries": [
+    "softwareTerms",
+    "typescript",
+    "node",
+    "filetypes",
+    "npm"
+  ],
   "words": [
     "FODT",
     "FODP",
@@ -10,7 +16,25 @@
     "menlo",
     "webp",
     "quickstart",
-    "wamid"
+    "wamid",
+    "webber",
+    "trivago",
+    "Rashed",
+    "Talukder",
+    "typecheck",
+    "Kinyarwanda",
+    "unmocked",
+    "lcov",
   ],
-  "flagWords": ["hte"]
+  "ignoreWords": [
+    "xddt",
+  ],
+  "flagWords": [
+    "hte"
+  ],
+  "ignorePaths": [
+    "tsconfig.tsbuildinfo",
+    "coverage",
+    "cspell.json"
+  ]
 }

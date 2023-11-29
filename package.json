@@ -44,7 +44,7 @@
     "build": "tsc -p tsconfig.json && babel dist --out-dir dist",
     "lint": "npm-run-all lint:*",
     "lint:eslint": "eslint . --fix",
-    "lint:cspell": "cspell \"{README.md,.github/*.md,docs/**/*.md}\"",
+    "lint:cspell": "cspell .",
     "lint:typecheck": "tsc --noEmit",
     "test": "npm-run-all test:*",
     "test:jest": "jest --passWithNoTests",
