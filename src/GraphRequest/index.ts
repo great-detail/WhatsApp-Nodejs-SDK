@@ -38,6 +38,12 @@ export default class GraphRequest<T = unknown> extends Request {
    */
   public static DEFAULT_GRAPH_VERSION = "v18.0";
 
+  /**
+   * Create a new Graph API Request.
+   *
+   * @since 4.0.0
+   * @author Dom Webber <dom.webber@hotmail.com>
+   */
   public static create<C = unknown>({
     endpoint = "/",
     version = this.DEFAULT_GRAPH_VERSION,
