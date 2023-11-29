@@ -157,3 +157,14 @@ const Error = {
 export default Error;
 export type ErrorCode = keyof typeof Error;
 export type ErrorMessage = (typeof Error)[ErrorCode];
+export type ErrorObject = {
+  code: ErrorCode;
+  error_subcode?: number;
+  message: ErrorMessage;
+  type: string;
+  error_data?: {
+    messaging_product: "whatsapp";
+    details: string;
+  };
+  fbtrace_id: string;
+};
