@@ -6,7 +6,7 @@
 //
 {
   "compilerOptions": {
-    "baseUrl": "./",
+    "rootDir": "src",
     "outDir": "dist",
     "allowJs": true,
     "target": "ES2021",
