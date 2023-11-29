@@ -58,7 +58,7 @@ type CreateMessageOptionsType = {
  */
 export default class MessageAPI extends AbstractAPI {
   protected getEndpoint(): EndpointType {
-    return `/${this.businessId}/messages`;
+    return `/${this._businessID}/messages`;
   }
 
   /**

@@ -9,6 +9,11 @@
 import APIInterface from "./APIInterface";
 import type { Logger } from "winston";
 
+export interface AbstractAPIParams {
+  businessID: string;
+  logger?: Logger;
+}
+
 /**
  * Abstract API.
  * Provides some of the common functionality for the API classes, including
@@ -18,8 +23,11 @@ import type { Logger } from "winston";
  * @author Dom Webber <dom.webber@hotmail.com>
  */
 export default abstract class AbstractAPI implements APIInterface {
-  constructor(
-    public businessId: string,
-    protected _logger?: Logger,
-  ) {}
+  protected _businessID: string;
+  protected _logger?: Logger;
+
+  constructor({ businessID, logger }: AbstractAPIParams) {
+    this._businessID = businessID;
+    this._logger = logger;
+  }
 }
