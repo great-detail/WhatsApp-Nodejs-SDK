@@ -9,8 +9,10 @@
 import APIInterface from "./APIInterface";
 import type { Logger } from "winston";
 
+export type WhatsAppAccountID = string;
+
 export interface AbstractAPIParams {
-  businessID: string;
+  businessID: WhatsAppAccountID;
   logger?: Logger;
 }
 
@@ -23,7 +25,7 @@ export interface AbstractAPIParams {
  * @author Dom Webber <dom.webber@hotmail.com>
  */
 export default abstract class AbstractAPI implements APIInterface {
-  protected _businessID: string;
+  protected _businessID: WhatsAppAccountID;
   protected _logger?: Logger;
 
   constructor({ businessID, logger }: AbstractAPIParams) {
