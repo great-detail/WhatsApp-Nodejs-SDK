@@ -14,6 +14,7 @@
  * @since 4.0.0
  * @see {@link https://developers.facebook.com/docs/whatsapp/cloud-api/support/error-codes}
  * @see {@link https://developers.facebook.com/docs/whatsapp/on-premises/errors}
+ * @see {@link https://github.com/MarcosNicolau/whatsapp-business-sdk/blob/7847e8dc103484442ff20444723228ccab2203f1/src/types/error.ts}
  */
 const Error = {
   506: "Duplicate Post",
@@ -80,6 +81,7 @@ const Error = {
     "Please wait a few minutes before attempting to register this phone number",
   135000: "Generic user error",
 
+  // On-Premeses Error Codes:
   400: "Media download error",
   402: "Business eligibility — Payment issue",
   408: "Message is not valid",
