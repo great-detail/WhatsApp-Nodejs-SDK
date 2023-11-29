@@ -7,7 +7,7 @@
  * @see    https://greatdetail.com
  */
 import AbstractAPI from "../API/AbstractAPI";
-import GraphRequest, { GraphRequestProps } from "../GraphRequest";
+import GraphRequest, { GraphRequestCreateParams } from "../GraphRequest";
 import ComponentTypesEnum from "../Message/ComponentTypesEnum";
 import { ContactsObjectMessageType } from "../Message/ContactsMessageType";
 import { InteractiveObjectMessageType } from "../Message/InteractiveMessageType";
@@ -41,7 +41,7 @@ type CreateMessagePayloadType<C extends ComponentTypesEnum> =
 type CreateMessageOptionsType = {
   toNumber: string;
   replyMessageId?: string;
-  requestProps?: GraphRequestProps;
+  requestProps?: GraphRequestCreateParams;
 };
 
 /**
@@ -67,14 +67,14 @@ export default class MessageAPI extends AbstractAPI {
    */
   public createStatus(
     payload: StatusObjectMessageType,
-    requestProps: GraphRequestProps = {},
+    requestProps: GraphRequestCreateParams = {},
   ) {
     const body: StatusMessageType = {
       messaging_product: "whatsapp",
       ...payload,
     };
 
-    return new GraphRequest<MessageResponseType>({
+    return GraphRequest.create<MessageResponseType>({
       ...requestProps,
       endpoint: this.getEndpoint(),
       method: "POST",
@@ -110,7 +110,7 @@ export default class MessageAPI extends AbstractAPI {
 
     if (replyMessageId) body["context"] = { message_id: replyMessageId };
 
-    return new GraphRequest<MessageResponseType>({
+    return GraphRequest.create<MessageResponseType>({
       ...requestProps,
       endpoint: this.getEndpoint(),
       method: "POST",

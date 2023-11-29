@@ -8,12 +8,8 @@
  */
 import EndpointType from "../API/EndpointType";
 import GraphResponse from "../GraphResponse";
-import {
-  DEFAULT_GRAPH_API_BASE_URL,
-  DEFAULT_GRAPH_VERSION,
-} from "../constants";
 
-export interface GraphRequestProps extends RequestInit {
+export interface GraphRequestCreateParams extends RequestInit {
   endpoint?: EndpointType;
   version?: string;
   baseUrl?: string;
@@ -28,23 +24,30 @@ export interface GraphRequestProps extends RequestInit {
  * @author Dom Webber <dom.webber@hotmail.com>
  */
 export default class GraphRequest<T = unknown> extends Request {
-  public endpoint: EndpointType;
-  public version: string;
-  public baseUrl: string;
+  /**
+   * Default base URL for the Facebook Graph API.
+   *
+   * @since 3.0.0
+   */
+  public static DEFAULT_GRAPH_API_BASE_URL = "https://graph.facebook.com";
 
-  constructor({
+  /**
+   * Default version for the Facebook Graph API.
+   *
+   * @since 3.0.0
+   */
+  public static DEFAULT_GRAPH_VERSION = "v18.0";
+
+  public static create<C = unknown>({
     endpoint = "/",
-    version = DEFAULT_GRAPH_VERSION,
-    baseUrl = DEFAULT_GRAPH_API_BASE_URL,
+    version = this.DEFAULT_GRAPH_VERSION,
+    baseUrl = this.DEFAULT_GRAPH_API_BASE_URL,
     ...requestInit
-  }: GraphRequestProps) {
-    super(new URL([version ? "/" : "", version, endpoint].join(""), baseUrl), {
-      ...requestInit,
-    });
-
-    this.endpoint = endpoint;
-    this.version = version;
-    this.baseUrl = baseUrl;
+  }: GraphRequestCreateParams) {
+    return new GraphRequest<C>(
+      new URL([version ? "/" : "", version, endpoint].join(""), baseUrl),
+      requestInit,
+    );
   }
 
   /**

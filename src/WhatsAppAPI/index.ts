@@ -7,11 +7,8 @@
  * @see    https://greatdetail.com
  */
 import AbstractAPI from "../API/AbstractAPI";
+import GraphRequest from "../GraphRequest";
 import MessageAPI from "../MessageAPI";
-import {
-  DEFAULT_GRAPH_API_BASE_URL,
-  DEFAULT_GRAPH_VERSION,
-} from "../constants";
 import type { Logger } from "winston";
 
 /**
@@ -25,8 +22,8 @@ export default class WhatsAppAPI extends AbstractAPI {
 
   constructor(
     businessId: string,
-    public version: string = DEFAULT_GRAPH_VERSION,
-    public baseUrl: string = DEFAULT_GRAPH_API_BASE_URL,
+    public version: string = GraphRequest.DEFAULT_GRAPH_VERSION,
+    public baseUrl: string = GraphRequest.DEFAULT_GRAPH_API_BASE_URL,
     logger?: Logger,
   ) {
     super(businessId, undefined, logger);
