@@ -29,7 +29,7 @@ import type { Logger } from "winston";
  * const app = express(); // or any other express-like app
  * app.get("/webhook", sdk.webhook.register);
  * app.post("/webhook", sdk.webhook.eventNotification);
- * app.listen();
+ * app.listen(3000);
  */
 export default class WhatsAppAPI extends AbstractAPI {
   public message: MessageAPI;
