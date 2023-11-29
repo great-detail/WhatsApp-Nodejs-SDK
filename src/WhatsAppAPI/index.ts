@@ -16,6 +16,12 @@ import type { Logger } from "winston";
  *
  * @since 2.0.0
  * @author Dom Webber <dom.webber@hotmail.com>
+ * @example
+ * // Simple Use Cases
+ * const sdk = new WhatsAppAPI("123456");
+ * const message = sdk.message.text({ body: "Hello"}, { toNumber: "1234567890" });
+ * const sendReceipt = await message.send();
+ * console.log(sendReceipt);
  */
 export default class WhatsAppAPI extends AbstractAPI {
   public message: MessageAPI;
