@@ -17,11 +17,19 @@ import type { Logger } from "winston";
  * @since 2.0.0
  * @author Dom Webber <dom.webber@hotmail.com>
  * @example
- * // Simple Use Cases
- * const sdk = new WhatsAppAPI("123456");
+ * // SDK instantiation
+ * const sdk = new WhatsAppAPI("123456")
+ * @example
+ * // Send a Text Message
  * const message = sdk.message.text({ body: "Hello"}, { toNumber: "1234567890" });
  * const sendReceipt = await message.send();
  * console.log(sendReceipt);
+ * @example
+ * // Receive a Message via Webhook
+ * const app = express(); // or any other express-like app
+ * app.get("/webhook", sdk.webhook.register);
+ * app.post("/webhook", sdk.webhook.eventNotification);
+ * app.listen();
  */
 export default class WhatsAppAPI extends AbstractAPI {
   public message: MessageAPI;
