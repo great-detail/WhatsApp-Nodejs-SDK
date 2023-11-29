@@ -64,8 +64,7 @@ export default class GraphRequest<T = unknown> extends Request {
    */
   public async send(): Promise<GraphResponse<T>> {
     return await fetch(this).then(
-      ({ body, status, statusText, headers }) =>
-        new GraphResponse(body, { status, statusText, headers }),
+      ({ body, ...responseInit }) => new GraphResponse(body, responseInit),
     );
   }
 }
