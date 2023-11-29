@@ -19,27 +19,29 @@ along with hints and code completion in TypeScript compatible IDEs.
 
 ## Getting started
 
-View the [quick start documentation](https://whatsapp.github.io/WhatsApp-Nodejs-SDK/) to learn how to use the SDK and get started.
+<!-- TODO -->
 
 ## Installation
 
-Install the WhatsApp Business Platform SDK using yarn:
+Install the WhatsApp Business Platform SDK:
 
-```shell
+```bash
+# Yarn:
 yarn add @great-detail/WhatsApp-Nodejs-SDK
-```
 
-Or npm:
-
-```shell
+# NPM:
 npm install @great-detail/WhatsApp-Nodejs-SDK
+
+# PNPM:
+pnpm add @great-detail/WhatsApp-Nodejs-SDK
+
+# Install the latest version from GitHub:
+npm install great-detail/WhatsApp-Nodejs-SDK
 ```
 
 ## Configuration
 
-```shell
-# TODO
-```
+<!-- TODO -->
 
 ## Code of Conduct
 
