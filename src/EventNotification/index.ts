@@ -13,8 +13,6 @@ import {
   WhatsAppMessageType,
 } from "../OldMessageType/MessageType";
 import EventNotificationStatus from "./EventNotificationStatus";
-import AudioMediaEventNotificationMessage from "./MediaMessage/AudioMediaEventNotificationMessage";
-import SystemEventNotificationMessage from "./SystemEventNotificationMessage";
 
 export type WhatsAppPhoneNumberID = string;
 
@@ -30,16 +28,12 @@ export type EventNotificationContact = {
   };
 };
 
-type EventNotificationMessage =
-  | AudioMediaEventNotificationMessage
-  | SystemEventNotificationMessage;
-
 export type EventNotificationChangeValue = WhatsAppMessageType & {
   metadata: EventNotificationMetadata;
   statuses?: EventNotificationStatus[];
 
   contacts: EventNotificationContact[];
-  messages?: EventNotificationMessage[];
+  messages?: unknown[];
 
   /**
    * An array of error objects describing the error.

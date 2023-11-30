@@ -6,7 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import { AccountID } from "..";
+import { AccountID, MessageID } from "..";
 
 export default interface IncomingMessageContext {
   /**
@@ -36,7 +36,7 @@ export default interface IncomingMessageContext {
    *
    * @since 4.2.0
    */
-  id: string;
+  id: MessageID;
 
   /**
    * Referred product object describing the product the user is requesting

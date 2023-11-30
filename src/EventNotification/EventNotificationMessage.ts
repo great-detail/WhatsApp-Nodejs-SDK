@@ -6,10 +6,12 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import { WhatsAppAccountID } from "../API/AbstractAPI";
+import { AccountID } from "../Message";
+import CloudIncomingMessageContext from "../Message/MessageContext/CloudIncomingMessageContext";
+import CloudIncomingMessageIdentity from "../Message/MessageIdentity/CloudIncomingMessageIdentity";
+import CloudIncomingMessageReferral from "../Message/MessageReferral/CloudIncomingMessageReferral";
+import CloudIncomingMessageSystem from "../Message/MessageSystem/CloudIncomingMessageSystem";
 import MessageTypesEnum from "../OldMessageType/MessageTypesEnum";
-import AudioMediaEventNotificationMessage from "./MediaMessage/AudioMediaEventNotificationMessage";
-import SystemEventNotificationMessage from "./SystemEventNotificationMessage";
 
 export type EventNotificationMessageType =
   | MessageTypesEnum
@@ -49,7 +51,7 @@ type EventNotificationMessage<T extends EventNotificationMessageType> = {
    *
    * @since 4.2.0
    */
-  from: WhatsAppAccountID;
+  from: AccountID;
 
   /**
    * When messages type is set to system, a customer has updated their phone
@@ -58,7 +60,7 @@ type EventNotificationMessage<T extends EventNotificationMessageType> = {
    *
    * @since 4.2.0
    */
-  system?: SystemEventNotificationMessage;
+  system?: CloudIncomingMessageSystem;
 
   /**
    * Context object. Only included when a user replies or interacts with one of
@@ -66,7 +68,7 @@ type EventNotificationMessage<T extends EventNotificationMessageType> = {
    *
    * @since 4.2.0
    */
-  context?: unknown;
+  context?: CloudIncomingMessageContext;
 
   /**
    * An array of error objects describing the error.
@@ -81,7 +83,7 @@ type EventNotificationMessage<T extends EventNotificationMessageType> = {
    *
    * @since 4.2.0
    */
-  identity: unknown;
+  identity: CloudIncomingMessageIdentity;
 
   /**
    * Referral object. When a customer clicks an ad that redirects to WhatsApp,
@@ -89,7 +91,7 @@ type EventNotificationMessage<T extends EventNotificationMessageType> = {
    *
    * @since 4.2.0
    */
-  referral: unknown;
+  referral: CloudIncomingMessageReferral;
 };
 
 export default EventNotificationMessage;
