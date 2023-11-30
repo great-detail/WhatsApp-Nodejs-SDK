@@ -6,21 +6,21 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import AbstractAPI from "../API/AbstractAPI";
-import EndpointType from "../API/EndpointType";
-import GraphRequest, { GraphRequestCreateParams } from "../GraphRequest";
-import CloudOutgoingMessageContact from "../Message/MessageContact/CloudOutgoingMessageContact";
-import CloudOutgoingMessageInteractive from "../Message/MessageInteractive/CloudOutgoingMessageInteractive";
-import CloudOutgoingMessageLocation from "../Message/MessageLocation/CloudOutgoingMessageLocation";
-import CloudOutgoingMessageMedia from "../Message/MessageMedia/CloudOutgoingMessageMedia";
-import CloudOutgoingMessageStatus from "../Message/MessageStatus/CloudOutgoingMessageStatus";
-import CloudOutgoingMessageTemplate from "../Message/MessageTemplate/CloudOutgoingMessageTemplate";
-import CloudOutgoingMessageText from "../Message/MessageText/CloudOutgoingMessageText";
-import OutgoingMessageType from "../Message/MessageType/OutgoingMessageType";
+import AbstractAPI from "../../API/AbstractAPI";
+import EndpointType from "../../API/EndpointType";
+import GraphRequest, { GraphRequestCreateParams } from "../../GraphRequest";
+import CloudOutgoingMessageContact from "../../Message/MessageContact/CloudOutgoingMessageContact";
+import CloudOutgoingMessageInteractive from "../../Message/MessageInteractive/CloudOutgoingMessageInteractive";
+import CloudOutgoingMessageLocation from "../../Message/MessageLocation/CloudOutgoingMessageLocation";
+import CloudOutgoingMessageMedia from "../../Message/MessageMedia/CloudOutgoingMessageMedia";
+import CloudOutgoingMessageStatus from "../../Message/MessageStatus/CloudOutgoingMessageStatus";
+import CloudOutgoingMessageTemplate from "../../Message/MessageTemplate/CloudOutgoingMessageTemplate";
+import CloudOutgoingMessageText from "../../Message/MessageText/CloudOutgoingMessageText";
+import OutgoingMessageType from "../../Message/MessageType/OutgoingMessageType";
 import CloudOutgoingMessage, {
   CloudOutgoingMessageResponse,
-} from "../Message/OutgoingMessage/CloudOutgoingMessage";
-import CloudOutgoingStatusMessage from "../Message/StatusMessage/CloudOutgoingStatusMessage";
+} from "../../Message/OutgoingMessage/CloudOutgoingMessage";
+import CloudOutgoingStatusMessage from "../../Message/StatusMessage/CloudOutgoingStatusMessage";
 
 type CreateMessagePayload =
   | CloudOutgoingMessageMedia
@@ -47,7 +47,7 @@ type CreateMessageOptionsType = {
  * const sendReceipt = await message.send();
  * console.log(sendReceipt);
  */
-export default class CloudMessageAPI extends AbstractAPI {
+export default class CloudAPIMessage extends AbstractAPI {
   protected getEndpoint(): EndpointType {
     return `/${this._businessID}/messages`;
   }
@@ -117,7 +117,7 @@ export default class CloudMessageAPI extends AbstractAPI {
     P extends CreateMessagePayload,
   >(type: T) {
     const shorthandAliasFunction = function (
-      this: CloudMessageAPI,
+      this: CloudAPIMessage,
       payload: P,
       options: CreateMessageOptionsType,
     ) {

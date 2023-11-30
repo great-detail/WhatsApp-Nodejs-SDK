@@ -7,9 +7,9 @@
  * @see    https://greatdetail.com
  */
 
-export default class CloudWebhookAPIError extends Error {
+export default class CloudAPIWebhookError extends Error {
   constructor(message: string) {
     super(message);
-    this.name = "CloudWebhookAPIError";
+    this.name = "CloudAPIWebhookError";
   }
 }
