@@ -8,7 +8,7 @@
  */
 import AbstractAPI from "../API/AbstractAPI";
 import { EventNotificationType } from "../EventNotification";
-import WebhookAPIError from "./WebhookAPIError";
+import CloudWebhookAPIError from "./CloudWebhookAPIError";
 import { IncomingMessage, ServerResponse } from "http";
 import { createHmac } from "node:crypto";
 
@@ -35,7 +35,7 @@ export interface WebhookAPIEventNotificationReturn {
    * Check the integrity of the request body.
    *
    * @since 4.0.0
-   * @throws {WebhookAPIError}
+   * @throws {CloudWebhookAPIError}
    */
   verifyIntegrity: (appSecret: string) => void;
 }
@@ -73,7 +73,7 @@ export interface WebhookAPIEventNotificationReturn {
  *   }
  * );
  */
-export default class WebhookAPI extends AbstractAPI {
+export default class CloudWebhookAPI extends AbstractAPI {
   /**
    * Handle a Registration Webhook Request.
    * The handler for `GET` requests to your webhook endpoint. A registration
@@ -82,6 +82,7 @@ export default class WebhookAPI extends AbstractAPI {
    *
    * @since 4.0.0
    * @author Dom Webber <dom.webber@hotmail.com>
+   * @throws {CloudWebhookAPIError}
    */
   public async register(
     req: IncomingMessage,
@@ -89,7 +90,7 @@ export default class WebhookAPI extends AbstractAPI {
   ): Promise<WebhookAPIRegisterReturn> {
     const urlString = req.url;
     if (!urlString) {
-      throw new WebhookAPIError("No URL in request");
+      throw new CloudWebhookAPIError("No URL in request");
     }
 
     const url = new URL(urlString);
@@ -98,15 +99,17 @@ export default class WebhookAPI extends AbstractAPI {
     const hubVerifyToken = url.searchParams.get("hub.verify_token");
 
     if (!hubMode || hubMode !== "subscribe") {
-      throw new WebhookAPIError("Invalid or unsupported hub.mode in request");
+      throw new CloudWebhookAPIError(
+        "Invalid or unsupported hub.mode in request",
+      );
     }
 
     if (!hubChallenge) {
-      throw new WebhookAPIError("Invalid hub.challenge in request");
+      throw new CloudWebhookAPIError("Invalid hub.challenge in request");
     }
 
     if (!hubVerifyToken) {
-      throw new WebhookAPIError("Invalid hub.verify_token in request");
+      throw new CloudWebhookAPIError("Invalid hub.verify_token in request");
     }
 
     return {
@@ -136,7 +139,7 @@ export default class WebhookAPI extends AbstractAPI {
       ?.toString()
       .replace("sha256=", "");
     if (!xHubSignature) {
-      throw new WebhookAPIError("No X-Hub-Signature in request");
+      throw new CloudWebhookAPIError("No X-Hub-Signature in request");
     }
 
     // Async request body buffering
@@ -151,7 +154,7 @@ export default class WebhookAPI extends AbstractAPI {
 
           if (cumulativeSize > 1e6) {
             reject(
-              new WebhookAPIError("Request body exceeds 1MB maximum size"),
+              new CloudWebhookAPIError("Request body exceeds 1MB maximum size"),
             );
           }
         })
@@ -176,7 +179,7 @@ export default class WebhookAPI extends AbstractAPI {
       checkIntegrity,
       verifyIntegrity: (appSecret: string) => {
         if (!checkIntegrity(appSecret)) {
-          throw new WebhookAPIError("Invalid X-Hub-Signature in request");
+          throw new CloudWebhookAPIError("Invalid X-Hub-Signature in request");
         }
       },
       accept: () => {

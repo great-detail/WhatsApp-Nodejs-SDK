@@ -7,27 +7,27 @@
  * @see    https://greatdetail.com
  */
 import AbstractAPI, { AbstractAPIParams } from "../API/AbstractAPI";
-import MessageAPI from "../MessageAPI";
-import WebhookAPI from "../WebhookAPI";
+import CloudMessageAPI from "../CloudMessageAPI";
+import CloudWebhookAPI from "../CloudWebhookAPI";
 
 export interface WhatsAppAPIParams extends AbstractAPIParams {}
 
 /**
- * WhatsApp API.
+ * WhatsApp Cloud API SDK.
  *
  * @since 2.0.0
  * @author Dom Webber <dom.webber@hotmail.com>
  * @example
  * // SDK instantiation
- * const sdk = new WhatsAppAPI("123456")
+ * const sdk = new CloudWhatsAppAPI("123456")
  */
-export default class WhatsAppAPI extends AbstractAPI {
-  public message: MessageAPI;
-  public webhook: WebhookAPI;
+export default class CloudWhatsAppAPI extends AbstractAPI {
+  public message: CloudMessageAPI;
+  public webhook: CloudWebhookAPI;
 
   constructor(params: WhatsAppAPIParams) {
     super(params);
-    this.message = new MessageAPI(params);
-    this.webhook = new WebhookAPI(params);
+    this.message = new CloudMessageAPI(params);
+    this.webhook = new CloudWebhookAPI(params);
   }
 }
