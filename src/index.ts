@@ -6,8 +6,8 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import CloudWhatsAppAPI from "./CloudWhatsAppAPI";
+import CloudAPI from "./CloudAPI";
 import IncomingMessageType from "./Message/MessageType/IncomingMessageType";
 import OutgoingMessageType from "./Message/MessageType/OutgoingMessageType";
 
-export { CloudWhatsAppAPI, OutgoingMessageType, IncomingMessageType };
+export { CloudAPI, OutgoingMessageType, IncomingMessageType };
