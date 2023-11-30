@@ -7,6 +7,7 @@
  * @see    https://greatdetail.com
  */
 import CloudWhatsAppAPI from "./CloudWhatsAppAPI";
-import MessageTypesEnum from "./OldMessageType/MessageTypesEnum";
+import IncomingMessageType from "./Message/MessageType/IncomingMessageType";
+import OutgoingMessageType from "./Message/MessageType/OutgoingMessageType";
 
-export { CloudWhatsAppAPI, MessageTypesEnum };
+export { CloudWhatsAppAPI, OutgoingMessageType, IncomingMessageType };
