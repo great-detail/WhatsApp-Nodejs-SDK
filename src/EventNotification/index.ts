@@ -6,59 +6,106 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import { WhatsAppAccountID } from "../API/AbstractAPI";
 import { EventNotificationError } from "../Error";
+import { AccountID } from "../ID";
+import CloudIncomingTextMessage from "../Message/TextMessage/CloudIncomingTextMessage";
+import EventNotificationContact from "./EventNotificationContact";
+import EventNotificationMetadata from "./EventNotificationMetadata";
 import EventNotificationStatus from "./EventNotificationStatus";
 
-export type WhatsAppPhoneNumberID = string;
+export type EventNotificationChangeValueMessage = CloudIncomingTextMessage;
 
-export type EventNotificationMetadata = {
-  display_phone_number: string;
-  phone_number_id: WhatsAppPhoneNumberID;
-};
-
-export type EventNotificationContact = {
-  wa_id: WhatsAppAccountID;
-  profile: {
-    name: string;
-  };
-};
-
-export type EventNotificationChangeValue = {
+export interface EventNotificationChange {
   /**
-   * Messaging service used for the request. Use "whatsapp".
-   *
-   * @default 'whatsapp'
-   */
-  messaging_product: "whatsapp";
-
-  metadata: EventNotificationMetadata;
-  statuses?: EventNotificationStatus[];
-
-  contacts: EventNotificationContact[];
-  messages?: unknown[];
-
-  /**
-   * An array of error objects describing the error.
+   * Notification type. Value will be messages.
    *
    * @since 4.2.0
    */
-  errors: EventNotificationError[];
-};
-
-export type EventNotificationChange = {
-  value: EventNotificationChangeValue;
-
-  // See: https://github.com/MarcosNicolau/whatsapp-business-sdk/blob/7847e8dc103484442ff20444723228ccab2203f1/src/types/utils.ts#L10
   field: "messages" | (string & NonNullable<unknown>);
-};
+
+  /**
+   * A value object.
+   *
+   * @since 4.2.0
+   */
+  value: {
+    /**
+     * Messaging service used for the request. Use "whatsapp".
+     *
+     * @default 'whatsapp'
+     */
+    messaging_product: "whatsapp";
+
+    /**
+     * A metadata object describing the business subscribed to the webhook.
+     *
+     * @since 4.2.0
+     */
+    metadata: EventNotificationMetadata;
+
+    /**
+     * Status object for a message that was sent by the business that is
+     * subscribed to the webhook.
+     *
+     * @since 4.2.0
+     */
+    statuses?: EventNotificationStatus[];
+
+    /**
+     * Array of contact objects with information for the customer who sent a
+     * message to the business.
+     *
+     * @since 4.2.0
+     */
+    contacts: EventNotificationContact[];
+
+    /**
+     * Information about a message received by the business that is subscribed to
+     * the webhook.
+     *
+     * @since 4.2.0
+     */
+    messages?: EventNotificationChangeValueMessage[];
+
+    /**
+     * An array of error objects describing the error.
+     *
+     * @since 4.2.0
+     */
+    errors: EventNotificationError[];
+  };
+}
 
 export type EventNotificationEntry = {
-  id: string;
+  /**
+   * The WhatsApp Business Account ID for the business that is subscribed to
+   * the webhook.
+   *
+   * @since 4.2.0
+   */
+  id: AccountID;
+
+  /**
+   * An array of change objects.
+   *
+   * @since 4.2.0
+   */
   changes: EventNotificationChange[];
 };
 
 export type EventNotificationType = {
+  /**
+   * The specific webhook a business is subscribed to. The webhook is
+   * whatsapp_business_account.
+   *
+   * @since 4.2.0
+   */
   object: string;
+
+  /**
+   * An array of entry objects.
+   *
+   * @since 4.2.0
+   */
   entry: EventNotificationEntry[];
 };
