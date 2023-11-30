@@ -48,7 +48,7 @@ npm install great-detail/WhatsApp-Nodejs-SDK
 
 | SDK Version | Graph API Versions |
 | :---------- | -----------------: |
-| v4.x.x      |              v18.0 |
+| TODO        |               TODO |
 
 Whilst the SDK may work with alternative versions of the Graph API, it is
 designed to work with the above. If you find any compatibility issues, please
