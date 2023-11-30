@@ -139,7 +139,7 @@ export interface EventNotificationStatusPricing {
    * Indicates if the given message or conversation is billable. Default is
    * true for all conversations, including those inside your free tier limit,
    * except those initiated from free entry points. Free entry point
-   * conversatsion are not billable, false. You will not be charged for free
+   * conversation are not billable, false. You will not be charged for free
    * tier limit conversations, but they are considered billable and will be
    * reflected on your invoice.
    *
