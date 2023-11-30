@@ -6,8 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import MessageTypesEnum from "./Message/MessageTypesEnum";
-import WhatsAppAPI from "./WhatsAppAPI";
+import CloudWhatsAppAPI from "./CloudWhatsAppAPI";
+import MessageTypesEnum from "./OldMessageType/MessageTypesEnum";
 
-export default WhatsAppAPI;
-export { MessageTypesEnum };
+export { CloudWhatsAppAPI, MessageTypesEnum };
