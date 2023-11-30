@@ -7,12 +7,12 @@
  * @see    https://greatdetail.com
  */
 import HostedOutgoingMessageMedia from "../MessageMedia/HostedOutgoingMessageMedia";
-import MessageTypeEnum from "../MessageTypeEnum";
+import OutgoingMessageType from "../MessageType/OutgoingMessageType";
 import HostedOutgoingMessage from "../OutgoingMessage/HostedOutgoingMessage";
 
 type HostedOutgoingImageMessage =
-  HostedOutgoingMessage<MessageTypeEnum.Image> & {
-    [MessageTypeEnum.Image]: HostedOutgoingMessageMedia;
+  HostedOutgoingMessage<OutgoingMessageType.Image> & {
+    [OutgoingMessageType.Image]: HostedOutgoingMessageMedia;
   };
 
 export default HostedOutgoingImageMessage;

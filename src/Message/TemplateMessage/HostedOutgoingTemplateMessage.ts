@@ -7,12 +7,12 @@
  * @see    https://greatdetail.com
  */
 import HostedOutgoingMessageTemplate from "../MessageTemplate/HostedOutgoingMessageTemplate";
-import MessageTypeEnum from "../MessageTypeEnum";
+import OutgoingMessageType from "../MessageType/OutgoingMessageType";
 import HostedOutgoingMessage from "../OutgoingMessage/HostedOutgoingMessage";
 
 type HostedOutgoingTemplateMessage =
-  HostedOutgoingMessage<MessageTypeEnum.Template> & {
-    [MessageTypeEnum.Template]: HostedOutgoingMessageTemplate;
+  HostedOutgoingMessage<OutgoingMessageType.Template> & {
+    [OutgoingMessageType.Template]: HostedOutgoingMessageTemplate;
   };
 
 export default HostedOutgoingTemplateMessage;

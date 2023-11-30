@@ -7,7 +7,7 @@
  * @see    https://greatdetail.com
  */
 import Message, { AccountID, PhoneNumber } from "..";
-import MessageTypeEnum from "../MessageTypeEnum";
+import OutgoingMessageType from "../MessageType/OutgoingMessageType";
 
 export type OutgoingMessageRecipientType =
   | "individual"
@@ -18,12 +18,13 @@ export type OutgoingMessageRecipientType =
  *
  * @since 4.2.0
  */
-export default interface OutgoingMessage<MessageType extends MessageTypeEnum>
-  extends Message {
+export default interface OutgoingMessage<
+  MessageType extends OutgoingMessageType,
+> extends Message {
   /**
    * The type of message you want to send.
    *
-   * @default MessageTypeEnum.Text
+   * @default OutgoingMessageType.Text
    */
   type?: MessageType;
 

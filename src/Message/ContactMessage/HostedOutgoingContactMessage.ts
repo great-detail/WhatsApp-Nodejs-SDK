@@ -7,17 +7,17 @@
  * @see    https://greatdetail.com
  */
 import HostedOutgoingMessageContact from "../MessageContact/HostedOutgoingMessageContact";
-import MessageTypeEnum from "../MessageTypeEnum";
+import OutgoingMessageType from "../MessageType/OutgoingMessageType";
 import HostedOutgoingMessage from "../OutgoingMessage/HostedOutgoingMessage";
 
 type HostedOutgoingContactMessage =
-  HostedOutgoingMessage<MessageTypeEnum.Contacts> & {
+  HostedOutgoingMessage<OutgoingMessageType.Contacts> & {
     /**
      * A contacts object.
      *
      * @since 4.2.0
      */
-    [MessageTypeEnum.Contacts]: HostedOutgoingMessageContact[];
+    [OutgoingMessageType.Contacts]: HostedOutgoingMessageContact[];
   };
 
 export default HostedOutgoingContactMessage;

@@ -7,12 +7,12 @@
  * @see    https://greatdetail.com
  */
 import CloudOutgoingMessageInteractive from "../MessageInteractive/CloudOutgoingMessageInteractive";
-import MessageTypeEnum from "../MessageTypeEnum";
+import OutgoingMessageType from "../MessageType/OutgoingMessageType";
 import CloudOutgoingMessage from "../OutgoingMessage/CloudOutgoingMessage";
 
 type CloudOutgoingInteractiveMessage =
-  CloudOutgoingMessage<MessageTypeEnum.Interactive> & {
-    [MessageTypeEnum.Interactive]: CloudOutgoingMessageInteractive;
+  CloudOutgoingMessage<OutgoingMessageType.Interactive> & {
+    [OutgoingMessageType.Interactive]: CloudOutgoingMessageInteractive;
   };
 
 export default CloudOutgoingInteractiveMessage;

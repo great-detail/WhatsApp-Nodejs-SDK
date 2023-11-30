@@ -7,11 +7,11 @@
  * @see    https://greatdetail.com
  */
 import CloudOutgoingMessageMedia from "../MessageMedia/CloudOutgoingMessageMedia";
-import MessageTypeEnum from "../MessageTypeEnum";
+import OutgoingMessageType from "../MessageType/OutgoingMessageType";
 import CloudOutgoingMessage from "../OutgoingMessage/CloudOutgoingMessage";
 
 type CloudOutgoingStickerMessage =
-  CloudOutgoingMessage<MessageTypeEnum.Sticker> & {
+  CloudOutgoingMessage<OutgoingMessageType.Sticker> & {
     /**
      * A media object containing a sticker.
      *
@@ -22,7 +22,7 @@ type CloudOutgoingStickerMessage =
      *
      * @since 4.2.0
      */
-    [MessageTypeEnum.Sticker]: CloudOutgoingMessageMedia;
+    [OutgoingMessageType.Sticker]: CloudOutgoingMessageMedia;
   };
 
 export default CloudOutgoingStickerMessage;

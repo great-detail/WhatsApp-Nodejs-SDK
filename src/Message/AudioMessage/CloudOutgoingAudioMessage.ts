@@ -7,11 +7,12 @@
  * @see    https://greatdetail.com
  */
 import CloudOutgoingMessageMedia from "../MessageMedia/CloudOutgoingMessageMedia";
-import MessageTypeEnum from "../MessageTypeEnum";
+import OutgoingMessageType from "../MessageType/OutgoingMessageType";
 import CloudOutgoingMessage from "../OutgoingMessage/CloudOutgoingMessage";
 
-type CloudOutgoingAudioMessage = CloudOutgoingMessage<MessageTypeEnum.Audio> & {
-  [MessageTypeEnum.Audio]: CloudOutgoingMessageMedia;
-};
+type CloudOutgoingAudioMessage =
+  CloudOutgoingMessage<OutgoingMessageType.Audio> & {
+    [OutgoingMessageType.Audio]: CloudOutgoingMessageMedia;
+  };
 
 export default CloudOutgoingAudioMessage;

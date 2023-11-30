@@ -8,7 +8,7 @@
  */
 import OutgoingMessage from ".";
 import { MessageID } from "..";
-import MessageTypeEnum from "../MessageTypeEnum";
+import OutgoingMessageType from "../MessageType/OutgoingMessageType";
 
 export interface CloudOutgoingMessageContext {
   /**
@@ -25,7 +25,7 @@ export interface CloudOutgoingMessageContext {
  * @since 4.2.0
  */
 export default interface CloudOutgoingMessage<
-  MessageType extends MessageTypeEnum,
+  MessageType extends OutgoingMessageType,
 > extends OutgoingMessage<MessageType> {
   /**
    * Messaging service used for the request. Use "whatsapp".

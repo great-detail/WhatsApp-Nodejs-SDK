@@ -7,12 +7,12 @@
  * @see    https://greatdetail.com
  */
 import HostedOutgoingMessageMedia from "../MessageMedia/HostedOutgoingMessageMedia";
-import MessageTypeEnum from "../MessageTypeEnum";
+import OutgoingMessageType from "../MessageType/OutgoingMessageType";
 import HostedOutgoingMessage from "../OutgoingMessage/HostedOutgoingMessage";
 
 type HostedOutgoingAudioMessage =
-  HostedOutgoingMessage<MessageTypeEnum.Audio> & {
-    [MessageTypeEnum.Audio]: HostedOutgoingMessageMedia;
+  HostedOutgoingMessage<OutgoingMessageType.Audio> & {
+    [OutgoingMessageType.Audio]: HostedOutgoingMessageMedia;
   };
 
 export default HostedOutgoingAudioMessage;

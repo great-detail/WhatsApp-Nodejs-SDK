@@ -7,17 +7,17 @@
  * @see    https://greatdetail.com
  */
 import CloudOutgoingMessageContact from "../MessageContact/CloudOutgoingMessageContact";
-import MessageTypeEnum from "../MessageTypeEnum";
+import OutgoingMessageType from "../MessageType/OutgoingMessageType";
 import CloudOutgoingMessage from "../OutgoingMessage/CloudOutgoingMessage";
 
 type CloudOutgoingContactMessage =
-  CloudOutgoingMessage<MessageTypeEnum.Contacts> & {
+  CloudOutgoingMessage<OutgoingMessageType.Contacts> & {
     /**
      * A contacts object.
      *
      * @since 4.2.0
      */
-    [MessageTypeEnum.Contacts]: CloudOutgoingMessageContact[];
+    [OutgoingMessageType.Contacts]: CloudOutgoingMessageContact[];
   };
 
 export default CloudOutgoingContactMessage;

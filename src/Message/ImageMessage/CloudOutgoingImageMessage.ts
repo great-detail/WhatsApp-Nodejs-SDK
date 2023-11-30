@@ -7,11 +7,12 @@
  * @see    https://greatdetail.com
  */
 import CloudOutgoingMessageMedia from "../MessageMedia/CloudOutgoingMessageMedia";
-import MessageTypeEnum from "../MessageTypeEnum";
+import OutgoingMessageType from "../MessageType/OutgoingMessageType";
 import CloudOutgoingMessage from "../OutgoingMessage/CloudOutgoingMessage";
 
-type CloudOutgoingImageMessage = CloudOutgoingMessage<MessageTypeEnum.Image> & {
-  [MessageTypeEnum.Image]: CloudOutgoingMessageMedia;
-};
+type CloudOutgoingImageMessage =
+  CloudOutgoingMessage<OutgoingMessageType.Image> & {
+    [OutgoingMessageType.Image]: CloudOutgoingMessageMedia;
+  };
 
 export default CloudOutgoingImageMessage;

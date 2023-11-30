@@ -7,12 +7,12 @@
  * @see    https://greatdetail.com
  */
 import CloudOutgoingMessageMedia from "../MessageMedia/CloudOutgoingMessageMedia";
-import MessageTypeEnum from "../MessageTypeEnum";
+import OutgoingMessageType from "../MessageType/OutgoingMessageType";
 import CloudOutgoingMessage from "../OutgoingMessage/CloudOutgoingMessage";
 
 type CloudOutgoingDocumentMessage =
-  CloudOutgoingMessage<MessageTypeEnum.Document> & {
-    [MessageTypeEnum.Document]: CloudOutgoingMessageMedia;
+  CloudOutgoingMessage<OutgoingMessageType.Document> & {
+    [OutgoingMessageType.Document]: CloudOutgoingMessageMedia;
   };
 
 export default CloudOutgoingDocumentMessage;

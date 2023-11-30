@@ -1,8 +1,8 @@
 import { InteractiveMessageAction, InteractiveMessageHeader } from ".";
-import InteractiveMessageTypeEnum from "./InteractiveMessageTypeEnum";
+import InteractiveOutgoingMessageType from "./InteractiveOutgoingMessageType";
 
 type ProductInteractiveMessage = {
-  type: InteractiveMessageTypeEnum.Product;
+  type: InteractiveOutgoingMessageType.Product;
   body?: {
     text: string;
   };

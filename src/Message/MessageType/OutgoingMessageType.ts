@@ -7,7 +7,7 @@
  * @see    https://greatdetail.com
  */
 
-enum MessageTypeEnum {
+enum OutgoingMessageType {
   Audio = "audio", // for audio messages.
   Contacts = "contacts", // for contact messages.
   Document = "document", // for document messages.
@@ -21,4 +21,4 @@ enum MessageTypeEnum {
   Video = "video", // for video messages
 }
 
-export default MessageTypeEnum;
+export default OutgoingMessageType;

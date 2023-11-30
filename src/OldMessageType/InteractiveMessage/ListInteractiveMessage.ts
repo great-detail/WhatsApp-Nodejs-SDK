@@ -1,8 +1,8 @@
 import { InteractiveMessageHeader, InteractiveMessageAction } from ".";
-import InteractiveMessageTypeEnum from "./InteractiveMessageTypeEnum";
+import InteractiveOutgoingMessageType from "./InteractiveOutgoingMessageType";
 
 type ListInteractiveMessage = {
-  type: InteractiveMessageTypeEnum.List;
+  type: InteractiveOutgoingMessageType.List;
   body: {
     text: string;
   };

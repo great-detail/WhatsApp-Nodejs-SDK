@@ -7,12 +7,12 @@
  * @see    https://greatdetail.com
  */
 import CloudOutgoingMessageLocation from "../MessageLocation/CloudOutgoingMessageLocation";
-import MessageTypeEnum from "../MessageTypeEnum";
+import OutgoingMessageType from "../MessageType/OutgoingMessageType";
 import CloudOutgoingMessage from "../OutgoingMessage/CloudOutgoingMessage";
 
 type CloudOutgoingLocationMessage =
-  CloudOutgoingMessage<MessageTypeEnum.Location> & {
-    [MessageTypeEnum.Location]: CloudOutgoingMessageLocation;
+  CloudOutgoingMessage<OutgoingMessageType.Location> & {
+    [OutgoingMessageType.Location]: CloudOutgoingMessageLocation;
   };
 
 export default CloudOutgoingLocationMessage;

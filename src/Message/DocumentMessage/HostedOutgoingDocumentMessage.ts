@@ -7,12 +7,12 @@
  * @see    https://greatdetail.com
  */
 import HostedOutgoingMessageMedia from "../MessageMedia/HostedOutgoingMessageMedia";
-import MessageTypeEnum from "../MessageTypeEnum";
+import OutgoingMessageType from "../MessageType/OutgoingMessageType";
 import HostedOutgoingMessage from "../OutgoingMessage/HostedOutgoingMessage";
 
 type HostedOutgoingDocumentMessage =
-  HostedOutgoingMessage<MessageTypeEnum.Document> & {
-    [MessageTypeEnum.Document]: HostedOutgoingMessageMedia;
+  HostedOutgoingMessage<OutgoingMessageType.Document> & {
+    [OutgoingMessageType.Document]: HostedOutgoingMessageMedia;
   };
 
 export default HostedOutgoingDocumentMessage;

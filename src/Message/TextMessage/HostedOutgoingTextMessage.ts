@@ -7,18 +7,19 @@
  * @see    https://greatdetail.com
  */
 import HostedOutgoingMessageText from "../MessageText/HostedOutgoingMessageText";
-import MessageTypeEnum from "../MessageTypeEnum";
+import OutgoingMessageType from "../MessageType/OutgoingMessageType";
 import HostedOutgoingMessage from "../OutgoingMessage/CloudOutgoingMessage";
 
-type CloudOutgoingTextMessage = HostedOutgoingMessage<MessageTypeEnum.Text> & {
-  [MessageTypeEnum.Text]: HostedOutgoingMessageText;
+type CloudOutgoingTextMessage =
+  HostedOutgoingMessage<OutgoingMessageType.Text> & {
+    [OutgoingMessageType.Text]: HostedOutgoingMessageText;
 
-  /**
-   * Allows for URL previews in text messages.
-   *
-   * @default false
-   */
-  preview_url?: boolean;
-};
+    /**
+     * Allows for URL previews in text messages.
+     *
+     * @default false
+     */
+    preview_url?: boolean;
+  };
 
 export default CloudOutgoingTextMessage;

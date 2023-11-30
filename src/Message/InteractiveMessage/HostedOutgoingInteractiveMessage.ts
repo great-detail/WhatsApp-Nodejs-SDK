@@ -7,12 +7,12 @@
  * @see    https://greatdetail.com
  */
 import HostedOutgoingMessageInteractive from "../MessageInteractive/HostedOutgoingMessageInteractive";
-import MessageTypeEnum from "../MessageTypeEnum";
+import OutgoingMessageType from "../MessageType/OutgoingMessageType";
 import HostedOutgoingMessage from "../OutgoingMessage/HostedOutgoingMessage";
 
 type HostedOutgoingInteractiveMessage =
-  HostedOutgoingMessage<MessageTypeEnum.Interactive> & {
-    [MessageTypeEnum.Interactive]: HostedOutgoingMessageInteractive;
+  HostedOutgoingMessage<OutgoingMessageType.Interactive> & {
+    [OutgoingMessageType.Interactive]: HostedOutgoingMessageInteractive;
   };
 
 export default HostedOutgoingInteractiveMessage;

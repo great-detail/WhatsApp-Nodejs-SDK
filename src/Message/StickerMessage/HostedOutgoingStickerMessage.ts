@@ -7,11 +7,11 @@
  * @see    https://greatdetail.com
  */
 import HostedOutgoingMessageMedia from "../MessageMedia/HostedOutgoingMessageMedia";
-import MessageTypeEnum from "../MessageTypeEnum";
+import OutgoingMessageType from "../MessageType/OutgoingMessageType";
 import HostedOutgoingMessage from "../OutgoingMessage/HostedOutgoingMessage";
 
 type HostedOutgoingStickerMessage =
-  HostedOutgoingMessage<MessageTypeEnum.Sticker> & {
+  HostedOutgoingMessage<OutgoingMessageType.Sticker> & {
     /**
      * A media object containing a sticker.
      *
@@ -21,7 +21,7 @@ type HostedOutgoingStickerMessage =
      *
      * @since 4.2.0
      */
-    [MessageTypeEnum.Sticker]: HostedOutgoingMessageMedia;
+    [OutgoingMessageType.Sticker]: HostedOutgoingMessageMedia;
   };
 
 export default HostedOutgoingStickerMessage;

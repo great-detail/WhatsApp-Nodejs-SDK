@@ -1,8 +1,8 @@
 import { InteractiveMessageAction, InteractiveMessageHeader } from ".";
-import InteractiveMessageTypeEnum from "./InteractiveMessageTypeEnum";
+import InteractiveOutgoingMessageType from "./InteractiveOutgoingMessageType";
 
 type ButtonInteractiveMessage = {
-  type: InteractiveMessageTypeEnum.Button;
+  type: InteractiveOutgoingMessageType.Button;
   body: {
     text: string;
   };

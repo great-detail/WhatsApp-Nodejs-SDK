@@ -6,12 +6,3 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-
-enum InteractiveOutgoingMessageType {
-  Button = "button",
-  List = "list",
-  Product = "product",
-  ProductList = "product_list",
-}
-
-export default InteractiveOutgoingMessageType;

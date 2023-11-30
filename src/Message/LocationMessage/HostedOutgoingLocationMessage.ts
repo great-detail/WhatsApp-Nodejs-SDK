@@ -7,12 +7,12 @@
  * @see    https://greatdetail.com
  */
 import HostedOutgoingMessageLocation from "../MessageLocation/HostedOutgoingMessageLocation";
-import MessageTypeEnum from "../MessageTypeEnum";
+import OutgoingMessageType from "../MessageType/OutgoingMessageType";
 import HostedOutgoingMessage from "../OutgoingMessage/HostedOutgoingMessage";
 
 type HostedOutgoingLocationMessage =
-  HostedOutgoingMessage<MessageTypeEnum.Location> & {
-    [MessageTypeEnum.Location]: HostedOutgoingMessageLocation;
+  HostedOutgoingMessage<OutgoingMessageType.Location> & {
+    [OutgoingMessageType.Location]: HostedOutgoingMessageLocation;
   };
 
 export default HostedOutgoingLocationMessage;

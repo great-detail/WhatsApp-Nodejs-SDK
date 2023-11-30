@@ -16,7 +16,7 @@ import CloudOutgoingMessageMedia from "../Message/MessageMedia/CloudOutgoingMess
 import CloudOutgoingMessageStatus from "../Message/MessageStatus/CloudOutgoingMessageStatus";
 import CloudOutgoingMessageTemplate from "../Message/MessageTemplate/CloudOutgoingMessageTemplate";
 import CloudOutgoingMessageText from "../Message/MessageText/CloudOutgoingMessageText";
-import MessageTypeEnum from "../Message/MessageTypeEnum";
+import OutgoingMessageType from "../Message/MessageType/OutgoingMessageType";
 import CloudOutgoingMessage from "../Message/OutgoingMessage/CloudOutgoingMessage";
 import CloudOutgoingStatusMessage from "../Message/StatusMessage/CloudOutgoingStatusMessage";
 import MessageResponseType from "../OldMessageType/MessageResponseType";
@@ -84,7 +84,7 @@ export default class CloudMessageAPI extends AbstractAPI {
    * @since 2.0.0
    * @author Dom Webber <dom.webber@hotmail.com>
    */
-  public createMessage<T extends MessageTypeEnum>(
+  public createMessage<T extends OutgoingMessageType>(
     type: T,
     payload: CreateMessagePayload,
     { toNumber, replyMessageId, requestProps = {} }: CreateMessageOptionsType,
@@ -112,7 +112,7 @@ export default class CloudMessageAPI extends AbstractAPI {
   }
 
   protected _shorthandAlias<
-    T extends MessageTypeEnum,
+    T extends OutgoingMessageType,
     P extends CreateMessagePayload,
   >(type: T) {
     const shorthandAliasFunction = function (
@@ -126,14 +126,14 @@ export default class CloudMessageAPI extends AbstractAPI {
     return shorthandAliasFunction.bind(this);
   }
 
-  public audio = this._shorthandAlias(MessageTypeEnum.Audio);
-  public contacts = this._shorthandAlias(MessageTypeEnum.Contacts);
-  public document = this._shorthandAlias(MessageTypeEnum.Document);
-  public image = this._shorthandAlias(MessageTypeEnum.Image);
-  public interactive = this._shorthandAlias(MessageTypeEnum.Interactive);
-  public location = this._shorthandAlias(MessageTypeEnum.Location);
-  public sticker = this._shorthandAlias(MessageTypeEnum.Sticker);
-  public template = this._shorthandAlias(MessageTypeEnum.Template);
-  public text = this._shorthandAlias(MessageTypeEnum.Text);
-  public video = this._shorthandAlias(MessageTypeEnum.Video);
+  public audio = this._shorthandAlias(OutgoingMessageType.Audio);
+  public contacts = this._shorthandAlias(OutgoingMessageType.Contacts);
+  public document = this._shorthandAlias(OutgoingMessageType.Document);
+  public image = this._shorthandAlias(OutgoingMessageType.Image);
+  public interactive = this._shorthandAlias(OutgoingMessageType.Interactive);
+  public location = this._shorthandAlias(OutgoingMessageType.Location);
+  public sticker = this._shorthandAlias(OutgoingMessageType.Sticker);
+  public template = this._shorthandAlias(OutgoingMessageType.Template);
+  public text = this._shorthandAlias(OutgoingMessageType.Text);
+  public video = this._shorthandAlias(OutgoingMessageType.Video);
 }

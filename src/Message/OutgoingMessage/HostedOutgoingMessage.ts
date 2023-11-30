@@ -7,7 +7,7 @@
  * @see    https://greatdetail.com
  */
 import OutgoingMessage from ".";
-import MessageTypeEnum from "../MessageTypeEnum";
+import OutgoingMessageType from "../MessageType/OutgoingMessageType";
 
 export interface HostedOutgoingMessageHsm {
   /**
@@ -52,7 +52,7 @@ export interface HostedOutgoingMessageHsm {
  * @since 4.2.0
  */
 export default interface HostedOutgoingMessage<
-  MessageType extends MessageTypeEnum,
+  MessageType extends OutgoingMessageType,
 > extends OutgoingMessage<MessageType> {
   /**
    * Contains an hsm object. This option was deprecated with v2.39 of the
