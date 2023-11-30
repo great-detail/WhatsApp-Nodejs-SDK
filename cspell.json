@@ -1,13 +1,7 @@
 {
   "version": "0.2",
   "language": "en",
-  "dictionaries": [
-    "softwareTerms",
-    "typescript",
-    "node",
-    "filetypes",
-    "npm"
-  ],
+  "dictionaries": ["softwareTerms", "typescript", "node", "filetypes", "npm"],
   "words": [
     "FODT",
     "FODP",
@@ -30,18 +24,7 @@
     "subcode",
     "localizable"
   ],
-  "ignoreWords": [
-    "xddt",
-    "Coreapp",
-    "clid",
-    "ctwa"
-  ],
-  "flagWords": [
-    "hte"
-  ],
-  "ignorePaths": [
-    "tsconfig.tsbuildinfo",
-    "coverage",
-    "cspell.json"
-  ]
+  "ignoreWords": ["xddt", "Coreapp", "clid", "ctwa"],
+  "flagWords": ["hte"],
+  "ignorePaths": ["tsconfig.tsbuildinfo", "coverage", "cspell.json"]
 }
