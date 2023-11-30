@@ -7,7 +7,26 @@
  * @see    https://greatdetail.com
  */
 import OutgoingMessage from ".";
+import { AccountID, MessageID } from "..";
 import OutgoingMessageType from "../MessageType/OutgoingMessageType";
+
+export interface HostedOutgoingMessageResponse {
+  /**
+   * Messaging service used for the request. Use "whatsapp".
+   *
+   * @default 'whatsapp'
+   */
+  messaging_product: "whatsapp";
+
+  // TODO: Reuse this
+  contacts: {
+    input: string;
+    wa_id: AccountID;
+  }[];
+  messages: {
+    id: MessageID;
+  }[];
+}
 
 export interface HostedOutgoingMessageHsm {
   /**

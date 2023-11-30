@@ -7,7 +7,7 @@
  * @see    https://greatdetail.com
  */
 import { WhatsAppAccountID } from "../API/AbstractAPI";
-import { MessageID } from "../OldMessageType/MessageType";
+import { MessageID } from "../Message";
 
 export enum EventNotificationStatusReason {
   /**

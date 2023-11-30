@@ -11,15 +11,9 @@ import CloudIncomingMessageContext from "../Message/MessageContext/CloudIncoming
 import CloudIncomingMessageIdentity from "../Message/MessageIdentity/CloudIncomingMessageIdentity";
 import CloudIncomingMessageReferral from "../Message/MessageReferral/CloudIncomingMessageReferral";
 import CloudIncomingMessageSystem from "../Message/MessageSystem/CloudIncomingMessageSystem";
-import MessageTypesEnum from "../OldMessageType/MessageTypesEnum";
+import IncomingMessageType from "../Message/MessageType/IncomingMessageType";
 
-export type EventNotificationMessageType =
-  | MessageTypesEnum
-  | "button"
-  | "system"
-  | "unknown";
-
-type EventNotificationMessage<T extends EventNotificationMessageType> = {
+type EventNotificationMessage<T extends IncomingMessageType> = {
   /**
    * The type of message that has been received by the business that has
    * subscribed to Webhooks.

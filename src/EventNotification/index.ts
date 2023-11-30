@@ -8,10 +8,6 @@
  */
 import { WhatsAppAccountID } from "../API/AbstractAPI";
 import { EventNotificationError } from "../Error";
-import {
-  RequestBodyType,
-  WhatsAppMessageType,
-} from "../OldMessageType/MessageType";
 import EventNotificationStatus from "./EventNotificationStatus";
 
 export type WhatsAppPhoneNumberID = string;
@@ -28,7 +24,14 @@ export type EventNotificationContact = {
   };
 };
 
-export type EventNotificationChangeValue = WhatsAppMessageType & {
+export type EventNotificationChangeValue = {
+  /**
+   * Messaging service used for the request. Use "whatsapp".
+   *
+   * @default 'whatsapp'
+   */
+  messaging_product: "whatsapp";
+
   metadata: EventNotificationMetadata;
   statuses?: EventNotificationStatus[];
 
@@ -55,7 +58,7 @@ export type EventNotificationEntry = {
   changes: EventNotificationChange[];
 };
 
-export type EventNotificationType = RequestBodyType & {
+export type EventNotificationType = {
   object: string;
   entry: EventNotificationEntry[];
 };

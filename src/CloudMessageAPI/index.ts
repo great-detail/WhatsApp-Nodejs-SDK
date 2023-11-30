@@ -17,9 +17,10 @@ import CloudOutgoingMessageStatus from "../Message/MessageStatus/CloudOutgoingMe
 import CloudOutgoingMessageTemplate from "../Message/MessageTemplate/CloudOutgoingMessageTemplate";
 import CloudOutgoingMessageText from "../Message/MessageText/CloudOutgoingMessageText";
 import OutgoingMessageType from "../Message/MessageType/OutgoingMessageType";
-import CloudOutgoingMessage from "../Message/OutgoingMessage/CloudOutgoingMessage";
+import CloudOutgoingMessage, {
+  CloudOutgoingMessageResponse,
+} from "../Message/OutgoingMessage/CloudOutgoingMessage";
 import CloudOutgoingStatusMessage from "../Message/StatusMessage/CloudOutgoingStatusMessage";
-import MessageResponseType from "../OldMessageType/MessageResponseType";
 
 type CreateMessagePayload =
   | CloudOutgoingMessageMedia
@@ -66,7 +67,7 @@ export default class CloudMessageAPI extends AbstractAPI {
       ...payload,
     };
 
-    return GraphRequest.create<MessageResponseType>({
+    return GraphRequest.create<CloudOutgoingMessageResponse>({
       ...requestProps,
       endpoint: this.getEndpoint(),
       method: "POST",
@@ -99,7 +100,7 @@ export default class CloudMessageAPI extends AbstractAPI {
 
     if (replyMessageId) body["context"] = { message_id: replyMessageId };
 
-    return GraphRequest.create<MessageResponseType>({
+    return GraphRequest.create<CloudOutgoingMessageResponse>({
       ...requestProps,
       endpoint: this.getEndpoint(),
       method: "POST",
