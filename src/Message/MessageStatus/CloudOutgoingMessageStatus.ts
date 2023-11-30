@@ -6,7 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import { MessageID } from "..";
+import { MessageID } from "../../ID";
 import OutgoingMessageStatus from "./OutgoingMessageStatus";
 
 export default interface CloudOutgoingMessageStatus

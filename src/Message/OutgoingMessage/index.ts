@@ -6,7 +6,8 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import Message, { AccountID, PhoneNumber } from "..";
+import Message from "..";
+import { AccountID, PhoneNumber } from "../../ID";
 import OutgoingMessageType from "../MessageType/OutgoingMessageType";
 
 export type OutgoingMessageRecipientType =

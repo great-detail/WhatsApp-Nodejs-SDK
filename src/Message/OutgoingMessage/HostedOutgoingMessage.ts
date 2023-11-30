@@ -7,7 +7,7 @@
  * @see    https://greatdetail.com
  */
 import OutgoingMessage from ".";
-import { AccountID, MessageID } from "..";
+import { AccountID, MessageID } from "../../ID";
 import OutgoingMessageType from "../MessageType/OutgoingMessageType";
 
 export interface HostedOutgoingMessageResponse {

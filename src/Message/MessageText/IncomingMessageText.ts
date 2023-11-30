@@ -6,11 +6,11 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import OutgoingMessageText from "./OutgoingMessageText";
+import MessageText from ".";
 
 /**
  * Incoming Message Text.
  *
  * @since 4.2.0
  */
-export default interface IncomingMessageText extends OutgoingMessageText {}
+export default interface IncomingMessageText extends MessageText {}

@@ -6,7 +6,8 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import Message, { AccountID, MessageID } from "..";
+import Message from "..";
+import { AccountID, MessageID } from "../../ID";
 import CloudIncomingMessageContext from "../MessageContext/CloudIncomingMessageContext";
 import CloudIncomingMessageIdentity from "../MessageIdentity/CloudIncomingMessageIdentity";
 import CloudIncomingMessageReferral from "../MessageReferral/CloudIncomingMessageReferral";

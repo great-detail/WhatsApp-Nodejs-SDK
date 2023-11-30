@@ -6,7 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import { AccountID, PhoneNumber } from "..";
+import { PhoneNumber, AccountID } from "../../ID";
 
 type MessageContactDetailType =
   | "HOME"

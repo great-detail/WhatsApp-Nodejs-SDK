@@ -6,7 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import { AccountID } from "..";
+import { AccountID } from "../../ID";
 
 export default interface IncomingMessageSystem {
   /**
