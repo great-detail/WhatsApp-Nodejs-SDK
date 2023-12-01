@@ -13,6 +13,7 @@ import CloudIncomingDocumentMessage from "../Message/Document/DocumentMessage/Cl
 import CloudIncomingImageMessage from "../Message/Image/ImageMessage/CloudIncomingImageMessage";
 import CloudIncomingStickerMessage from "../Message/Sticker/StickerMessage/CloudIncomingStickerMessage";
 import CloudIncomingTextMessage from "../Message/Text/TextMessage/CloudIncomingTextMessage";
+import CloudIncomingVideoMessage from "../Message/Video/VideoMessage/CloudIncomingVideoMessage";
 import EventNotificationContact from "./EventNotificationContact";
 import EventNotificationMetadata from "./EventNotificationMetadata";
 import EventNotificationStatus from "./EventNotificationStatus";
@@ -22,7 +23,8 @@ export type EventNotificationChangeValueMessage =
   | CloudIncomingDocumentMessage
   | CloudIncomingImageMessage
   | CloudIncomingStickerMessage
-  | CloudIncomingTextMessage;
+  | CloudIncomingTextMessage
+  | CloudIncomingVideoMessage;
 
 export interface EventNotificationChange {
   /**
