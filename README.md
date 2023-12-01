@@ -5,15 +5,9 @@ This source code is licensed under the license found in the
 LICENSE file in the root directory of this source tree.
 -->
 
-# WhatsApp Business Platform Node.js SDK for the Cloud API, hosted by Meta
+# Node.js SDK for WhatsApp Business Platform APIs
 
-This is a Fork of the Official
-[Meta Business Messaging WhatsApp Cloud API](https://business.whatsapp.com/products/business-platform/)
-Node.js SDK. This SDK is written for Node.js framework to simplify access to
-the [Cloud API](https://developers.facebook.com/docs/whatsapp/cloud-api/). The
-source code itself is written in Typescript with TypeScript declaration files
-to type-check usage of the WhatsApp Business Platform Node.js SDK in your code,
-along with hints and code completion in TypeScript compatible IDEs.
+This is a fork of the original, deprecated, Official SDK.
 
 [![npm (scoped)](https://img.shields.io/npm/v/%40great-detail/whatsapp)](https://www.npmjs.com/package/@great-detail/whatsapp)
 [![Lint, Format, Test & Build](https://github.com/great-detail/WhatsApp-Nodejs-SDK/actions/workflows/nodejs.ci.yml/badge.svg)](https://github.com/great-detail/WhatsApp-Nodejs-SDK/actions/workflows/nodejs.ci.yml)
@@ -35,9 +29,6 @@ npm install @great-detail/WhatsApp-Nodejs-SDK
 
 # PNPM:
 pnpm add @great-detail/WhatsApp-Nodejs-SDK
-
-# Install the latest version from GitHub:
-npm install great-detail/WhatsApp-Nodejs-SDK
 ```
 
 ## Configuration
