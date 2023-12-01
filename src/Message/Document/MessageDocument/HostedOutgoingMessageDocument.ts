@@ -7,6 +7,8 @@
  * @see    https://greatdetail.com
  */
 import HostedOutgoingMessageMedia from "../../MessageMedia/HostedOutgoingMessageMedia";
+import OutgoingMessageDocument from "./OutgoingMessageDocument";
 
 export default interface HostedOutgoingMessageDocument
-  extends HostedOutgoingMessageMedia {}
+  extends HostedOutgoingMessageMedia,
+    OutgoingMessageDocument {}

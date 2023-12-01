@@ -6,8 +6,9 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
+import MessageDocument from ".";
 
-export default interface IncomingMessageDocument {
+export default interface IncomingMessageDocument extends MessageDocument {
   /**
    * Caption for the document, if provided.
    *

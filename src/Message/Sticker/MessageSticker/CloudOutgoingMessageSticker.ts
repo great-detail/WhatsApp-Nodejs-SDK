@@ -7,6 +7,8 @@
  * @see    https://greatdetail.com
  */
 import CloudOutgoingMessageMedia from "../../MessageMedia/CloudOutgoingMessageMedia";
+import OutgoingMessageSticker from "./OutgoingMessageSticker";
 
 export default interface CloudOutgoingMessageSticker
-  extends CloudOutgoingMessageMedia {}
+  extends CloudOutgoingMessageMedia,
+    OutgoingMessageSticker {}

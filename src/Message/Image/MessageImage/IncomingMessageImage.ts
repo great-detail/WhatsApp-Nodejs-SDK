@@ -6,8 +6,9 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
+import MessageImage from ".";
 
-export default interface IncomingMessageImage {
+export default interface IncomingMessageImage extends MessageImage {
   /**
    * Caption for the image, if provided.
    *

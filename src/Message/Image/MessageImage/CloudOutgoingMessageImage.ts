@@ -7,6 +7,8 @@
  * @see    https://greatdetail.com
  */
 import CloudOutgoingMessageMedia from "../../MessageMedia/CloudOutgoingMessageMedia";
+import OutgoingMessageImage from "./OutgoingMessageImage";
 
 export default interface CloudOutgoingMessageImage
-  extends CloudOutgoingMessageMedia {}
+  extends CloudOutgoingMessageMedia,
+    OutgoingMessageImage {}
