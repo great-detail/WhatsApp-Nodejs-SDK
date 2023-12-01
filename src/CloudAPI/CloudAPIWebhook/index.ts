@@ -13,26 +13,93 @@ import { IncomingMessage, ServerResponse } from "http";
 import { createHmac } from "node:crypto";
 
 export interface WebhookAPIRegisterReturn {
+  /**
+   * The verify token sent by WhatsApp.
+   * This should be checked against your own verify token to ensure that the
+   * request is valid.
+   *
+   * @since 4.0.0
+   */
   verifyToken: string;
+
+  /**
+   * The challenge sent by WhatsApp.
+   * This should be returned to WhatsApp to verify that the request is valid.
+   * Unless you have a specific reason to do otherwise, this will be returned
+   * to WhatsApp when you call `reg.accept()`.
+   *
+   * @since 4.0.0
+   */
   challenge: string;
+
+  /**
+   * Accept the Webhook Registration.
+   * This should be the **last** step in your request handler as it may call
+   * `req.end()`.
+   *
+   * @since 4.0.0
+   * @example
+   * // Accept the Webhook Registration
+   * // Within your request handler:
+   * return reg.accept();
+   */
   accept: () => ServerResponse;
+
+  /**
+   * Reject the Webhook Registration.
+   * This should be the **last** step in your request handler as it may call
+   * `req.end()`.
+   *
+   * @since 4.0.0
+   * @example
+   * // Reject the Webhook Registration
+   * // Within your request handler:
+   * return reg.reject();
+   */
   reject: () => ServerResponse;
 }
 
 export interface WebhookAPIEventNotificationReturn {
   eventNotification: EventNotificationType;
+  /**
+   * Accept the Incoming Webhook
+   * This should be the **last** step in your request handler as it may call
+   * `req.end()`.
+   *
+   * @since 4.0.0
+   * @example
+   * // Accept the Incoming Webhook
+   * // Within your request handler:
+   * return event.accept();
+   */
   accept: () => ServerResponse;
+
+  /**
+   * Reject the Incoming Webhook.
+   * This should be the **last** step in your request handler as it may call
+   * `req.end()`.
+   *
+   * @since 4.0.0
+   * @example
+   * // Reject the Incoming Webhook
+   * // Within your request handler:
+   * return event.reject();
+   */
   reject: () => ServerResponse;
 
   /**
-   * Verify the integrity of the request body.
+   * Check the integrity of the request body.
+   * This determines whether the integrity of the webhook body is valid and
+   * returns a boolean to represent this.
    *
    * @since 4.0.0
    */
   checkIntegrity: (appSecret: string) => boolean;
 
   /**
-   * Check the integrity of the request body.
+   * Verify the integrity of the request body.
+   * This method will throw an error if the integrity of the webhook body is
+   * invalid.
    *
    * @since 4.0.0
    * @throws {CloudWebhookAPIError}
