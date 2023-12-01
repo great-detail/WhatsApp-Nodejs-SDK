@@ -30,6 +30,9 @@
     },
     "./package.json": "./package.json"
   },
+  "directories": {
+    "CloudAPI": "./dist/CloudAPI"
+  },
   "files": [
     "dist",
     "src"
