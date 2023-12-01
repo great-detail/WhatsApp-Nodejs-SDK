@@ -155,25 +155,23 @@ export default class CloudAPIWebhook extends AbstractAPI {
     req: IncomingMessage,
     res: ServerResponse,
   ): Promise<WebhookAPIRegisterReturn> {
-    const urlString = req.url;
-    if (!urlString) {
+    const url = req.url ? new URL(req.url) : undefined;
+    if (!url) {
       throw CloudAPIWebhookError.invalidURL();
     }
 
-    const url = new URL(urlString);
     const hubMode = url.searchParams.get("hub.mode") ?? undefined;
-    const hubChallenge = url.searchParams.get("hub.challenge") ?? undefined;
-    const hubVerifyToken =
-      url.searchParams.get("hub.verify_token") ?? undefined;
-
     if (!hubMode || hubMode !== "subscribe") {
       throw CloudAPIWebhookError.invalidHubMode(hubMode);
     }
 
+    const hubChallenge = url.searchParams.get("hub.challenge") ?? undefined;
     if (!hubChallenge) {
       throw CloudAPIWebhookError.invalidHubChallenge(hubChallenge);
     }
 
+    const hubVerifyToken =
+      url.searchParams.get("hub.verify_token") ?? undefined;
     if (!hubVerifyToken) {
       throw CloudAPIWebhookError.invalidVerifyToken();
     }
