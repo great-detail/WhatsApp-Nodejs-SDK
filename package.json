@@ -1,14 +1,41 @@
 {
   "name": "@great-detail/whatsapp",
   "version": "0.0.0",
-  "license": "SEE LICENSE IN LICENSE FILE",
+  "type": "commonjs",
   "description": "SDK for interfacing with WhatsApp Business Platform in Typescript or Node.js using the Cloud API, hosted by Meta.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/great-detail/WhatsApp-Nodejs-SDK.git"
+  },
   "homepage": "https://github.com/great-detail/WhatsApp-Nodejs-SDK",
+  "bugs": {
+    "url": "https://github.com/great-detail/WhatsApp-Nodejs-SDK/issues"
+  },
   "author": "Great Detail Ltd <info@greatdetail.com>",
   "contributors": [
     "Rashed Talukder",
     "Dom Webber <dom.webber@hotmail.com>",
     "Great Detail Ltd <info@greatdetail.com>"
+  ],
+  "license": "SEE LICENSE IN LICENSE FILE",
+  "engines": {
+    "node": ">=16.19.1"
+  },
+  "main": "./dist/index.js",
+  "exports": {
+    ".": {
+      "default": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "types": "./dist/index.d.ts",
+  "directories": {
+    "CloudAPI": "./dist/CloudAPI"
+  },
+  "files": [
+    "dist",
+    "src"
   ],
   "keywords": [
     "WhatsApp",
@@ -20,41 +47,27 @@
     "NodeJS",
     "Cloud API"
   ],
-  "type": "commonjs",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "default": "./dist/index.js",
-      "types": "./dist/index.d.ts"
-    },
-    "./package.json": "./package.json"
-  },
-  "directories": {
-    "CloudAPI": "./dist/CloudAPI"
-  },
-  "files": [
-    "dist",
-    "src"
-  ],
-  "release": {
-    "branches": [
-      "main"
-    ]
-  },
   "scripts": {
-    "start": "ts-node ./src/index.ts",
     "build": "tsc -p tsconfig.json && babel dist --out-dir dist",
-    "lint": "npm-run-all lint:*",
-    "lint:eslint": "eslint . --fix",
-    "lint:cspell": "cspell .",
-    "lint:typecheck": "tsc --noEmit",
-    "test": "npm-run-all test:*",
-    "test:jest": "jest --passWithNoTests",
     "format": "npm-run-all format:*",
-    "format:prettier": "prettier . --write",
     "format-ci": "npm-run-all format-ci:*",
-    "format-ci:prettier": "prettier . --check"
+    "format-ci:prettier": "prettier . --check",
+    "format:prettier": "prettier . --write",
+    "lint": "npm-run-all lint:*",
+    "lint:cspell": "cspell .",
+    "lint:eslint": "eslint . --fix",
+    "lint:typecheck": "tsc --noEmit",
+    "start": "ts-node ./src/index.ts",
+    "test": "npm-run-all test:*",
+    "test:jest": "jest --passWithNoTests"
+  },
+  "peerDependencies": {
+    "winston": "3.10.0"
+  },
+  "peerDependenciesMeta": {
+    "winston": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@babel/cli": "^7.23.0",
@@ -80,32 +93,20 @@
     "nock": "^13.3.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^3.0.3",
+    "prettier-plugin-pkg": "^0.18.0",
     "semantic-release": "^22.0.5",
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2",
     "winston": "^3.10.0"
   },
-  "engines": {
-    "node": ">=16.19.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/great-detail/WhatsApp-Nodejs-SDK.git"
-  },
-  "bugs": {
-    "url": "https://github.com/great-detail/WhatsApp-Nodejs-SDK/issues"
-  },
-  "peerDependencies": {
-    "winston": "3.10.0"
-  },
-  "peerDependenciesMeta": {
-    "winston": {
-      "optional": true
-    }
-  },
   "publishConfig": {
     "access": "public",
     "provenance": true
+  },
+  "release": {
+    "branches": [
+      "main"
+    ]
   }
 }
