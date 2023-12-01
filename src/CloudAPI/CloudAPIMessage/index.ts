@@ -10,17 +10,17 @@ import AbstractAPI from "../../API/AbstractAPI";
 import EndpointType from "../../API/EndpointType";
 import GraphRequest, { GraphRequestCreateParams } from "../../GraphRequest";
 import CloudOutgoingMessageContact from "../../Message/Contact/MessageContact/CloudOutgoingMessageContact";
-import CloudOutgoingMessageInteractive from "../../Message/Interactive/MessageInteractive/CloudOutgoingMessageInteractive";
-import CloudOutgoingMessageLocation from "../../Message/Location/MessageLocation/CloudOutgoingMessageLocation";
+import CloudOutgoingMessageInteractive from "../../Message/Interactive/MessageInteractive/Outgoing/CloudOutgoingMessageInteractive";
+import CloudOutgoingMessageLocation from "../../Message/Location/MessageLocation/Outgoing/CloudOutgoingMessageLocation";
 import CloudOutgoingMessageMedia from "../../Message/MessageMedia/CloudOutgoingMessageMedia";
 import OutgoingMessageType from "../../Message/MessageType/OutgoingMessageType";
 import CloudOutgoingMessage, {
   CloudOutgoingMessageResponse,
 } from "../../Message/OutgoingMessage/CloudOutgoingMessage";
-import CloudOutgoingMessageStatus from "../../Message/Status/MessageStatus/CloudOutgoingMessageStatus";
+import CloudOutgoingMessageStatus from "../../Message/Status/MessageStatus/Outgoing/CloudOutgoingMessageStatus";
 import CloudOutgoingStatusMessage from "../../Message/Status/StatusMessage/CloudOutgoingStatusMessage";
-import CloudOutgoingMessageTemplate from "../../Message/Template/MessageTemplate/CloudOutgoingMessageTemplate";
-import CloudOutgoingMessageText from "../../Message/Text/MessageText/CloudOutgoingMessageText";
+import CloudOutgoingMessageTemplate from "../../Message/Template/MessageTemplate/Outgoing/CloudOutgoingMessageTemplate";
+import CloudOutgoingMessageText from "../../Message/Text/MessageText/Outgoing/CloudOutgoingMessageText";
 
 type CreateMessagePayload =
   | CloudOutgoingMessageMedia

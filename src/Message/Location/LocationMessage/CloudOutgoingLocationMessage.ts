@@ -8,7 +8,7 @@
  */
 import OutgoingMessageType from "../../MessageType/OutgoingMessageType";
 import CloudOutgoingMessage from "../../OutgoingMessage/CloudOutgoingMessage";
-import CloudOutgoingMessageLocation from "../MessageLocation/CloudOutgoingMessageLocation";
+import CloudOutgoingMessageLocation from "../MessageLocation/Outgoing/CloudOutgoingMessageLocation";
 
 type CloudOutgoingLocationMessage =
   CloudOutgoingMessage<OutgoingMessageType.Location> & {

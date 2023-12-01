@@ -8,7 +8,7 @@
  */
 import OutgoingMessageType from "../../MessageType/OutgoingMessageType";
 import HostedOutgoingMessage from "../../OutgoingMessage/HostedOutgoingMessage";
-import HostedOutgoingMessageLocation from "../MessageLocation/HostedOutgoingMessageLocation";
+import HostedOutgoingMessageLocation from "../MessageLocation/Outgoing/HostedOutgoingMessageLocation";
 
 type HostedOutgoingLocationMessage =
   HostedOutgoingMessage<OutgoingMessageType.Location> & {

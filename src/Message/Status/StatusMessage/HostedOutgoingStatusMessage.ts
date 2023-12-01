@@ -6,7 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import HostedOutgoingMessageStatus from "../MessageStatus/HostedOutgoingMessageStatus";
+import HostedOutgoingMessageStatus from "../MessageStatus/Outgoing/HostedOutgoingMessageStatus";
 
 type HostedOutgoingStatusMessage = HostedOutgoingMessageStatus;
 

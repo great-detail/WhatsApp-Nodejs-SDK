@@ -8,7 +8,7 @@
  */
 import OutgoingMessageType from "../../MessageType/OutgoingMessageType";
 import HostedOutgoingMessage from "../../OutgoingMessage/HostedOutgoingMessage";
-import HostedOutgoingMessageDocument from "../MessageDocument/HostedOutgoingMessageDocument";
+import HostedOutgoingMessageDocument from "../MessageDocument/Outgoing/HostedOutgoingMessageDocument";
 
 type HostedOutgoingDocumentMessage =
   HostedOutgoingMessage<OutgoingMessageType.Document> & {

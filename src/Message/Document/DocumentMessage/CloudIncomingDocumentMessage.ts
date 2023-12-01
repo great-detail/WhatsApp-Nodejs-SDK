@@ -8,7 +8,7 @@
  */
 import CloudIncomingMessage from "../../IncomingMessage/CloudIncomingMessage";
 import IncomingMessageType from "../../MessageType/IncomingMessageType";
-import CloudIncomingMessageDocument from "../MessageDocument/CloudIncomingMessageDocument";
+import CloudIncomingMessageDocument from "../MessageDocument/Incoming/CloudIncomingMessageDocument";
 
 type CloudIncomingDocumentMessage =
   CloudIncomingMessage<IncomingMessageType.Document> & {

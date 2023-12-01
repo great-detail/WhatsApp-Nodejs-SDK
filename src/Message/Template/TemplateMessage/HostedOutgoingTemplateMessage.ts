@@ -8,7 +8,7 @@
  */
 import OutgoingMessageType from "../../MessageType/OutgoingMessageType";
 import HostedOutgoingMessage from "../../OutgoingMessage/HostedOutgoingMessage";
-import HostedOutgoingMessageTemplate from "../MessageTemplate/HostedOutgoingMessageTemplate";
+import HostedOutgoingMessageTemplate from "../MessageTemplate/Outgoing/HostedOutgoingMessageTemplate";
 
 type HostedOutgoingTemplateMessage =
   HostedOutgoingMessage<OutgoingMessageType.Template> & {

@@ -8,7 +8,7 @@
  */
 import CloudIncomingMessage from "../../IncomingMessage/CloudIncomingMessage";
 import IncomingMessageType from "../../MessageType/IncomingMessageType";
-import CloudIncomingMessageSticker from "../MessageSticker/CloudIncomingMessageSticker";
+import CloudIncomingMessageSticker from "../MessageSticker/Incoming/CloudIncomingMessageSticker";
 
 type CloudIncomingStickerMessage =
   CloudIncomingMessage<IncomingMessageType.Sticker> & {

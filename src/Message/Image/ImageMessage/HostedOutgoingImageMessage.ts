@@ -8,7 +8,7 @@
  */
 import OutgoingMessageType from "../../MessageType/OutgoingMessageType";
 import HostedOutgoingMessage from "../../OutgoingMessage/HostedOutgoingMessage";
-import HostedOutgoingMessageImage from "../MessageImage/HostedOutgoingMessageImage";
+import HostedOutgoingMessageImage from "../MessageImage/Outgoing/HostedOutgoingMessageImage";
 
 type HostedOutgoingImageMessage =
   HostedOutgoingMessage<OutgoingMessageType.Image> & {

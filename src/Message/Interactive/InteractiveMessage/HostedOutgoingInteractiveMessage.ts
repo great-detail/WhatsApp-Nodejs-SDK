@@ -8,7 +8,7 @@
  */
 import OutgoingMessageType from "../../MessageType/OutgoingMessageType";
 import HostedOutgoingMessage from "../../OutgoingMessage/HostedOutgoingMessage";
-import HostedOutgoingMessageInteractive from "../MessageInteractive/HostedOutgoingMessageInteractive";
+import HostedOutgoingMessageInteractive from "../MessageInteractive/Outgoing/HostedOutgoingMessageInteractive";
 
 type HostedOutgoingInteractiveMessage =
   HostedOutgoingMessage<OutgoingMessageType.Interactive> & {

@@ -8,7 +8,7 @@
  */
 import OutgoingMessageType from "../../MessageType/OutgoingMessageType";
 import HostedOutgoingMessage from "../../OutgoingMessage/CloudOutgoingMessage";
-import HostedOutgoingMessageText from "../MessageText/HostedOutgoingMessageText";
+import HostedOutgoingMessageText from "../MessageText/Outgoing/HostedOutgoingMessageText";
 
 type CloudOutgoingTextMessage =
   HostedOutgoingMessage<OutgoingMessageType.Text> & {

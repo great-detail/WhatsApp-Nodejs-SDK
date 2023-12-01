@@ -8,7 +8,7 @@
  */
 import OutgoingMessageType from "../../MessageType/OutgoingMessageType";
 import CloudOutgoingMessage from "../../OutgoingMessage/CloudOutgoingMessage";
-import CloudOutgoingMessageInteractive from "../MessageInteractive/CloudOutgoingMessageInteractive";
+import CloudOutgoingMessageInteractive from "../MessageInteractive/Outgoing/CloudOutgoingMessageInteractive";
 
 type CloudOutgoingInteractiveMessage =
   CloudOutgoingMessage<OutgoingMessageType.Interactive> & {

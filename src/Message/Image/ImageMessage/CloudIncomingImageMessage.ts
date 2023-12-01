@@ -8,7 +8,7 @@
  */
 import CloudIncomingMessage from "../../IncomingMessage/CloudIncomingMessage";
 import IncomingMessageType from "../../MessageType/IncomingMessageType";
-import CloudIncomingMessageImage from "../MessageImage/CloudIncomingMessageImage";
+import CloudIncomingMessageImage from "../MessageImage/Incoming/CloudIncomingMessageImage";
 
 type CloudIncomingImageMessage =
   CloudIncomingMessage<IncomingMessageType.Image> & {

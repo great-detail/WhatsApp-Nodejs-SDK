@@ -8,7 +8,7 @@
  */
 import OutgoingMessageType from "../../MessageType/OutgoingMessageType";
 import CloudOutgoingMessage from "../../OutgoingMessage/CloudOutgoingMessage";
-import CloudOutgoingMessageDocument from "../MessageDocument/CloudOutgoingMessageDocument";
+import CloudOutgoingMessageDocument from "../MessageDocument/Outgoing/CloudOutgoingMessageDocument";
 
 type CloudOutgoingDocumentMessage =
   CloudOutgoingMessage<OutgoingMessageType.Document> & {
