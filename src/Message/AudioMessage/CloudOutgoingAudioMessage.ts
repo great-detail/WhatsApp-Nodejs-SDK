@@ -6,13 +6,13 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import CloudOutgoingMessageMedia from "../MessageMedia/CloudOutgoingMessageMedia";
+import CloudOutgoingMessageAudio from "../MessageAudio/CloudOutgoingMessageAudio";
 import OutgoingMessageType from "../MessageType/OutgoingMessageType";
 import CloudOutgoingMessage from "../OutgoingMessage/CloudOutgoingMessage";
 
 type CloudOutgoingAudioMessage =
   CloudOutgoingMessage<OutgoingMessageType.Audio> & {
-    [OutgoingMessageType.Audio]: CloudOutgoingMessageMedia;
+    [OutgoingMessageType.Audio]: CloudOutgoingMessageAudio;
   };
 
 export default CloudOutgoingAudioMessage;

@@ -6,13 +6,13 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import HostedOutgoingMessageMedia from "../MessageMedia/HostedOutgoingMessageMedia";
+import HostedOutgoingMessageImage from "../MessageImage/HostedOutgoingMessageImage";
 import OutgoingMessageType from "../MessageType/OutgoingMessageType";
 import HostedOutgoingMessage from "../OutgoingMessage/HostedOutgoingMessage";
 
 type HostedOutgoingImageMessage =
   HostedOutgoingMessage<OutgoingMessageType.Image> & {
-    [OutgoingMessageType.Image]: HostedOutgoingMessageMedia;
+    [OutgoingMessageType.Image]: HostedOutgoingMessageImage;
   };
 
 export default HostedOutgoingImageMessage;

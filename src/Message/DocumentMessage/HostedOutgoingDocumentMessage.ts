@@ -6,13 +6,13 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import HostedOutgoingMessageMedia from "../MessageMedia/HostedOutgoingMessageMedia";
+import HostedOutgoingMessageDocument from "../MessageDocument/HostedOutgoingMessageDocument";
 import OutgoingMessageType from "../MessageType/OutgoingMessageType";
 import HostedOutgoingMessage from "../OutgoingMessage/HostedOutgoingMessage";
 
 type HostedOutgoingDocumentMessage =
   HostedOutgoingMessage<OutgoingMessageType.Document> & {
-    [OutgoingMessageType.Document]: HostedOutgoingMessageMedia;
+    [OutgoingMessageType.Document]: HostedOutgoingMessageDocument;
   };
 
 export default HostedOutgoingDocumentMessage;
