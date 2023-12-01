@@ -16,7 +16,7 @@
  * @see {@link https://developers.facebook.com/docs/whatsapp/on-premises/errors}
  * @see {@link https://github.com/MarcosNicolau/whatsapp-business-sdk/blob/7847e8dc103484442ff20444723228ccab2203f1/src/types/error.ts}
  */
-const Error = {
+export const ErrorMap = {
   506: "Duplicate Post",
   131043: "Message expired",
   131001: "Message too long",
@@ -155,11 +155,15 @@ const Error = {
   2069: "Flow is throttled",
 } as const;
 
-export default Error;
-export type ErrorCode = keyof typeof Error;
-export type ErrorMessage = (typeof Error)[ErrorCode];
+export type ErrorCode = keyof typeof ErrorMap;
+export type ErrorMessage = (typeof ErrorMap)[ErrorCode];
 
-export type BaseErrorObject = {
+/**
+ * Base Error Object.
+ *
+ * @since 5.0.0
+ */
+export default interface Error {
   /**
    * Error code.
    *
@@ -173,65 +177,4 @@ export type BaseErrorObject = {
    * @since 4.2.0, Graph API v16.0
    */
   message?: string;
-};
-
-export type ErrorObject = BaseErrorObject & {
-  /**
-   * Error type.
-   *
-   * @since 4.2.0
-   */
-  type: string;
-
-  /**
-   * Graph API subcode. Not all responses will include a subcode.
-   *
-   * @since 4.2.0
-   * @deprecated since Graph API v16.0
-   */
-  error_subcode?: number;
-
-  error_data?: {
-    messaging_product: "whatsapp";
-
-    /**
-     * Error description and a description of the most likely reason for the
-     * error. May also contain information on how to address the error, such as
-     * which parameter is invalid or what values are acceptable.
-     *
-     * @since 4.2.0
-     */
-    details: string;
-  };
-
-  /**
-   * Trace ID you can include when contacting Direct Support. The ID may help
-   * support to debug the error.
-   *
-   * @since 4.2.0
-   */
-  fbtrace_id: string;
-};
-
-export type EventNotificationError = BaseErrorObject & {
-  /**
-   * Error code title.
-   *
-   * @since 4.2.0
-   */
-  title: ErrorMessage;
-
-  /**
-   * An error data object.
-   *
-   * @since 4.2.0, Graph API v16.0
-   */
-  error_data?: {
-    /**
-     * Describes the error.
-     *
-     * @since 4.2.0, Graph API v16.0
-     */
-    details: string;
-  };
-};
+}

@@ -7,6 +7,7 @@
  * @see    https://greatdetail.com
  */
 import Message from "..";
+import IncomingMessageError from "../../Error/IncomingMessageError";
 import { AccountID, MessageID } from "../../ID";
 import CloudIncomingMessageContext from "../MessageContext/CloudIncomingMessageContext";
 import CloudIncomingMessageIdentity from "../MessageIdentity/CloudIncomingMessageIdentity";
@@ -72,7 +73,7 @@ export default interface IncomingMessage<
    *
    * @since 4.2.0
    */
-  errors?: unknown[];
+  errors?: IncomingMessageError[];
 
   /**
    * An identity object. Webhook is triggered when a customer's phone number or
