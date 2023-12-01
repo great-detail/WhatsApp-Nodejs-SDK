@@ -46,9 +46,12 @@ npm install great-detail/WhatsApp-Nodejs-SDK
 
 ## Compatibility
 
-| SDK Version | Graph API Versions |
-| :---------- | -----------------: |
-| TODO        |               TODO |
+This SDK is designed to be compatible with both the Cloud API and On-Premises
+API. The On-Premises API is currently developed fully based on documentation.
+
+| SDK Version | Cloud API Versions | Premises API Versions |
+| :---------- | -----------------: | --------------------: |
+| TODO        |               TODO |                  TODO |
 
 Whilst the SDK may work with alternative versions of the Graph API, it is
 designed to work with the above. If you find any compatibility issues, please
