@@ -6,12 +6,13 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
+import MessageMedia from ".";
 
-export default interface MessageMedia {
+export default interface IncomingMessageMedia extends MessageMedia {
   /**
-   * ID for the media file.
+   * Mime type of the media file.
    *
    * @since 5.0.0
    */
-  id?: string;
+  mime_type: string;
 }

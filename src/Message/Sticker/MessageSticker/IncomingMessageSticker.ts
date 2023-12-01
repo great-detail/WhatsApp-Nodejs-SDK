@@ -7,11 +7,18 @@
  * @see    https://greatdetail.com
  */
 
-export default interface MessageMedia {
+export default interface IncomingMessageSticker {
   /**
-   * ID for the media file.
+   * Hash for the sticker.
    *
    * @since 5.0.0
    */
-  id?: string;
+  sha256: string;
+
+  /**
+   * Set to true if the sticker is animated; false otherwise.
+   *
+   * @since 5.0.0
+   */
+  animated: boolean;
 }

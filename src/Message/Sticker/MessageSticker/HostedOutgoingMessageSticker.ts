@@ -6,12 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
+import HostedOutgoingMessageMedia from "../../MessageMedia/HostedOutgoingMessageMedia";
 
-export default interface MessageMedia {
-  /**
-   * ID for the media file.
-   *
-   * @since 5.0.0
-   */
-  id?: string;
-}
+export default interface HostedOutgoingMessageSticker
+  extends HostedOutgoingMessageMedia {}

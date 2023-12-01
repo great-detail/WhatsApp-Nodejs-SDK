@@ -7,11 +7,4 @@
  * @see    https://greatdetail.com
  */
 
-export default interface MessageMedia {
-  /**
-   * ID for the media file.
-   *
-   * @since 5.0.0
-   */
-  id?: string;
-}
+export default interface IncomingMessageAudio {}

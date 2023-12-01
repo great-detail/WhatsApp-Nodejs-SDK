@@ -8,12 +8,21 @@
  */
 import EventNotificationError from "../Error/EventNotificationError";
 import { AccountID } from "../ID";
-import CloudIncomingTextMessage from "../Message/TextMessage/CloudIncomingTextMessage";
+import CloudIncomingAudioMessage from "../Message/Audio/AudioMessage/CloudIncomingAudioMessage";
+import CloudIncomingDocumentMessage from "../Message/Document/DocumentMessage/CloudIncomingDocumentMessage";
+import CloudIncomingImageMessage from "../Message/Image/ImageMessage/CloudIncomingImageMessage";
+import CloudIncomingStickerMessage from "../Message/Sticker/StickerMessage/CloudIncomingStickerMessage";
+import CloudIncomingTextMessage from "../Message/Text/TextMessage/CloudIncomingTextMessage";
 import EventNotificationContact from "./EventNotificationContact";
 import EventNotificationMetadata from "./EventNotificationMetadata";
 import EventNotificationStatus from "./EventNotificationStatus";
 
-export type EventNotificationChangeValueMessage = CloudIncomingTextMessage;
+export type EventNotificationChangeValueMessage =
+  | CloudIncomingAudioMessage
+  | CloudIncomingDocumentMessage
+  | CloudIncomingImageMessage
+  | CloudIncomingStickerMessage
+  | CloudIncomingTextMessage;
 
 export interface EventNotificationChange {
   /**

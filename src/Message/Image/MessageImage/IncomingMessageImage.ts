@@ -7,11 +7,18 @@
  * @see    https://greatdetail.com
  */
 
-export default interface MessageMedia {
+export default interface IncomingMessageImage {
   /**
-   * ID for the media file.
+   * Caption for the image, if provided.
    *
    * @since 5.0.0
    */
-  id?: string;
+  caption?: string;
+
+  /**
+   * Image hash.
+   *
+   * @since 5.0.0
+   */
+  sha256: string;
 }
