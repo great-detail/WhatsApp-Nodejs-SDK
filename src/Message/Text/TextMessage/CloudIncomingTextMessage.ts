@@ -12,6 +12,11 @@ import CloudIncomingMessageText from "../MessageText/Incoming/CloudIncomingMessa
 
 type CloudIncomingTextMessage =
   CloudIncomingMessage<IncomingMessageType.Text> & {
+    /**
+     * When messages type is set to text, this object is included.
+     *
+     * @since 5.0.0
+     */
     [IncomingMessageType.Text]: CloudIncomingMessageText;
   };
 

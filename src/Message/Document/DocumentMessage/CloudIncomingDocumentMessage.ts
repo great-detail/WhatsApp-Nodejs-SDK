@@ -12,6 +12,12 @@ import CloudIncomingMessageDocument from "../MessageDocument/Incoming/CloudIncom
 
 type CloudIncomingDocumentMessage =
   CloudIncomingMessage<IncomingMessageType.Document> & {
+    /**
+     * A document object. When messages type is set to document, this object is
+     * included in the messages object.
+     *
+     * @since 5.0.0
+     */
     [IncomingMessageType.Document]: CloudIncomingMessageDocument;
   };
 

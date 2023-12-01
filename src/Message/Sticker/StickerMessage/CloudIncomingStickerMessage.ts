@@ -12,6 +12,12 @@ import CloudIncomingMessageSticker from "../MessageSticker/Incoming/CloudIncomin
 
 type CloudIncomingStickerMessage =
   CloudIncomingMessage<IncomingMessageType.Sticker> & {
+    /**
+     * When messages type is set to sticker, this object is included in the
+     * messages object.
+     *
+     * @since 5.0.0
+     */
     [IncomingMessageType.Sticker]: CloudIncomingMessageSticker;
   };
 

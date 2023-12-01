@@ -12,6 +12,12 @@ import CloudIncomingMessageImage from "../MessageImage/Incoming/CloudIncomingMes
 
 type CloudIncomingImageMessage =
   CloudIncomingMessage<IncomingMessageType.Image> & {
+    /**
+     * When messages type is set to image, this object is included in the
+     * messages object.
+     *
+     * @since 5.0.0
+     */
     [IncomingMessageType.Image]: CloudIncomingMessageImage;
   };
 
