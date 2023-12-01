@@ -34,14 +34,10 @@ jobs:
         with:
           node-version: 20
           cache: npm
-      - name: install
-        run: npm ci --prefer-offline --no-audit --no-fund
-      - name: build
-        run: npm run build
-      - name: lint
-        run: npm run lint
-      - name: format
-        run: npm run format-ci
+      - run: npm ci --prefer-offline --no-audit --no-fund
+      - run: npm run build
+      - run: npm run lint
+      - run: npm run format-ci
 
   test-ubuntu:
     uses: ./.github/workflows/test.yml
@@ -70,14 +66,10 @@ jobs:
         with:
           node-version: 20
           cache: npm
-      - name: install
-        run: npm ci --prefer-offline --no-audit --no-fund
-      - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
-        run: npm audit signatures
-      - name: build
-        run: npm run build
-      - name: Release
+      - run: npm ci --prefer-offline --no-audit --no-fund
+      - run: npm audit signatures
+      - run: npm run build
+      - run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release

@@ -22,5 +22,4 @@ jobs:
           node-version: 20
           cache: npm
 
-      - name: Validate cache
-        run: npm ci --prefer-offline --no-audit --no-fund
+      - run: npm ci --prefer-offline --no-audit --no-fund
