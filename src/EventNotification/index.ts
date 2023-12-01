@@ -76,7 +76,7 @@ export interface EventNotificationChange {
   };
 }
 
-export type EventNotificationEntry = {
+export interface EventNotificationEntry {
   /**
    * The WhatsApp Business Account ID for the business that is subscribed to
    * the webhook.
@@ -91,9 +91,9 @@ export type EventNotificationEntry = {
    * @since 4.2.0
    */
   changes: EventNotificationChange[];
-};
+}
 
-export type EventNotificationType = {
+export interface EventNotificationType {
   /**
    * The specific webhook a business is subscribed to. The webhook is
    * whatsapp_business_account.
@@ -108,4 +108,4 @@ export type EventNotificationType = {
    * @since 4.2.0
    */
   entry: EventNotificationEntry[];
-};
+}
