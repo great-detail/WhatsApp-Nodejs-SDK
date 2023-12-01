@@ -30,11 +30,34 @@ export interface EventNotificationChange {
    */
   value: {
     /**
-     * Messaging service used for the request. Use "whatsapp".
+     * Array of contact objects with information for the customer who sent a
+     * message to the business.
+     *
+     * @since 4.2.0
+     */
+    contacts: EventNotificationContact[];
+
+    /**
+     * An array of error objects describing the error.
+     *
+     * @since 4.2.0
+     */
+    errors: EventNotificationError[];
+
+    /**
+     * Product used to send the message. Value is always whatsapp.
      *
      * @default 'whatsapp'
      */
     messaging_product: "whatsapp";
+
+    /**
+     * Information about a message received by the business that is subscribed to
+     * the webhook.
+     *
+     * @since 4.2.0
+     */
+    messages?: EventNotificationChangeValueMessage[];
 
     /**
      * A metadata object describing the business subscribed to the webhook.
@@ -50,29 +73,6 @@ export interface EventNotificationChange {
      * @since 4.2.0
      */
     statuses?: EventNotificationStatus[];
-
-    /**
-     * Array of contact objects with information for the customer who sent a
-     * message to the business.
-     *
-     * @since 4.2.0
-     */
-    contacts: EventNotificationContact[];
-
-    /**
-     * Information about a message received by the business that is subscribed to
-     * the webhook.
-     *
-     * @since 4.2.0
-     */
-    messages?: EventNotificationChangeValueMessage[];
-
-    /**
-     * An array of error objects describing the error.
-     *
-     * @since 4.2.0
-     */
-    errors: EventNotificationError[];
   };
 }
 
