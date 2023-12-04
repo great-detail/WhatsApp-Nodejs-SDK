@@ -119,7 +119,7 @@ export interface WebhookAPIEventNotificationReturn {
  *   async (req, res) => {
  *     const reg = await sdk.webhook.register(req, res);
  *     // DIY: Check the reg.verifyToken value
- *     if (reg.verifyToken === "abcd") {
+ *     if (reg.verifyToken !== "abcd") {
  *       return reg.reject();
  *     }
  *     return reg.accept();
