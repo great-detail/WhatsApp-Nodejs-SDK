@@ -23,7 +23,7 @@ export interface GraphRequestSendParams extends RequestInit {
    *
    * @since 5.4.0
    */
-  fetchProvider?: typeof fetch;
+  fetch?: typeof fetch;
 }
 
 /**
@@ -74,10 +74,10 @@ export default class GraphRequest<T = unknown> extends Request {
    * @author Dom Webber <dom.webber@hotmail.com>
    */
   public async send({
-    fetchProvider = fetch,
+    fetch: fetchAlternative = fetch,
     ...requestInit
   }: GraphRequestSendParams = {}): Promise<GraphResponse<T>> {
-    return await fetchProvider(this, requestInit).then(
+    return await fetchAlternative(this, requestInit).then(
       ({ body, ...responseInit }) => new GraphResponse(body, responseInit),
     );
   }
