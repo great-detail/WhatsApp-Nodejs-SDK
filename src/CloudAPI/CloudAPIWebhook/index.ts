@@ -112,33 +112,6 @@ export interface WebhookAPIEventNotificationReturn {
  *
  * @since 1.0.0
  * @author Dom Webber <dom.webber@hotmail.com>
- * @example
- * // Receive Registration Requests via Webhook
- * app.get(
- *   "/path/to/webhook",
- *   async (req, res) => {
- *     const reg = await sdk.webhook.register(req, res);
- *     // DIY: Check the reg.verifyToken value
- *     if (reg.verifyToken !== "abcd") {
- *       return reg.reject();
- *     }
- *     return reg.accept();
- *   }
- * );
- * @example
- * // Receive a Message via Webhook
- * app.post(
- *   "/path/to/webhook",
- *   async (req, res) => {
- *     const event = sdk.webhook.eventNotification(req, res);
- *     // DIY: Load the Meta App Secret
- *     event.verifyIntegrity("abcd-app-secret");
- *     if (someFailedCondition) {
- *       return event.reject();
- *     }
- *     return event.accept();
- *   }
- * );
  */
 export default class CloudAPIWebhook extends AbstractAPI {
   /**
@@ -150,6 +123,19 @@ export default class CloudAPIWebhook extends AbstractAPI {
    * @since 4.0.0
    * @author Dom Webber <dom.webber@hotmail.com>
    * @throws {CloudWebhookAPIError}
+   * @example
+   * // Receive Registration Requests via Webhook
+   * app.get(
+   *   "/path/to/webhook",
+   *   async (req, res) => {
+   *     const reg = await sdk.webhook.register(req, res);
+   *     // DIY: Check the reg.verifyToken value
+   *     if (reg.verifyToken !== "abcd") {
+   *       return reg.reject();
+   *     }
+   *     return reg.accept();
+   *   }
+   * );
    */
   public async register(
     req: IncomingMessage,
@@ -194,6 +180,20 @@ export default class CloudAPIWebhook extends AbstractAPI {
    *
    * @since 4.0.0
    * @author Dom Webber <dom.webber@hotmail.com>
+   * @example
+   * // Receive a Message via Webhook
+   * app.post(
+   *   "/path/to/webhook",
+   *   async (req, res) => {
+   *     const event = sdk.webhook.eventNotification(req, res);
+   *     // DIY: Load the Meta App Secret
+   *     event.verifyIntegrity("abcd-app-secret");
+   *     if (someFailedCondition) {
+   *       return event.reject();
+   *     }
+   *     return event.accept();
+   *   }
+   * );
    */
   public async eventNotification(
     req: IncomingMessage,
