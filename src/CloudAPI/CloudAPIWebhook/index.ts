@@ -199,7 +199,7 @@ export default class CloudAPIWebhook extends AbstractAPI {
     req: IncomingMessage,
     res: ServerResponse,
   ): Promise<WebhookAPIEventNotificationReturn> {
-    const xHubSignature = req.headers["x-hub-signature"]
+    const xHubSignature = req.headers["x-hub-signature-256"]
       ?.toString()
       .replace("sha256=", "");
     if (!xHubSignature) {
