@@ -12,6 +12,10 @@ import CloudAPIWebhookError from "./CloudWebhookAPIError";
 import { IncomingMessage, ServerResponse } from "http";
 import { createHmac } from "node:crypto";
 
+export type ServerResponseTransform = (
+  response: ServerResponse,
+) => ServerResponse;
+
 export interface WebhookAPIRegisterReturn {
   /**
    * The verify token sent by WhatsApp.
@@ -43,7 +47,7 @@ export interface WebhookAPIRegisterReturn {
    * // Within your request handler:
    * return reg.accept();
    */
-  accept: () => ServerResponse;
+  accept: (transform?: ServerResponseTransform) => ServerResponse;
 
   /**
    * Reject the Webhook Registration.
@@ -56,7 +60,7 @@ export interface WebhookAPIRegisterReturn {
    * // Within your request handler:
    * return reg.reject();
    */
-  reject: () => ServerResponse;
+  reject: (transform?: ServerResponseTransform) => ServerResponse;
 }
 
 export interface WebhookAPIEventNotificationReturn {
@@ -72,7 +76,7 @@ export interface WebhookAPIEventNotificationReturn {
    * // Within your request handler:
    * return event.accept();
    */
-  accept: () => ServerResponse;
+  accept: (transform?: ServerResponseTransform) => ServerResponse;
 
   /**
    * Reject the Incoming Webhook.
@@ -85,7 +89,7 @@ export interface WebhookAPIEventNotificationReturn {
    * // Within your request handler:
    * return event.reject();
    */
-  reject: () => ServerResponse;
+  reject: (transform?: ServerResponseTransform) => ServerResponse;
 
   /**
    * Check the integrity of the request body.
@@ -165,11 +169,11 @@ export default class CloudAPIWebhook extends AbstractAPI {
     return {
       verifyToken: hubVerifyToken,
       challenge: hubChallenge,
-      accept: () => {
-        return res.end(hubChallenge);
+      accept: (transform) => {
+        return (transform?.(res) ?? res).end(hubChallenge);
       },
-      reject: () => {
-        return res.end();
+      reject: (transform) => {
+        return (transform?.(res) ?? res).end();
       },
     };
   }
@@ -244,11 +248,11 @@ export default class CloudAPIWebhook extends AbstractAPI {
           throw CloudAPIWebhookError.mismatchedXHubSignature();
         }
       },
-      accept: () => {
-        return res.end();
+      accept: (transform) => {
+        return (transform?.(res) ?? res).end();
       },
-      reject: () => {
-        return res.end();
+      reject: (transform) => {
+        return (transform?.(res) ?? res).end();
       },
     };
   }
