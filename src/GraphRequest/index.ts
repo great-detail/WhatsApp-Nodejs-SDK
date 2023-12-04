@@ -15,6 +15,17 @@ export interface GraphRequestCreateParams extends RequestInit {
   baseUrl?: string;
 }
 
+export interface GraphRequestSendParams extends RequestInit {
+  /**
+   * Fetch provider.
+   * Used to override the default fetch provider and use polyfills or other
+   * libraries.
+   *
+   * @since 5.4.0
+   */
+  fetchProvider?: typeof fetch;
+}
+
 /**
  * Graph API Request.
  * Provides a simple wrapper around the native Request API to simplify access
@@ -62,8 +73,11 @@ export default class GraphRequest<T = unknown> extends Request {
    * @since 2.0.0
    * @author Dom Webber <dom.webber@hotmail.com>
    */
-  public async send(): Promise<GraphResponse<T>> {
-    return await fetch(this).then(
+  public async send({
+    fetchProvider = fetch,
+    ...requestInit
+  }: GraphRequestSendParams): Promise<GraphResponse<T>> {
+    return await fetchProvider(this, requestInit).then(
       ({ body, ...responseInit }) => new GraphResponse(body, responseInit),
     );
   }
