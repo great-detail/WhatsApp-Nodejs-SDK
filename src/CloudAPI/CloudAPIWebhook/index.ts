@@ -233,7 +233,15 @@ export default class CloudAPIWebhook extends AbstractAPI {
       const generatedSignature = createHmac("sha256", appSecret)
         .update(bodyString)
         .digest("hex");
-      return xHubSignature === generatedSignature;
+
+      const isAuthentic = xHubSignature === generatedSignature;
+      this._logger?.debug(
+        `Comparing signatures for integrity check: ${xHubSignature} === ${generatedSignature} (${
+          isAuthentic ? "true" : "false"
+        })`,
+      );
+
+      return isAuthentic;
     };
 
     return {
