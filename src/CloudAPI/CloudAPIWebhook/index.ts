@@ -141,6 +141,8 @@ export default class CloudAPIWebhook extends AbstractAPI {
     req: IncomingMessage,
     res: ServerResponse,
   ): Promise<WebhookAPIRegisterReturn> {
+    this._logger?.http(`Received Webhook Registration: "${req.url}"`);
+
     const url = req.url ? new URL(req.url) : undefined;
     if (!url) {
       throw CloudAPIWebhookError.invalidURL();
@@ -166,9 +168,11 @@ export default class CloudAPIWebhook extends AbstractAPI {
       verifyToken: hubVerifyToken,
       challenge: hubChallenge,
       accept: () => {
+        this._logger?.debug("Accepting Webhook Registration");
         return res.end(hubChallenge);
       },
       reject: () => {
+        this._logger?.debug("Rejecting Webhook Registration");
         return res.end();
       },
     };
@@ -199,6 +203,8 @@ export default class CloudAPIWebhook extends AbstractAPI {
     req: IncomingMessage,
     res: ServerResponse,
   ): Promise<WebhookAPIEventNotificationReturn> {
+    this._logger?.http(`Received Webhook Event Notification: "${req.url}"`);
+
     const xHubSignature = req.headers["x-hub-signature-256"]
       ?.toString()
       .replace("sha256=", "");
@@ -251,9 +257,11 @@ export default class CloudAPIWebhook extends AbstractAPI {
         }
       },
       accept: () => {
+        this._logger?.debug("Accepting Webhook Event Notification");
         return res.end();
       },
       reject: () => {
+        this._logger?.debug("Rejecting Webhook Event Notification");
         return res.end();
       },
     };
