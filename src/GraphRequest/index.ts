@@ -76,7 +76,7 @@ export default class GraphRequest<T = unknown> extends Request {
   public async send({
     fetchProvider = fetch,
     ...requestInit
-  }: GraphRequestSendParams): Promise<GraphResponse<T>> {
+  }: GraphRequestSendParams = {}): Promise<GraphResponse<T>> {
     return await fetchProvider(this, requestInit).then(
       ({ body, ...responseInit }) => new GraphResponse(body, responseInit),
     );
