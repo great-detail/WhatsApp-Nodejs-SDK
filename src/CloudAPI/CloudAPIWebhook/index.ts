@@ -236,9 +236,7 @@ export default class CloudAPIWebhook extends AbstractAPI {
 
       const isAuthentic = xHubSignature === generatedSignature;
       this._logger?.debug(
-        `Comparing signatures for integrity check: "${xHubSignature}" === "${generatedSignature}" (${
-          isAuthentic ? "true" : "false"
-        })`,
+        `Comparing signatures for integrity check: "${xHubSignature}" === "${generatedSignature}" (${isAuthentic})`,
       );
 
       return isAuthentic;
