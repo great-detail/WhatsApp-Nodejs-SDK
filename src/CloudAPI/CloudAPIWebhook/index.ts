@@ -165,12 +165,27 @@ export default class CloudAPIWebhook extends AbstractAPI {
     }
 
     return {
+      /**
+       * @inheritdoc
+       */
       verifyToken: hubVerifyToken,
+
+      /**
+       * @inheritdoc
+       */
       challenge: hubChallenge,
+
+      /**
+       * @inheritdoc
+       */
       accept: () => {
         this._logger?.debug("Accepting Webhook Registration");
         return res.end(hubChallenge);
       },
+
+      /**
+       * @inheritdoc
+       */
       reject: () => {
         this._logger?.debug("Rejecting Webhook Registration");
         return res.end();
@@ -249,17 +264,36 @@ export default class CloudAPIWebhook extends AbstractAPI {
     };
 
     return {
+      /**
+       * @inheritdoc
+       */
       eventNotification,
+
+      /**
+       * @inheritdoc
+       */
       checkIntegrity,
+
+      /**
+       * @inheritdoc
+       */
       verifyIntegrity: (appSecret: string) => {
         if (!checkIntegrity(appSecret)) {
           throw CloudAPIWebhookError.mismatchedXHubSignature();
         }
       },
+
+      /**
+       * @inheritdoc
+       */
       accept: () => {
         this._logger?.debug("Accepting Webhook Event Notification");
         return res.end();
       },
+
+      /**
+       * @inheritdoc
+       */
       reject: () => {
         this._logger?.debug("Rejecting Webhook Event Notification");
         return res.end();
