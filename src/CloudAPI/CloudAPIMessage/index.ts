@@ -41,11 +41,6 @@ type CreateMessageOptionsType = {
  *
  * @since 2.0.0
  * @author Dom Webber <dom.webber@hotmail.com>
- * @example
- * // Send a Text Message
- * const message = sdk.message.text({ body: "Hello"}, { toNumber: "1234567890" });
- * const sendReceipt = await message.send();
- * console.log(sendReceipt);
  */
 export default class CloudAPIMessage extends AbstractAPI {
   protected getEndpoint(): EndpointType {

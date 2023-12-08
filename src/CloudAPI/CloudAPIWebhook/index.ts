@@ -110,7 +110,7 @@ export interface WebhookAPIEventNotificationReturn {
 /**
  * Webhook API.
  *
- * @since 1.0.0
+ * @since 4.0.0
  * @author Dom Webber <dom.webber@hotmail.com>
  */
 export default class CloudAPIWebhook extends AbstractAPI {

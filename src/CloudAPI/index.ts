@@ -22,7 +22,23 @@ export interface WhatsAppAPIParams extends AbstractAPIParams {}
  * const sdk = new CloudWhatsAppAPI("123456")
  */
 export default class CloudAPI extends AbstractAPI {
+  /**
+   * Message API.
+   *
+   * @since 5.5.0
+   * @example
+   * // Send a Text Message
+   * const message = sdk.message.text({ body: "Hello"}, { toNumber: "1234567890" });
+   * const sendReceipt = await message.send();
+   * console.log(sendReceipt);
+   */
   public message: CloudAPIMessage;
+
+  /**
+   * Webhook API.
+   *
+   * @since 4.0.0
+   */
   public webhook: CloudAPIWebhook;
 
   constructor(params: WhatsAppAPIParams) {
