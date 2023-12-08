@@ -7,7 +7,7 @@ LICENSE file in the root directory of this source tree.
 
 # Node.js SDK for WhatsApp Business Platform APIs
 
-This is a fork of the original, deprecated, Official SDK.
+A SDK for Meta's WhatsApp Business Messaging APIs - Cloud & On-Premises.
 
 [![npm (scoped)][]][sdk-npmjs]
 [![Lint, Format, Test & Build][]][sdk-ci]
@@ -20,6 +20,15 @@ This is a fork of the original, deprecated, Official SDK.
 ## Getting started
 
 <!-- TODO -->
+
+```typescript
+import { CloudAPI } from "@great-detail/whatsapp";
+
+// const businessID = "123...456";
+const sdk = new CloudAPI(businessID);
+const message = sdk.message.text({ body: "Hello"}, { toNumber: "1234567890" });
+const sendReceipt = await message.send();
+```
 
 ## Installation
 
