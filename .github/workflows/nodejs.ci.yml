@@ -73,3 +73,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: npm run typedoc
+      - uses: JamesIves/github-pages-deploy-action
+        with:
+          branch: gh-pages
+          folder: out
+          clean: true
+          token: ${{ secrets.GITHUB_TOKEN }}
