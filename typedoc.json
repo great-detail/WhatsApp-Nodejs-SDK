@@ -1,4 +1,0 @@
-{
-  "out": "./out/",
-  "entryPoints": ["src/**/*"]
-}
