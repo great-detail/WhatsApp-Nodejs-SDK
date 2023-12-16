@@ -101,7 +101,7 @@ export default class CloudAPI extends AbstractAPI {
     length = this.DEFAULT_VERIFY_TOKEN_LENGTH,
     encoding = this.DEFAULT_VERIFY_TOKEN_ENCODING,
     random = randomBytes,
-  }: WhatsAppAPICreateVerifyTokenParams): string {
+  }: WhatsAppAPICreateVerifyTokenParams = {}): string {
     return random(length).toString(encoding);
   }
 }
