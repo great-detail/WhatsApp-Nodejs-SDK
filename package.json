@@ -48,18 +48,20 @@
     "Cloud API"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.json && babel dist --out-dir dist",
-    "format": "npm-run-all format:*",
-    "format-ci": "npm-run-all format-ci:*",
-    "format-ci:prettier": "prettier . --check",
-    "format:prettier": "prettier . --write",
-    "lint": "npm-run-all lint:*",
-    "lint:cspell": "cspell .",
-    "lint:eslint": "eslint . --fix",
-    "lint:typecheck": "tsc --noEmit",
+    "babel": "babel dist --out-dir dist",
+    "build": "npm-run-all tsc babel",
+    "cspell": "cspell .",
+    "eslint": "eslint .",
+    "eslint:dev": "eslint . --fix",
+    "jest": "jest --passWithNoTests",
+    "lint": "npm-run-all cspell eslint typecheck prettier",
+    "lint:dev": "npm-run-all cspell eslint:dev typecheck prettier:dev",
+    "prettier": "prettier --check .",
+    "prettier:dev": "prettier --write .",
     "start": "ts-node ./src/index.ts",
-    "test": "npm-run-all test:*",
-    "test:jest": "jest --passWithNoTests"
+    "test": "npm-run-all jest",
+    "tsc": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
     "winston": "3.10.0"
