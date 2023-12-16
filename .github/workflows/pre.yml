@@ -1,0 +1,35 @@
+name: Pre-Merge Checks
+
+on:
+  push:
+    branches:
+      - "**"
+      - "!main"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read # to fetch code (actions/checkout)
+
+jobs:
+  prepare-npm-cache-ubuntu:
+    uses: ./.github/workflows/prepare-cache.yml
+    with:
+      os: ubuntu-latest
+
+  lint:
+    uses: ./.github/workflows/lint.yml
+    needs: prepare-npm-cache-ubuntu
+
+  test-ubuntu:
+    uses: ./.github/workflows/test.yml
+    needs: prepare-npm-cache-ubuntu
+    with:
+      os: ubuntu-latest
+
+  release:
+    uses: ./.github/workflows/release.yml
+    needs:
+      - test-ubuntu
