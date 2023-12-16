@@ -46,7 +46,7 @@ export interface WhatsAppAPIParams extends AbstractAPIParams {}
  * @author Dom Webber <dom.webber@hotmail.com>
  * @example
  * // SDK instantiation
- * const sdk = new CloudWhatsAppAPI("123456")
+ * const sdk = new CloudAPI("123456")
  */
 export default class CloudAPI extends AbstractAPI {
   /**
