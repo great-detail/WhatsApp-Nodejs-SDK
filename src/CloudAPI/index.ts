@@ -56,7 +56,7 @@ export default class CloudAPI extends AbstractAPI {
     businessID: overrideBusinessID,
     logger,
     ...params
-  }: CloudAPIMessageParams) {
+  }: CloudAPIMessageParams = {}) {
     const businessID = overrideBusinessID ?? this._businessID;
     if (!businessID) {
       throw new CloudAPIInvalidParamError("Business ID is required");
