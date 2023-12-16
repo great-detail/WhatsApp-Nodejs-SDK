@@ -2,6 +2,4 @@
 "@great-detail/whatsapp": patch
 ---
 
-# Move Versioning to Changesets
-
-- Adjusts versioning process to use <https://github.com/changesets/changesets>.
+Move Versioning Process to Changesets
