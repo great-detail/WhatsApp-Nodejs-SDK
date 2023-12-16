@@ -68,7 +68,11 @@ jobs:
       - run: npm ci --prefer-offline --no-audit --no-fund
       - run: npm audit signatures
       - run: npm run build
-      - run: npx semantic-release
+      - uses: changesets/action@v1
+        with:
+          publish: npm run release
+          title: "chore(release): version packages"
+          commit: "chore(release): version packages"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
