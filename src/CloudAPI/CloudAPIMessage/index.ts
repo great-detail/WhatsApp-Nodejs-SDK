@@ -6,7 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import AbstractAPI from "../../API/AbstractAPI";
+import AbstractAPI, { AbstractAPIParams } from "../../API/AbstractAPI";
 import EndpointType from "../../API/EndpointType";
 import GraphRequest, { GraphRequestCreateParams } from "../../GraphRequest";
 import CloudOutgoingMessageContact from "../../Message/Contact/MessageContact/CloudOutgoingMessageContact";
@@ -36,6 +36,10 @@ type CreateMessageOptionsType = {
   requestProps?: GraphRequestCreateParams;
 };
 
+export interface CloudAPIMessageParams extends AbstractAPIParams {
+  businessID: string;
+}
+
 /**
  * WhatsApp Message API.
  *
@@ -43,6 +47,10 @@ type CreateMessageOptionsType = {
  * @author Dom Webber <dom.webber@hotmail.com>
  */
 export default class CloudAPIMessage extends AbstractAPI {
+  constructor(params: CloudAPIMessageParams) {
+    super(params);
+  }
+
   protected getEndpoint(): EndpointType {
     return `/${this._businessID}/messages`;
   }
