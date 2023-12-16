@@ -6,8 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import { WhatsAppAccountID } from "../API/AbstractAPI";
-import { MessageID } from "../ID";
+import { AccountID, MessageID } from "../ID";
 
 export enum EventNotificationStatusReason {
   /**
@@ -174,7 +173,7 @@ export default interface EventNotificationStatus {
    *
    * @since 4.2.0
    */
-  recipient_id: WhatsAppAccountID;
+  recipient_id: AccountID;
 
   /**
    * For a status to be read, it must have been delivered. In some scenarios,
