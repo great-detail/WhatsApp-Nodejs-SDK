@@ -7,6 +7,11 @@
  * @see    https://greatdetail.com
  */
 
+/**
+ * Cloud API Invalid Parameter Error.
+ *
+ * @since 6.0.0
+ */
 export default class CloudAPIInvalidParamError extends Error {
   constructor(message: string) {
     super(message);

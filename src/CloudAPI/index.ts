@@ -28,8 +28,6 @@ export interface CloudAPIMessageParams
  * const sdk = new CloudAPI()
  */
 export default class CloudAPI extends AbstractAPI {
-  protected _message?: CloudAPIMessage;
-
   /**
    * Webhook API.
    * Receive and handle messages from WhatsApp via WebHook.
@@ -46,7 +44,7 @@ export default class CloudAPI extends AbstractAPI {
   /**
    * Message API.
    *
-   * @since 5.5.0
+   * @since 6.0.0
    * @example
    * // Send a Text Message
    * const message = sdk.message({ businessID: "123456" })
