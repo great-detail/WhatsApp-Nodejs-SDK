@@ -143,7 +143,9 @@ export default class CloudAPIWebhook extends AbstractAPI {
   ): Promise<WebhookAPIRegisterReturn> {
     this._logger?.http(`Received Webhook Registration: "${req.url}"`);
 
-    const url = req.url ? new URL(req.url) : undefined;
+    const url = req.url
+      ? new URL(req.url, `http://${req.headers.host}`)
+      : undefined;
     if (!url) {
       throw CloudAPIWebhookError.invalidURL();
     }
