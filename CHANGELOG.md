@@ -1,5 +1,15 @@
 # @great-detail/whatsapp
 
+## 6.1.0
+
+### Minor Changes
+
+- 2eb8f91: Introduce On-Premises API Compatibility
+
+### Patch Changes
+
+- 4611d88: add base for URL in webhook registration method
+
 ## 6.0.3
 
 ### Patch Changes
