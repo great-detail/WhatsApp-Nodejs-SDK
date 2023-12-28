@@ -10,4 +10,5 @@ import CloudAPI from "./CloudAPI";
 import IncomingMessageType from "./Message/MessageType/IncomingMessageType";
 import OutgoingMessageType from "./Message/MessageType/OutgoingMessageType";
 
+export default CloudAPI;
 export { CloudAPI, OutgoingMessageType, IncomingMessageType };
