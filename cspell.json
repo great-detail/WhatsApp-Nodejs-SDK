@@ -1,7 +1,13 @@
 {
   "version": "0.2",
   "language": "en",
-  "dictionaries": ["softwareTerms", "typescript", "node", "filetypes", "npm"],
+  "dictionaries": [
+    "softwareTerms",
+    "typescript",
+    "node",
+    "filetypes",
+    "npm"
+  ],
   "words": [
     "FODT",
     "FODP",
@@ -22,9 +28,21 @@
     "fbtrace_id",
     "Deregistration",
     "subcode",
-    "localizable"
+    "localizable",
+    "swcrc"
   ],
-  "ignoreWords": ["xddt", "Coreapp", "clid", "ctwa"],
-  "flagWords": ["hte"],
-  "ignorePaths": ["tsconfig.tsbuildinfo", "coverage", "cspell.json"]
+  "ignoreWords": [
+    "xddt",
+    "Coreapp",
+    "clid",
+    "ctwa"
+  ],
+  "flagWords": [
+    "hte"
+  ],
+  "ignorePaths": [
+    "tsconfig.tsbuildinfo",
+    "coverage",
+    "cspell.json"
+  ]
 }
