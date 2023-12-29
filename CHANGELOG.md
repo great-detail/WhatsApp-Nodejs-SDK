@@ -24,7 +24,8 @@
 - 6d13401: build(deps-dev): bump cspell from 8.1.3 to 8.2.4
 - 9e4d740: build(deps-dev): bump @typescript-eslint/parser from 6.13.2 to 6.16.0
 - 1027c91: build(deps-dev): bump eslint from 8.55.0 to 8.56.0
-- 45ed5be: build(deps-dev): bump @typescript-eslint/eslint-plugin from 6.13.2 to 6.15.0
+- 45ed5be: build(deps-dev): bump @typescript-eslint/eslint-plugin from 6.13.2 to
+  6.15.0
 
 ## 6.1.0
 

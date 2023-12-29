@@ -9,13 +9,14 @@ LICENSE file in the root directory of this source tree.
 
 A SDK for Meta's WhatsApp Business Messaging APIs - Cloud API.
 
-[![npm (scoped)][]][sdk-npmjs]
-[![Lint, Format, Test & Build][]][sdk-ci]
+[![npm (scoped)][]][sdk-npmjs] [![Lint, Format, Test & Build][]][sdk-ci]
 
 [npm (scoped)]: https://img.shields.io/npm/v/%40great-detail/whatsapp
 [sdk-npmjs]: https://www.npmjs.com/package/@great-detail/whatsapp
-[Lint, Format, Test & Build]: https://github.com/great-detail/WhatsApp-Nodejs-SDK/actions/workflows/nodejs.ci.yml/badge.svg
-[sdk-ci]: https://github.com/great-detail/WhatsApp-Nodejs-SDK/actions/workflows/nodejs.ci.yml
+[Lint, Format, Test & Build]:
+  https://github.com/great-detail/WhatsApp-Nodejs-SDK/actions/workflows/nodejs.ci.yml/badge.svg
+[sdk-ci]:
+  https://github.com/great-detail/WhatsApp-Nodejs-SDK/actions/workflows/nodejs.ci.yml
 
 ## Getting started
 
@@ -23,11 +24,12 @@ A SDK for Meta's WhatsApp Business Messaging APIs - Cloud API.
 
 ```typescript
 import CloudAPI from "@great-detail/whatsapp";
+
 // const CloudAPI = require("@great-detail/whatsapp");
 
 // const businessID = "123...etc...";
 const sdk = new CloudAPI({ businessID });
-const message = sdk.message.text({ body: "Hello"}, { toNumber: "1234567890" });
+const message = sdk.message.text({ body: "Hello" }, { toNumber: "1234567890" });
 const sendReceipt = await message.send();
 ```
 
@@ -52,25 +54,30 @@ pnpm add @great-detail/WhatsApp-Nodejs-SDK
 
 ## Compatibility
 
-This SDK is designed to be compatible with both the Cloud API and On-Premises
-API. The On-Premises API is currently developed fully based on documentation.
+This SDK is designed to be compatible with the Cloud API API.
 
-| SDK Version | Cloud API Versions | Premises API Versions |
-| :---------- | -----------------: | --------------------: |
-| TODO        |               TODO |                  TODO |
+| SDK Version | Cloud API Versions |
+| :---------- | -----------------: |
+| TODO        |               TODO |
 
 Whilst the SDK may work with alternative versions of the Graph API, it is
 designed to work with the above. If you find any compatibility issues, please
-report them via [GitHub Issues](https://github.com/great-detail/WhatsApp-Nodejs-SDK/issues).
+report them via
+[GitHub Issues](https://github.com/great-detail/WhatsApp-Nodejs-SDK/issues).
 
 ## Code of Conduct
 
-Meta has adopted a Code of Conduct that we expect project participants to adhere to. Please read the full text so that you can understand what actions will and will not be tolerated.
+Meta has adopted a Code of Conduct that we expect project participants to adhere
+to. Please read the full text so that you can understand what actions will and
+will not be tolerated.
 
 ## Contribute
 
-See the [CONTRIBUTING](CONTRIBUTING.md) file for our development process, how to propose bugfixes and improvements, and how to build and test your changes to the WhatsApp Business Platform Node.js SDK.
+See the [CONTRIBUTING](CONTRIBUTING.md) file for our development process, how to
+propose bugfixes and improvements, and how to build and test your changes to the
+WhatsApp Business Platform Node.js SDK.
 
 ## License
 
-The WhatsApp Business Platform Node.js SDK for the Cloud API is Meta Platforms licensed, as found in the LICENSE file.
+The WhatsApp Business Platform Node.js SDK for the Cloud API is Meta Platforms
+licensed, as found in the LICENSE file.
