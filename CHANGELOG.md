@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 6.3.1
+
+### Patch Changes
+
+- c01558f: updated readme to clarify unofficial relational standing
+
 ## 6.3.0
 
 ### Minor Changes
