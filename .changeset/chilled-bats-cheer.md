@@ -1,5 +1,5 @@
 ---
-"whatsapp-sdk": patch
+"whatsapp-sdk": major
 ---
 
 rename to `whatsapp-sdk` unscoped

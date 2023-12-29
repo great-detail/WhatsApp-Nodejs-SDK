@@ -1,4 +1,4 @@
-# @great-detail/whatsapp
+# whatsapp-sdk
 
 ## 6.3.0
 
