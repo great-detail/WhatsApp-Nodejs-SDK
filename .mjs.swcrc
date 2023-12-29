@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json.schemastore.org/swcrc",
+  "jsc": {
+    "parser": {
+      "syntax": "typescript",
+      "dynamicImport": false,
+      "decorators": false
+    },
+    "transform": null,
+    "target": "esnext",
+    "loose": true,
+    "externalHelpers": false,
+    // Requires v1.2.50 or upper and requires target to be es2016 or upper.
+    "keepClassNames": false,
+    "preserveAllComments": false,
+    "minify": {
+      "compress": {
+        "unused": true
+      },
+      "mangle": true
+    }
+  },
+  "module": {
+    "type": "es6"
+  },
+  "minify": true,
+  "sourceMaps": true
+}
