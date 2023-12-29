@@ -1,10 +1,4 @@
-# whatsapp-sdk
-
-## 1.0.0
-
-### Major Changes
-
-- 09ac6ee: rename to `whatsapp-sdk` unscoped
+# `@great-detail/whatsapp`
 
 ## 6.3.0
 
