@@ -1,5 +1,11 @@
 # @great-detail/whatsapp
 
+## 6.3.0
+
+### Minor Changes
+
+- 6b323d7: introduce multi-module compilation for cjs and mjs support
+
 ## 6.2.1
 
 ### Patch Changes
