@@ -7,7 +7,7 @@ LICENSE file in the root directory of this source tree.
 
 # Node.js SDK for WhatsApp Business Platform APIs
 
-A SDK for Meta's WhatsApp Business Messaging APIs - Cloud API.
+An unofficial SDK for Meta's WhatsApp Business Messaging APIs - Cloud API.
 
 [![npm (scoped)][]][sdk-npmjs] [![Lint, Format, Test & Build][]][sdk-ci]
 
