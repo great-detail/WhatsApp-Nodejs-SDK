@@ -1,5 +1,11 @@
 # @great-detail/whatsapp
 
+## 6.2.1
+
+### Patch Changes
+
+- 3c1d164: use `@great-detail/prettier-config`
+
 ## 6.2.0
 
 ### Minor Changes
