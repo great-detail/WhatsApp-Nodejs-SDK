@@ -56,7 +56,7 @@
     "swc:cjs": "swc ./src/ -d ./dist/cjs/ --ignore ./src/__tests__/ --config-file .cjs.swcrc",
     "swc:mjs": "swc ./src/ -d ./dist/mjs/ --ignore ./src/__tests__/ --config-file .mjs.swcrc",
     "test": "npm-run-all jest",
-    "tsc": "tsc",
+    "tsc": "tsc --emitDeclarationOnly",
     "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {

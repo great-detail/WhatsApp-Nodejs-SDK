@@ -20,7 +20,6 @@
     "skipLibCheck": false,
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
-    "emitDeclarationOnly": true,
     "sourceMap": true
   },
   "include": [
