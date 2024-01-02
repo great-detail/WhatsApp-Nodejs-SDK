@@ -71,7 +71,7 @@
     "@changesets/cli": "^2.27.1"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^2.1.2",
+    "@eslint/eslintrc": "^3.0.0",
     "@great-detail/prettier-config": "^0.0.2",
     "@jest/globals": "^29.7.0",
     "@swc/cli": "^0.1.63",
