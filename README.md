@@ -58,7 +58,7 @@ This SDK is designed to be compatible with the Cloud API API.
 
 | SDK Version | Cloud API Versions |
 | :---------- | -----------------: |
-| TODO        |               TODO |
+| TODO        |                v18 |
 
 Whilst the SDK may work with alternative versions of the Graph API, it is
 designed to work with the above. If you find any compatibility issues, please
