@@ -1,5 +1,15 @@
 # `@great-detail/whatsapp`
 
+## 6.3.2
+
+### Patch Changes
+
+- 8056f1f: build(deps-dev): bump eslint-plugin-jsdoc from 46.9.1 to 47.0.1
+- d43be6c: build(deps-dev): bump @types/node from 20.10.5 to 20.10.6
+- 22a9199: build(deps-dev): bump cspell from 8.2.4 to 8.3.0
+- a8c9102: build(deps-dev): bump @swc/core from 1.3.101 to 1.3.102
+- cbc468f: build(deps-dev): bump @eslint/eslintrc from 2.1.4 to 3.0.0
+
 ## 6.3.1
 
 ### Patch Changes
