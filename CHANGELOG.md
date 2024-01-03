@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 6.4.8
+
+### Patch Changes
+
+- 3a01264: refactor: pass class logger instance to GraphRequest.create calls
+
 ## 6.4.7
 
 ### Patch Changes
