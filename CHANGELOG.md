@@ -1,5 +1,12 @@
 # `@great-detail/whatsapp`
 
+## 6.4.2
+
+### Patch Changes
+
+- df0a0aa: fix: add `package.json#main`
+- 92fdc50: fix: combine types and esmodule outputs in dist directory
+
 ## 6.4.1
 
 ### Patch Changes
