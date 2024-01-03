@@ -8,11 +8,13 @@
  */
 import EndpointType from "../API/EndpointType.js";
 import GraphResponse from "../GraphResponse/index.js";
+import { Logger } from "winston";
 
 export interface GraphRequestCreateParams extends RequestInit {
   endpoint?: EndpointType;
   version?: string;
   baseUrl?: string;
+  logger?: Logger;
 }
 
 export interface GraphRequestSendParams extends RequestInit {
@@ -59,12 +61,16 @@ export default class GraphRequest<T = unknown> extends Request {
     endpoint = "/",
     version = this.DEFAULT_GRAPH_VERSION,
     baseUrl = this.DEFAULT_GRAPH_API_BASE_URL,
+    logger,
     ...requestInit
   }: GraphRequestCreateParams) {
-    return new GraphRequest<C>(
-      new URL([version ? "/" : "", version, endpoint].join(""), baseUrl),
-      requestInit,
+    const url = new URL(
+      [version ? "/" : "", version, endpoint].join(""),
+      baseUrl,
     );
+    logger?.http(`${url.toString()} ${JSON.stringify(requestInit)}`);
+
+    return new GraphRequest<C>(url, requestInit);
   }
 
   /**
