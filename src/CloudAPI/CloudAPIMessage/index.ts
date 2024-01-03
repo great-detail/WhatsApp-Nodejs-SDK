@@ -73,6 +73,7 @@ export default class CloudAPIMessage extends AbstractAPI {
     };
 
     return GraphRequest.create<CloudOutgoingMessageResponse>({
+      logger: this._logger,
       ...requestProps,
       endpoint: this.getEndpoint(),
       method: "POST",
@@ -106,6 +107,7 @@ export default class CloudAPIMessage extends AbstractAPI {
     if (replyMessageId) body["context"] = { message_id: replyMessageId };
 
     return GraphRequest.create<CloudOutgoingMessageResponse>({
+      logger: this._logger,
       ...requestProps,
       endpoint: this.getEndpoint(),
       method: "POST",
