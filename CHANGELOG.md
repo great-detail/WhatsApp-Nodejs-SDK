@@ -1,5 +1,12 @@
 # `@great-detail/whatsapp`
 
+## 6.4.4
+
+### Patch Changes
+
+- 4cf5ca7: fix: use ESM import file extension syntax
+- ec8c018: fix: default `package.json#type` to `module`
+
 ## 6.4.3
 
 ### Patch Changes
