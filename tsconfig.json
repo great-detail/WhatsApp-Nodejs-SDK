@@ -1,13 +1,16 @@
 {
   "compilerOptions": {
     "rootDir": "src",
-    "outDir": "dist",
+    "outDir": "dist/types",
     "allowJs": true,
     "target": "ESNext",
     "moduleResolution": "node",
     "checkJs": true,
     "strict": true,
-    "types": ["node", "jest"],
+    "types": [
+      "node",
+      "jest"
+    ],
     "declaration": true,
     "incremental": true,
     "noImplicitReturns": true,
@@ -19,5 +22,7 @@
     "forceConsistentCasingInFileNames": true,
     "sourceMap": true
   },
-  "include": ["src/**/*"]
+  "include": [
+    "src/**/*"
+  ]
 }

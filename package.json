@@ -1,7 +1,7 @@
 {
   "name": "@great-detail/whatsapp",
   "version": "6.4.2",
-  "type": "module",
+  "type": "commonjs",
   "description": "SDK for interfacing with WhatsApp Business Platform in Typescript or Node.js using the Cloud API, hosted by Meta.",
   "repository": {
     "type": "git",
@@ -21,9 +21,9 @@
   "engines": {
     "node": ">=16.19.1"
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/mjs/index.js",
+  "types": "./dist/types/index.d.ts",
   "files": [
     "dist",
     "src"
@@ -52,7 +52,9 @@
     "prettier:dev": "prettier --write .",
     "release": "changeset publish",
     "start": "ts-node ./src/index.ts",
-    "swc": "swc ./src/ -d ./dist/ --ignore ./src/__tests__/",
+    "swc": "npm-run-all swc:cjs swc:mjs",
+    "swc:cjs": "swc ./src/ -d ./dist/cjs/ --ignore ./src/__tests__/ --config-file .cjs.swcrc",
+    "swc:mjs": "swc ./src/ -d ./dist/mjs/ --ignore ./src/__tests__/ --config-file .mjs.swcrc",
     "test": "npm-run-all jest",
     "tsc": "tsc --emitDeclarationOnly",
     "typecheck": "tsc --noEmit"
