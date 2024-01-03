@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 6.4.0
+
+### Minor Changes
+
+- c23a171: use module as primary package type
+
 ## 6.3.2
 
 ### Patch Changes
