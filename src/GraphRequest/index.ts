@@ -10,12 +10,13 @@ import EndpointType from "../API/EndpointType.js";
 import GraphResponse from "../GraphResponse/index.js";
 import { Logger } from "winston";
 
-export interface GraphRequestCreateParams extends RequestInit {
-  endpoint?: EndpointType;
+export interface GraphRequestParameters extends RequestInit {
   version?: string;
   baseUrl?: string;
   logger?: Logger;
 }
+
+export interface GraphRequestCreateParams extends GraphRequestParameters {}
 
 export interface GraphRequestSendParams extends RequestInit {
   /**
@@ -52,25 +53,46 @@ export default class GraphRequest<T = unknown> extends Request {
   public static DEFAULT_GRAPH_VERSION = "v18.0";
 
   /**
-   * Create a new Graph API Request.
+   * Graph API version.
    *
-   * @since 4.0.0
-   * @author Dom Webber <dom.webber@hotmail.com>
+   * @since 6.5.0
    */
-  public static create<C = unknown>({
-    endpoint = "/",
-    version = this.DEFAULT_GRAPH_VERSION,
-    baseUrl = this.DEFAULT_GRAPH_API_BASE_URL,
-    logger,
-    ...requestInit
-  }: GraphRequestCreateParams) {
+  public readonly version: string;
+
+  /**
+   * Graph API endpoint.
+   *
+   * @since 6.5.0
+   */
+  public readonly endpoint: string;
+
+  /**
+   * Graph API base URL.
+   *
+   * @since 6.5.0
+   */
+  public readonly baseUrl: string;
+
+  public constructor(
+    endpoint: EndpointType,
+    {
+      logger,
+      version = GraphRequest.DEFAULT_GRAPH_VERSION,
+      baseUrl = GraphRequest.DEFAULT_GRAPH_API_BASE_URL,
+      ...requestInit
+    }: GraphRequestParameters = {},
+  ) {
     const url = new URL(
       [version ? "/" : "", version, endpoint].join(""),
       baseUrl,
     );
-    logger?.http(`${url.toString()} ${JSON.stringify(requestInit)}`);
 
-    return new GraphRequest<C>(url, requestInit);
+    super(url, requestInit);
+    this.version = version;
+    this.endpoint = endpoint;
+    this.baseUrl = baseUrl;
+
+    logger?.http(`${url.toString()} ${JSON.stringify(requestInit)}`);
   }
 
   /**
@@ -84,7 +106,8 @@ export default class GraphRequest<T = unknown> extends Request {
     ...requestInit
   }: GraphRequestSendParams = {}): Promise<GraphResponse<T>> {
     return await fetchAlternative(this, requestInit).then(
-      ({ body, ...responseInit }) => new GraphResponse(body, responseInit),
+      ({ body, ...responseInit }) =>
+        new GraphResponse(body, { request: this, ...responseInit }),
     );
   }
 }
