@@ -21,9 +21,8 @@
   "engines": {
     "node": ">=16.19.1"
   },
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/mjs/index.js",
-  "types": "./dist/types/index.d.ts",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist",
     "src"
@@ -52,7 +51,7 @@
     "prettier:dev": "prettier --write .",
     "release": "changeset publish",
     "start": "ts-node ./src/index.ts",
-    "swc": "swc ./src/ -d ./dist/cjs/ --ignore ./src/__tests__/",
+    "swc": "swc ./src/ -d ./dist/ --ignore ./src/__tests__/",
     "test": "npm-run-all jest",
     "tsc": "tsc --emitDeclarationOnly",
     "typecheck": "tsc --noEmit"
