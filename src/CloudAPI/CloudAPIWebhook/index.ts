@@ -9,8 +9,8 @@
 import AbstractAPI from "../../API/AbstractAPI.js";
 import { EventNotificationType } from "../../EventNotification/index.js";
 import CloudAPIWebhookError from "./CloudWebhookAPIError.js";
-import { createHmac } from "crypto";
-import { IncomingMessage, ServerResponse } from "http";
+import { createHmac } from "node:crypto";
+import { IncomingMessage, ServerResponse } from "node:http";
 
 export interface WebhookAPIRegisterReturn {
   /**
