@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 6.4.3
+
+### Patch Changes
+
+- c132743: fix: re-instate building process from v6.3.2
+
 ## 6.4.2
 
 ### Patch Changes
