@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 6.4.5
+
+### Patch Changes
+
+- 53e649c: fix: correct syntax for mjs exports
+
 ## 6.4.4
 
 ### Patch Changes
