@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 6.4.7
+
+### Patch Changes
+
+- ca0120e: feat: allow passing logger to GraphRequest.create
+
 ## 6.4.6
 
 ### Patch Changes
