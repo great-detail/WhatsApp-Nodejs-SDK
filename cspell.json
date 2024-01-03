@@ -25,7 +25,7 @@
     "localizable",
     "swcrc"
   ],
-  "ignoreWords": ["xddt", "Coreapp", "clid", "ctwa"],
+  "ignoreWords": ["xddt", "Coreapp", "clid", "ctwa", "esmodule"],
   "flagWords": ["hte"],
   "ignorePaths": ["tsconfig.tsbuildinfo", "coverage", "cspell.json"]
 }
