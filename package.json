@@ -52,9 +52,7 @@
     "prettier:dev": "prettier --write .",
     "release": "changeset publish",
     "start": "ts-node ./src/index.ts",
-    "swc": "npm-run-all swc:cjs swc:mjs",
-    "swc:cjs": "swc ./src/ -d ./dist/cjs/ --ignore ./src/__tests__/ --config-file .cjs.swcrc",
-    "swc:mjs": "swc ./src/ -d ./dist/mjs/ --ignore ./src/__tests__/ --config-file .mjs.swcrc",
+    "swc": "swc ./src/ -d ./dist/cjs/ --ignore ./src/__tests__/",
     "test": "npm-run-all jest",
     "tsc": "tsc --emitDeclarationOnly",
     "typecheck": "tsc --noEmit"
