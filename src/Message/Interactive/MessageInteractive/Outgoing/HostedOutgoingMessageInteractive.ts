@@ -6,7 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import OutgoingMessageInteractive from "./OutgoingMessageInteractive";
+import OutgoingMessageInteractive from "./OutgoingMessageInteractive.js";
 
 /**
  * TODO: Implement This Interface.

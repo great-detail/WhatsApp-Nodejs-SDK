@@ -6,9 +6,9 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import OutgoingMessageType from "../../MessageType/OutgoingMessageType";
-import CloudOutgoingMessage from "../../OutgoingMessage/CloudOutgoingMessage";
-import CloudOutgoingMessageContact from "../MessageContact/CloudOutgoingMessageContact";
+import OutgoingMessageType from "../../MessageType/OutgoingMessageType.js";
+import CloudOutgoingMessage from "../../OutgoingMessage/CloudOutgoingMessage.js";
+import CloudOutgoingMessageContact from "../MessageContact/CloudOutgoingMessageContact.js";
 
 type CloudOutgoingContactMessage =
   CloudOutgoingMessage<OutgoingMessageType.Contacts> & {

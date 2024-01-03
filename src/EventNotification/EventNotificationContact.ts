@@ -1,4 +1,4 @@
-import { AccountID } from "../ID";
+import { AccountID } from "../ID.js";
 
 /**
  * WhatsApp NodeJS SDK.

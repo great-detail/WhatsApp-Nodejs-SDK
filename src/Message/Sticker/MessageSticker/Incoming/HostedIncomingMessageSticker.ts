@@ -6,8 +6,8 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import HostedIncomingMessageMedia from "../../../MessageMedia/HostedIncomingMessageMedia";
-import IncomingMessageSticker from "./IncomingMessageSticker";
+import HostedIncomingMessageMedia from "../../../MessageMedia/HostedIncomingMessageMedia.js";
+import IncomingMessageSticker from "./IncomingMessageSticker.js";
 
 export default interface HostedIncomingMessageSticker
   extends HostedIncomingMessageMedia,

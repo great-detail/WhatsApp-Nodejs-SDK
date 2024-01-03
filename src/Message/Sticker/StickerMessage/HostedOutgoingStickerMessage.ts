@@ -6,9 +6,9 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import HostedOutgoingMessageMedia from "../../MessageMedia/HostedOutgoingMessageMedia";
-import OutgoingMessageType from "../../MessageType/OutgoingMessageType";
-import HostedOutgoingMessage from "../../OutgoingMessage/HostedOutgoingMessage";
+import HostedOutgoingMessageMedia from "../../MessageMedia/HostedOutgoingMessageMedia.js";
+import OutgoingMessageType from "../../MessageType/OutgoingMessageType.js";
+import HostedOutgoingMessage from "../../OutgoingMessage/HostedOutgoingMessage.js";
 
 type HostedOutgoingStickerMessage =
   HostedOutgoingMessage<OutgoingMessageType.Sticker> & {

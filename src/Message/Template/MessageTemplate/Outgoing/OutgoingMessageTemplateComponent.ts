@@ -14,7 +14,7 @@ import {
   PayloadOutgoingMessageTemplateComponentParameter,
   TextOutgoingMessageTemplateComponentParameter,
   VideoOutgoingMessageTemplateComponentParameter,
-} from "./OutgoingMessageTemplateComponentParameter";
+} from "./OutgoingMessageTemplateComponentParameter.js";
 
 type GeneralOutgoingMessageTemplateComponentParameter =
   | TextOutgoingMessageTemplateComponentParameter

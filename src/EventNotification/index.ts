@@ -6,17 +6,17 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import EventNotificationError from "../Error/EventNotificationError";
-import { AccountID } from "../ID";
-import CloudIncomingAudioMessage from "../Message/Audio/AudioMessage/CloudIncomingAudioMessage";
-import CloudIncomingDocumentMessage from "../Message/Document/DocumentMessage/CloudIncomingDocumentMessage";
-import CloudIncomingImageMessage from "../Message/Image/ImageMessage/CloudIncomingImageMessage";
-import CloudIncomingStickerMessage from "../Message/Sticker/StickerMessage/CloudIncomingStickerMessage";
-import CloudIncomingTextMessage from "../Message/Text/TextMessage/CloudIncomingTextMessage";
-import CloudIncomingVideoMessage from "../Message/Video/VideoMessage/CloudIncomingVideoMessage";
-import EventNotificationContact from "./EventNotificationContact";
-import EventNotificationMetadata from "./EventNotificationMetadata";
-import EventNotificationStatus from "./EventNotificationStatus";
+import EventNotificationError from "../Error/EventNotificationError.js";
+import { AccountID } from "../ID.js";
+import CloudIncomingAudioMessage from "../Message/Audio/AudioMessage/CloudIncomingAudioMessage.js";
+import CloudIncomingDocumentMessage from "../Message/Document/DocumentMessage/CloudIncomingDocumentMessage.js";
+import CloudIncomingImageMessage from "../Message/Image/ImageMessage/CloudIncomingImageMessage.js";
+import CloudIncomingStickerMessage from "../Message/Sticker/StickerMessage/CloudIncomingStickerMessage.js";
+import CloudIncomingTextMessage from "../Message/Text/TextMessage/CloudIncomingTextMessage.js";
+import CloudIncomingVideoMessage from "../Message/Video/VideoMessage/CloudIncomingVideoMessage.js";
+import EventNotificationContact from "./EventNotificationContact.js";
+import EventNotificationMetadata from "./EventNotificationMetadata.js";
+import EventNotificationStatus from "./EventNotificationStatus.js";
 
 export type EventNotificationChangeValueMessage =
   | CloudIncomingAudioMessage

@@ -6,7 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import CloudOutgoingMessageMedia from "../../MessageMedia/CloudOutgoingMessageMedia";
+import CloudOutgoingMessageMedia from "../../MessageMedia/CloudOutgoingMessageMedia.js";
 
 export default interface CloudOutgoingMessageAudio
   extends CloudOutgoingMessageMedia {}

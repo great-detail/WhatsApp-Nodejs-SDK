@@ -6,8 +6,8 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import { AccountID } from "../ID";
-import APIInterface from "./APIInterface";
+import { AccountID } from "../ID.js";
+import APIInterface from "./APIInterface.js";
 import { randomBytes } from "crypto";
 import type { Logger } from "winston";
 

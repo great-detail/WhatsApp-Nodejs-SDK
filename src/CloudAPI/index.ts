@@ -6,12 +6,12 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import AbstractAPI, { AbstractAPIParams } from "../API/AbstractAPI";
-import CloudAPIInvalidParamError from "./CloudAPIInvalidParamError";
+import AbstractAPI, { AbstractAPIParams } from "../API/AbstractAPI.js";
+import CloudAPIInvalidParamError from "./CloudAPIInvalidParamError.js";
 import CloudAPIMessage, {
   CloudAPIMessageParams as BaseCloudAPIMessageParams,
-} from "./CloudAPIMessage";
-import CloudAPIWebhook from "./CloudAPIWebhook";
+} from "./CloudAPIMessage/index.js";
+import CloudAPIWebhook from "./CloudAPIWebhook/index.js";
 
 export interface WhatsAppAPIParams extends AbstractAPIParams {}
 

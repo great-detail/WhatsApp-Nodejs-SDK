@@ -6,7 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import { AccountID } from "../../ID";
+import { AccountID } from "../../ID.js";
 
 export default interface IncomingMessageSystem {
   /**
@@ -35,7 +35,7 @@ export default interface IncomingMessageSystem {
    *
    * @since 4.2.0
    */
-  type: "customer_changed_number" | "customer_identity_changed";
+  type: "customer_changed_number" | "customer_identity_changed.js";
 
   /**
    * New WhatsApp ID for the customer when their phone number is updated.

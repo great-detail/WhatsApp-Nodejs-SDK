@@ -6,7 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import IncomingMessageReferral from "./IncomingMessageReferral";
+import IncomingMessageReferral from "./IncomingMessageReferral.js";
 
 export default interface HostedIncomingMessageReferral
   extends IncomingMessageReferral {}

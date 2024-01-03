@@ -6,7 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import IncomingMessageContext from "./IncomingMessageContext";
+import IncomingMessageContext from "./IncomingMessageContext.js";
 
 export default interface HostedIncomingMessageContext
   extends IncomingMessageContext {}

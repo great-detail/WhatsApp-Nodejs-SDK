@@ -6,21 +6,23 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import AbstractAPI, { AbstractAPIParams } from "../../API/AbstractAPI";
-import EndpointType from "../../API/EndpointType";
-import GraphRequest, { GraphRequestCreateParams } from "../../GraphRequest";
-import CloudOutgoingMessageContact from "../../Message/Contact/MessageContact/CloudOutgoingMessageContact";
-import CloudOutgoingMessageInteractive from "../../Message/Interactive/MessageInteractive/Outgoing/CloudOutgoingMessageInteractive";
-import CloudOutgoingMessageLocation from "../../Message/Location/MessageLocation/Outgoing/CloudOutgoingMessageLocation";
-import CloudOutgoingMessageMedia from "../../Message/MessageMedia/CloudOutgoingMessageMedia";
-import OutgoingMessageType from "../../Message/MessageType/OutgoingMessageType";
+import AbstractAPI, { AbstractAPIParams } from "../../API/AbstractAPI.js";
+import EndpointType from "../../API/EndpointType.js";
+import GraphRequest, {
+  GraphRequestCreateParams,
+} from "../../GraphRequest/index.js";
+import CloudOutgoingMessageContact from "../../Message/Contact/MessageContact/CloudOutgoingMessageContact.js";
+import CloudOutgoingMessageInteractive from "../../Message/Interactive/MessageInteractive/Outgoing/CloudOutgoingMessageInteractive.js";
+import CloudOutgoingMessageLocation from "../../Message/Location/MessageLocation/Outgoing/CloudOutgoingMessageLocation.js";
+import CloudOutgoingMessageMedia from "../../Message/MessageMedia/CloudOutgoingMessageMedia.js";
+import OutgoingMessageType from "../../Message/MessageType/OutgoingMessageType.js";
 import CloudOutgoingMessage, {
   CloudOutgoingMessageResponse,
-} from "../../Message/OutgoingMessage/CloudOutgoingMessage";
-import CloudOutgoingMessageStatus from "../../Message/Status/MessageStatus/Outgoing/CloudOutgoingMessageStatus";
-import CloudOutgoingStatusMessage from "../../Message/Status/StatusMessage/CloudOutgoingStatusMessage";
-import CloudOutgoingMessageTemplate from "../../Message/Template/MessageTemplate/Outgoing/CloudOutgoingMessageTemplate";
-import CloudOutgoingMessageText from "../../Message/Text/MessageText/Outgoing/CloudOutgoingMessageText";
+} from "../../Message/OutgoingMessage/CloudOutgoingMessage.js";
+import CloudOutgoingMessageStatus from "../../Message/Status/MessageStatus/Outgoing/CloudOutgoingMessageStatus.js";
+import CloudOutgoingStatusMessage from "../../Message/Status/StatusMessage/CloudOutgoingStatusMessage.js";
+import CloudOutgoingMessageTemplate from "../../Message/Template/MessageTemplate/Outgoing/CloudOutgoingMessageTemplate.js";
+import CloudOutgoingMessageText from "../../Message/Text/MessageText/Outgoing/CloudOutgoingMessageText.js";
 
 type CreateMessagePayload =
   | CloudOutgoingMessageMedia

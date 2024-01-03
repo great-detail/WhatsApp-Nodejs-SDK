@@ -6,7 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import HostedOutgoingMessageMedia from "../../MessageMedia/HostedOutgoingMessageMedia";
+import HostedOutgoingMessageMedia from "../../MessageMedia/HostedOutgoingMessageMedia.js";
 
 export default interface HostedOutgoingMessageAudio
   extends HostedOutgoingMessageMedia {}

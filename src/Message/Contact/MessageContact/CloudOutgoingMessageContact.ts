@@ -6,7 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import OutgoingMessageContact from "./OutgoingMessageContact";
+import OutgoingMessageContact from "./OutgoingMessageContact.js";
 
 export default interface CloudOutgoingMessageContact
   extends OutgoingMessageContact {}

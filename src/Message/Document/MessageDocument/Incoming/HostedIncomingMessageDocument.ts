@@ -6,8 +6,8 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import HostedIncomingMessageMedia from "../../../MessageMedia/HostedIncomingMessageMedia";
-import IncomingMessageDocument from "./IncomingMessageDocument";
+import HostedIncomingMessageMedia from "../../../MessageMedia/HostedIncomingMessageMedia.js";
+import IncomingMessageDocument from "./IncomingMessageDocument.js";
 
 export default interface HostedInterfaceMessageDocument
   extends HostedIncomingMessageMedia,

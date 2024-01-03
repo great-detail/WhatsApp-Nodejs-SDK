@@ -6,7 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import Error from ".";
+import Error from "./index.js";
 
 export default interface OutgoingMessageError extends Error {
   /**

@@ -6,9 +6,9 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import OutgoingMessage from ".";
-import { AccountID, MessageID } from "../../ID";
-import OutgoingMessageType from "../MessageType/OutgoingMessageType";
+import { AccountID, MessageID } from "../../ID.js";
+import OutgoingMessageType from "../MessageType/OutgoingMessageType.js";
+import OutgoingMessage from "./index.js";
 
 export interface CloudOutgoingMessageResponse {
   /**

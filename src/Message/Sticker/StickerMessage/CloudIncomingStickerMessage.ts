@@ -6,9 +6,9 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import CloudIncomingMessage from "../../IncomingMessage/CloudIncomingMessage";
-import IncomingMessageType from "../../MessageType/IncomingMessageType";
-import CloudIncomingMessageSticker from "../MessageSticker/Incoming/CloudIncomingMessageSticker";
+import CloudIncomingMessage from "../../IncomingMessage/CloudIncomingMessage.js";
+import IncomingMessageType from "../../MessageType/IncomingMessageType.js";
+import CloudIncomingMessageSticker from "../MessageSticker/Incoming/CloudIncomingMessageSticker.js";
 
 type CloudIncomingStickerMessage =
   CloudIncomingMessage<IncomingMessageType.Sticker> & {

@@ -6,8 +6,8 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import IncomingMessage from ".";
-import IncomingMessageType from "../MessageType/IncomingMessageType";
+import IncomingMessageType from "../MessageType/IncomingMessageType.js";
+import IncomingMessage from "./index.js";
 
 export default interface CloudIncomingMessage<
   MessageType extends IncomingMessageType,

@@ -6,8 +6,8 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import CloudIncomingMessageMedia from "../../../MessageMedia/CloudIncomingMessageMedia";
-import IncomingMessageSticker from "../Incoming/IncomingMessageSticker";
+import CloudIncomingMessageMedia from "../../../MessageMedia/CloudIncomingMessageMedia.js";
+import IncomingMessageSticker from "../Incoming/IncomingMessageSticker.js";
 
 export default interface CloudIncomingMessageSticker
   extends CloudIncomingMessageMedia,

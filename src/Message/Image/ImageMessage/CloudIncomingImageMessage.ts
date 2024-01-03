@@ -6,9 +6,9 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import CloudIncomingMessage from "../../IncomingMessage/CloudIncomingMessage";
-import IncomingMessageType from "../../MessageType/IncomingMessageType";
-import CloudIncomingMessageImage from "../MessageImage/Incoming/CloudIncomingMessageImage";
+import CloudIncomingMessage from "../../IncomingMessage/CloudIncomingMessage.js";
+import IncomingMessageType from "../../MessageType/IncomingMessageType.js";
+import CloudIncomingMessageImage from "../MessageImage/Incoming/CloudIncomingMessageImage.js";
 
 type CloudIncomingImageMessage =
   CloudIncomingMessage<IncomingMessageType.Image> & {

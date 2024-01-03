@@ -6,7 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import OutgoingMessageTemplate from "../Outgoing/OutgoingMessageTemplate";
+import OutgoingMessageTemplate from "../Outgoing/OutgoingMessageTemplate.js";
 
 export default interface CloudOutgoingMessageTemplate
   extends OutgoingMessageTemplate {}

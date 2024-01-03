@@ -6,9 +6,9 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import OutgoingMessageType from "../../MessageType/OutgoingMessageType";
-import CloudOutgoingMessage from "../../OutgoingMessage/CloudOutgoingMessage";
-import CloudOutgoingMessageAudio from "../MessageAudio/CloudOutgoingMessageAudio";
+import OutgoingMessageType from "../../MessageType/OutgoingMessageType.js";
+import CloudOutgoingMessage from "../../OutgoingMessage/CloudOutgoingMessage.js";
+import CloudOutgoingMessageAudio from "../MessageAudio/CloudOutgoingMessageAudio.js";
 
 type CloudOutgoingAudioMessage =
   CloudOutgoingMessage<OutgoingMessageType.Audio> & {

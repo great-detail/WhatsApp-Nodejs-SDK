@@ -6,9 +6,9 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import OutgoingMessageType from "../../MessageType/OutgoingMessageType";
-import HostedOutgoingMessage from "../../OutgoingMessage/HostedOutgoingMessage";
-import HostedOutgoingMessageImage from "../MessageImage/Outgoing/HostedOutgoingMessageImage";
+import OutgoingMessageType from "../../MessageType/OutgoingMessageType.js";
+import HostedOutgoingMessage from "../../OutgoingMessage/HostedOutgoingMessage.js";
+import HostedOutgoingMessageImage from "../MessageImage/Outgoing/HostedOutgoingMessageImage.js";
 
 type HostedOutgoingImageMessage =
   HostedOutgoingMessage<OutgoingMessageType.Image> & {

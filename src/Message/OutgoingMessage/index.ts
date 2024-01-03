@@ -6,9 +6,9 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import Message from "..";
-import { AccountID, PhoneNumber } from "../../ID";
-import OutgoingMessageType from "../MessageType/OutgoingMessageType";
+import { AccountID, PhoneNumber } from "../../ID.js";
+import OutgoingMessageType from "../MessageType/OutgoingMessageType.js";
+import Message from "../index.js";
 
 export type OutgoingMessageRecipientType =
   | "individual"

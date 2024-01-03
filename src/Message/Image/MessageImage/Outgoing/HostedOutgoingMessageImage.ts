@@ -6,8 +6,8 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import HostedOutgoingMessageMedia from "../../../MessageMedia/HostedOutgoingMessageMedia";
-import OutgoingMessageImage from "./OutgoingMessageImage";
+import HostedOutgoingMessageMedia from "../../../MessageMedia/HostedOutgoingMessageMedia.js";
+import OutgoingMessageImage from "./OutgoingMessageImage.js";
 
 export default interface HostedOutgoingMessageImage
   extends HostedOutgoingMessageMedia,

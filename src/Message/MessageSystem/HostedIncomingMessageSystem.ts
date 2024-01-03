@@ -6,7 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import IncomingMessageSystem from "./IncomingMessageSystem";
+import IncomingMessageSystem from "./IncomingMessageSystem.js";
 
 export default interface HostedInterfaceMessageSystem
   extends IncomingMessageSystem {}

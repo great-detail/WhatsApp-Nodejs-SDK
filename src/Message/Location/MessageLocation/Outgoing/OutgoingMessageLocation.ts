@@ -6,6 +6,6 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import MessageLocation from "..";
+import MessageLocation from "../index.js";
 
 export default interface OutgoingMessageLocation extends MessageLocation {}

@@ -6,7 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import IncomingMessageMedia from "./IncomingMessageMedia";
+import IncomingMessageMedia from "./IncomingMessageMedia.js";
 
 export default interface HostedIncomingMessageMedia
   extends IncomingMessageMedia {}

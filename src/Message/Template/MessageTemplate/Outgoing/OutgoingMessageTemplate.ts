@@ -6,12 +6,12 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import MessageTemplate from "..";
+import MessageTemplate from "../index.js";
 import {
   BodyOutgoingMessageTemplateComponent,
   ButtonOutgoingMessageTemplateComponent,
   HeaderOutgoingMessageTemplateComponent,
-} from "./OutgoingMessageTemplateComponent";
+} from "./OutgoingMessageTemplateComponent.js";
 
 type OutgoingMessageTemplateLanguagePolicy =
   | "deterministic"

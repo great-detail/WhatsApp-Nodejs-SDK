@@ -6,6 +6,6 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import MessageContact from ".";
+import MessageContact from "./index.js";
 
 export default interface OutgoingMessageContact extends MessageContact {}

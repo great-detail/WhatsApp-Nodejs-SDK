@@ -6,7 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import MessageInteractive from "..";
+import MessageInteractive from "../index.js";
 
 /**
  * TODO: Implement This Interface.

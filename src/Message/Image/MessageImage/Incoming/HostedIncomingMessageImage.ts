@@ -6,8 +6,8 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import CloudIncomingMessageMedia from "../../../MessageMedia/CloudIncomingMessageMedia";
-import IncomingMessageImage from "./IncomingMessageImage";
+import CloudIncomingMessageMedia from "../../../MessageMedia/CloudIncomingMessageMedia.js";
+import IncomingMessageImage from "./IncomingMessageImage.js";
 
 export default interface HostedIncomingMessageImage
   extends CloudIncomingMessageMedia,

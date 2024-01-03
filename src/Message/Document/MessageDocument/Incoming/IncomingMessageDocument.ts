@@ -6,7 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import MessageDocument from "..";
+import MessageDocument from "../index.js";
 
 export default interface IncomingMessageDocument extends MessageDocument {
   /**

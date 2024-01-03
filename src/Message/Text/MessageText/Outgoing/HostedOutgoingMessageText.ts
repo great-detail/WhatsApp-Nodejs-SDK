@@ -6,7 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import MessageText from "..";
+import MessageText from "../index.js";
 
 /**
  * Outgoing Text Message.

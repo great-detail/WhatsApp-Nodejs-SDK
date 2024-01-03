@@ -6,8 +6,8 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import EndpointType from "../API/EndpointType";
-import GraphResponse from "../GraphResponse";
+import EndpointType from "../API/EndpointType.js";
+import GraphResponse from "../GraphResponse/index.js";
 
 export interface GraphRequestCreateParams extends RequestInit {
   endpoint?: EndpointType;
