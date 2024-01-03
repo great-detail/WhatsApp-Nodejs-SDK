@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 6.4.6
+
+### Patch Changes
+
+- c8762c5: fix: use ESM only
+
 ## 6.4.5
 
 ### Patch Changes
