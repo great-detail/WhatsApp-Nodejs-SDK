@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 6.4.1
+
+### Patch Changes
+
+- bbe381d: use es modules only
+
 ## 6.4.0
 
 ### Minor Changes
