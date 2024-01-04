@@ -121,7 +121,7 @@ export default class GraphRequest<T = unknown> extends Request {
       }
     }
 
-    return await fetchAlternative(this, requestInit).then(
+    return await fetchAlternative(this).then(
       ({ body, ...responseInit }) =>
         new GraphResponse(body, { request: this, ...responseInit }),
     );
