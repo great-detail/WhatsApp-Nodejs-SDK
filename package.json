@@ -19,7 +19,7 @@
   ],
   "license": "SEE LICENSE IN LICENSE FILE",
   "engines": {
-    "node": ">=16.19.1"
+    "node": ">=18"
   },
   "exports": "./dist/index.js",
   "types": "./dist/index.d.ts",
