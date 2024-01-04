@@ -1,5 +1,12 @@
 # `@great-detail/whatsapp`
 
+## 6.5.2
+
+### Patch Changes
+
+- d3e7d5d: fix: correct usable node versions to >=18.x
+- 273f996: fix: remove requestInit passing to fetch call
+
 ## 6.5.1
 
 ### Patch Changes
