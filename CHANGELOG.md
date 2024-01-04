@@ -4,14 +4,14 @@
 
 ### Minor Changes
 
-- 5b89c1e: refactor: revamp internal GraphRequest construction with version, endpoint,
-  baseUrl visibility
+- 5b89c1e: refactor: revamp internal GraphRequest construction with version,
+  endpoint, baseUrl visibility
 
 ### Patch Changes
 
 - 7d9ff48: refactor: remove on-premises API related types
-- b93f020: feat: introduce isUpgraded dynamic property on GraphResponse, indicative of API
-  versioning upgrades
+- b93f020: feat: introduce isUpgraded dynamic property on GraphResponse,
+  indicative of API versioning upgrades
 
 ## 6.4.8
 
