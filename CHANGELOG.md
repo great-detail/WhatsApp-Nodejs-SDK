@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 6.5.1
+
+### Patch Changes
+
+- 1f3f833: fix: allow header merging when using GraphRequest.send method
+
 ## 6.5.0
 
 ### Minor Changes
