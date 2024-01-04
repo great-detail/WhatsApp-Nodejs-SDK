@@ -29,7 +29,7 @@ import CloudAPI from "@great-detail/whatsapp";
 
 // const businessID = "123...etc...";
 const sdk = new CloudAPI({ businessID });
-const message = sdk.message.text({ body: "Hello" }, { toNumber: "1234567890" });
+const message = sdk.message().text({ body: "Hello" }, { toNumber: "1234567890" });
 const sendReceipt = await message.send();
 ```
 
