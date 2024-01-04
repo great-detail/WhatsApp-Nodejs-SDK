@@ -18,7 +18,7 @@ export interface GraphRequestParameters extends RequestInit {
 
 export interface GraphRequestCreateParams extends GraphRequestParameters {}
 
-export interface GraphRequestSendParams extends RequestInit {
+export interface GraphRequestSendParams {
   /**
    * Fetch provider.
    * Used to override the default fetch provider and use polyfills or other
@@ -27,6 +27,15 @@ export interface GraphRequestSendParams extends RequestInit {
    * @since 5.4.0
    */
   fetch?: typeof fetch;
+
+  /**
+   * Request headers.
+   * Used to override the default request headers or set sensitive headers that
+   * shouldn't be included in debug log outputs.
+   *
+   * @since 6.5.1
+   */
+  headers?: HeadersInit;
 }
 
 /**
@@ -105,6 +114,13 @@ export default class GraphRequest<T = unknown> extends Request {
     fetch: fetchAlternative = fetch,
     ...requestInit
   }: GraphRequestSendParams = {}): Promise<GraphResponse<T>> {
+    if (requestInit.headers) {
+      const parsedHeaders = new Headers(requestInit.headers);
+      for (const [key, value] of parsedHeaders) {
+        this.headers.set(key, value);
+      }
+    }
+
     return await fetchAlternative(this, requestInit).then(
       ({ body, ...responseInit }) =>
         new GraphResponse(body, { request: this, ...responseInit }),
