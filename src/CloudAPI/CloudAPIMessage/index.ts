@@ -6,10 +6,10 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import AbstractAPI, { AbstractAPIParams } from "../../API/AbstractAPI.js";
+import AbstractAPI, { AbstractAPIParameters } from "../../API/AbstractAPI.js";
 import EndpointType from "../../API/EndpointType.js";
 import GraphRequest, {
-  GraphRequestCreateParams,
+  GraphRequestCreateParameters,
 } from "../../GraphRequest/index.js";
 import CloudOutgoingMessageContact from "../../Message/Contact/MessageContact/CloudOutgoingMessageContact.js";
 import CloudOutgoingMessageInteractive from "../../Message/Interactive/MessageInteractive/Outgoing/CloudOutgoingMessageInteractive.js";
@@ -37,10 +37,10 @@ type CreateMessagePayload =
 type CreateMessageOptionsType = {
   toNumber: string;
   replyMessageId?: string;
-  requestProps?: GraphRequestCreateParams;
+  requestOptions?: GraphRequestCreateParameters;
 };
 
-export interface CloudAPIMessageParams extends AbstractAPIParams {
+export interface CloudAPIMessageParameters extends AbstractAPIParameters {
   businessID: string;
 }
 
@@ -51,8 +51,8 @@ export interface CloudAPIMessageParams extends AbstractAPIParams {
  * @author Dom Webber <dom.webber@hotmail.com>
  */
 export default class CloudAPIMessage extends AbstractAPI {
-  constructor(params: CloudAPIMessageParams) {
-    super(params);
+  constructor(parameters: CloudAPIMessageParameters) {
+    super(parameters);
   }
 
   protected getEndpoint(): EndpointType {
@@ -67,7 +67,7 @@ export default class CloudAPIMessage extends AbstractAPI {
    */
   public createStatus(
     payload: CloudOutgoingMessageStatus,
-    requestProps: GraphRequestCreateParams = {},
+    requestOptions: GraphRequestCreateParameters = {},
   ) {
     const body: CloudOutgoingStatusMessage = {
       messaging_product: "whatsapp",
@@ -78,11 +78,11 @@ export default class CloudAPIMessage extends AbstractAPI {
       this.getEndpoint(),
       {
         logger: this._logger,
-        ...requestProps,
+        ...requestOptions,
         method: "POST",
         body: JSON.stringify(body),
         headers: {
-          ...requestProps.headers,
+          ...requestOptions.headers,
           "Content-Type": "application/json",
         },
       },
@@ -98,7 +98,7 @@ export default class CloudAPIMessage extends AbstractAPI {
   public createMessage<T extends OutgoingMessageType>(
     type: T,
     payload: CreateMessagePayload,
-    { toNumber, replyMessageId, requestProps = {} }: CreateMessageOptionsType,
+    { toNumber, replyMessageId, requestOptions = {} }: CreateMessageOptionsType,
   ) {
     const body: CloudOutgoingMessage<T> = {
       messaging_product: "whatsapp",
@@ -112,11 +112,11 @@ export default class CloudAPIMessage extends AbstractAPI {
 
     return new GraphRequest<CloudOutgoingMessageResponse>(this.getEndpoint(), {
       logger: this._logger,
-      ...requestProps,
+      ...requestOptions,
       method: "POST",
       body: JSON.stringify(body),
       headers: {
-        ...requestProps.headers,
+        ...requestOptions.headers,
         "Content-Type": "application/json",
       },
     });
