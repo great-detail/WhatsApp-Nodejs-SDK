@@ -27,6 +27,7 @@ export interface CloudOutgoingMessageResponse {
     input: string;
     wa_id: AccountID;
   }[];
+
   messages: {
     id: MessageID;
 
@@ -61,6 +62,7 @@ export default interface CloudOutgoingMessage<
    * Messaging service used for the request. Use "whatsapp".
    *
    * @default 'whatsapp'
+   * @since Graph API v12.0
    */
   messaging_product: "whatsapp";
 
