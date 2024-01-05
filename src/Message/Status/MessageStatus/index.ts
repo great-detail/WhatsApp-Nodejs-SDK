@@ -11,8 +11,6 @@ export type MessageStatusStatus = "read" | (string & NonNullable<unknown>);
 
 /**
  * Base Message Status.
- *
- * @since 4.2.0
  */
 export default interface MessageStatus {
   status: MessageStatusStatus;
