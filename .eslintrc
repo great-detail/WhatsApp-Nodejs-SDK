@@ -1,10 +1,16 @@
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "jest", "jsdoc"],
+  "plugins": [
+    "@typescript-eslint",
+    "jest",
+    "jsdoc",
+    "unicorn"
+  ],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:unicorn/recommended",
     "prettier"
   ],
   "parserOptions": {
@@ -23,7 +29,8 @@
     ],
     "jsdoc/require-returns": "off",
     "@typescript-eslint/no-duplicate-enum-values": "off",
-    "@typescript-eslint/no-explicit-any": "warn"
+    "@typescript-eslint/no-explicit-any": "warn",
+    "unicorn/filename-case": "off"
   },
   "env": {
     "node": true,
