@@ -12,6 +12,7 @@ import Message from "../index.js";
 
 export type OutgoingMessageRecipientType =
   | "individual"
+  | "group"
   | (string & NonNullable<unknown>);
 
 /**
@@ -31,16 +32,14 @@ export default interface OutgoingMessage<
 
   /**
    * WhatsApp ID or phone number of the customer you want to send a message to.
-   *
-   * @since 4.2.0
    */
   to: AccountID | PhoneNumber;
 
   /**
    * Currently, you can only send messages to individuals.
    *
-   * @since 4.2.0
    * @default "individual"
+   * @see {@link https://developers.facebook.com/docs/graph-api/reference/whats-app-business-account-to-number-current-status/messages/#parameters}
    */
   recipient_type?: OutgoingMessageRecipientType;
 }
