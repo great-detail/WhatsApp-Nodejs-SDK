@@ -10,6 +10,10 @@ import { AccountID, MessageID } from "../../ID.js";
 import OutgoingMessageType from "../MessageType/OutgoingMessageType.js";
 import OutgoingMessage from "./index.js";
 
+export type CloudOutgoingMessageResponseMessagesMessageStatus =
+  | "accepted"
+  | "held_for_quality_assessment";
+
 export interface CloudOutgoingMessageResponse {
   /**
    * Messaging service used for the request. Use "whatsapp".
@@ -25,6 +29,14 @@ export interface CloudOutgoingMessageResponse {
   }[];
   messages: {
     id: MessageID;
+
+    /**
+     * Message Pacing & Quality Control Status.
+     *
+     * @since August 28, 2023
+     * @todo determine whether this field will **always** be defined.
+     */
+    message_status?: CloudOutgoingMessageResponseMessagesMessageStatus;
   }[];
 }
 
