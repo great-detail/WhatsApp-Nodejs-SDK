@@ -11,16 +11,13 @@ import Error from "./index.js";
 export default interface OutgoingMessageError extends Error {
   /**
    * Error type.
-   *
-   * @since 4.2.0
    */
   type: string;
 
   /**
    * Graph API subcode. Not all responses will include a subcode.
    *
-   * @since 4.2.0
-   * @deprecated since Graph API v16.0
+   * @deprecated Since Graph API v16.0
    */
   error_subcode?: number;
 
@@ -31,8 +28,6 @@ export default interface OutgoingMessageError extends Error {
      * Error description and a description of the most likely reason for the
      * error. May also contain information on how to address the error, such as
      * which parameter is invalid or what values are acceptable.
-     *
-     * @since 4.2.0
      */
     details: string;
   };
@@ -40,8 +35,6 @@ export default interface OutgoingMessageError extends Error {
   /**
    * Trace ID you can include when contacting Direct Support. The ID may help
    * support to debug the error.
-   *
-   * @since 4.2.0
    */
   fbtrace_id: string;
 }

@@ -11,21 +11,19 @@ import Error, { ErrorMessage } from "./index.js";
 export default interface EventNotificationError extends Error {
   /**
    * Error code title.
-   *
-   * @since 4.2.0
    */
   title: ErrorMessage;
 
   /**
    * An error data object.
    *
-   * @since 4.2.0, Graph API v16.0
+   * @since Graph API v16.0
    */
   error_data?: {
     /**
      * Describes the error.
      *
-     * @since 4.2.0, Graph API v16.0
+     * @since Graph API v16.0
      */
     details: string;
   };

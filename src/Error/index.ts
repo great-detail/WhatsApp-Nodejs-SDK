@@ -160,21 +160,17 @@ export type ErrorMessage = (typeof ErrorMap)[ErrorCode];
 
 /**
  * Base Error Object.
- *
- * @since 5.0.0
  */
 export default interface Error {
   /**
    * Error code.
-   *
-   * @since 4.2.0
    */
   code: ErrorCode;
 
   /**
    * Error code message.
    *
-   * @since 4.2.0, Graph API v16.0
+   * @since Graph API v16.0
    */
   message?: string;
 }
