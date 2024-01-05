@@ -11,7 +11,8 @@
 
 - 3599139: refactor: add missing response messages.message_status field typing
 - f531a68: refactor: add `error` as parameter in response to message sending
-- 5b9bf96: refactor: add `group` as a suggested value to `OutgoingMessage.recipient_type`
+- 5b9bf96: refactor: add `group` as a suggested value to
+  `OutgoingMessage.recipient_type`
 - f05ab0c: fix: correct GraphResponse typing for createStatus method
 
 ## 6.5.2
