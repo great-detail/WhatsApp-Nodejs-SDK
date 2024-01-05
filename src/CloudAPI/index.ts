@@ -6,17 +6,17 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import AbstractAPI, { AbstractAPIParams } from "../API/AbstractAPI.js";
-import CloudAPIInvalidParamError from "./CloudAPIInvalidParamError.js";
+import AbstractAPI, { AbstractAPIParameters } from "../API/AbstractAPI.js";
+import CloudAPIInvalidParameterError from "./CloudAPIInvalidParameterError.js";
 import CloudAPIMessage, {
-  CloudAPIMessageParams as BaseCloudAPIMessageParams,
+  CloudAPIMessageParameters as BaseCloudAPIMessageParameters,
 } from "./CloudAPIMessage/index.js";
 import CloudAPIWebhook from "./CloudAPIWebhook/index.js";
 
-export interface WhatsAppAPIParams extends AbstractAPIParams {}
+export interface WhatsAppAPIParameters extends AbstractAPIParameters {}
 
-export interface CloudAPIMessageParams
-  extends Partial<BaseCloudAPIMessageParams> {}
+export interface CloudAPIMessageParameters
+  extends Partial<BaseCloudAPIMessageParameters> {}
 
 /**
  * WhatsApp Cloud API SDK.
@@ -36,9 +36,9 @@ export default class CloudAPI extends AbstractAPI {
    */
   public webhook: CloudAPIWebhook;
 
-  constructor(params: WhatsAppAPIParams) {
-    super(params);
-    this.webhook = new CloudAPIWebhook(params);
+  constructor(parameters: WhatsAppAPIParameters) {
+    super(parameters);
+    this.webhook = new CloudAPIWebhook(parameters);
   }
 
   /**
@@ -55,17 +55,17 @@ export default class CloudAPI extends AbstractAPI {
   public message({
     businessID: overrideBusinessID,
     logger,
-    ...params
-  }: CloudAPIMessageParams = {}) {
+    ...parameters
+  }: CloudAPIMessageParameters = {}) {
     const businessID = overrideBusinessID ?? this._businessID;
     if (!businessID) {
-      throw new CloudAPIInvalidParamError("Business ID is required");
+      throw new CloudAPIInvalidParameterError("Business ID is required");
     }
 
     return new CloudAPIMessage({
       logger: logger ?? this._logger,
       businessID,
-      ...params,
+      ...parameters,
     });
   }
 }

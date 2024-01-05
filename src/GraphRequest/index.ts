@@ -16,9 +16,9 @@ export interface GraphRequestParameters extends RequestInit {
   logger?: Logger;
 }
 
-export interface GraphRequestCreateParams extends GraphRequestParameters {}
+export interface GraphRequestCreateParameters extends GraphRequestParameters {}
 
-export interface GraphRequestSendParams {
+export interface GraphRequestSendParameters {
   /**
    * Fetch provider.
    * Used to override the default fetch provider and use polyfills or other
@@ -113,7 +113,7 @@ export default class GraphRequest<T = unknown> extends Request {
   public async send({
     fetch: fetchAlternative = fetch,
     ...requestInit
-  }: GraphRequestSendParams = {}): Promise<GraphResponse<T>> {
+  }: GraphRequestSendParameters = {}): Promise<GraphResponse<T>> {
     if (requestInit.headers) {
       const parsedHeaders = new Headers(requestInit.headers);
       for (const [key, value] of parsedHeaders) {

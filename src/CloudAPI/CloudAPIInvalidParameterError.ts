@@ -12,9 +12,9 @@
  *
  * @since 6.0.0
  */
-export default class CloudAPIInvalidParamError extends Error {
+export default class CloudAPIInvalidParameterError extends Error {
   constructor(message: string) {
     super(message);
-    this.name = "CloudAPIInvalidParamError";
+    this.name = "CloudAPIInvalidParameterError";
   }
 }

@@ -138,13 +138,13 @@ export default class CloudAPIWebhook extends AbstractAPI {
    * );
    */
   public async register(
-    req: IncomingMessage,
-    res: ServerResponse,
+    request: IncomingMessage,
+    response: ServerResponse,
   ): Promise<WebhookAPIRegisterReturn> {
-    this._logger?.http(`Received Webhook Registration: "${req.url}"`);
+    this._logger?.http(`Received Webhook Registration: "${request.url}"`);
 
-    const url = req.url
-      ? new URL(req.url, `http://${req.headers.host}`)
+    const url = request.url
+      ? new URL(request.url, `http://${req.headers.host}`)
       : undefined;
     if (!url) {
       throw CloudAPIWebhookError.invalidURL();
@@ -182,7 +182,7 @@ export default class CloudAPIWebhook extends AbstractAPI {
        */
       accept: () => {
         this._logger?.debug("Accepting Webhook Registration");
-        return res.end(hubChallenge);
+        return response.end(hubChallenge);
       },
 
       /**
@@ -190,7 +190,7 @@ export default class CloudAPIWebhook extends AbstractAPI {
        */
       reject: () => {
         this._logger?.debug("Rejecting Webhook Registration");
-        return res.end();
+        return response.end();
       },
     };
   }
@@ -217,12 +217,12 @@ export default class CloudAPIWebhook extends AbstractAPI {
    * );
    */
   public async eventNotification(
-    req: IncomingMessage,
-    res: ServerResponse,
+    request: IncomingMessage,
+    response: ServerResponse,
   ): Promise<WebhookAPIEventNotificationReturn> {
-    this._logger?.http(`Received Webhook Event Notification: "${req.url}"`);
+    this._logger?.http(`Received Webhook Event Notification: "${request.url}"`);
 
-    const xHubSignature = req.headers["x-hub-signature-256"]
+    const xHubSignature = request.headers["x-hub-signature-256"]
       ?.toString()
       .replace("sha256=", "");
     if (!xHubSignature) {
@@ -234,7 +234,7 @@ export default class CloudAPIWebhook extends AbstractAPI {
       let cumulativeSize = 0;
       const bodyBufferChunks: Buffer[] = [];
 
-      req
+      request
         .on("data", (chunk) => {
           bodyBufferChunks.push(chunk);
           cumulativeSize = cumulativeSize + chunk.length;
@@ -290,7 +290,7 @@ export default class CloudAPIWebhook extends AbstractAPI {
        */
       accept: () => {
         this._logger?.debug("Accepting Webhook Event Notification");
-        return res.end();
+        return response.end();
       },
 
       /**
@@ -298,7 +298,7 @@ export default class CloudAPIWebhook extends AbstractAPI {
        */
       reject: () => {
         this._logger?.debug("Rejecting Webhook Event Notification");
-        return res.end();
+        return response.end();
       },
     };
   }

@@ -6,9 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import CloudAPI from "./CloudAPI/index.js";
-import IncomingMessageType from "./Message/MessageType/IncomingMessageType.js";
-import OutgoingMessageType from "./Message/MessageType/OutgoingMessageType.js";
 
-export default CloudAPI;
-export { CloudAPI, OutgoingMessageType, IncomingMessageType };
+export { default, default as CloudAPI } from "./CloudAPI/index.js";
+export { default as IncomingMessageType } from "./Message/MessageType/IncomingMessageType.js";
+export { default as OutgoingMessageType } from "./Message/MessageType/OutgoingMessageType.js";

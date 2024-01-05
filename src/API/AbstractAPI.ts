@@ -8,10 +8,10 @@
  */
 import { AccountID } from "../ID.js";
 import APIInterface from "./APIInterface.js";
-import { randomBytes } from "crypto";
+import { randomBytes } from "node:crypto";
 import type { Logger } from "winston";
 
-export interface WhatsAppAPICreateVerifyTokenParams {
+export interface WhatsAppAPICreateVerifyTokenParameters {
   /**
    * The length of the verify token.
    *
@@ -37,7 +37,7 @@ export interface WhatsAppAPICreateVerifyTokenParams {
   random?: (length: number) => Buffer;
 }
 
-export interface AbstractAPIParams {
+export interface AbstractAPIParameters {
   businessID?: AccountID;
   logger?: Logger;
 }
@@ -73,7 +73,7 @@ export default abstract class AbstractAPI implements APIInterface {
   protected _businessID?: AccountID;
   protected _logger?: Logger;
 
-  constructor({ logger, businessID }: AbstractAPIParams) {
+  constructor({ logger, businessID }: AbstractAPIParameters) {
     this._logger = logger;
     this._businessID = businessID;
   }
@@ -90,7 +90,7 @@ export default abstract class AbstractAPI implements APIInterface {
     length = this.DEFAULT_VERIFY_TOKEN_LENGTH,
     encoding = this.DEFAULT_VERIFY_TOKEN_ENCODING,
     random = randomBytes,
-  }: WhatsAppAPICreateVerifyTokenParams = {}): string {
+  }: WhatsAppAPICreateVerifyTokenParameters = {}): string {
     return random(length).toString(encoding);
   }
 }
