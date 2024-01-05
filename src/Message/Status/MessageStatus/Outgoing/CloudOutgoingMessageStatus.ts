@@ -13,3 +13,7 @@ export default interface CloudOutgoingMessageStatus
   extends OutgoingMessageStatus {
   message_id: MessageID;
 }
+
+export interface CloudOutgoingMessageStatusResponse {
+  success?: boolean;
+}

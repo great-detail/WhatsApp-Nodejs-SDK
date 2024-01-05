@@ -19,7 +19,9 @@ import OutgoingMessageType from "../../Message/MessageType/OutgoingMessageType.j
 import CloudOutgoingMessage, {
   CloudOutgoingMessageResponse,
 } from "../../Message/OutgoingMessage/CloudOutgoingMessage.js";
-import CloudOutgoingMessageStatus from "../../Message/Status/MessageStatus/Outgoing/CloudOutgoingMessageStatus.js";
+import CloudOutgoingMessageStatus, {
+  CloudOutgoingMessageStatusResponse,
+} from "../../Message/Status/MessageStatus/Outgoing/CloudOutgoingMessageStatus.js";
 import CloudOutgoingStatusMessage from "../../Message/Status/StatusMessage/CloudOutgoingStatusMessage.js";
 import CloudOutgoingMessageTemplate from "../../Message/Template/MessageTemplate/Outgoing/CloudOutgoingMessageTemplate.js";
 import CloudOutgoingMessageText from "../../Message/Text/MessageText/Outgoing/CloudOutgoingMessageText.js";
@@ -72,16 +74,19 @@ export default class CloudAPIMessage extends AbstractAPI {
       ...payload,
     };
 
-    return new GraphRequest<CloudOutgoingMessageResponse>(this.getEndpoint(), {
-      logger: this._logger,
-      ...requestProps,
-      method: "POST",
-      body: JSON.stringify(body),
-      headers: {
-        ...requestProps.headers,
-        "Content-Type": "application/json",
+    return new GraphRequest<CloudOutgoingMessageStatusResponse>(
+      this.getEndpoint(),
+      {
+        logger: this._logger,
+        ...requestProps,
+        method: "POST",
+        body: JSON.stringify(body),
+        headers: {
+          ...requestProps.headers,
+          "Content-Type": "application/json",
+        },
       },
-    });
+    );
   }
 
   /**
