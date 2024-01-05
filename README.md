@@ -25,8 +25,6 @@ An unofficial SDK for Meta's WhatsApp Business Messaging APIs - Cloud API.
 ```typescript
 import CloudAPI from "@great-detail/whatsapp";
 
-// const CloudAPI = require("@great-detail/whatsapp");
-
 // const businessID = "123...etc...";
 const sdk = new CloudAPI({ businessID });
 const message = sdk
