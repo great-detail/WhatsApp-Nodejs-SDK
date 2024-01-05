@@ -20,7 +20,7 @@ type CloudOutgoingStickerMessage =
      * 512x512 pixels and cannot exceed 100KB. Animated stickers must be
      * 512x512 pixels and cannot exceed 500KB.
      *
-     * @since 4.2.0
+     * @since April 5, 2022 Static Stickers. August 25, 2022 Animated Stickers.
      */
     [OutgoingMessageType.Sticker]: CloudOutgoingMessageMedia;
   };

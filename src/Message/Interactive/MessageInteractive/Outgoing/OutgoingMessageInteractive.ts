@@ -10,8 +10,6 @@ import MessageInteractive from "../index.js";
 
 /**
  * TODO: Implement This Interface.
- *
- * @since 4.2.0
  */
 export default interface OutgoingMessageInteractive
   extends MessageInteractive {}

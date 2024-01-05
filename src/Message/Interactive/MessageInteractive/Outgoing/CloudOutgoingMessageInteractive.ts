@@ -10,8 +10,6 @@ import OutgoingMessageInteractive from "./OutgoingMessageInteractive.js";
 
 /**
  * TODO: Implement This Interface.
- *
- * @since 4.2.0
  */
 export default interface CloudOutgoingMessageInteractive
   extends OutgoingMessageInteractive {}

@@ -44,7 +44,7 @@ export interface CloudOutgoingMessageContext {
   /**
    * The ID of a previous message you are replying to.
    *
-   * @since 4.2.0
+   * @since July 21, 2022
    */
   message_id: MessageID;
 }
@@ -66,8 +66,6 @@ export default interface CloudOutgoingMessage<
 
   /**
    * Required if replying to any message in the conversation.
-   *
-   * @since 4.2.0
    */
   context?: CloudOutgoingMessageContext;
 
@@ -84,7 +82,7 @@ export default interface CloudOutgoingMessage<
    * Cloud API does not process this field, it just returns it as part of
    * sent/delivered/read message webhooks.
    *
-   * @since 4.2.0
+   * @since November 14, 2023
    */
   biz_opaque_callback_data?: string;
 }
