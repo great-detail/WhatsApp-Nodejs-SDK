@@ -6,6 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
+import OutgoingMessageError from "../../Error/OutgoingMessageError.js";
 import { AccountID, MessageID } from "../../ID.js";
 import OutgoingMessageType from "../MessageType/OutgoingMessageType.js";
 import OutgoingMessage from "./index.js";
@@ -39,6 +40,11 @@ export interface CloudOutgoingMessageResponse {
      */
     message_status?: CloudOutgoingMessageResponseMessagesMessageStatus;
   }[];
+
+  /**
+   * @see {@link https://developers.facebook.com/docs/whatsapp/cloud-api/support/error-codes}
+   */
+  error?: OutgoingMessageError;
 }
 
 export interface CloudOutgoingMessageContext {
