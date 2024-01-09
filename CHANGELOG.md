@@ -4,7 +4,8 @@
 
 ### Patch Changes
 
-- 2ec69a4: build(deps-dev): bump @typescript-eslint/eslint-plugin from 6.16.0 to 6.18.0
+- 2ec69a4: build(deps-dev): bump @typescript-eslint/eslint-plugin from 6.16.0 to
+  6.18.0
 - fb266a5: build(deps-dev): bump eslint-plugin-jest from 27.6.0 to 27.6.1
 - f14d9c1: build(deps-dev): bump @typescript-eslint/parser from 6.16.0 to 6.18.0
 - 28fe340: build(deps-dev): bump cspell from 8.3.0 to 8.3.2
