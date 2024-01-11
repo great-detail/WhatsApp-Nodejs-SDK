@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 6.6.2
+
+### Patch Changes
+
+- 06c14f0: chore: move @changesets/cli to devDependencies
+
 ## 6.6.1
 
 ### Patch Changes
