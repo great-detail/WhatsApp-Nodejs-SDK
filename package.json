@@ -64,10 +64,8 @@
       "optional": true
     }
   },
-  "dependencies": {
-    "@changesets/cli": "^2.27.1"
-  },
   "devDependencies": {
+    "@changesets/cli": "^2.27.1",
     "@eslint/eslintrc": "^3.0.0",
     "@great-detail/prettier-config": "^0.0.2",
     "@jest/globals": "^29.7.0",
