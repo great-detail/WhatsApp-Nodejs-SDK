@@ -4,7 +4,7 @@
     "parser": {
       "syntax": "typescript",
       "dynamicImport": false,
-      "decorators": false
+      "decorators": false,
     },
     "transform": null,
     "target": "esnext",
@@ -15,14 +15,14 @@
     "preserveAllComments": false,
     "minify": {
       "compress": {
-        "unused": true
+        "unused": true,
       },
-      "mangle": true
-    }
+      "mangle": true,
+    },
   },
   "module": {
-    "type": "es6"
+    "type": "es6",
   },
   "minify": true,
-  "sourceMaps": true
+  "sourceMaps": true,
 }
