@@ -1,5 +1,15 @@
 # `@great-detail/whatsapp`
 
+## 6.6.3
+
+### Patch Changes
+
+- b534212: bump @great-detail/prettier-config from 0.0.2 to 0.1.1
+- 786e136: bump eslint-plugin-jest from 27.6.1 to 27.6.3
+- fe2b66d: bump @types/node from 20.10.7 to 20.11.0
+- 5a0c1d0: bump prettier from 3.1.1 to 3.2.2
+- 4971ff7: bump nock from 13.4.0 to 13.5.0
+
 ## 6.6.2
 
 ### Patch Changes
