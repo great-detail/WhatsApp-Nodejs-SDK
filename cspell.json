@@ -1,31 +1,49 @@
 {
   "version": "0.2",
   "language": "en",
-  "dictionaries": ["softwareTerms", "typescript", "node", "filetypes", "npm"],
+  "dictionaries": [
+    "softwareTerms",
+    "typescript",
+    "node",
+    "filetypes",
+    "npm"
+  ],
   "words": [
-    "FODT",
-    "FODP",
-    "FODS",
     "Mutli",
-    "menlo",
     "webp",
     "quickstart",
-    "wamid",
     "webber",
+    "typecheck",
+    "unmocked",
+    "lcov",
+    "Deregistration",
+    "subcode",
+    "localizable"
+  ],
+  "ignoreWords": [
+    "xddt",
+    "Coreapp",
+    "clid",
+    "ctwa",
+    "esmodule",
+    "tsup",
     "trivago",
     "Rashed",
     "Talukder",
-    "typecheck",
     "Kinyarwanda",
-    "unmocked",
-    "lcov",
     "fbtrace_id",
-    "Deregistration",
-    "subcode",
-    "localizable",
-    "swcrc"
+    "menlo",
+    "FODT",
+    "FODP",
+    "FODS",
+    "wamid"
   ],
-  "ignoreWords": ["xddt", "Coreapp", "clid", "ctwa", "esmodule"],
-  "flagWords": ["hte"],
-  "ignorePaths": ["tsconfig.tsbuildinfo", "coverage", "cspell.json"]
+  "flagWords": [
+    "hte"
+  ],
+  "ignorePaths": [
+    "tsconfig.tsbuildinfo",
+    "coverage",
+    "cspell.json"
+  ]
 }
