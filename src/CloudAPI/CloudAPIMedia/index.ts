@@ -165,6 +165,13 @@ export default class CloudAPIMedia extends AbstractAPI {
    * renew the `ACCESS_TOKEN` then retry downloading the media.
    *
    * @see {@link https://developers.facebook.com/docs/whatsapp/cloud-api/reference/media#supported-media-types}
+   * @example
+   * // Download Media and Write to a File
+   * const download = sdk.media({ businessID: "123456" })
+   *   .download(mediaURL);
+   * const downloadReceipt = await download.send();
+   * const file = await downloadReceipt.arrayBuffer();
+   * fs.writeFile("filename.ext", Buffer.from(file));
    */
   public download(
     mediaURL: string,
