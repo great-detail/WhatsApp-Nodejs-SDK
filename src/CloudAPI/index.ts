@@ -39,7 +39,7 @@ export default class CloudAPI extends AbstractAPI {
    */
   public webhook: CloudAPIWebhook;
 
-  constructor(parameters: WhatsAppAPIParameters) {
+  constructor(parameters: WhatsAppAPIParameters = {}) {
     super(parameters);
     this.webhook = new CloudAPIWebhook(parameters);
   }
