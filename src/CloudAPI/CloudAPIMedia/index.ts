@@ -82,10 +82,6 @@ export default class CloudAPIMedia extends AbstractAPI {
         ...requestOptions,
         method: "POST",
         body: formData,
-        headers: {
-          ...requestOptions.headers,
-          "Content-Type": "multipart/form-data",
-        },
       },
     );
   }
@@ -101,7 +97,7 @@ export default class CloudAPIMedia extends AbstractAPI {
    */
   public getURL(
     mediaID: MediaID,
-    { phoneNumberID, requestOptions = {} }: GetMediaURLMediaOptions,
+    { phoneNumberID, requestOptions = {} }: GetMediaURLMediaOptions = {},
   ) {
     const searchQuery = new URLSearchParams();
     if (phoneNumberID) {
@@ -127,7 +123,7 @@ export default class CloudAPIMedia extends AbstractAPI {
    */
   public delete(
     mediaID: MediaID,
-    { phoneNumberID, requestOptions = {} }: DeleteMediaOptions,
+    { phoneNumberID, requestOptions = {} }: DeleteMediaOptions = {},
   ) {
     const searchQuery = new URLSearchParams();
     if (phoneNumberID) {
@@ -174,7 +170,7 @@ export default class CloudAPIMedia extends AbstractAPI {
    */
   public download(
     mediaURL: string,
-    { requestOptions = {} }: DownloadMediaOptions,
+    { requestOptions = {} }: DownloadMediaOptions = {},
   ) {
     return new GraphRequest(mediaURL, {
       method: "GET",

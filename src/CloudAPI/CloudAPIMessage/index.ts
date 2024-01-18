@@ -34,6 +34,10 @@ type CreateMessagePayload =
   | CloudOutgoingMessageTemplate
   | CloudOutgoingMessageText;
 
+export interface CreateStatusOptionsType {
+  requestOptions?: GraphRequestCreateParameters;
+}
+
 type CreateMessageOptionsType = {
   toNumber: string;
   replyMessageId?: string;
@@ -65,7 +69,7 @@ export default class CloudAPIMessage extends AbstractAPI {
    */
   public createStatus(
     payload: CloudOutgoingMessageStatus,
-    requestOptions: GraphRequestCreateParameters = {},
+    { requestOptions = {} }: CreateStatusOptionsType = {},
   ) {
     const body: CloudOutgoingStatusMessage = {
       messaging_product: "whatsapp",
