@@ -7,7 +7,6 @@
  * @see    https://greatdetail.com
  */
 import AbstractAPI, { AbstractAPIParameters } from "../../API/AbstractAPI.js";
-import EndpointType from "../../API/EndpointType.js";
 import GraphRequest, {
   GraphRequestCreateParameters,
 } from "../../GraphRequest/index.js";
