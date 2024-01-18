@@ -57,7 +57,13 @@ pnpm add @great-detail/whatsapp
 ```bash
 export WHATSAPP_ACCESS_TOKEN=""
 export WHATSAPP_PHONE_NUMBER_ID=""
-npx @great-detail/whatsapp message send text < RECIPIENT > --body="Hello, World!"
+
+# Send a Text Message
+npx @great-detail/whatsapp message send text "<RECIPIENT>" --body="Hello, World!"
+# Note: <RECIPIENT> may be a Phone Number ID - it may not always be the phone number itself.
+
+# Upload a Media File
+npx @great-detail/whatsapp media upload --mime-type="<MIME_TYPE>" < "<FILE_FROM_STDIN>"
 ```
 
 ## Compatibility
