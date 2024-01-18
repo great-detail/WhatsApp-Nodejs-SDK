@@ -1,13 +1,7 @@
 {
   "version": "0.2",
   "language": "en",
-  "dictionaries": [
-    "softwareTerms",
-    "typescript",
-    "node",
-    "filetypes",
-    "npm"
-  ],
+  "dictionaries": ["softwareTerms", "typescript", "node", "filetypes", "npm"],
   "words": [
     "Mutli",
     "webp",
@@ -38,12 +32,6 @@
     "FODS",
     "wamid"
   ],
-  "flagWords": [
-    "hte"
-  ],
-  "ignorePaths": [
-    "tsconfig.tsbuildinfo",
-    "coverage",
-    "cspell.json"
-  ]
+  "flagWords": ["hte"],
+  "ignorePaths": ["tsconfig.tsbuildinfo", "coverage", "cspell.json"]
 }
