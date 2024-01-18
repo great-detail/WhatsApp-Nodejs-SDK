@@ -8,9 +8,11 @@
     "moduleResolution": "NodeNext",
     "checkJs": true,
     "strict": true,
-    "types": ["node", "jest"],
+    "types": [
+      "node",
+      "jest"
+    ],
     "declaration": true,
-    "incremental": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "esModuleInterop": true,
@@ -21,5 +23,7 @@
     "sourceMap": true,
     "declarationDir": "dist/"
   },
-  "include": ["src/**/*"]
+  "include": [
+    "src/**/*"
+  ]
 }
