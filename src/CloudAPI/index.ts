@@ -87,9 +87,6 @@ export default class CloudAPI extends AbstractAPI {
     ...parameters
   }: CloudAPIMediaParameters = {}) {
     const businessID = overrideBusinessID ?? this._businessID;
-    if (!businessID) {
-      throw new CloudAPIInvalidParameterError("Business ID is required");
-    }
 
     return new CloudAPIMedia({
       logger: logger ?? this._logger,

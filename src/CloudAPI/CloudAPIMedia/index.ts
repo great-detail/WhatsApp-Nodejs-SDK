@@ -14,6 +14,7 @@ import { MediaID, WhatsAppPhoneNumberID } from "../../ID.js";
 import { DeleteMediaResponse } from "../../Media/DeleteMedia.js";
 import MediaURL from "../../Media/MediaURL.js";
 import { CloudOutgoingMediaResponse } from "../../Media/OutgoingMedia/CloudOutgoingMedia.js";
+import CloudAPIInvalidParameterError from "../CloudAPIInvalidParameterError.js";
 
 export interface UploadMediaOptions {
   mimeType: string;
@@ -70,6 +71,10 @@ export default class CloudAPIMedia extends AbstractAPI {
       requestOptions = {},
     }: UploadMediaOptions,
   ) {
+    if (!this._businessID) {
+      throw new CloudAPIInvalidParameterError("Business ID is required");
+    }
+
     const formData = new FormData();
     formData.set("messaging_product", "whatsapp");
     formData.set("file", file, overrideFilename);
