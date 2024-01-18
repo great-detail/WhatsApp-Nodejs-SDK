@@ -88,14 +88,16 @@ export default class GraphRequest<T = unknown> extends Request {
    */
   public static create<T = unknown>(
     endpoint: EndpointType,
-    options: GraphRequestCreateParameters = {},
+    {
+      version = GraphRequest.DEFAULT_GRAPH_VERSION,
+      baseUrl = GraphRequest.DEFAULT_GRAPH_API_BASE_URL,
+      ...options
+    }: GraphRequestCreateParameters = {},
   ) {
-    const url = new URL(
-      [options.version ? "/" : "", options.version, endpoint].join(""),
-      options.baseUrl,
-    );
+    const path = [version ? "/" : "", version, endpoint].join("");
+    const url = new URL(path, baseUrl);
 
-    return new GraphRequest<T>(url, options);
+    return new GraphRequest<T>(url, { version, ...options });
   }
 
   /**
