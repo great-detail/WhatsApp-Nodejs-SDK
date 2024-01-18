@@ -1,7 +1,12 @@
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "jest", "jsdoc", "unicorn"],
+  "plugins": [
+    "@typescript-eslint",
+    "jest",
+    "jsdoc",
+    "unicorn"
+  ],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
@@ -12,7 +17,6 @@
     "ecmaVersion": "latest"
   },
   "rules": {
-    "no-console": "warn",
     "jsdoc/require-param-type": "off",
     "jsdoc/require-returns-type": "off",
     "jsdoc/tag-lines": [
