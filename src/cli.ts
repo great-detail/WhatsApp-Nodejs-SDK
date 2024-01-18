@@ -10,7 +10,6 @@
  */
 import { CloudAPI } from "./index.js";
 import { program } from "commander";
-import { setTimeout } from "node:timers/promises";
 import { oraPromise, type Options as OraOptions } from "ora";
 
 const oraOptions: OraOptions = {
