@@ -23,7 +23,11 @@ An unofficial SDK for Meta's WhatsApp Business Messaging APIs - Cloud API.
 <!-- TODO -->
 
 ```typescript
+// ESM
 import CloudAPI from "@great-detail/whatsapp";
+
+// CJS
+const CloudAPI = require("@great-detail/whatsapp").default;
 
 // const businessID = "123...etc...";
 const sdk = new CloudAPI({ businessID });
@@ -38,11 +42,11 @@ const sendReceipt = await message.send();
 Install the WhatsApp Business Platform SDK:
 
 ```bash
-# Yarn:
-yarn add @great-detail/WhatsApp-Nodejs-SDK
-
 # NPM:
 npm install @great-detail/WhatsApp-Nodejs-SDK
+
+# Yarn:
+yarn add @great-detail/WhatsApp-Nodejs-SDK
 
 # PNPM:
 pnpm add @great-detail/WhatsApp-Nodejs-SDK
