@@ -24,7 +24,7 @@ export interface UploadMediaOptions {
 
 export interface GetMediaURLMediaOptions {
   /**
-   * Busines phone number ID.
+   * Business phone number ID.
    * If included, the operation will only be processed if the ID matches the
    * ID of the business phone number that the media was uploaded on.
    */
@@ -34,7 +34,7 @@ export interface GetMediaURLMediaOptions {
 
 export interface DeleteMediaOptions {
   /**
-   * Busines phone number ID.
+   * Business phone number ID.
    * If included, the operation will only be processed if the ID matches the
    * ID of the business phone number that the media was uploaded on.
    */
