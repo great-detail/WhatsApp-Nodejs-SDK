@@ -43,18 +43,22 @@ Install the WhatsApp Business Platform SDK:
 
 ```bash
 # NPM:
-npm install @great-detail/WhatsApp-Nodejs-SDK
+npm install @great-detail/whatsapp
 
 # Yarn:
-yarn add @great-detail/WhatsApp-Nodejs-SDK
+yarn add @great-detail/whatsapp
 
 # PNPM:
-pnpm add @great-detail/WhatsApp-Nodejs-SDK
+pnpm add @great-detail/whatsapp
 ```
 
-## Configuration
+## CLI Usage
 
-<!-- TODO -->
+```bash
+export WHATSAPP_ACCESS_TOKEN=""
+export WHATSAPP_PHONE_NUMBER_ID=""
+npx @great-detail/whatsapp message send text <RECIPIENT> --body="Hello, World!"
+```
 
 ## Compatibility
 
