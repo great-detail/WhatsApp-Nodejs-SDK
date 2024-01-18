@@ -16,7 +16,7 @@ describe("GraphRequest", () => {
       const endpoint = "/";
 
       // Act
-      const graphRequest = new GraphRequest(endpoint);
+      const graphRequest = GraphRequest.create(endpoint);
 
       // Assert
       expect(graphRequest.url).toBe(
@@ -29,7 +29,7 @@ describe("GraphRequest", () => {
       const endpoint = "/example/path/to/something";
 
       // Act
-      const graphRequest = new GraphRequest(endpoint);
+      const graphRequest = GraphRequest.create(endpoint);
 
       // Assert
       expect(graphRequest.url).toBe(
@@ -43,7 +43,7 @@ describe("GraphRequest", () => {
       const version = "v0.0";
 
       // Act
-      const graphRequest = new GraphRequest(endpoint, { version });
+      const graphRequest = GraphRequest.create(endpoint, { version });
 
       // Assert
       expect(graphRequest.url).toBe(
@@ -57,20 +57,20 @@ describe("GraphRequest", () => {
       const baseUrl = "https://example.com";
 
       // Act
-      const graphRequest = new GraphRequest(endpoint, { baseUrl });
+      const graphRequest = GraphRequest.create(endpoint, { baseUrl });
 
       // Assert
       expect(graphRequest.url).toBe(`${baseUrl}/v18.0${endpoint}`);
     });
 
-    test("When setting a header via the constructor, the header should be accessible as a parameter as expected", () => {
+    test("When setting a header, the header should be accessible as a parameter as expected", () => {
       // Arrange
       const endpoint = "/path/to/something";
       const headerName = "Content-Type";
       const headerValue = "application/json";
 
       // Act
-      const graphRequest = new GraphRequest(endpoint, {
+      const graphRequest = GraphRequest.create(endpoint, {
         headers: { [headerName]: headerValue },
       });
 
@@ -83,7 +83,7 @@ describe("GraphRequest", () => {
     test("When the send method is called, then the response should be returned as expected", async () => {
       // Arrange
       const endpoint = "/path/to/something";
-      const graphRequest = new GraphRequest(endpoint);
+      const graphRequest = GraphRequest.create(endpoint);
       const mockFetch = jest.fn<typeof fetch>();
       const body = "exampleBody";
       mockFetch.mockReturnValue(Promise.resolve(new Response(body)));
@@ -104,7 +104,7 @@ describe("GraphRequest", () => {
     test("When send-time header overrides are set, then the headers should be merged as expected at send-time", async () => {
       // Arrange
       const endpoint = "/path/to/something";
-      const graphRequest = new GraphRequest(endpoint, {
+      const graphRequest = GraphRequest.create(endpoint, {
         headers: {
           "x-will-merge": "willMerge",
           "Content-Type": "willBeOverridden",
