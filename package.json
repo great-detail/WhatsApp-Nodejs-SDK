@@ -95,5 +95,9 @@
   "publishConfig": {
     "access": "public",
     "provenance": true
+  },
+  "dependencies": {
+    "commander": "^11.1.0",
+    "ora": "^8.0.1"
   }
 }
