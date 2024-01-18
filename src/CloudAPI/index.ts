@@ -8,6 +8,9 @@
  */
 import AbstractAPI, { AbstractAPIParameters } from "../API/AbstractAPI.js";
 import CloudAPIInvalidParameterError from "./CloudAPIInvalidParameterError.js";
+import CloudAPIMedia, {
+  CloudAPIMediaParameters,
+} from "./CloudAPIMedia/index.js";
 import CloudAPIMessage, {
   CloudAPIMessageParameters as BaseCloudAPIMessageParameters,
 } from "./CloudAPIMessage/index.js";
@@ -44,7 +47,6 @@ export default class CloudAPI extends AbstractAPI {
   /**
    * Message API.
    *
-   * @since 6.0.0
    * @example
    * // Send a Text Message
    * const message = sdk.message({ businessID: "123456" })
@@ -63,6 +65,33 @@ export default class CloudAPI extends AbstractAPI {
     }
 
     return new CloudAPIMessage({
+      logger: logger ?? this._logger,
+      businessID,
+      ...parameters,
+    });
+  }
+
+  /**
+   * Media API.
+   *
+   * @example
+   * // Upload Media
+   * const upload = sdk.media({ businessID: "123456" })
+   *   .upload(file);
+   * const uploadReceipt = await upload.send();
+   * console.log(uploadReceipt);
+   */
+  public media({
+    businessID: overrideBusinessID,
+    logger,
+    ...parameters
+  }: CloudAPIMediaParameters = {}) {
+    const businessID = overrideBusinessID ?? this._businessID;
+    if (!businessID) {
+      throw new CloudAPIInvalidParameterError("Business ID is required");
+    }
+
+    return new CloudAPIMedia({
       logger: logger ?? this._logger,
       businessID,
       ...parameters,
