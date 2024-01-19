@@ -10,7 +10,6 @@
     "strict": true,
     "types": ["node", "jest"],
     "declaration": true,
-    "incremental": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "esModuleInterop": true,

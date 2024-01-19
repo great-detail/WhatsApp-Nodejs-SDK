@@ -24,7 +24,7 @@ const config: Config = {
     "^(\\.{1,2}/.*)\\.js$": "$1",
   },
   transform: {
-    "^.+\\.(t|j)sx?$": "@swc/jest",
+    "^.+\\.(t|j)sx?$": "ts-jest",
   },
 };
 

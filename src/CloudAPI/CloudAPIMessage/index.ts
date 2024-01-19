@@ -26,6 +26,10 @@ import CloudOutgoingStatusMessage from "../../Message/Status/StatusMessage/Cloud
 import CloudOutgoingMessageTemplate from "../../Message/Template/MessageTemplate/Outgoing/CloudOutgoingMessageTemplate.js";
 import CloudOutgoingMessageText from "../../Message/Text/MessageText/Outgoing/CloudOutgoingMessageText.js";
 
+export interface CloudAPIMessageParameters extends AbstractAPIParameters {
+  businessID: string;
+}
+
 type CreateMessagePayload =
   | CloudOutgoingMessageMedia
   | CloudOutgoingMessageContact[]
@@ -34,25 +38,27 @@ type CreateMessagePayload =
   | CloudOutgoingMessageTemplate
   | CloudOutgoingMessageText;
 
+export interface CreateStatusOptionsType {
+  requestOptions?: GraphRequestCreateParameters;
+}
+
 type CreateMessageOptionsType = {
   toNumber: string;
   replyMessageId?: string;
   requestOptions?: GraphRequestCreateParameters;
 };
 
-export interface CloudAPIMessageParameters extends AbstractAPIParameters {
-  businessID: string;
-}
-
 /**
  * WhatsApp Message API.
  *
- * @since 2.0.0
  * @author Dom Webber <dom.webber@hotmail.com>
  */
 export default class CloudAPIMessage extends AbstractAPI {
-  constructor(parameters: CloudAPIMessageParameters) {
+  protected _businessID: string;
+
+  constructor({ businessID, ...parameters }: CloudAPIMessageParameters) {
     super(parameters);
+    this._businessID = businessID;
   }
 
   protected getEndpoint(): EndpointType {
@@ -62,19 +68,18 @@ export default class CloudAPIMessage extends AbstractAPI {
   /**
    * Create Status Message.
    *
-   * @since 2.0.0
    * @author Dom Webber <dom.webber@hotmail.com>
    */
   public createStatus(
     payload: CloudOutgoingMessageStatus,
-    requestOptions: GraphRequestCreateParameters = {},
+    { requestOptions = {} }: CreateStatusOptionsType = {},
   ) {
     const body: CloudOutgoingStatusMessage = {
       messaging_product: "whatsapp",
       ...payload,
     };
 
-    return new GraphRequest<CloudOutgoingMessageStatusResponse>(
+    return GraphRequest.create<CloudOutgoingMessageStatusResponse>(
       this.getEndpoint(),
       {
         logger: this._logger,
@@ -92,7 +97,6 @@ export default class CloudAPIMessage extends AbstractAPI {
   /**
    * Create Message.
    *
-   * @since 2.0.0
    * @author Dom Webber <dom.webber@hotmail.com>
    */
   public createMessage<T extends OutgoingMessageType>(
@@ -110,31 +114,33 @@ export default class CloudAPIMessage extends AbstractAPI {
 
     if (replyMessageId) body["context"] = { message_id: replyMessageId };
 
-    return new GraphRequest<CloudOutgoingMessageResponse>(this.getEndpoint(), {
-      logger: this._logger,
-      ...requestOptions,
-      method: "POST",
-      body: JSON.stringify(body),
-      headers: {
-        ...requestOptions.headers,
-        "Content-Type": "application/json",
+    return GraphRequest.create<CloudOutgoingMessageResponse>(
+      this.getEndpoint(),
+      {
+        logger: this._logger,
+        ...requestOptions,
+        method: "POST",
+        body: JSON.stringify(body),
+        headers: {
+          ...requestOptions.headers,
+          "Content-Type": "application/json",
+        },
       },
-    });
+    );
   }
 
   protected _shorthandAlias<
     T extends OutgoingMessageType,
     P extends CreateMessagePayload,
   >(type: T) {
-    const shorthandAliasFunction = function (
-      this: CloudAPIMessage,
+    const shorthandAliasFunction = (
       payload: P,
       options: CreateMessageOptionsType,
-    ) {
+    ) => {
       return this.createMessage(type, payload, options);
     };
 
-    return shorthandAliasFunction.bind(this);
+    return shorthandAliasFunction;
   }
 
   public audio = this._shorthandAlias(OutgoingMessageType.Audio);

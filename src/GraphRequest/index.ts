@@ -12,11 +12,12 @@ import { Logger } from "winston";
 
 export interface GraphRequestParameters extends RequestInit {
   version?: string;
-  baseUrl?: string;
   logger?: Logger;
 }
 
-export interface GraphRequestCreateParameters extends GraphRequestParameters {}
+export interface GraphRequestCreateParameters extends GraphRequestParameters {
+  baseUrl?: string;
+}
 
 export interface GraphRequestSendParameters {
   /**
@@ -66,49 +67,39 @@ export default class GraphRequest<T = unknown> extends Request {
    *
    * @since 6.5.0
    */
-  public readonly version: string;
-
-  /**
-   * Graph API endpoint.
-   *
-   * @since 6.5.0
-   */
-  public readonly endpoint: string;
-
-  /**
-   * Graph API base URL.
-   *
-   * @since 6.5.0
-   */
-  public readonly baseUrl: string;
+  public readonly version?: string;
 
   public constructor(
-    endpoint: EndpointType,
-    {
-      logger,
-      version = GraphRequest.DEFAULT_GRAPH_VERSION,
-      baseUrl = GraphRequest.DEFAULT_GRAPH_API_BASE_URL,
-      ...requestInit
-    }: GraphRequestParameters = {},
+    url: string | URL,
+    { logger, version, ...requestInit }: GraphRequestParameters = {},
   ) {
-    const url = new URL(
-      [version ? "/" : "", version, endpoint].join(""),
-      baseUrl,
-    );
-
     super(url, requestInit);
     this.version = version;
-    this.endpoint = endpoint;
-    this.baseUrl = baseUrl;
 
     logger?.http(`${url.toString()} ${JSON.stringify(requestInit)}`);
+  }
+
+  /**
+   * Create Graph Request.
+   */
+  public static create<T = unknown>(
+    endpoint: EndpointType,
+    {
+      version = GraphRequest.DEFAULT_GRAPH_VERSION,
+      baseUrl = GraphRequest.DEFAULT_GRAPH_API_BASE_URL,
+      ...options
+    }: GraphRequestCreateParameters = {},
+  ) {
+    const path = [version ? "/" : "", version, endpoint].join("");
+    const url = new URL(path, baseUrl);
+
+    return new GraphRequest<T>(url, { version, ...options });
   }
 
   /**
    * Send Request using Fetch.
    *
    * @since 2.0.0
-   * @author Dom Webber <dom.webber@hotmail.com>
    */
   public async send({
     fetch: fetchAlternative = fetch,

@@ -36,3 +36,10 @@ export type WhatsAppPhoneNumberID = string;
  * @since 4.2.0
  */
 export type MessageID = string;
+
+/**
+ * WhatsApp Media ID.
+ *
+ * @since 6.7.0
+ */
+export type MediaID = string;

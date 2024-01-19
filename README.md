@@ -23,7 +23,11 @@ An unofficial SDK for Meta's WhatsApp Business Messaging APIs - Cloud API.
 <!-- TODO -->
 
 ```typescript
+// ESM
 import CloudAPI from "@great-detail/whatsapp";
+
+// CJS
+const CloudAPI = require("@great-detail/whatsapp").default;
 
 // const businessID = "123...etc...";
 const sdk = new CloudAPI({ businessID });
@@ -38,19 +42,35 @@ const sendReceipt = await message.send();
 Install the WhatsApp Business Platform SDK:
 
 ```bash
-# Yarn:
-yarn add @great-detail/WhatsApp-Nodejs-SDK
-
 # NPM:
-npm install @great-detail/WhatsApp-Nodejs-SDK
+npm install @great-detail/whatsapp
+
+# Yarn:
+yarn add @great-detail/whatsapp
 
 # PNPM:
-pnpm add @great-detail/WhatsApp-Nodejs-SDK
+pnpm add @great-detail/whatsapp
 ```
 
-## Configuration
+## CLI Usage
 
-<!-- TODO -->
+```bash
+export WHATSAPP_ACCESS_TOKEN=""
+export WHATSAPP_PHONE_NUMBER_ID=""
+
+# Send a Text Message
+npx @great-detail/whatsapp message send text "<RECIPIENT>" --body="Hello, World!"
+# Note: <RECIPIENT> may be a Phone Number ID - it may not always be the phone number itself.
+
+# Upload a Media File
+npx @great-detail/whatsapp media upload --mime-type="<MIME_TYPE>" < "<FILE_FROM_STDIN>"
+
+# Get a Media File's URL
+npx @great-detail/whatsapp media get-url "<MEDIA_ID>"
+# Note: With WHATSAPP_PHONE_NUMBER_ID set, the request will check if the media
+# is available for that phone number. To prevent this check, unset the env var
+# or add --phone-number-id="" to the command.
+```
 
 ## Compatibility
 
