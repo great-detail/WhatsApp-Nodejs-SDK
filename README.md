@@ -64,6 +64,12 @@ npx @great-detail/whatsapp message send text "<RECIPIENT>" --body="Hello, World!
 
 # Upload a Media File
 npx @great-detail/whatsapp media upload --mime-type="<MIME_TYPE>" < "<FILE_FROM_STDIN>"
+
+# Get a Media File's URL
+npx @great-detail/whatsapp media get-url "<MEDIA_ID>"
+# Note: With WHATSAPP_PHONE_NUMBER_ID set, the request will check if the media
+# is available for that phone number. To prevent this check, unset the env var
+# or add --phone-number-id="" to the command.
 ```
 
 ## Compatibility
