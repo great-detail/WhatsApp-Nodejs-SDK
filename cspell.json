@@ -33,5 +33,5 @@
     "wamid"
   ],
   "flagWords": ["hte"],
-  "ignorePaths": ["tsconfig.tsbuildinfo", "coverage", "cspell.json"]
+  "ignorePaths": ["tsconfig.tsbuildinfo", "coverage", "cspell.json", "dist"]
 }
