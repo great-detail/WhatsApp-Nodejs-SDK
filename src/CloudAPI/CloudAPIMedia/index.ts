@@ -178,8 +178,9 @@ export default class CloudAPIMedia extends AbstractAPI {
     { requestOptions = {} }: DownloadMediaOptions = {},
   ) {
     return new GraphRequest(mediaURL, {
-      method: "GET",
+      logger: this._logger,
       ...requestOptions,
+      method: "GET",
     });
   }
 }
