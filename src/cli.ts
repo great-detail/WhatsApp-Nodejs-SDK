@@ -35,23 +35,22 @@ mediaCommand
   )
   .action(async (mediaURL, options) => {
     const result = await oraPromise(
-      async () => {
-        const request = sdk
+      () =>
+        sdk
           .media({ businessID: options.phoneNumberId })
-          .download(mediaURL);
-        console.log(request.headers);
-        return await request.send({
-          headers: {
-            // Authorization: `Bearer ${options.accessToken}`,
-          },
-        });
-      },
+          .download(mediaURL)
+          .send({
+            headers: {
+              Authorization: `Bearer ${options.accessToken}`,
+            },
+          }),
       { ...oraOptions, text: "Downloading media" },
     );
 
     const arrayBuffer = await result.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
     process.stdout.write(buffer);
+    console.log();
   });
 
 mediaCommand
@@ -70,16 +69,15 @@ mediaCommand
   )
   .action(async (mediaID, options) => {
     const result = await oraPromise(
-      async () => {
-        return await sdk
+      () =>
+        sdk
           .media({ businessID: options.phoneNumberId })
           .delete(mediaID, { phoneNumberID: options.phoneNumberId })
           .send({
             headers: {
               Authorization: `Bearer ${options.accessToken}`,
             },
-          });
-      },
+          }),
       { ...oraOptions, text: "Deleting media" },
     );
 
@@ -102,16 +100,15 @@ mediaCommand
   )
   .action(async (mediaID, options) => {
     const result = await oraPromise(
-      async () => {
-        return await sdk
+      () =>
+        sdk
           .media({ businessID: options.phoneNumberId })
           .getURL(mediaID, { phoneNumberID: options.phoneNumberId })
           .send({
             headers: {
               Authorization: `Bearer ${options.accessToken}`,
             },
-          });
-      },
+          }),
       { ...oraOptions, text: "Getting media URL" },
     );
 
@@ -134,12 +131,12 @@ mediaCommand
     WHATSAPP_ACCESS_TOKEN,
   )
   .action(async (options) => {
-    const result = await oraPromise(
-      async () => {
-        const stdinBuffer = await getStdin.buffer();
-        const stdinBlob = new Blob([stdinBuffer], { type: options.mimeType });
+    const stdinBuffer = await getStdin.buffer();
+    const stdinBlob = new Blob([stdinBuffer], { type: options.mimeType });
 
-        return await sdk
+    const result = await oraPromise(
+      () =>
+        sdk
           .media({ businessID: options.phoneNumberId })
           .upload(stdinBlob, {
             mimeType: options.mimeType,
@@ -149,8 +146,7 @@ mediaCommand
             headers: {
               Authorization: `Bearer ${options.accessToken}`,
             },
-          });
-      },
+          }),
       { ...oraOptions, text: "Uploading media" },
     );
 
@@ -177,16 +173,15 @@ messageSendCommand
   )
   .action(async (toNumber, options) => {
     const result = await oraPromise(
-      async () => {
-        return await sdk
+      () =>
+        sdk
           .message({ businessID: options.phoneNumberId })
           .text({ body: options.body }, { toNumber })
           .send({
             headers: {
               Authorization: `Bearer ${options.accessToken}`,
             },
-          });
-      },
+          }),
       { ...oraOptions, text: "Sending text message" },
     );
 
