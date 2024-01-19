@@ -26,6 +26,10 @@ import CloudOutgoingStatusMessage from "../../Message/Status/StatusMessage/Cloud
 import CloudOutgoingMessageTemplate from "../../Message/Template/MessageTemplate/Outgoing/CloudOutgoingMessageTemplate.js";
 import CloudOutgoingMessageText from "../../Message/Text/MessageText/Outgoing/CloudOutgoingMessageText.js";
 
+export interface CloudAPIMessageParameters extends AbstractAPIParameters {
+  businessID: string;
+}
+
 type CreateMessagePayload =
   | CloudOutgoingMessageMedia
   | CloudOutgoingMessageContact[]
@@ -44,18 +48,17 @@ type CreateMessageOptionsType = {
   requestOptions?: GraphRequestCreateParameters;
 };
 
-export interface CloudAPIMessageParameters extends AbstractAPIParameters {
-  businessID: string;
-}
-
 /**
  * WhatsApp Message API.
  *
  * @author Dom Webber <dom.webber@hotmail.com>
  */
 export default class CloudAPIMessage extends AbstractAPI {
-  constructor(parameters: CloudAPIMessageParameters) {
+  protected _businessID: string;
+
+  constructor({ businessID, ...parameters }: CloudAPIMessageParameters) {
     super(parameters);
+    this._businessID = businessID;
   }
 
   protected getEndpoint(): EndpointType {

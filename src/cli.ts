@@ -36,14 +36,11 @@ mediaCommand
   .action(async (mediaURL, options) => {
     const result = await oraPromise(
       () =>
-        sdk
-          .media({ businessID: options.phoneNumberId })
-          .download(mediaURL)
-          .send({
-            headers: {
-              Authorization: `Bearer ${options.accessToken}`,
-            },
-          }),
+        sdk.media.download(mediaURL).send({
+          headers: {
+            Authorization: `Bearer ${options.accessToken}`,
+          },
+        }),
       { ...oraOptions, text: "Downloading media" },
     );
 
@@ -70,8 +67,7 @@ mediaCommand
   .action(async (mediaID, options) => {
     const result = await oraPromise(
       () =>
-        sdk
-          .media({ businessID: options.phoneNumberId })
+        sdk.media
           .delete(mediaID, { phoneNumberID: options.phoneNumberId })
           .send({
             headers: {
@@ -101,8 +97,7 @@ mediaCommand
   .action(async (mediaID, options) => {
     const result = await oraPromise(
       () =>
-        sdk
-          .media({ businessID: options.phoneNumberId })
+        sdk.media
           .getURL(mediaID, { phoneNumberID: options.phoneNumberId })
           .send({
             headers: {
@@ -136,9 +131,9 @@ mediaCommand
 
     const result = await oraPromise(
       () =>
-        sdk
-          .media({ businessID: options.phoneNumberId })
+        sdk.media
           .upload(stdinBlob, {
+            phoneNumberID: options.phoneNumberId,
             mimeType: options.mimeType,
             filename: options.filename,
           })
