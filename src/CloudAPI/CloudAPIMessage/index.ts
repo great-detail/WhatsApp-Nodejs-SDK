@@ -27,7 +27,7 @@ import CloudOutgoingMessageTemplate from "../../Message/Template/MessageTemplate
 import CloudOutgoingMessageText from "../../Message/Text/MessageText/Outgoing/CloudOutgoingMessageText.js";
 
 export interface CloudAPIMessageParameters extends AbstractAPIParameters {
-  businessID: string;
+  phoneNumberID: string;
 }
 
 type CreateMessagePayload =
@@ -54,15 +54,15 @@ type CreateMessageOptionsType = {
  * @author Dom Webber <dom.webber@hotmail.com>
  */
 export default class CloudAPIMessage extends AbstractAPI {
-  protected _businessID: string;
+  protected _phoneNumberID: string;
 
-  constructor({ businessID, ...parameters }: CloudAPIMessageParameters) {
+  constructor({ phoneNumberID, ...parameters }: CloudAPIMessageParameters) {
     super(parameters);
-    this._businessID = businessID;
+    this._phoneNumberID = phoneNumberID;
   }
 
   protected getEndpoint(): EndpointType {
-    return `/${this._businessID}/messages`;
+    return `/${this._phoneNumberID}/messages`;
   }
 
   /**

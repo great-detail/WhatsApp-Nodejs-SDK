@@ -170,7 +170,7 @@ messageSendCommand
     const result = await oraPromise(
       () =>
         sdk
-          .message({ businessID: options.phoneNumberId })
+          .message({ phoneNumberID: options.phoneNumberId })
           .text({ body: options.body }, { toNumber })
           .send({
             headers: {

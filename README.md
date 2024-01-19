@@ -29,10 +29,9 @@ import CloudAPI from "@great-detail/whatsapp";
 // CJS
 const CloudAPI = require("@great-detail/whatsapp").default;
 
-// const businessID = "123...etc...";
-const sdk = new CloudAPI({ businessID });
+const sdk = new CloudAPI();
 const message = sdk
-  .message()
+  .message({ phoneNumberID: "123...809" })
   .text({ body: "Hello" }, { toNumber: "1234567890" });
 const sendReceipt = await message.send();
 ```
