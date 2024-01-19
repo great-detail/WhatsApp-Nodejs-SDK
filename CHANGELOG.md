@@ -7,8 +7,8 @@
 - 0c75799: introduce command line interface for operating WhatsApp operations
 - 1341b78: use `tsup` to provide full CJS+ESM transpilation and support
 - 9b095c5: Add media file handling for Image/Video/Document message support
-- 7587307: move requestOptions option for `CloudAPIMessage#createStatus` inside options
-  object. Update use from
+- 7587307: move requestOptions option for `CloudAPIMessage#createStatus` inside
+  options object. Update use from
   `CloudAPIMessage.createStatus(/* ... */, requestOptions)` to
   `CloudAPIMessage.createStatus(/* ... */, { requestOptions })`.
 
