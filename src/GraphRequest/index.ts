@@ -67,15 +67,11 @@ export default class GraphRequest<T = unknown> extends Request {
    *
    * @since 6.5.0
    */
-  public readonly version?: string = GraphRequest.DEFAULT_GRAPH_VERSION;
+  public readonly version?: string;
 
   public constructor(
     url: string | URL,
-    {
-      logger,
-      version = GraphRequest.DEFAULT_GRAPH_VERSION,
-      ...requestInit
-    }: GraphRequestParameters = {},
+    { logger, version, ...requestInit }: GraphRequestParameters = {},
   ) {
     super(url, requestInit);
     this.version = version;
