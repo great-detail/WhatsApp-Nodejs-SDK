@@ -61,6 +61,11 @@ export WHATSAPP_PHONE_NUMBER_ID=""
 npx @great-detail/whatsapp message send text "<RECIPIENT>" --body="Hello, World!"
 # Note: <RECIPIENT> may be a Phone Number ID - it may not always be the phone number itself.
 
+# Send an Image Message
+npx @great-detail/whatsapp message send image "<RECIPIENT>" --media-id="<MEDIA_ID>"
+# Use --filename="..." to set the filename of the image.
+# Use --caption="..." to set a caption on the image.
+
 # Upload a Media File
 npx @great-detail/whatsapp media upload --mime-type="<MIME_TYPE>" < "<FILE_FROM_STDIN>"
 
@@ -69,6 +74,9 @@ npx @great-detail/whatsapp media get-url "<MEDIA_ID>"
 # Note: With WHATSAPP_PHONE_NUMBER_ID set, the request will check if the media
 # is available for that phone number. To prevent this check, unset the env var
 # or add --phone-number-id="" to the command.
+
+# Download a Media File
+npx @great-detail/whatsapp media download "<MEDIA_URL>" > "<FILE_TO_STDOUT>"
 ```
 
 ## Compatibility
