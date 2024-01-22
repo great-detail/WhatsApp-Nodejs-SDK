@@ -5,7 +5,8 @@
 ### Patch Changes
 
 - c2707b1: add `message send media` command
-- 908b5c7: use `cross-fetch`'s `Request` and `Response` over incompatible native objects
+- 908b5c7: use `cross-fetch`'s `Request` and `Response` over incompatible native
+  objects
 
 ## 6.8.1
 
