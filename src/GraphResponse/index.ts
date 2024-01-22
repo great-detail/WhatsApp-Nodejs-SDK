@@ -7,6 +7,7 @@
  * @see    https://greatdetail.com
  */
 import GraphRequest from "../GraphRequest/index.js";
+import { Response } from "cross-fetch";
 
 export interface GraphResponseParameters<T = unknown> extends ResponseInit {
   request?: GraphRequest<T>;

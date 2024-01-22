@@ -8,7 +8,7 @@
  */
 import EndpointType from "../API/EndpointType.js";
 import GraphResponse from "../GraphResponse/index.js";
-import fetch from "cross-fetch";
+import fetch, { Request } from "cross-fetch";
 import { Logger } from "winston";
 
 export interface GraphRequestParameters extends RequestInit {
