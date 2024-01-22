@@ -1,5 +1,13 @@
 # `@great-detail/whatsapp`
 
+## 6.8.1
+
+### Patch Changes
+
+- 074a335: add `cross-fetch` in place of native `fetch` use. Introduces support for
+  browser + node interoperability
+- 6d8be2e: remove bug-related use of `axios` over fetch in favour of `cross-fetch`
+
 ## 6.8.0
 
 ### Minor Changes
