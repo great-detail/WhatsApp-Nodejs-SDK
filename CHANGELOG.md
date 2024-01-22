@@ -1,5 +1,19 @@
 # `@great-detail/whatsapp`
 
+## 6.8.0
+
+### Minor Changes
+
+- c1ab76f: rename `businessID` parameter for `CloudAPIMessage` to `phoneNumberID`
+
+### Patch Changes
+
+- 01c1265: bump `@typescript-eslint/eslint-plugin` from `6.18.1` to `6.19.0`
+- 8334710: bump `prettier` from `3.2.2` to `3.2.4`
+- 82a0892: bump `@typescript-eslint/parser` from `6.18.1` to `6.19.0`
+- 3e7b04d: allow media file downloading via CLI
+- 8b08cfa: bump `@types/node` from `20.11.0` to `20.11.5`
+
 ## 6.7.0
 
 ### Minor Changes
