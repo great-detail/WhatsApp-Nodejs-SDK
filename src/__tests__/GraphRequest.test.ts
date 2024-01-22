@@ -8,6 +8,7 @@
  */
 import GraphRequest from "../GraphRequest/index.js";
 import { describe, test, expect, jest } from "@jest/globals";
+import fetch, { Response } from "cross-fetch";
 
 describe("GraphRequest", () => {
   describe("Construction with varying parameters", () => {
