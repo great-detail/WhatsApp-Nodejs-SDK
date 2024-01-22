@@ -96,7 +96,7 @@ describe("GraphRequest", () => {
 
       // Assert
       expect(mockFetch).toHaveBeenCalled();
-      expect(mockFetch).toHaveBeenCalledWith(graphRequest);
+      expect(mockFetch).toHaveBeenCalledWith(graphRequest.url, graphRequest);
       expect(responseText).toBe(body);
       expect(response.request).toBe(graphRequest);
     });
