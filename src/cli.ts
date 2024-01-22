@@ -13,8 +13,6 @@ import { CloudAPI } from "./index.js";
 import axios from "axios";
 import { program } from "commander";
 import getStdin from "get-stdin";
-import { createWriteStream, writeFileSync } from "node:fs";
-import { URLSearchParams } from "node:url";
 import { oraPromise, type Options as OraOptions } from "ora";
 
 const oraOptions: OraOptions = {
