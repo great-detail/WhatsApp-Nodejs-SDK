@@ -30,7 +30,8 @@
     "FODT",
     "FODP",
     "FODS",
-    "wamid"
+    "wamid",
+    "publint"
   ],
   "flagWords": ["hte"],
   "ignorePaths": ["tsconfig.tsbuildinfo", "coverage", "cspell.json", "dist"]
