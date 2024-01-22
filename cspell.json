@@ -31,7 +31,9 @@
     "FODP",
     "FODS",
     "wamid",
-    "publint"
+    "publint",
+    "lookaside",
+    "fbsbx"
   ],
   "flagWords": ["hte"],
   "ignorePaths": ["tsconfig.tsbuildinfo", "coverage", "cspell.json", "dist"]
