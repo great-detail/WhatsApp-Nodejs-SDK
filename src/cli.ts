@@ -9,8 +9,6 @@
  * @see    https://greatdetail.com
  */
 import { CloudAPI } from "./index.js";
-// import { exec } from "node:child_process";
-import axios from "axios";
 import { program } from "commander";
 import getStdin from "get-stdin";
 import { oraPromise, type Options as OraOptions } from "ora";
@@ -39,8 +37,7 @@ mediaCommand
     // TODO: Use fetch over axios
     const result = await oraPromise(
       () =>
-        axios.get(mediaURL, {
-          responseType: "stream",
+        sdk.media.download(mediaURL).send({
           headers: {
             Authorization: `Bearer ${options.accessToken}`,
           },
@@ -48,23 +45,9 @@ mediaCommand
       { ...oraOptions, text: "Downloading media" },
     );
 
-    result.data.pipe(process.stdout);
-
-    /*
-    await new Promise((resolve) => {
-      exec(
-        `curl --location "${mediaURL}" --header "Authorization: Bearer ${options.accessToken}" > file.png`,
-        (_error, stdout) => resolve(stdout),
-      );
-    });
-
-    fetch(mediaURL, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${options.accessToken}`,
-      },
-    });
-    */
+    const file = await result.arrayBuffer();
+    const fileBuffer = Buffer.from(file);
+    process.stdout.write(fileBuffer);
   });
 
 mediaCommand
