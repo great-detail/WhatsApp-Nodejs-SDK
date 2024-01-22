@@ -4,7 +4,8 @@
 
 ### Minor Changes
 
-- c1ab76f: rename `businessID` parameter for `CloudAPIMessage` to `phoneNumberID`
+- c1ab76f: rename `businessID` parameter for `CloudAPIMessage` to
+  `phoneNumberID`
 
 ### Patch Changes
 
