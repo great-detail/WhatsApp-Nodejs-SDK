@@ -181,7 +181,8 @@ export default class CloudAPIMedia extends AbstractAPI {
       method: "GET",
       headers: {
         ...requestOptions.headers,
-        "User-Agent": "curl/7.64.1",
+        "User-Agent": "node",
+        Host: "lookaside.fbsbx.com",
       },
     });
   }
