@@ -152,6 +152,49 @@ const messageCommand = program.command("message").description("Message");
 const messageSendCommand = messageCommand.command("send");
 
 messageSendCommand
+  .command("image")
+  .description("Send a media message")
+  .argument("<TO_NUMBER>", "To Number")
+  .requiredOption(
+    "--phone-number-id <PHONE_NUMBER_ID>",
+    "From Phone Number ID",
+    WHATSAPP_PHONE_NUMBER_ID,
+  )
+  .requiredOption(
+    "--access-token <ACCESS_TOKEN>",
+    "WhatsApp Access Token",
+    WHATSAPP_ACCESS_TOKEN,
+  )
+  .requiredOption("--media-id <MEDIA_ID>", "Media ID")
+  .option("--filename <FILENAME>", "Filename")
+  .option("--caption <CAPTION>", "Caption")
+  .action(async (toNumber, options) => {
+    const result = await oraPromise(
+      () =>
+        sdk
+          .message({ phoneNumberID: options.phoneNumberId })
+          .image(
+            {
+              id: options.mediaId,
+              filename: options.filename,
+              caption: options.caption,
+            },
+            {
+              toNumber,
+            },
+          )
+          .send({
+            headers: {
+              Authorization: `Bearer ${options.accessToken}`,
+            },
+          }),
+      { ...oraOptions, text: "Sending image" },
+    );
+
+    console.log(await result.json());
+  });
+
+messageSendCommand
   .command("text")
   .description("Send a text message")
   .argument("<TO_NUMBER>", "To Number")
