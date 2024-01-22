@@ -8,6 +8,7 @@
  */
 import EndpointType from "../API/EndpointType.js";
 import GraphResponse from "../GraphResponse/index.js";
+import fetch from "cross-fetch";
 import { Logger } from "winston";
 
 export interface GraphRequestParameters extends RequestInit {
@@ -91,7 +92,7 @@ export default class GraphRequest<T = unknown> extends Request {
     }: GraphRequestCreateParameters = {},
   ) {
     const path = [version ? "/" : "", version, endpoint].join("");
-    const url = new URL(path, baseUrl);
+    const url = new URL(path, baseUrl).toString();
 
     return new GraphRequest<T>(url, { version, ...options });
   }
@@ -112,7 +113,8 @@ export default class GraphRequest<T = unknown> extends Request {
       }
     }
 
-    return await fetchAlternative(this).then(
+    // See: https://github.com/node-fetch/node-fetch/issues/481#issuecomment-592491825
+    return await fetchAlternative(this.url, this).then(
       ({ body, ...responseInit }) =>
         new GraphResponse(body, { request: this, ...responseInit }),
     );
