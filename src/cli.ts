@@ -9,8 +9,12 @@
  * @see    https://greatdetail.com
  */
 import { CloudAPI } from "./index.js";
+// import { exec } from "node:child_process";
+import axios from "axios";
 import { program } from "commander";
 import getStdin from "get-stdin";
+import { createWriteStream, writeFileSync } from "node:fs";
+import { URLSearchParams } from "node:url";
 import { oraPromise, type Options as OraOptions } from "ora";
 
 const oraOptions: OraOptions = {
@@ -34,9 +38,11 @@ mediaCommand
     WHATSAPP_ACCESS_TOKEN,
   )
   .action(async (mediaURL, options) => {
+    // TODO: Use fetch over axios
     const result = await oraPromise(
       () =>
-        sdk.media.download(mediaURL).send({
+        axios.get(mediaURL, {
+          responseType: "stream",
           headers: {
             Authorization: `Bearer ${options.accessToken}`,
           },
@@ -44,10 +50,23 @@ mediaCommand
       { ...oraOptions, text: "Downloading media" },
     );
 
-    const arrayBuffer = await result.arrayBuffer();
-    const buffer = Buffer.from(arrayBuffer);
-    process.stdout.write(buffer);
-    console.log();
+    result.data.pipe(process.stdout);
+
+    /*
+    await new Promise((resolve) => {
+      exec(
+        `curl --location "${mediaURL}" --header "Authorization: Bearer ${options.accessToken}" > file.png`,
+        (_error, stdout) => resolve(stdout),
+      );
+    });
+
+    fetch(mediaURL, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${options.accessToken}`,
+      },
+    });
+    */
   });
 
 mediaCommand
