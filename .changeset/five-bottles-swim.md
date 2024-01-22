@@ -2,4 +2,4 @@
 "@great-detail/whatsapp": patch
 ---
 
-use `cross-fetch` as a ponyfill for browser + node `fetch` support
+remove bug-related use of `axios` over fetch in favour of `cross-fetch`
