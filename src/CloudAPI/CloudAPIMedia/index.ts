@@ -198,9 +198,9 @@ export default class CloudAPIMedia extends AbstractAPI {
    */
   public verifySha256(content: Buffer, sha256: Buffer | string): boolean {
     const calculatedHash = createHash("sha256").update(content).digest();
-    const inputHash = !Buffer.isBuffer(sha256)
-      ? Buffer.from(sha256, "hex")
-      : sha256;
+    const inputHash = Buffer.isBuffer(sha256)
+      ? sha256
+      : Buffer.from(sha256, "hex");
 
     return (
       calculatedHash.length === inputHash.length &&
