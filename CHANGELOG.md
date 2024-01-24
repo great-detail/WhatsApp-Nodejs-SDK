@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 6.8.3
+
+### Patch Changes
+
+- c2b50cf: correct spelling error of `mime_type` in `MediaURL` type
+
 ## 6.8.2
 
 ### Patch Changes
