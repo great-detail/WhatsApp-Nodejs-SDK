@@ -4,8 +4,8 @@
 
 ### Patch Changes
 
-- c2ec105: add `CloudAPIMedia#verifySha256` helper method to ensure downloaded media file
-  integrity
+- c2ec105: add `CloudAPIMedia#verifySha256` helper method to ensure downloaded
+  media file integrity
 
 ## 6.8.3
 
