@@ -1,5 +1,12 @@
 # `@great-detail/whatsapp`
 
+## 6.8.4
+
+### Patch Changes
+
+- c2ec105: add `CloudAPIMedia#verifySha256` helper method to ensure downloaded media file
+  integrity
+
 ## 6.8.3
 
 ### Patch Changes
