@@ -16,7 +16,7 @@ import { MediaID } from "../ID.js";
 export default interface MediaURL {
   messaging_product: "whatsapp";
   url: string;
-  mine_type: string;
+  mime_type: string;
   sha256: string;
   file_size: string | number;
   id: MediaID;
