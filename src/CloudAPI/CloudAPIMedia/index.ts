@@ -14,6 +14,7 @@ import { MediaID, WhatsAppPhoneNumberID } from "../../ID.js";
 import { DeleteMediaResponse } from "../../Media/DeleteMedia.js";
 import MediaURL from "../../Media/MediaURL.js";
 import { CloudOutgoingMediaResponse } from "../../Media/OutgoingMedia/CloudOutgoingMedia.js";
+import { createHash, timingSafeEqual } from "node:crypto";
 
 export interface UploadMediaOptions {
   phoneNumberID: WhatsAppPhoneNumberID;
@@ -185,5 +186,25 @@ export default class CloudAPIMedia extends AbstractAPI {
         Host: "lookaside.fbsbx.com",
       },
     });
+  }
+
+  /**
+   * Verify the SHA-256 Hash from the Media URL.
+   * Once a media file has been downloading using `CloudAPIMedia.download(...)`
+   * it's SHA-256 hash should be verified using this method to ensure its
+   * integrity.
+   *
+   * @since 1.0.0
+   */
+  public verifySha256(content: Buffer, sha256: Buffer | string): boolean {
+    const calculatedHash = createHash("sha256").update(content).digest();
+    const inputHash = !Buffer.isBuffer(sha256)
+      ? Buffer.from(sha256, "hex")
+      : sha256;
+
+    return (
+      calculatedHash.length === inputHash.length &&
+      timingSafeEqual(calculatedHash, inputHash)
+    );
   }
 }
