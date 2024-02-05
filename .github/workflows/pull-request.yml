@@ -2,9 +2,8 @@ name: Pre-Merge Checks
 
 on:
   push:
-    branches:
-      - "**"
-      - "!main"
+    branches-ignore:
+      - "main"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
