@@ -1,5 +1,15 @@
 # `@great-detail/whatsapp`
 
+## 6.8.6
+
+### Patch Changes
+
+- efc4f51: bump `@typescript-eslint/eslint-plugin` from `6.19.1` to `6.20.0`
+- d0fd189: bump `commander` from `11.1.0` to `12.0.0`
+- d0ae090: bump `prettier` from `3.2.4` to `3.2.5`
+- 5dd9cc5: bump `@types/node` from `20.11.10` to `20.11.16`
+- 2024bbf: bump `@types/jest` from `29.5.11` to `29.5.12`
+
 ## 6.8.5
 
 ### Patch Changes
