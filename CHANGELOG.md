@@ -1,5 +1,19 @@
 # `@great-detail/whatsapp`
 
+## 6.9.0
+
+### Minor Changes
+
+- 7f7fece: refactor: decouple SDK from routing for compatibility further than ExpressJS
+
+### Patch Changes
+
+- a1c6cb7: bump `@typescript-eslint/eslint-plugin` from `6.20.0` to `6.21.0`
+- 026d37b: bump `@types/node` from `20.11.16` to `20.11.17`
+- 7119a27: bump `@typescript-eslint/parser` from `6.20.0` to `6.21.0`
+- 769d554: bump `tsup` from `8.0.1` to `8.0.2`
+- 046cb3a: bump `eslint-plugin-unicorn` from `50.0.1` to `51.0.1`
+
 ## 6.8.6
 
 ### Patch Changes
