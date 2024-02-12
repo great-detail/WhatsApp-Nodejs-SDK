@@ -3,16 +3,17 @@
   "language": "en",
   "dictionaries": ["softwareTerms", "typescript", "node", "filetypes", "npm"],
   "words": [
+    "Deregistration",
+    "Fastify",
+    "lcov",
+    "localizable",
     "Mutli",
-    "webp",
     "quickstart",
-    "webber",
+    "subcode",
     "typecheck",
     "unmocked",
-    "lcov",
-    "Deregistration",
-    "subcode",
-    "localizable"
+    "webber",
+    "webp"
   ],
   "ignoreWords": [
     "xddt",
