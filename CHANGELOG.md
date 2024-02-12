@@ -4,7 +4,8 @@
 
 ### Minor Changes
 
-- 7f7fece: refactor: decouple SDK from routing for compatibility further than ExpressJS
+- 7f7fece: refactor: decouple SDK from routing for compatibility further than
+  ExpressJS
 
 ### Patch Changes
 
