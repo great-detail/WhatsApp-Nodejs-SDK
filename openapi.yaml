@@ -203,7 +203,7 @@ components:
       type: http
       scheme: bearer
       description: |
-        For example: `Bearer eyJhbGciOHlXVCJ9.eyJ1c2VyIjoNTIzMDE2Nn0.mEoF0COaO00Z1cANo`
+        For example: `Bearer eyJhxXxxXXxXXxX9.eyJ1c2VyIjoNTIzMDE2Nn0.mEoF0COaO00Z1cANo`
   schemas:
     MessagingProduct:
       type: string
@@ -282,7 +282,7 @@ components:
         addresses:
           type: array
           description: |
-            Full contact address(es) formatted as an addressess object.
+            Full contact address(es) formatted as an addresses object.
           items:
             type: object
             properties:
