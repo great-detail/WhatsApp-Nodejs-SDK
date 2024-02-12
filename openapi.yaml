@@ -1,0 +1,603 @@
+openapi: 3.0.3
+info:
+  title: WhatsApp Business Cloud API
+  version: "18.0"
+  description: |
+    Cloud API, hosted by Meta, allows medium and large businesses to
+    communicate with customers at scale. Using the API, businesses can build
+    systems that connect thousands of customers with agents or bots, enabling
+    both programmatic and manual communication. Additionally, businesses can
+    integrate the API with numerous backend systems, such as CRM and marketing
+    platforms.
+
+servers:
+  - url: https://graph.facebook.com/v18.0
+
+security:
+  - BearerAuth: []
+
+tags:
+  - name: Messages
+    description: Messages
+  - name: Media
+    description: Media
+  - name: Registration
+    description: Registration
+
+paths:
+  # * Messages
+  /{PHONE_NUMBER_ID}/messages:
+    parameters:
+      - name: PHONE_NUMBER_ID
+        in: path
+        required: true
+        schema:
+          $ref: "#/components/schemas/PhoneNumberID"
+
+    post:
+      summary: Send Message
+      operationId: sendMessage
+      tags:
+        - Messages
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - type: object
+                  properties:
+                    messaging_product:
+                      $ref: "#/components/schemas/MessagingProduct"
+                    biz_opaque_callback_data:
+                      type: string
+                      description: |
+                        An arbitrary 256B string, useful for tracking. For
+                        example, you could pass the message template ID in this
+                        field to track your customer's journey starting from
+                        the first message you send. YOu could then track the
+                        ROI of different message template types to determine
+                        the most effective one.
+
+                        Any app subscribed to the messages webhook field on the
+                        WhatsApp Business Account can get this string, as it is
+                        included in statuses object within webhook payloads.
+
+                        Cloud API does not process this field, it just returns
+                        it as part of sent/delivered/read message webhooks.
+                    context:
+                      type: object
+                      properties:
+                        message_id:
+                          $ref: "#/components/schemas/MessageID"
+                          description: |
+                            The ID of a previous message you are replying to.
+                    recipient_type:
+                      $ref: "#/components/schemas/RecipientType"
+                    to:
+                      $ref: "#/components/schemas/PhoneNumberID"
+                    type:
+                      $ref: "#/components/schemas/MessageType"
+                    audio:
+                      $ref: "#/components/schemas/MessageMedia"
+                    contacts:
+                      type: array
+                      items:
+                        $ref: "#/components/schemas/MessageContact"
+                    document:
+                      $ref: "#/components/schemas/MessageMedia"
+                    image:
+                      $ref: "#/components/schemas/MessageMedia"
+                    # TODO: Add interactive type
+                    location:
+                      $ref: "#/components/schemas/MessageLocation"
+                    sticker:
+                      $ref: "#/components/schemas/MessageMedia"
+                    # TODO: Add template type
+                    text:
+                      $ref: "#/components/schemas/MessageText"
+                    video:
+                      $ref: "#/components/schemas/MessageMedia"
+                - type: object
+                  properties:
+                    messaging_product:
+                      $ref: "#/components/schemas/MessagingProduct"
+                    message_id:
+                      $ref: "#/components/schemas/MessageID"
+                    status:
+                      $ref: "#/components/schemas/MessageStatus"
+      responses:
+        "200":
+          $ref: "#/components/responses/SendMessage"
+
+  # * Media
+  /{PHONE_NUMBER_ID}/media:
+    parameters:
+      - name: PHONE_NUMBER_ID
+        in: path
+        required: true
+        schema:
+          $ref: "#/components/schemas/PhoneNumberID"
+
+    post:
+      tags:
+        - Media
+      summary: Upload Media.
+      description: |
+        All media files sent through this endpoint are encrypted and persist
+        for 30 days, unless they are deleted earlier.
+      operationId: uploadMedia
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                messaging_product:
+                  $ref: "#/components/schemas/MessagingProduct"
+                type:
+                  $ref: "#/components/schemas/MediaType"
+                file:
+                  type: string
+                  format: binary
+      responses:
+        "200":
+          $ref: "#/components/responses/UploadMedia"
+
+  /{MEDIA_ID}:
+    parameters:
+      - name: MEDIA_ID
+        in: path
+        required: true
+        schema:
+          $ref: "#/components/schemas/MediaID"
+
+    get:
+      tags:
+        - Media
+      summary: Retrieve Media URL.
+      description: |
+        To retrieve your media's URL, send a GET request to /MEDIA_ID. Use
+        the returned URL to download the media file. Note that clicking this
+        URL (i.e. performing a generic GET) will not return the media; you must
+        include an access token.
+      operationId: getMedia
+      parameters:
+        - name: phone_number_id
+          in: query
+          required: false
+          description: |
+            Business phone number ID. If included, the operation will only be
+            processed if the ID matches the ID of the business phone number
+            that the media was uploaded on.
+          schema:
+            $ref: "#/components/schemas/PhoneNumberID"
+      responses:
+        "200":
+          $ref: "#/components/responses/GetMedia"
+
+    delete:
+      tags:
+        - Media
+      summary: Delete Media.
+      description: |
+        To delete media, make a DELETE call to the ID of the media you want to
+        delete.
+      operationId: deleteMedia
+      parameters:
+        - name: phone_number_id
+          in: query
+          required: false
+          description: |
+            Business phone number ID. If included, the operation will only be
+            processed if the ID matches the ID of the business phone number
+            that the media was uploaded on.
+          schema:
+            $ref: "#/components/schemas/PhoneNumberID"
+      responses:
+        "200":
+          $ref: "#/components/responses/DeleteMedia"
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: |
+        For example: `Bearer eyJhbGciOHlXVCJ9.eyJ1c2VyIjoNTIzMDE2Nn0.mEoF0COaO00Z1cANo`
+  schemas:
+    MessagingProduct:
+      type: string
+      enum:
+        - whatsapp
+      description: The Messaging Product
+
+    AccountID:
+      type: string
+      description: WhatsApp Account ID
+
+    PhoneNumberID:
+      type: string
+      description: Phone Number ID
+
+    MediaID:
+      type: string
+      description: Media ID
+
+    MessageID:
+      type: string
+      description: Message ID
+
+    MessageType:
+      type: string
+      enum:
+        - audio
+        - contacts
+        - document
+        - image
+        - interactive
+        - location
+        - sticker
+        - template
+        - text
+        - video
+
+    MessageLocation:
+      type: object
+      properties:
+        longitude:
+          type: number
+          description: Longitude of the location.
+          example: -0.000500
+        latitude:
+          type: number
+          description: Latitude of the location.
+          example: 51.476852
+        name:
+          type: string
+          description: Name of the location.
+          example: Royal Observatory Greenwich
+        address:
+          type: string
+          description: Address of the location.
+          example: Blackheath Ave, London, SE10 8XJ, UK
+      required:
+        - longitude
+        - latitude
+        - name
+        - address
+
+    MessageText:
+      type: object
+      properties:
+        preview_url:
+          type: boolean
+        body:
+          type: string
+      required:
+        - body
+
+    MessageContact:
+      type: object
+      properties:
+        addresses:
+          type: array
+          description: |
+            Full contact address(es) formatted as an addressess object.
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                example: HOME
+              street:
+                type: string
+                description: |
+                  Street number and name.
+              city:
+                type: string
+                description: |
+                  City name.
+              state:
+                type: string
+                description: |
+                  State abbreviation.
+              zip:
+                type: string
+                description: |
+                  ZIP code.
+              country:
+                type: string
+                description: |
+                  Full country name.
+              country_code:
+                type: string
+                description: |
+                  Two-letter country abbreviation
+                maxLength: 2
+        birthday:
+          type: string
+          format: date
+          description: YYYY-MM-DD formatted string
+        emails:
+          type: array
+          description: |
+            Contact email address(es) formatted as an emails object.
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                example: HOME
+              email:
+                type: string
+                format: email
+                description: Email Address
+        name:
+          type: object
+          description: |
+            Full contact name formatted as a name object.
+          properties:
+            formatted_name:
+              type: string
+              description: |
+                Full name, as it normally appears.
+            first_name:
+              type: string
+              description: First name.
+            last_name:
+              type: string
+              description: Last name.
+            middle_name:
+              type: string
+              description: Middle name.
+            suffix:
+              type: string
+              description: Name suffix.
+            prefix:
+              type: string
+              description: Name prefix.
+              example: Miss
+          required:
+            - formatted_name
+        org:
+          type: object
+          description: |
+            Contact organization information formatted as an org object.
+          properties:
+            company:
+              type: string
+              description: |
+                Name of the contact's company.
+            department:
+              type: string
+              description: |
+                Name of the contact's department.
+            title:
+              type: string
+              description: |
+                Contact's business title.
+              example: Sales Associate
+        phones:
+          type: array
+          description: |
+            Contact phone number(s) formatted as a phone object.
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                example: CELL
+              phone:
+                $ref: "#/components/schemas/PhoneNumberID"
+              wa_id:
+                $ref: "#/components/schemas/AccountID"
+        urls:
+          type: array
+          description: |
+            Contact URL(s) formatted as a urls object.
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                example: HOME
+              url:
+                type: string
+                format: url
+      required:
+        - name
+
+    MessageMedia:
+      type: object
+      properties:
+        id:
+          $ref: "#/components/schemas/MediaID"
+        link:
+          type: string
+          format: url
+          description: |
+            Required when type is audio, document, image, sticker, or video and
+            you are not using an uploaded media ID (i.e. you are hosting the
+            media asset on your public server).
+
+            The protocol and URL of the media to be sent. Use only with
+            HTTP/HTTPS URLs.
+
+            Do not use this field when message type is set to text.
+        caption:
+          type: string
+          description: |
+            Media asset caption. Do not use with audio or sticker media.
+        filename:
+          type: string
+          description: |
+            Describes the filename for the specific document. Use only with
+            document media.
+
+            The extension of the filename will specify what format the document
+            is displayed as in WhatsApp.
+
+    MessageStatus:
+      type: string
+      enum:
+        - read
+        - delivered
+
+    MessageQCStatus:
+      type: string
+      enum:
+        - accepted
+        - held_for_quality_assessment
+
+    RecipientType:
+      type: string
+      enum:
+        - individual
+        - group
+
+    MediaType:
+      type: string
+      description: Type of media file.
+      enum:
+        - audio/aac
+        - audio/mp4
+        - audio/mpeg
+        - audio/amr
+        - audio/ogg
+        - text/plain
+        - application/pdf
+        - application/vnd.ms-powerpoint
+        - application/msword
+        - application/vnd.ms-excel
+        - application/vnd.openxmlformats-officedocument.wordprocessingml.document
+        - application/vnd.openxmlformats-officedocument.presentationml.presentation
+        - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+        - image/jpeg
+        - image/png
+        - video/mp4
+        - video/3pg
+        - image/webp
+
+    Error:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Error type.
+        fbtrace_id:
+          type: string
+          description: |
+            Trace ID you can include when contacting Direct Support. The ID may
+            help to debug the error.
+        error_subcode:
+          type: number
+          description: |
+            Graph API subcode. Not all responses will include a subcode.
+            Deprecated since Graph API v16.0.
+          deprecated: true
+        error_data:
+          type: object
+          properties:
+            messaging_product:
+              $ref: "#/components/schemas/MessagingProduct"
+            details:
+              type: string
+              description: |
+                Error description and a description of the most likely reason
+                for the error. May also contain information in how to address
+                the error, such as which parameter is invalid or what values
+                are acceptable.
+          required:
+            - messaging_product
+            - details
+      required:
+        - type
+        - fbtrace_id
+
+  responses:
+    # * Message
+    SendMessage:
+      description: Send Message Response.
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - type: object
+                properties:
+                  messaging_product:
+                    $ref: "#/components/schemas/MessagingProduct"
+                  error:
+                    $ref: "#/components/schemas/Error"
+                  contacts:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        input:
+                          $ref: "#/components/schemas/PhoneNumberID"
+                        wa_id:
+                          $ref: "#/components/schemas/AccountID"
+                  messages:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          $ref: "#/components/schemas/MessageID"
+                        message_status:
+                          $ref: "#/components/schemas/MessageQCStatus"
+                required:
+                  - messaging_product
+              - type: object
+                properties:
+                  success:
+                    type: boolean
+
+    # * Media
+    UploadMedia:
+      description: |
+        A successful response returns an object with the uploaded media's ID.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+
+    GetMedia:
+      description: |
+        A successful response includes an object with a media url. The URL is
+        only valid for 5 minutes.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              messaging_product:
+                $ref: "#/components/schemas/MessagingProduct"
+              id:
+                $ref: "#/components/schemas/MediaID"
+              url:
+                type: string
+                format: url
+              mime_type:
+                $ref: "#/components/schemas/MediaType"
+              sha256:
+                type: string
+                pattern: "^[a-fA-F0-9]{64}$"
+              file_size:
+                # TODO: Work out whether this is a string or a number
+                oneOf:
+                  - type: string
+                  - type: number
+
+    DeleteMedia:
+      description: Sample Response.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
