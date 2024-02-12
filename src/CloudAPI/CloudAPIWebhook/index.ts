@@ -13,7 +13,7 @@ import { createHmac } from "node:crypto";
 
 export interface IncomingRequest {
   query: Record<string, string>;
-  body: Buffer;
+  body?: string;
   headers: Record<string, string>;
 }
 
@@ -125,11 +125,15 @@ export default class CloudAPIWebhook extends AbstractAPI {
    * @author Dom Webber <dom.webber@hotmail.com>
    * @throws {CloudWebhookAPIError}
    * @example
-   * // Receive Registration Requests via Webhook
+   * // ExpressJS:
    * app.get(
    *   "/path/to/webhook",
    *   async (req, res) => {
-   *     const reg = await sdk.webhook.register(req, res);
+   *     const reg = await sdk.webhook.register({
+   *       query: req.query,
+   *       body: req.body,
+   *       headers: req.headers,
+   *     });
    *     // DIY: Check the reg.verifyToken value
    *     if (reg.verifyToken !== "abcd") {
    *       return res.end(reg.reject());
@@ -137,6 +141,24 @@ export default class CloudAPIWebhook extends AbstractAPI {
    *     return res.end(reg.accept());
    *   }
    * );
+   * @example
+   * // Fastify
+   * fastify.route({
+   *   method: "GET",
+   *   url: "/path/to/webhook",
+   *   handler: (request, reply) => {
+   *     const reg = await sdk.webhook.register({
+   *       query: request.query,
+   *       body: JSON.stringify(request.body),
+   *       headers: request.headers,
+   *     });
+   *     // DIY: Check the reg.verifyToken value
+   *     if (reg.verifyToken !== "abcd") {
+   *       return reply.send(reg.reject());
+   *     }
+   *     return reply.send(reg.accept());
+   *   }
+   * })
    */
   public async register(
     request: IncomingRequest,
@@ -202,11 +224,16 @@ export default class CloudAPIWebhook extends AbstractAPI {
    * @since 4.0.0
    * @author Dom Webber <dom.webber@hotmail.com>
    * @example
-   * // Receive a Message via Webhook
+   * // ExpressJS
+   * app.use(express.raw());
    * app.post(
    *   "/path/to/webhook",
    *   async (req, res) => {
-   *     const event = sdk.webhook.eventNotification(req, res);
+   *     const event = sdk.webhook.eventNotification({
+   *       query: req.query,
+   *       body: req.body.toString(),
+   *       headers: req.headers,
+   *     });
    *     // DIY: Load the Meta App Secret
    *     event.verifyIntegrity("abcd-app-secret");
    *     if (someFailedCondition) {
@@ -215,6 +242,25 @@ export default class CloudAPIWebhook extends AbstractAPI {
    *     return res.end(event.accept());
    *   }
    * );
+   * @example
+   * // Fastify
+   * fastify.route({
+   *   method: "POST",
+   *   url: "/path/to/webhook",
+   *   handler: (request, reply) => {
+   *     const event = sdk.webhook.eventNotification({
+   *       query: request.query,
+   *       body: JSON.stringify(req.body),
+   *       headers: request.headers,
+   *     });
+   *     // DIY: Load the Meta App Secret
+   *     event.verifyIntegrity("abcd-app-secret");
+   *     if (someFailedCondition) {
+   *       return reply.send(event.reject());
+   *     }
+   *     return reply.send(event.accept());
+   *   }
+   * });
    */
   public async eventNotification(
     request: IncomingRequest,
@@ -230,8 +276,12 @@ export default class CloudAPIWebhook extends AbstractAPI {
       throw CloudAPIWebhookError.invalidXHubSignature();
     }
 
+    if (!request.body) {
+      throw CloudAPIWebhookError.missingBody();
+    }
+
     // Async request body buffering
-    const bodyString = request.body.toString("utf8");
+    const bodyString = Buffer.from(request.body).toString("utf8");
     const eventNotification: EventNotificationType = JSON.parse(bodyString);
 
     const checkIntegrity = (appSecret: string) => {
