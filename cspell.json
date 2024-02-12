@@ -1,18 +1,25 @@
 {
   "version": "0.2",
   "language": "en",
-  "dictionaries": ["softwareTerms", "typescript", "node", "filetypes", "npm"],
+  "dictionaries": [
+    "softwareTerms",
+    "typescript",
+    "node",
+    "filetypes",
+    "npm"
+  ],
   "words": [
+    "Deregistration",
+    "Fastify",
+    "lcov",
+    "localizable",
     "Mutli",
-    "webp",
     "quickstart",
-    "webber",
+    "subcode",
     "typecheck",
     "unmocked",
-    "lcov",
-    "Deregistration",
-    "subcode",
-    "localizable"
+    "webber",
+    "webp"
   ],
   "ignoreWords": [
     "xddt",
@@ -35,6 +42,13 @@
     "lookaside",
     "fbsbx"
   ],
-  "flagWords": ["hte"],
-  "ignorePaths": ["tsconfig.tsbuildinfo", "coverage", "cspell.json", "dist"]
+  "flagWords": [
+    "hte"
+  ],
+  "ignorePaths": [
+    "tsconfig.tsbuildinfo",
+    "coverage",
+    "cspell.json",
+    "dist"
+  ]
 }
