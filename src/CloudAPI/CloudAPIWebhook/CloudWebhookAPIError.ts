@@ -38,6 +38,17 @@ export default class CloudAPIWebhookError extends Error {
   }
 
   /**
+   * Missing Request Body.
+   * This error occurs when the incoming request for a webhook event
+   * notification is missing a body.
+   *
+   * @since 6.9.0
+   */
+  public static missingBody() {
+    return new this("No body received in request");
+  }
+
+  /**
    * Invalid Hub Challenge.
    * This error occurs when the `hub.challenge` query parameter is not set to a
    * valid value, including if the value is unset.
