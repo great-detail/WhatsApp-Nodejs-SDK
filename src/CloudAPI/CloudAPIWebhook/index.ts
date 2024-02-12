@@ -10,7 +10,12 @@ import AbstractAPI from "../../API/AbstractAPI.js";
 import { EventNotificationType } from "../../EventNotification/index.js";
 import CloudAPIWebhookError from "./CloudWebhookAPIError.js";
 import { createHmac } from "node:crypto";
-import { IncomingMessage, ServerResponse } from "node:http";
+
+export interface IncomingRequest {
+  query: Record<string, string>;
+  body: Buffer;
+  headers: Record<string, string>;
+}
 
 export interface WebhookAPIRegisterReturn {
   /**
@@ -34,8 +39,7 @@ export interface WebhookAPIRegisterReturn {
 
   /**
    * Accept the Webhook Registration.
-   * This should be the **last** step in your request handler as it may call
-   * `req.end()`.
+   * This should be the **last** step in your request handler.
    *
    * @since 4.0.0
    * @example
@@ -43,12 +47,11 @@ export interface WebhookAPIRegisterReturn {
    * // Within your request handler:
    * return reg.accept();
    */
-  accept: () => ServerResponse;
+  accept: () => unknown;
 
   /**
    * Reject the Webhook Registration.
-   * This should be the **last** step in your request handler as it may call
-   * `req.end()`.
+   * This should be the **last** step in your request handler.
    *
    * @since 4.0.0
    * @example
@@ -56,15 +59,14 @@ export interface WebhookAPIRegisterReturn {
    * // Within your request handler:
    * return reg.reject();
    */
-  reject: () => ServerResponse;
+  reject: () => unknown;
 }
 
 export interface WebhookAPIEventNotificationReturn {
   eventNotification: EventNotificationType;
   /**
    * Accept the Incoming Webhook
-   * This should be the **last** step in your request handler as it may call
-   * `req.end()`.
+   * This should be the **last** step in your request handler.
    *
    * @since 4.0.0
    * @example
@@ -72,12 +74,11 @@ export interface WebhookAPIEventNotificationReturn {
    * // Within your request handler:
    * return event.accept();
    */
-  accept: () => ServerResponse;
+  accept: () => unknown;
 
   /**
    * Reject the Incoming Webhook.
-   * This should be the **last** step in your request handler as it may call
-   * `req.end()`.
+   * This should be the **last** step in your request handler.
    *
    * @since 4.0.0
    * @example
@@ -85,7 +86,7 @@ export interface WebhookAPIEventNotificationReturn {
    * // Within your request handler:
    * return event.reject();
    */
-  reject: () => ServerResponse;
+  reject: () => unknown;
 
   /**
    * Check the integrity of the request body.
@@ -131,37 +132,36 @@ export default class CloudAPIWebhook extends AbstractAPI {
    *     const reg = await sdk.webhook.register(req, res);
    *     // DIY: Check the reg.verifyToken value
    *     if (reg.verifyToken !== "abcd") {
-   *       return reg.reject();
+   *       return res.end(reg.reject());
    *     }
-   *     return reg.accept();
+   *     return res.end(reg.accept());
    *   }
    * );
    */
   public async register(
-    request: IncomingMessage,
-    response: ServerResponse,
+    request: IncomingRequest,
   ): Promise<WebhookAPIRegisterReturn> {
-    this._logger?.http(`Received Webhook Registration: "${request.url}"`);
+    this._logger?.http(
+      `Received Webhook Registration: "${JSON.stringify(request)}"`,
+    );
 
-    const url = request.url
-      ? new URL(request.url, `http://${request.headers.host}`)
-      : undefined;
-    if (!url) {
-      throw CloudAPIWebhookError.invalidURL();
-    }
+    const hubMode = request.query["hub.mode"] ?? undefined;
 
-    const hubMode = url.searchParams.get("hub.mode") ?? undefined;
+    this._logger?.debug("Checking hub.mode query parameter");
     if (!hubMode || hubMode !== "subscribe") {
       throw CloudAPIWebhookError.invalidHubMode(hubMode);
     }
 
-    const hubChallenge = url.searchParams.get("hub.challenge") ?? undefined;
+    const hubChallenge = request.query["hub.challenge"] ?? undefined;
+
+    this._logger?.debug("Checking hub.challenge query parameter");
     if (!hubChallenge) {
       throw CloudAPIWebhookError.invalidHubChallenge(hubChallenge);
     }
 
-    const hubVerifyToken =
-      url.searchParams.get("hub.verify_token") ?? undefined;
+    const hubVerifyToken = request.query["hub.verify_token"] ?? undefined;
+
+    this._logger?.debug("Checking hub.verify_token query parameter");
     if (!hubVerifyToken) {
       throw CloudAPIWebhookError.invalidVerifyToken();
     }
@@ -182,7 +182,7 @@ export default class CloudAPIWebhook extends AbstractAPI {
        */
       accept: () => {
         this._logger?.debug("Accepting Webhook Registration");
-        return response.end(hubChallenge);
+        return hubChallenge;
       },
 
       /**
@@ -190,7 +190,7 @@ export default class CloudAPIWebhook extends AbstractAPI {
        */
       reject: () => {
         this._logger?.debug("Rejecting Webhook Registration");
-        return response.end();
+        return;
       },
     };
   }
@@ -210,17 +210,18 @@ export default class CloudAPIWebhook extends AbstractAPI {
    *     // DIY: Load the Meta App Secret
    *     event.verifyIntegrity("abcd-app-secret");
    *     if (someFailedCondition) {
-   *       return event.reject();
+   *       return res.end(event.reject());
    *     }
-   *     return event.accept();
+   *     return res.end(event.accept());
    *   }
    * );
    */
   public async eventNotification(
-    request: IncomingMessage,
-    response: ServerResponse,
+    request: IncomingRequest,
   ): Promise<WebhookAPIEventNotificationReturn> {
-    this._logger?.http(`Received Webhook Event Notification: "${request.url}"`);
+    this._logger?.http(
+      `Received Webhook Event Notification: "${JSON.stringify(request)}"`,
+    );
 
     const xHubSignature = request.headers["x-hub-signature-256"]
       ?.toString()
@@ -230,26 +231,7 @@ export default class CloudAPIWebhook extends AbstractAPI {
     }
 
     // Async request body buffering
-    const bodyBuffer = await new Promise<Buffer>((resolve, reject) => {
-      let cumulativeSize = 0;
-      const bodyBufferChunks: Buffer[] = [];
-
-      request
-        .on("data", (chunk) => {
-          bodyBufferChunks.push(chunk);
-          cumulativeSize = cumulativeSize + chunk.length;
-
-          if (cumulativeSize > 1e6) {
-            reject(CloudAPIWebhookError.excessiveRequestBodySize());
-          }
-        })
-        .on("end", () => {
-          resolve(Buffer.concat(bodyBufferChunks));
-        })
-        .on("error", reject);
-    });
-
-    const bodyString = bodyBuffer.toString("utf8");
+    const bodyString = request.body.toString("utf8");
     const eventNotification: EventNotificationType = JSON.parse(bodyString);
 
     const checkIntegrity = (appSecret: string) => {
@@ -290,7 +272,7 @@ export default class CloudAPIWebhook extends AbstractAPI {
        */
       accept: () => {
         this._logger?.debug("Accepting Webhook Event Notification");
-        return response.end();
+        return;
       },
 
       /**
@@ -298,7 +280,7 @@ export default class CloudAPIWebhook extends AbstractAPI {
        */
       reject: () => {
         this._logger?.debug("Rejecting Webhook Event Notification");
-        return response.end();
+        return;
       },
     };
   }
