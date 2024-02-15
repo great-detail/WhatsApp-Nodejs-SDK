@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 6.9.1
+
+### Patch Changes
+
+- 2d71b9f: feat: check SHA-1 integrity signature in addition to SHA-256 signature
+
 ## 6.9.0
 
 ### Minor Changes
