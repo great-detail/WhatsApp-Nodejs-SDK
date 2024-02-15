@@ -4,7 +4,8 @@
 
 ### Patch Changes
 
-- 2d71b9f: feat: check SHA-1 integrity signature in addition to SHA-256 signature
+- 2d71b9f: feat: check SHA-1 integrity signature in addition to SHA-256
+  signature
 
 ## 6.9.0
 
