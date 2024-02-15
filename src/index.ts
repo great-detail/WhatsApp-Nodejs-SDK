@@ -10,4 +10,7 @@
 export { default, default as CloudAPI } from "./CloudAPI/index.js";
 export { default as IncomingMessageType } from "./Message/MessageType/IncomingMessageType.js";
 export { default as OutgoingMessageType } from "./Message/MessageType/OutgoingMessageType.js";
-export type { WebhookAPIRegisterReturn } from "./CloudAPI/CloudAPIWebhook/index.js";
+export type {
+  WebhookAPIRegisterReturn,
+  WebhookAPIEventNotificationReturn,
+} from "./CloudAPI/CloudAPIWebhook/index.js";
