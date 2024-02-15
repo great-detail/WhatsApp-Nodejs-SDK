@@ -269,10 +269,17 @@ export default class CloudAPIWebhook extends AbstractAPI {
       `Received Webhook Event Notification: "${JSON.stringify(request)}"`,
     );
 
-    const xHubSignature = request.headers["x-hub-signature-256"]
+    const xHubSignature1 = request.headers["x-hub-signature"]
+      ?.toString()
+      .replace("sha1=", "");
+    if (xHubSignature1) {
+      throw CloudAPIWebhookError.invalidXHubSignature();
+    }
+
+    const xHubSignature256 = request.headers["x-hub-signature-256"]
       ?.toString()
       .replace("sha256=", "");
-    if (!xHubSignature) {
+    if (!xHubSignature256) {
       throw CloudAPIWebhookError.invalidXHubSignature();
     }
 
@@ -285,16 +292,25 @@ export default class CloudAPIWebhook extends AbstractAPI {
     const eventNotification: EventNotificationType = JSON.parse(bodyString);
 
     const checkIntegrity = (appSecret: string) => {
-      const generatedSignature = createHmac("sha256", appSecret)
+      const generatedSignature256 = createHmac("sha256", appSecret)
         .update(bodyString)
         .digest("hex");
 
-      const isAuthentic = xHubSignature === generatedSignature;
+      const isAuthentic256 = xHubSignature256 === generatedSignature256;
       this._logger?.debug(
-        `Comparing signatures for integrity check: "${xHubSignature}" === "${generatedSignature}" (${isAuthentic})`,
+        `Comparing SHA-256 signatures for integrity check: "${xHubSignature256}" === "${generatedSignature256}" (${isAuthentic256})`,
       );
 
-      return isAuthentic;
+      const generatedSignature1 = createHmac("sha1", appSecret)
+        .update(bodyString)
+        .digest("hex");
+
+      const isAuthentic1 = xHubSignature1 === generatedSignature1;
+      this._logger?.debug(
+        `Comparing SHA-1 signatures for integrity check: "${xHubSignature1}" === "${generatedSignature1}" (${isAuthentic1})`,
+      );
+
+      return isAuthentic256;
     };
 
     return {
