@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 6.9.4
+
+### Patch Changes
+
+- f73b51a: feat: export `WebhookAPIEventNotificationReturn`
+
 ## 6.9.3
 
 ### Patch Changes
