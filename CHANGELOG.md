@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 6.9.3
+
+### Patch Changes
+
+- fe3dd22: feat: export `WebhookAPIRegisterReturn`
+
 ## 6.9.2
 
 ### Patch Changes
