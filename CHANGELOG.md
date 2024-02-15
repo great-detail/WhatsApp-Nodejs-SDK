@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 6.9.2
+
+### Patch Changes
+
+- 803fb4e: revert: remove SHA-1 integrity checking
+
 ## 6.9.1
 
 ### Patch Changes
