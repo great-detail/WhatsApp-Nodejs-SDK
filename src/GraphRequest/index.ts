@@ -61,7 +61,7 @@ export default class GraphRequest<T = unknown> extends Request {
    *
    * @since 4.0.0
    */
-  public static DEFAULT_GRAPH_VERSION = "v18.0";
+  public static DEFAULT_GRAPH_VERSION = "v19.0";
 
   /**
    * Graph API version.
