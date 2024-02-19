@@ -1,5 +1,16 @@
 # `@great-detail/whatsapp`
 
+## 6.9.5
+
+### Patch Changes
+
+- 78fded2: bump `eslint-plugin-jsdoc` from `48.0.4` to `48.1.0`
+- c9dacdf: bump `eslint-plugin-jest` from `27.6.3` to `27.9.0`
+- 4b2931a: update default Graph API version from `v18` to `v19`
+- 36afbc1: bump `@typescript-eslint/eslint-plugin` from `6.21.0` to `7.0.0`
+- f9546d3: bump `@types/node` from `20.11.17` to `20.11.19`
+- 79a8a1f: update `@typescript-eslint/parser` from `6.21.0` to `7.0.1`
+
 ## 6.9.4
 
 ### Patch Changes
