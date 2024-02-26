@@ -1,5 +1,15 @@
 # `@great-detail/whatsapp`
 
+## 6.9.6
+
+### Patch Changes
+
+- 2327b8e: bump `@typescript-eslint/parser` from `7.0.1` to `7.0.2`
+- dd5833a: bump `@typescript-eslint/eslint-plugin` from `7.0.1` to `7.0.2`
+- b156d58: Bumps `eslint-plugin-jsdoc` from `48.1.0` to `48.2.0`
+- 2e2dda1: bump `eslint` from `8.56.0` to `8.57.0`
+- 2f2e265: bump `@types/node` from `20.11.19` to `20.11.20`
+
 ## 6.9.5
 
 ### Patch Changes
