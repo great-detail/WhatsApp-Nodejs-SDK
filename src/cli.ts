@@ -34,7 +34,6 @@ mediaCommand
     WHATSAPP_ACCESS_TOKEN,
   )
   .action(async (mediaURL, options) => {
-    // TODO: Use fetch over axios
     const result = await oraPromise(
       () =>
         sdk.media.download(mediaURL).send({
