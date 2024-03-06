@@ -4,12 +4,6 @@
 
 ### Patch Changes
 
-- 819b690: add JSR publishing
-
-## 6.9.7
-
-### Patch Changes
-
 - dbe8c3c: bump `cspell` from `8.4.0` to `8.5.0`
 - b851748: bump `@typescript-eslint/eslint-plugin` from `7.0.2` to `7.1.0`
 - a4aa74f: bump `@types/node` from `20.11.20` to `20.11.24`

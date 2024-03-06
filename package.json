@@ -71,7 +71,7 @@
     "prettier": "prettier --check .",
     "prettier:dev": "prettier --write .",
     "publint": "publint",
-    "release": "changeset publish && npx jsr publish",
+    "release": "changeset publish",
     "test": "npm-run-all jest",
     "tsup": "tsup --entry src/index.ts --entry src/cli.ts --format cjs,esm --minify --dts",
     "typecheck": "tsc --noEmit"
