@@ -1,5 +1,15 @@
 # `@great-detail/whatsapp`
 
+## 6.9.7
+
+### Patch Changes
+
+- dbe8c3c: bump `cspell` from `8.4.0` to `8.5.0`
+- b851748: bump `@typescript-eslint/eslint-plugin` from `7.0.2` to `7.1.0`
+- a4aa74f: bump `@types/node` from `20.11.20` to `20.11.24`
+- 1ba1314: bump `winston` from `3.11.0` to `3.12.0`
+- 66a68ab: bump `@typescript-eslint/parser` from `7.0.2` to `7.1.0`
+
 ## 6.9.6
 
 ### Patch Changes
