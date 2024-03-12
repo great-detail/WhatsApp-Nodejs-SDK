@@ -4,32 +4,20 @@
 
 ### Patch Changes
 
-- dbe8c3c: bump `cspell` from `8.4.0` to `8.5.0`
-- b851748: bump `@typescript-eslint/eslint-plugin` from `7.0.2` to `7.1.0`
-- a4aa74f: bump `@types/node` from `20.11.20` to `20.11.24`
-- 1ba1314: bump `winston` from `3.11.0` to `3.12.0`
-- 66a68ab: bump `@typescript-eslint/parser` from `7.0.2` to `7.1.0`
+- dbe8c3c: bump dependencies
 
 ## 6.9.6
 
 ### Patch Changes
 
-- 2327b8e: bump `@typescript-eslint/parser` from `7.0.1` to `7.0.2`
-- dd5833a: bump `@typescript-eslint/eslint-plugin` from `7.0.1` to `7.0.2`
-- b156d58: Bumps `eslint-plugin-jsdoc` from `48.1.0` to `48.2.0`
-- 2e2dda1: bump `eslint` from `8.56.0` to `8.57.0`
-- 2f2e265: bump `@types/node` from `20.11.19` to `20.11.20`
+- 2327b8e: bump dependencies
 
 ## 6.9.5
 
 ### Patch Changes
 
-- 78fded2: bump `eslint-plugin-jsdoc` from `48.0.4` to `48.1.0`
-- c9dacdf: bump `eslint-plugin-jest` from `27.6.3` to `27.9.0`
+- 78fded2: bump dependencies
 - 4b2931a: update default Graph API version from `v18` to `v19`
-- 36afbc1: bump `@typescript-eslint/eslint-plugin` from `6.21.0` to `7.0.0`
-- f9546d3: bump `@types/node` from `20.11.17` to `20.11.19`
-- 79a8a1f: update `@typescript-eslint/parser` from `6.21.0` to `7.0.1`
 
 ## 6.9.4
 
@@ -65,31 +53,19 @@
 
 ### Patch Changes
 
-- a1c6cb7: bump `@typescript-eslint/eslint-plugin` from `6.20.0` to `6.21.0`
-- 026d37b: bump `@types/node` from `20.11.16` to `20.11.17`
-- 7119a27: bump `@typescript-eslint/parser` from `6.20.0` to `6.21.0`
-- 769d554: bump `tsup` from `8.0.1` to `8.0.2`
-- 046cb3a: bump `eslint-plugin-unicorn` from `50.0.1` to `51.0.1`
+- a1c6cb7: bump dependencies
 
 ## 6.8.6
 
 ### Patch Changes
 
-- efc4f51: bump `@typescript-eslint/eslint-plugin` from `6.19.1` to `6.20.0`
-- d0fd189: bump `commander` from `11.1.0` to `12.0.0`
-- d0ae090: bump `prettier` from `3.2.4` to `3.2.5`
-- 5dd9cc5: bump `@types/node` from `20.11.10` to `20.11.16`
-- 2024bbf: bump `@types/jest` from `29.5.11` to `29.5.12`
+- efc4f51: bump dependencies
 
 ## 6.8.5
 
 ### Patch Changes
 
-- 46c53b4: bump `eslint-plugin-jsdoc` from `48.0.2` to `48.0.4`
-- 8e13346: bump `ts-jest` from `29.1.1` to `29.1.2`
-- cb34307: bump `@typescript-eslint/eslint-plugin` from `6.19.0` to `6.19.1`
-- 73a38fe: bump `@typescript-eslint/parser` from `6.19.0` to `6.20.0`
-- 6f55773: bump `@types/node` from `20.11.5` to `20.11.10`
+- 46c53b4: bump dependencies
 
 ## 6.8.4
 
@@ -130,11 +106,8 @@
 
 ### Patch Changes
 
-- 01c1265: bump `@typescript-eslint/eslint-plugin` from `6.18.1` to `6.19.0`
-- 8334710: bump `prettier` from `3.2.2` to `3.2.4`
-- 82a0892: bump `@typescript-eslint/parser` from `6.18.1` to `6.19.0`
+- 01c1265: bump dependencies
 - 3e7b04d: allow media file downloading via CLI
-- 8b08cfa: bump `@types/node` from `20.11.0` to `20.11.5`
 
 ## 6.7.0
 
@@ -158,11 +131,7 @@
 
 ### Patch Changes
 
-- b534212: bump @great-detail/prettier-config from 0.0.2 to 0.1.1
-- 786e136: bump eslint-plugin-jest from 27.6.1 to 27.6.3
-- fe2b66d: bump @types/node from 20.10.7 to 20.11.0
-- 5a0c1d0: bump prettier from 3.1.1 to 3.2.2
-- 4971ff7: bump nock from 13.4.0 to 13.5.0
+- b534212: bump dependencies
 
 ## 6.6.2
 
@@ -174,12 +143,7 @@
 
 ### Patch Changes
 
-- 2ec69a4: build(deps-dev): bump @typescript-eslint/eslint-plugin from 6.16.0 to
-  6.18.0
-- fb266a5: build(deps-dev): bump eslint-plugin-jest from 27.6.0 to 27.6.1
-- f14d9c1: build(deps-dev): bump @typescript-eslint/parser from 6.16.0 to 6.18.0
-- 28fe340: build(deps-dev): bump cspell from 8.3.0 to 8.3.2
-- 1ddedd1: build(deps-dev): bump eslint-plugin-jsdoc from 47.0.1 to 48.0.2
+- 2ec69a4: bump dependencies
 
 ## 6.6.0
 
@@ -282,11 +246,7 @@
 
 ### Patch Changes
 
-- 8056f1f: build(deps-dev): bump eslint-plugin-jsdoc from 46.9.1 to 47.0.1
-- d43be6c: build(deps-dev): bump @types/node from 20.10.5 to 20.10.6
-- 22a9199: build(deps-dev): bump cspell from 8.2.4 to 8.3.0
-- a8c9102: build(deps-dev): bump @swc/core from 1.3.101 to 1.3.102
-- cbc468f: build(deps-dev): bump @eslint/eslintrc from 2.1.4 to 3.0.0
+- 8056f1f: bump dependencies
 
 ## 6.3.1
 
@@ -314,12 +274,7 @@
 
 ### Patch Changes
 
-- 53b72ae: build(deps-dev): bump @types/jest from 29.5.10 to 29.5.11
-- 6d13401: build(deps-dev): bump cspell from 8.1.3 to 8.2.4
-- 9e4d740: build(deps-dev): bump @typescript-eslint/parser from 6.13.2 to 6.16.0
-- 1027c91: build(deps-dev): bump eslint from 8.55.0 to 8.56.0
-- 45ed5be: build(deps-dev): bump @typescript-eslint/eslint-plugin from 6.13.2 to
-  6.15.0
+- 53b72ae: bump dependencies
 
 ## 6.1.0
 
@@ -335,10 +290,7 @@
 
 ### Patch Changes
 
-- 914d664: bump `eslint-plugin-jsdoc` from `46.9.0` to `46.9.1`
-- 47046d2: bump `@babel/core` from `7.23.5` to `7.23.6`
-- 79d4d78: bump `@types/node` from `20.10.3` to `20.10.5`
-- de6edf3: bump `@babel/preset-env` from `7.23.5` to `7.23.6`
+- 914d664: bump dependencies
 
 ## 6.0.2
 
