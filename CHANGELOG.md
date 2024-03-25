@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 6.9.10
+
+### Patch Changes
+
+- ac20c25: bump dependencies
+
 ## 6.9.9
 
 ### Patch Changes
