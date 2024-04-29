@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 6.9.12
+
+### Patch Changes
+
+- e2e31d8: bump dependencies
+
 ## 6.9.11
 
 ### Patch Changes
