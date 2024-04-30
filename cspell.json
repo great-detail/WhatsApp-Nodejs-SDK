@@ -34,7 +34,14 @@
     "wamid",
     "publint",
     "lookaside",
-    "fbsbx"
+    "fbsbx",
+    "Blackheath",
+    "msword",
+    "openxmlformats",
+    "officedocument",
+    "presentationml",
+    "spreadsheetml",
+    "wordprocessingml"
   ],
   "flagWords": ["hte"],
   "ignorePaths": ["tsconfig.tsbuildinfo", "coverage", "cspell.json", "dist"]
