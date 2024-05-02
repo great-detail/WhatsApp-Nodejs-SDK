@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 6.9.14
+
+### Patch Changes
+
+- 634faaf: bump typescript
+
 ## 6.9.13
 
 ### Patch Changes
