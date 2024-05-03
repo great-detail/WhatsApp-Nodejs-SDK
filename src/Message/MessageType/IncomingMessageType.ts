@@ -15,6 +15,7 @@ enum IncomingMessageType {
   Interactive = "interactive", // for list and reply button messages.
   Location = "location", // for location messages.
   Reaction = "sticker", // for reaction messages.
+  // eslint-disable-next-line @typescript-eslint/no-duplicate-enum-values
   Sticker = "sticker", // for sticker messages.
   Template = "template", // for template messages. Text and media (images and documents) message templates are supported.
   Text = "text", // for text messages.
