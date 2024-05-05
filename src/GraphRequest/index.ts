@@ -6,10 +6,11 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import EndpointType from "../API/EndpointType.js";
-import GraphResponse from "../GraphResponse/index.js";
+
 import fetch, { Request } from "cross-fetch";
 import { Logger } from "winston";
+import EndpointType from "../API/EndpointType.js";
+import GraphResponse from "../GraphResponse/index.js";
 
 export interface GraphRequestParameters extends RequestInit {
   version?: string;
@@ -115,8 +116,7 @@ export default class GraphRequest<T = unknown> extends Request {
 
     // See: https://github.com/node-fetch/node-fetch/issues/481#issuecomment-592491825
     return await fetchAlternative(this.url, this).then(
-      ({ body, ...responseInit }) =>
-        new GraphResponse(body, { request: this, ...responseInit }),
+      (response) => new GraphResponse(response, { request: this }),
     );
   }
 }

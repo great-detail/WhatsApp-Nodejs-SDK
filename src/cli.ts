@@ -8,10 +8,11 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import { CloudAPI } from "./index.js";
 import { program } from "commander";
 import getStdin from "get-stdin";
-import { oraPromise, type Options as OraOptions } from "ora";
+import { oraPromise } from "ora";
+import { CloudAPI } from "./index.js";
+import type { Options as OraOptions } from "ora";
 
 const oraOptions: OraOptions = {
   spinner: "simpleDotsScrolling",
@@ -44,7 +45,7 @@ mediaCommand
       { ...oraOptions, text: "Downloading media" },
     );
 
-    const file = await result.arrayBuffer();
+    const file = await result.response.arrayBuffer();
     const fileBuffer = Buffer.from(file);
     process.stdout.write(fileBuffer);
   });

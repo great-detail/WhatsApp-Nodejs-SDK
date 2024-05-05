@@ -6,9 +6,10 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
-import GraphRequest from "../GraphRequest/index.js";
-import { describe, test, expect, jest } from "@jest/globals";
+
+import { describe, expect, jest, test } from "@jest/globals";
 import fetch, { Response } from "cross-fetch";
+import GraphRequest from "../GraphRequest/index.js";
 
 describe("GraphRequest", () => {
   describe("Construction with varying parameters", () => {
@@ -93,7 +94,7 @@ describe("GraphRequest", () => {
       const response = await graphRequest.send({
         fetch: mockFetch,
       });
-      const responseText = await response.text();
+      const responseText = await response.response.text();
 
       // Assert
       expect(mockFetch).toHaveBeenCalled();
