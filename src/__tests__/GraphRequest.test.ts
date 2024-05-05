@@ -100,7 +100,7 @@ describe("GraphRequest", () => {
       expect(mockFetch).toHaveBeenCalled();
       expect(mockFetch).toHaveBeenCalledWith(
         graphRequest.request.url,
-        graphRequest,
+        graphRequest.request,
       );
       expect(responseText).toBe(body);
       expect(response.request).toBe(graphRequest);
