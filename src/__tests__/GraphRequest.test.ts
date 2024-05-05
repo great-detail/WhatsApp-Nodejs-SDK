@@ -21,7 +21,7 @@ describe("GraphRequest", () => {
       const graphRequest = GraphRequest.create(endpoint);
 
       // Assert
-      expect(graphRequest.url).toBe(
+      expect(graphRequest.request.url).toBe(
         `https://graph.facebook.com/v19.0${endpoint}`,
       );
     });
@@ -34,7 +34,7 @@ describe("GraphRequest", () => {
       const graphRequest = GraphRequest.create(endpoint);
 
       // Assert
-      expect(graphRequest.url).toBe(
+      expect(graphRequest.request.url).toBe(
         `https://graph.facebook.com/v19.0${endpoint}`,
       );
     });
@@ -48,7 +48,7 @@ describe("GraphRequest", () => {
       const graphRequest = GraphRequest.create(endpoint, { version });
 
       // Assert
-      expect(graphRequest.url).toBe(
+      expect(graphRequest.request.url).toBe(
         `https://graph.facebook.com/${version}/path/to/something`,
       );
     });
@@ -62,7 +62,7 @@ describe("GraphRequest", () => {
       const graphRequest = GraphRequest.create(endpoint, { baseUrl });
 
       // Assert
-      expect(graphRequest.url).toBe(`${baseUrl}/v19.0${endpoint}`);
+      expect(graphRequest.request.url).toBe(`${baseUrl}/v19.0${endpoint}`);
     });
 
     test("When setting a header, the header should be accessible as a parameter as expected", () => {
@@ -77,7 +77,7 @@ describe("GraphRequest", () => {
       });
 
       // Assert
-      expect(graphRequest.headers.get(headerName)).toBe(headerValue);
+      expect(graphRequest.request.headers.get(headerName)).toBe(headerValue);
     });
   });
 
@@ -98,7 +98,10 @@ describe("GraphRequest", () => {
 
       // Assert
       expect(mockFetch).toHaveBeenCalled();
-      expect(mockFetch).toHaveBeenCalledWith(graphRequest.url, graphRequest);
+      expect(mockFetch).toHaveBeenCalledWith(
+        graphRequest.request.url,
+        graphRequest,
+      );
       expect(responseText).toBe(body);
       expect(response.request).toBe(graphRequest);
     });
@@ -127,11 +130,13 @@ describe("GraphRequest", () => {
       // Assert
       expect(mockFetch).toHaveBeenCalled();
       expect(response.request).toBe(graphRequest);
-      expect(response.request?.headers.get("Content-Type")).toBe(
+      expect(response.request?.request.headers.get("Content-Type")).toBe(
         "application/xml",
       );
-      expect(response.request?.headers.get("x-will-merge")).toBe("willMerge");
-      expect(response.request?.headers.get("x-will-also-merge")).toBe(
+      expect(response.request?.request.headers.get("x-will-merge")).toBe(
+        "willMerge",
+      );
+      expect(response.request?.request.headers.get("x-will-also-merge")).toBe(
         "willAlsoMerge",
       );
     });

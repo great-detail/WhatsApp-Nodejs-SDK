@@ -49,7 +49,7 @@ export interface GraphRequestSendParameters {
  * @since 2.0.0
  * @author Dom Webber <dom.webber@hotmail.com>
  */
-export default class GraphRequest<T = unknown> extends Request {
+export default class GraphRequest<T = unknown> {
   /**
    * Default base URL for the Facebook Graph API.
    *
@@ -70,14 +70,14 @@ export default class GraphRequest<T = unknown> extends Request {
    * @since 6.5.0
    */
   public readonly version?: string;
+  public request: Request;
 
   public constructor(
     url: string | URL,
     { logger, version, ...requestInit }: GraphRequestParameters = {},
   ) {
-    super(url, requestInit);
+    this.request = new Request(url, requestInit);
     this.version = version;
-
     logger?.http(`${url.toString()} ${JSON.stringify(requestInit)}`);
   }
 
@@ -110,12 +110,12 @@ export default class GraphRequest<T = unknown> extends Request {
     if (requestInit.headers) {
       const parsedHeaders = new Headers(requestInit.headers);
       for (const [key, value] of parsedHeaders) {
-        this.headers.set(key, value);
+        this.request.headers.set(key, value);
       }
     }
 
     // See: https://github.com/node-fetch/node-fetch/issues/481#issuecomment-592491825
-    return await fetchAlternative(this.url, this).then(
+    return await fetchAlternative(this.request.url, this.request).then(
       (response) => new GraphResponse(response, { request: this }),
     );
   }
