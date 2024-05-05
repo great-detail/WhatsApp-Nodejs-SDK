@@ -1,5 +1,15 @@
 # `@great-detail/whatsapp`
 
+## 6.10.0
+
+### Minor Changes
+
+- 8db15ae: encapsulate request and response objects. replaces class-based inheritance.
+
+### Patch Changes
+
+- bae08fd: update dependencies
+
 ## 6.9.14
 
 ### Patch Changes
