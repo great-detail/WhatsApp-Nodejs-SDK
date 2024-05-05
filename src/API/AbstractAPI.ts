@@ -6,6 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
+
 import APIInterface from "./APIInterface.js";
 import type { Logger } from "winston";
 

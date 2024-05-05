@@ -6,6 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
+
 import IncomingMessageType from "../MessageType/IncomingMessageType.js";
 import IncomingMessage from "./index.js";
 

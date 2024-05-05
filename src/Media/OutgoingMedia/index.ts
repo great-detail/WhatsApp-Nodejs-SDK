@@ -6,6 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
+
 import { MediaID } from "../../ID.js";
 
 export interface OutgoingMediaResponse {

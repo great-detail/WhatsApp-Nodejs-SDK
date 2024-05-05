@@ -6,6 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
+
 import OutgoingMessageError from "../../Error/OutgoingMessageError.js";
 import { AccountID, MessageID } from "../../ID.js";
 import OutgoingMessageType from "../MessageType/OutgoingMessageType.js";

@@ -6,13 +6,14 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
+
+import { randomBytes } from "node:crypto";
 import AbstractAPI, { AbstractAPIParameters } from "../API/AbstractAPI.js";
 import CloudAPIMedia from "./CloudAPIMedia/index.js";
 import CloudAPIMessage, {
   CloudAPIMessageParameters,
 } from "./CloudAPIMessage/index.js";
 import CloudAPIWebhook from "./CloudAPIWebhook/index.js";
-import { randomBytes } from "node:crypto";
 
 export interface WhatsAppAPIParameters extends AbstractAPIParameters {}
 

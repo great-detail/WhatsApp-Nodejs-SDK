@@ -6,6 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
+
 import CloudIncomingMessageMedia from "../../../MessageMedia/CloudIncomingMessageMedia.js";
 import IncomingMessageDocument from "../Incoming/IncomingMessageDocument.js";
 

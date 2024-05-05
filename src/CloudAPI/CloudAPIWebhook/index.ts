@@ -6,10 +6,11 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
+
+import { createHmac } from "node:crypto";
 import AbstractAPI from "../../API/AbstractAPI.js";
 import { EventNotificationType } from "../../EventNotification/index.js";
 import CloudAPIWebhookError from "./CloudWebhookAPIError.js";
-import { createHmac } from "node:crypto";
 
 export interface IncomingRequest {
   query: Record<string, string>;

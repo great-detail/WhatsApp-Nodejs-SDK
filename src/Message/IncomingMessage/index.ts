@@ -6,14 +6,15 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
+
 import IncomingMessageError from "../../Error/IncomingMessageError.js";
 import { AccountID, MessageID } from "../../ID.js";
+import Message from "../index.js";
 import CloudIncomingMessageContext from "../MessageContext/CloudIncomingMessageContext.js";
 import CloudIncomingMessageIdentity from "../MessageIdentity/CloudIncomingMessageIdentity.js";
 import CloudIncomingMessageReferral from "../MessageReferral/CloudIncomingMessageReferral.js";
 import CloudIncomingMessageSystem from "../MessageSystem/CloudIncomingMessageSystem.js";
 import IncomingMessageType from "../MessageType/IncomingMessageType.js";
-import Message from "../index.js";
 
 export default interface IncomingMessage<
   MessageType extends IncomingMessageType,

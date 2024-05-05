@@ -6,6 +6,8 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
+
+import { createHash, timingSafeEqual } from "node:crypto";
 import AbstractAPI, { AbstractAPIParameters } from "../../API/AbstractAPI.js";
 import GraphRequest, {
   GraphRequestCreateParameters,
@@ -14,7 +16,6 @@ import { MediaID, WhatsAppPhoneNumberID } from "../../ID.js";
 import { DeleteMediaResponse } from "../../Media/DeleteMedia.js";
 import MediaURL from "../../Media/MediaURL.js";
 import { CloudOutgoingMediaResponse } from "../../Media/OutgoingMedia/CloudOutgoingMedia.js";
-import { createHash, timingSafeEqual } from "node:crypto";
 
 export interface UploadMediaOptions {
   phoneNumberID: WhatsAppPhoneNumberID;

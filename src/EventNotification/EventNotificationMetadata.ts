@@ -6,6 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
+
 import { WhatsAppPhoneNumberID } from "../ID.js";
 
 export default interface EventNotificationMetadata {

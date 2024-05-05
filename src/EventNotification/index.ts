@@ -6,6 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
+
 import EventNotificationError from "../Error/EventNotificationError.js";
 import { AccountID } from "../ID.js";
 import CloudIncomingAudioMessage from "../Message/Audio/AudioMessage/CloudIncomingAudioMessage.js";

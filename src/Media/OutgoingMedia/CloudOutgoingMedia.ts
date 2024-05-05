@@ -6,6 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
+
 import { OutgoingMediaResponse } from "./index.js";
 
 export interface CloudOutgoingMediaResponse extends OutgoingMediaResponse {}

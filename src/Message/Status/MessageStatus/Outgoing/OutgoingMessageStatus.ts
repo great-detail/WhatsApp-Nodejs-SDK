@@ -6,6 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
+
 import MessageStatus from "../index.js";
 
 export default interface OutgoingMessageStatus extends MessageStatus {}

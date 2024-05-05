@@ -6,6 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
+
 import CloudOutgoingMessageStatus from "../MessageStatus/Outgoing/CloudOutgoingMessageStatus.js";
 
 type CloudOutgoingStatusMessage = {

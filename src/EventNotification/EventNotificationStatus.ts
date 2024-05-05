@@ -6,6 +6,7 @@
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
+
 import { AccountID, MessageID } from "../ID.js";
 
 export enum EventNotificationStatusReason {
