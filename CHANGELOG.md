@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 6.10.1
+
+### Patch Changes
+
+- 6a13a44: correct encapsulation in GraphRequest class
+
 ## 6.10.0
 
 ### Minor Changes
