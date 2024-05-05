@@ -4,7 +4,8 @@
 
 ### Minor Changes
 
-- 8db15ae: encapsulate request and response objects. replaces class-based inheritance.
+- 8db15ae: encapsulate request and response objects. replaces class-based
+  inheritance.
 
 ### Patch Changes
 
