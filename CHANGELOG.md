@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 6.10.2
+
+### Patch Changes
+
+- 60377af: Update default Meta Graph API version to v20.0
+
 ## 6.10.1
 
 ### Patch Changes
