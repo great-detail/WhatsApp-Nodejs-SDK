@@ -22,7 +22,7 @@ describe("GraphRequest", () => {
 
       // Assert
       expect(graphRequest.request.url).toBe(
-        `https://graph.facebook.com/v19.0${endpoint}`,
+        `https://graph.facebook.com/v20.0${endpoint}`,
       );
     });
 
@@ -35,7 +35,7 @@ describe("GraphRequest", () => {
 
       // Assert
       expect(graphRequest.request.url).toBe(
-        `https://graph.facebook.com/v19.0${endpoint}`,
+        `https://graph.facebook.com/v20.0${endpoint}`,
       );
     });
 
@@ -62,7 +62,7 @@ describe("GraphRequest", () => {
       const graphRequest = GraphRequest.create(endpoint, { baseUrl });
 
       // Assert
-      expect(graphRequest.request.url).toBe(`${baseUrl}/v19.0${endpoint}`);
+      expect(graphRequest.request.url).toBe(`${baseUrl}/v20.0${endpoint}`);
     });
 
     test("When setting a header, the header should be accessible as a parameter as expected", () => {
