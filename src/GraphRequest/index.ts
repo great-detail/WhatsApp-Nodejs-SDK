@@ -62,7 +62,7 @@ export default class GraphRequest<T = unknown> {
    *
    * @since 4.0.0
    */
-  public static DEFAULT_GRAPH_VERSION = "v19.0";
+  public static DEFAULT_GRAPH_VERSION = "v20.0";
 
   /**
    * Graph API version.
