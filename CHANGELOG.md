@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 6.10.4
+
+### Patch Changes
+
+- ac3661b: bump dependencies
+
 ## 6.10.3
 
 ### Patch Changes
