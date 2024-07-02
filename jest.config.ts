@@ -20,12 +20,12 @@ const config: Config = {
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
   roots: ["<rootDir>/src"],
   testEnvironment: "node",
-  testRegex: "./src/.*\\.(test|spec)?\\.(ts|ts)$",
+  testRegex: String.raw`./src/.*\.(test|spec)?\.(ts|ts)$`,
   moduleNameMapper: {
-    "^(\\.{1,2}/.*)\\.js$": "$1",
+    [String.raw`^(\.{1,2}/.*)\.js$`]: "$1",
   },
   transform: {
-    "^.+\\.(t|j)sx?$": "ts-jest",
+    [String.raw`^.+\.(t|j)sx?$`]: "ts-jest",
   },
 };
 
