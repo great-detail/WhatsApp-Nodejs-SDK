@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 6.10.5
+
+### Patch Changes
+
+- f0457a4: bump dependencies
+
 ## 6.10.4
 
 ### Patch Changes
