@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 6.10.6
+
+### Patch Changes
+
+- dd8f9e3: Remove src from distributed files
+
 ## 6.10.5
 
 ### Patch Changes
