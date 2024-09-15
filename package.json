@@ -45,8 +45,7 @@
     }
   },
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "keywords": [
     "WhatsApp",
