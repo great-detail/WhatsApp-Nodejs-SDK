@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 6.10.9
+
+### Patch Changes
+
+- abd5903: Update dependencies
+
 ## 6.10.8
 
 ### Patch Changes
