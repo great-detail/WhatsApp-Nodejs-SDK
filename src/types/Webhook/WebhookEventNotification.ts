@@ -68,6 +68,11 @@ export type WebhookEventNotification = {
           wa_id: AccountID;
 
           /**
+           * Additional unique, alphanumeric identifier for a WhatsApp user.
+           */
+          user_id?: string;
+
+          /**
            * A customer profile object.
            */
           profile: {
