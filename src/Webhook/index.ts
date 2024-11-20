@@ -172,6 +172,12 @@ export default class Webhook {
    * ```
    */
   public async eventNotification(request: IncomingRequest) {
+    if (request.method.toLowerCase() !== "post") {
+      throw new IncorrectMethodWebhookError(
+        "Webhook Event Notification Request must use the POST request method.",
+      );
+    }
+
     const xHubSignature256 = request.headers["x-hub-signature-256"]
       ?.toString()
       .replace("sha256=", "");
