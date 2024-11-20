@@ -15,14 +15,21 @@ Originally a fork of the
 
 ## Getting started
 
-```typescript
-// ESM
+**ESM Import**:
 
+```ts
 import Client from "@great-detail/whatsapp";
+```
 
-// CJS
+**CJS Import**:
+
+```ts
 const CloudAPI = require("@great-detail/whatsapp").default;
+```
 
+**Usage**:
+
+```typescript
 const sdk = new Client();
 const message = await sdk.message.createMessage({
   phoneNumberID: "123...809",
