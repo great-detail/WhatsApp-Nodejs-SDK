@@ -38,6 +38,9 @@ const message = await sdk.message.createMessage({
   text: {
     body: "Hello",
   },
+  request: { headers: {
+    Authorization: "Bearer ...",
+  }},
 });
 ```
 
