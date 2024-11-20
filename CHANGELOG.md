@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 7.0.1
+
+### Patch Changes
+
+- 564a24d: Add request method check for webhook event notification processing
+
 ## 7.0.0
 
 ### Major Changes
