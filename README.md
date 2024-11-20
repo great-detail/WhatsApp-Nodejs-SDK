@@ -1,13 +1,8 @@
-<!-- Copyright (c) Meta Platforms, Inc. and affiliates.
-All rights reserved.
-
-This source code is licensed under the license found in the
-LICENSE file in the root directory of this source tree.
--->
-
 # Node.js SDK for WhatsApp Business Platform APIs
 
 An unofficial SDK for Meta's WhatsApp Business Messaging APIs - Cloud API.
+Originally a fork of the
+[deprecated official SDK for Meta's WhatsApp Business Messaging APIs](https://github.com/WhatsApp/WhatsApp-Nodejs-SDK).
 
 [![npm (scoped)][]][sdk-npmjs] [![Lint, Format, Test & Build][]][sdk-ci]
 
@@ -24,16 +19,21 @@ An unofficial SDK for Meta's WhatsApp Business Messaging APIs - Cloud API.
 
 ```typescript
 // ESM
-import CloudAPI from "@great-detail/whatsapp";
+
+import Client from "@great-detail/whatsapp";
 
 // CJS
 const CloudAPI = require("@great-detail/whatsapp").default;
 
-const sdk = new CloudAPI();
-const message = sdk
-  .message({ phoneNumberID: "123...809" })
-  .text({ body: "Hello" }, { toNumber: "1234567890" });
-const sendReceipt = await message.send();
+const sdk = new Client();
+const message = await sdk.message.createMessage({
+  phoneNumberID: "123...809",
+  to: "1234567890",
+  type: "text",
+  text: {
+    body: "Hello",
+  },
+});
 ```
 
 ## Installation
@@ -58,11 +58,13 @@ export WHATSAPP_ACCESS_TOKEN=""
 export WHATSAPP_PHONE_NUMBER_ID=""
 
 # Send a Text Message
-npx @great-detail/whatsapp message send text "<RECIPIENT>" --body="Hello, World!"
+# TODO: Re-add with updated SDK
+# npx @great-detail/whatsapp message send text "<RECIPIENT>" --body="Hello, World!"
 # Note: <RECIPIENT> may be a Phone Number ID - it may not always be the phone number itself.
 
 # Send an Image Message
-npx @great-detail/whatsapp message send image "<RECIPIENT>" --media-id="<MEDIA_ID>"
+# TODO: Re-add with updated SDK
+# npx @great-detail/whatsapp message send image "<RECIPIENT>" --media-id="<MEDIA_ID>"
 # Use --filename="..." to set the filename of the image.
 # Use --caption="..." to set a caption on the image.
 
@@ -91,18 +93,6 @@ Whilst the SDK may work with alternative versions of the Graph API, it is
 designed to work with the above. If you find any compatibility issues, please
 report them via
 [GitHub Issues](https://github.com/great-detail/WhatsApp-Nodejs-SDK/issues).
-
-## Code of Conduct
-
-Meta has adopted a Code of Conduct that we expect project participants to adhere
-to. Please read the full text so that you can understand what actions will and
-will not be tolerated.
-
-## Contribute
-
-See the [CONTRIBUTING](CONTRIBUTING.md) file for our development process, how to
-propose bugfixes and improvements, and how to build and test your changes to the
-WhatsApp Business Platform Node.js SDK.
 
 ## License
 

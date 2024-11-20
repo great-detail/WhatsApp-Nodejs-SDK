@@ -1,16 +1,27 @@
 /**
  * WhatsApp NodeJS SDK.
  *
- * @since  2.0.0
  * @author Great Detail Ltd <info@greatdetail.com>
  * @author Dom Webber <dom.webber@hotmail.com>
  * @see    https://greatdetail.com
  */
 
-export { default, default as CloudAPI } from "./CloudAPI/index.js";
-export { default as IncomingMessageType } from "./Message/MessageType/IncomingMessageType.js";
-export { default as OutgoingMessageType } from "./Message/MessageType/OutgoingMessageType.js";
-export type {
-  WebhookAPIRegisterReturn,
-  WebhookAPIEventNotificationReturn,
-} from "./CloudAPI/CloudAPIWebhook/index.js";
+export { default, default as CloudAPI, default as Client } from "./Client.js";
+
+export type * from "./types/Message/index.js";
+export type * from "./types/Message/MessageContact.js";
+export type * from "./types/Message/MessageIdentity.js";
+export type * from "./types/Message/MessageLocation.js";
+export type * from "./types/Message/MessageMedia.js";
+export type * from "./types/Message/MessageReferral.js";
+export type * from "./types/Message/MessageSystem.js";
+export type * from "./types/Message/MessageText.js";
+
+export type * from "./types/Webhook/WebhookEventNotification.js";
+
+export type * from "./types/Account.js";
+export type * from "./types/BusinessAccount.js";
+export type * from "./types/Error.js";
+export type * from "./types/Media.js";
+export type * from "./types/PhoneNumber.js";
+export type * from "./types/Status.js";
