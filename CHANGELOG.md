@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 7.0.3
+
+### Patch Changes
+
+- effa7c1: Add createSubscription and listSubscriptions SubscribedApps APIs
+
 ## 7.0.2
 
 ### Patch Changes
