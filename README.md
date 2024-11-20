@@ -104,10 +104,10 @@ designed to work with the above. If you find any compatibility issues, please
 report them via
 [GitHub Issues](https://github.com/great-detail/WhatsApp-Nodejs-SDK/issues).
 
-Additional NodeJS versions may also work, however, automated testing runs on the
-following versions.
-
 **Tested on NodeJS**: `v21`, `v22`, `v23`.
+
+Additional NodeJS versions may also work, however, automated testing requires
+NodeJS' test suite, which was introduced in `v21`.
 
 ## TODO
 
@@ -121,9 +121,9 @@ it.
 - [ ] Button Message Types.
 - [ ] Flow Message Types.
 - [ ] List Message Types.
-- [ ] WABA Webhook Subscription Management.
+- [x] WABA Webhook Subscription Management.
 - [ ] WABA Extended Credit Management.
-- [ ] WABA Phone Number Management.
+- [x] WABA Phone Number Management.
 - [ ] WABA System User Management?
 - [ ] Considering Authentication usage improvements.
 
