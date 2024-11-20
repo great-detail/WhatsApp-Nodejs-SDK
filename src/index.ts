@@ -17,6 +17,8 @@ export type * from "./types/Message/MessageReferral.js";
 export type * from "./types/Message/MessageSystem.js";
 export type * from "./types/Message/MessageText.js";
 
+export type * from "./types/SubscribedApps/index.js";
+
 export type * from "./types/Webhook/WebhookEventNotification.js";
 
 export type * from "./types/Account.js";

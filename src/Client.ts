@@ -8,6 +8,7 @@
 
 import Media from "./Media/index.js";
 import Message from "./Message/index.js";
+import SubscribedApps from "./SubscribedApps/index.js";
 import Webhook from "./Webhook/index.js";
 import type { Options as KyOptions } from "ky";
 
@@ -20,6 +21,7 @@ export default class Client {
   protected _request: KyOptions;
 
   public message: Message;
+  public subscribedApps: SubscribedApps;
   public media: Media;
   public webhook: Webhook;
 
@@ -32,6 +34,7 @@ export default class Client {
     };
 
     this.message = new Message(this._request);
+    this.subscribedApps = new SubscribedApps(this._request);
     this.media = new Media(this._request);
     this.webhook = new Webhook();
   }
