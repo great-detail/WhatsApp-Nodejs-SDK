@@ -6,9 +6,8 @@
  * @see    https://greatdetail.com
  */
 
-import { MessageID } from "../ID.js";
 import { WhatsappError } from "./Error.js";
-import { MessageStatusType } from "./Message/index.js";
+import { MessageID, MessageStatusType } from "./Message/index.js";
 import { PhoneNumberID } from "./PhoneNumber.js";
 
 export type CreateStatusOptions = {
