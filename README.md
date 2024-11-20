@@ -85,14 +85,17 @@ npx @great-detail/whatsapp media download "<MEDIA_URL>" > "<FILE_TO_STDOUT>"
 
 This SDK is designed to be compatible with the Cloud API API.
 
-| SDK Version | Cloud API Versions |
-| :---------- | -----------------: |
-| TODO        |                v18 |
+| SDK  | Cloud API | NodeJS (Tested) |
+| :--- | :-------: | --------------: |
+| v7.X |    v20    |            v18+ |
 
 Whilst the SDK may work with alternative versions of the Graph API, it is
 designed to work with the above. If you find any compatibility issues, please
 report them via
 [GitHub Issues](https://github.com/great-detail/WhatsApp-Nodejs-SDK/issues).
+
+Additional NodeJS versions may also work, however, automated testing runs on
+the noted versions.
 
 ## License
 
