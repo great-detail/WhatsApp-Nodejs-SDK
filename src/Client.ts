@@ -6,6 +6,7 @@
  * @see    https://greatdetail.com
  */
 
+import BusinessProfile from "./BusinessProfile/index.js";
 import Media from "./Media/index.js";
 import Message from "./Message/index.js";
 import SubscribedApps from "./SubscribedApps/index.js";
@@ -20,6 +21,7 @@ export interface Options {
 export default class Client {
   protected _request: KyOptions;
 
+  public businessProfile: BusinessProfile;
   public message: Message;
   public subscribedApps: SubscribedApps;
   public media: Media;
@@ -33,6 +35,7 @@ export default class Client {
       prefixUrl: prefixUrl.replace(/\/$/, "") + graphVersion,
     };
 
+    this.businessProfile = new BusinessProfile(this._request);
     this.message = new Message(this._request);
     this.subscribedApps = new SubscribedApps(this._request);
     this.media = new Media(this._request);
