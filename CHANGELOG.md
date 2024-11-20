@@ -1,5 +1,12 @@
 # `@great-detail/whatsapp`
 
+## 7.0.4
+
+### Patch Changes
+
+- 500e6e8: Add user_id to Webhook Event Notification contacts object
+- 9d5d62a: Add Business Profile APIs
+
 ## 7.0.3
 
 ### Patch Changes
