@@ -24,7 +24,7 @@ import Client from "@great-detail/whatsapp";
 **CJS Import**:
 
 ```ts
-const CloudAPI = require("@great-detail/whatsapp").default;
+const Client = require("@great-detail/whatsapp").default;
 ```
 
 **Usage**:
