@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 6.10.10
+
+### Patch Changes
+
+- 6a95707: Add EventNotificationStatusReason.failed
+
 ## 6.10.9
 
 ### Patch Changes
