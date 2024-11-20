@@ -10,13 +10,8 @@
  */
 import { program } from "commander";
 import getStdin from "get-stdin";
-import { oraPromise } from "ora";
 import Client from "./index.js";
-import type { Options as OraOptions } from "ora";
 
-const oraOptions: OraOptions = {
-  spinner: "simpleDotsScrolling",
-};
 const WHATSAPP_ACCESS_TOKEN = process.env.WHATSAPP_ACCESS_TOKEN;
 const WHATSAPP_PHONE_NUMBER_ID = process.env.WHATSAPP_PHONE_NUMBER_ID;
 
@@ -35,11 +30,7 @@ mediaCommand
     WHATSAPP_ACCESS_TOKEN,
   )
   .action(async (mediaURL) => {
-    const result = await oraPromise(() => sdk.media.download(mediaURL), {
-      ...oraOptions,
-      text: "Downloading media",
-    });
-
+    const result = await sdk.media.download(mediaURL);
     const file = await result.arrayBuffer();
     const fileBuffer = Buffer.from(file);
     process.stdout.write(fileBuffer);
@@ -60,11 +51,7 @@ mediaCommand
     WHATSAPP_ACCESS_TOKEN,
   )
   .action(async (mediaID, options) => {
-    const result = await oraPromise(
-      () => sdk.media.delete({ mediaID, phoneNumberID: options.phoneNumberId }),
-      { ...oraOptions, text: "Deleting media" },
-    );
-
+    const result = await sdk.media.delete({ mediaID, phoneNumberID: options.phoneNumberId });
     console.log(await result.json());
   });
 
@@ -83,11 +70,7 @@ mediaCommand
     WHATSAPP_ACCESS_TOKEN,
   )
   .action(async (mediaID, options) => {
-    const result = await oraPromise(
-      () => sdk.media.getURL({ mediaID, phoneNumberID: options.phoneNumberId }),
-      { ...oraOptions, text: "Getting media URL" },
-    );
-
+    const result = await sdk.media.getURL({ mediaID, phoneNumberID: options.phoneNumberId });
     console.log(await result.json());
   });
 
@@ -109,18 +92,12 @@ mediaCommand
   .action(async (options) => {
     const stdinBuffer = await getStdin.buffer();
     const stdinBlob = new Blob([stdinBuffer], { type: options.mimeType });
-
-    const result = await oraPromise(
-      () =>
-        sdk.media.upload({
-          file: stdinBlob,
-          phoneNumberID: options.phoneNumberId,
-          mimeType: options.mimeType,
-          filename: options.filename,
-        }),
-      { ...oraOptions, text: "Uploading media" },
-    );
-
+    const result = await sdk.media.upload({
+      file: stdinBlob,
+      phoneNumberID: options.phoneNumberId,
+      mimeType: options.mimeType,
+      filename: options.filename,
+    });
     console.log(await result.json());
   });
 
