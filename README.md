@@ -15,8 +15,6 @@ Originally a fork of the
 
 ## Getting started
 
-<!-- TODO -->
-
 ```typescript
 // ESM
 
