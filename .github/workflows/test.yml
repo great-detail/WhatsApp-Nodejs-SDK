@@ -29,4 +29,6 @@ jobs:
           cache: npm
       - run: npm ci --prefer-offline --no-audit --no-fund
       - run: npm run build
-      - run: npm run jest -- --shard=${{ matrix.shard }}
+      - run:
+          node --import tsx --test --test-shard=${{ matrix.shard }}
+          src/__tests__/unit/**/*.test.ts src/__tests__/unit/*.test.ts
