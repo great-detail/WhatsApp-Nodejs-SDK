@@ -58,19 +58,19 @@
     "Cloud API"
   ],
   "scripts": {
-    "build": "npm-run-all tsup",
+    "build": "tsup --entry src/index.ts --entry src/cli.ts --format cjs,esm --minify --dts",
     "changeset": "changeset",
-    "eslint": "eslint .",
-    "eslint:dev": "eslint . --fix",
+    "fix": "npm-run-all fix:*",
+    "fix:eslint": "eslint . --fix",
+    "fix:prettier": "prettier --write .",
     "lint": "npm-run-all eslint typecheck publint prettier",
-    "lint:dev": "npm-run-all eslint:dev typecheck publint prettier:dev",
+    "lint:eslint": "eslint .",
+    "lint:prettier": "prettier --check .",
+    "lint:publint": "publint",
+    "lint:typecheck": "npm run typecheck",
     "prerelease": "npm-run-all build",
-    "prettier": "prettier --check .",
-    "prettier:dev": "prettier --write .",
-    "publint": "publint",
     "release": "changeset publish",
     "test": "node --import tsx --test --experimental-test-coverage src/__tests__/**/*.test.ts src/__tests__/*.test.ts",
-    "tsup": "tsup --entry src/index.ts --entry src/cli.ts --format cjs,esm --minify --dts",
     "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
