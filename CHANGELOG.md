@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 7.0.5
+
+### Patch Changes
+
+- dfaf6eb: Add CLI command: message text
+
 ## 7.0.4
 
 ### Patch Changes
