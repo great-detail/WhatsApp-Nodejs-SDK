@@ -17,7 +17,7 @@
     "Dom Webber <dom.webber@hotmail.com>",
     "Great Detail Ltd <info@greatdetail.com>"
   ],
-  "license": "SEE LICENSE IN LICENSE FILE",
+  "license": "Apache-2.0",
   "engines": {
     "node": ">=18"
   },

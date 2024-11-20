@@ -1,10 +1,3 @@
-<!-- Copyright (c) Meta Platforms, Inc. and affiliates.
-All rights reserved.
-
-This source code is licensed under the license found in the
-LICENSE file in the root directory of this source tree.
--->
-
 # Node.js SDK for WhatsApp Business Platform APIs
 
 An unofficial SDK for Meta's WhatsApp Business Messaging APIs - Cloud API.
@@ -100,18 +93,6 @@ Whilst the SDK may work with alternative versions of the Graph API, it is
 designed to work with the above. If you find any compatibility issues, please
 report them via
 [GitHub Issues](https://github.com/great-detail/WhatsApp-Nodejs-SDK/issues).
-
-## Code of Conduct
-
-Meta has adopted a Code of Conduct that we expect project participants to adhere
-to. Please read the full text so that you can understand what actions will and
-will not be tolerated.
-
-## Contribute
-
-See the [CONTRIBUTING](CONTRIBUTING.md) file for our development process, how to
-propose bugfixes and improvements, and how to build and test your changes to the
-WhatsApp Business Platform Node.js SDK.
 
 ## License
 
