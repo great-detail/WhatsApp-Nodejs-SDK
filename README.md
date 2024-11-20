@@ -92,8 +92,8 @@ designed to work with the above. If you find any compatibility issues, please
 report them via
 [GitHub Issues](https://github.com/great-detail/WhatsApp-Nodejs-SDK/issues).
 
-Additional NodeJS versions may also work, however, automated testing runs on
-the following versions.
+Additional NodeJS versions may also work, however, automated testing runs on the
+following versions.
 
 **Tested on NodeJS**: `v21`, `v22`, `v23`.
 
