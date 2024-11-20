@@ -8,7 +8,12 @@
 
 import ky, { Options as KyOptions } from "ky";
 import { BusinessAccountID } from "../types/BusinessAccount.js";
-import { CreateSubscriptionOptions, CreateSubscriptionPayload, ListSubscriptionsOptions, ListSubscriptionsPayload } from "../types/SubscribedApps/index.js";
+import {
+  CreateSubscriptionOptions,
+  CreateSubscriptionPayload,
+  ListSubscriptionsOptions,
+  ListSubscriptionsPayload,
+} from "../types/SubscribedApps/index.js";
 
 interface MethodOptions {
   request?: KyOptions;
@@ -28,10 +33,7 @@ export default class SubscribedApps {
     return ky.create({
       ...this._request,
       method: "POST",
-    })<CreateSubscriptionPayload>(
-      this.getEndpoint(businessAccountID),
-      request,
-    );
+    })<CreateSubscriptionPayload>(this.getEndpoint(businessAccountID), request);
   }
 
   public listSubscriptions({
@@ -41,9 +43,6 @@ export default class SubscribedApps {
     return ky.create({
       ...this._request,
       method: "GET",
-    })<ListSubscriptionsPayload>(
-      this.getEndpoint(businessAccountID),
-      request,
-    );
+    })<ListSubscriptionsPayload>(this.getEndpoint(businessAccountID), request);
   }
 }

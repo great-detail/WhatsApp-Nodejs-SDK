@@ -25,7 +25,7 @@ export type ListSubscriptionsPayload = {
     whatsapp_business_api_data: {
       id: string;
       link?: string | null;
-      name: string
+      name: string;
     };
   }[];
 };
