@@ -12,7 +12,6 @@ import Webhook from "./Webhook/index.js";
 import type { Options as KyOptions } from "ky";
 
 export interface Options {
-  accessToken?: string;
   prefixUrl?: string;
   graphVersion?: `v${string}` | (string & NonNullable<unknown>);
 }
@@ -25,21 +24,11 @@ export default class Client {
   public webhook: Webhook;
 
   constructor({
-    accessToken = process.env.WHATSAPP_ACCESS_TOKEN,
     prefixUrl = "https://graph.facebook.com",
     graphVersion = "v20.0",
   }: Options = {}) {
-    if (!accessToken) {
-      throw new Error(
-        "No access token set in process.env.WHATSAPP_ACCESS_TOKEN",
-      );
-    }
-
     this._request = {
       prefixUrl: prefixUrl.replace(/\/$/, "") + graphVersion,
-      headers: {
-        Authorization: "Bearer " + accessToken,
-      },
     };
 
     this.message = new Message(this._request);
