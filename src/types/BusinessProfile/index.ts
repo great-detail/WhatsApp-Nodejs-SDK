@@ -6,7 +6,7 @@
  * @see    https://greatdetail.com
  */
 
-import { PhoneNumberID } from "../PhoneNumber.js"
+import { PhoneNumberID } from "../PhoneNumber.js";
 
 export type GetBusinessProfileFields = {
   about?: boolean;
@@ -18,24 +18,34 @@ export type GetBusinessProfileFields = {
   vertical?: boolean;
 };
 
-export type GetBusinessProfileOptions<Fields extends GetBusinessProfileFields = object> = {
+export type GetBusinessProfileOptions<
+  Fields extends GetBusinessProfileFields = object,
+> = {
   phoneNumberID: PhoneNumberID;
   fields?: Fields;
-}
+};
 
-export type GetBusinessProfilePayload<Fields extends GetBusinessProfileFields = object> = {
-  data: [{
-    about: Fields extends { about: true } ? string : undefined;
-    address: Fields extends { address: true } ? string : undefined;
-    description: Fields extends { description: true } ? string : undefined;
-    email: Fields extends { email: true } ? string : undefined;
-    messaging_product: "whatsapp";
-    profile_picture_url: Fields extends { profile_picture_url: true } ? string : undefined;
-    vertical: Fields extends { vertical: true }
-      ? ("" | (string & NonNullable<unknown>))
-      : undefined;
-    websites: Fields extends { websites: true } ? ([string] | [string, string] | (string[] & NonNullable<unknown>)) : undefined;
-  }];
+export type GetBusinessProfilePayload<
+  Fields extends GetBusinessProfileFields = object,
+> = {
+  data: [
+    {
+      about: Fields extends { about: true } ? string : undefined;
+      address: Fields extends { address: true } ? string : undefined;
+      description: Fields extends { description: true } ? string : undefined;
+      email: Fields extends { email: true } ? string : undefined;
+      messaging_product: "whatsapp";
+      profile_picture_url: Fields extends { profile_picture_url: true }
+        ? string
+        : undefined;
+      vertical: Fields extends { vertical: true }
+        ? "" | (string & NonNullable<unknown>)
+        : undefined;
+      websites: Fields extends { websites: true }
+        ? [string] | [string, string] | (string[] & NonNullable<unknown>)
+        : undefined;
+    },
+  ];
 };
 
 export type UpdateBusinessProfileOptions = {
@@ -45,10 +55,10 @@ export type UpdateBusinessProfileOptions = {
   description?: string;
   email?: string;
   profile_picture_handle?: string;
-  vertical?: ("" | (string & NonNullable<unknown>));
+  vertical?: "" | (string & NonNullable<unknown>);
   websites?: [string] | [string, string] | (string[] & NonNullable<unknown>);
-}
+};
 
 export type UpdateBusinessProfilePayload = {
   success: boolean;
-}
+};

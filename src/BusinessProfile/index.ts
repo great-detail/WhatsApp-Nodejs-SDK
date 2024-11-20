@@ -7,8 +7,14 @@
  */
 
 import ky, { Options as KyOptions } from "ky";
+import {
+  GetBusinessProfileFields,
+  GetBusinessProfileOptions,
+  GetBusinessProfilePayload,
+  UpdateBusinessProfileOptions,
+  UpdateBusinessProfilePayload,
+} from "../types/BusinessProfile/index.js";
 import { PhoneNumberID } from "../types/PhoneNumber.js";
-import { GetBusinessProfileFields, GetBusinessProfileOptions, GetBusinessProfilePayload, UpdateBusinessProfileOptions, UpdateBusinessProfilePayload } from "../types/BusinessProfile/index.js";
 
 interface MethodOptions {
   request?: KyOptions;
@@ -30,7 +36,9 @@ export default class BusinessProfile {
       ...this._request,
       method: "GET",
       searchParams: {
-        fields: Object.entries(fields ?? {}).map(([key]) => key).join(","),
+        fields: Object.entries(fields ?? {})
+          .map(([key]) => key)
+          .join(","),
       },
     })<GetBusinessProfilePayload<Fields>>(
       this.getEndpoint(phoneNumberID),
@@ -50,9 +58,6 @@ export default class BusinessProfile {
         messaging_product: "whatsapp",
         ...json,
       },
-    })<UpdateBusinessProfilePayload>(
-      this.getEndpoint(phoneNumberID),
-      request,
-    );
+    })<UpdateBusinessProfilePayload>(this.getEndpoint(phoneNumberID), request);
   }
 }
