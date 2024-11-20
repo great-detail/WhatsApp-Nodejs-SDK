@@ -24,16 +24,20 @@ An unofficial SDK for Meta's WhatsApp Business Messaging APIs - Cloud API.
 
 ```typescript
 // ESM
-import CloudAPI from "@great-detail/whatsapp";
+import Client from "@great-detail/whatsapp";
 
 // CJS
 const CloudAPI = require("@great-detail/whatsapp").default;
 
-const sdk = new CloudAPI();
-const message = sdk
-  .message({ phoneNumberID: "123...809" })
-  .text({ body: "Hello" }, { toNumber: "1234567890" });
-const sendReceipt = await message.send();
+const sdk = new Client();
+const message = await sdk.message.createMessage({
+  phoneNumberID: "123...809",
+  to: "1234567890",
+  type: "text",
+  text: {
+    body: "Hello",
+  },
+});
 ```
 
 ## Installation
@@ -58,11 +62,13 @@ export WHATSAPP_ACCESS_TOKEN=""
 export WHATSAPP_PHONE_NUMBER_ID=""
 
 # Send a Text Message
-npx @great-detail/whatsapp message send text "<RECIPIENT>" --body="Hello, World!"
+# TODO: Re-add with updated SDK
+# npx @great-detail/whatsapp message send text "<RECIPIENT>" --body="Hello, World!"
 # Note: <RECIPIENT> may be a Phone Number ID - it may not always be the phone number itself.
 
 # Send an Image Message
-npx @great-detail/whatsapp message send image "<RECIPIENT>" --media-id="<MEDIA_ID>"
+# TODO: Re-add with updated SDK
+# npx @great-detail/whatsapp message send image "<RECIPIENT>" --media-id="<MEDIA_ID>"
 # Use --filename="..." to set the filename of the image.
 # Use --caption="..." to set a caption on the image.
 
