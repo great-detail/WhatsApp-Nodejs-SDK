@@ -8,7 +8,7 @@
     "moduleResolution": "NodeNext",
     "checkJs": true,
     "strict": true,
-    "types": ["node", "jest"],
+    "types": ["node"],
     "declaration": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
@@ -20,5 +20,7 @@
     "sourceMap": true,
     "declarationDir": "dist/"
   },
-  "include": ["src/**/*"]
+  "include": [
+    "src/**/*"
+  ]
 }
