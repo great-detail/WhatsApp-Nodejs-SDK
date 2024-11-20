@@ -28,7 +28,7 @@ export default class Client {
     accessToken = process.env.WHATSAPP_ACCESS_TOKEN,
     prefixUrl = "https://graph.facebook.com",
     graphVersion = "v20.0",
-  }: Options) {
+  }: Options = {}) {
     if (!accessToken) {
       throw new Error("No access token set in process.env.WHATSAPP_ACCESS_TOKEN");
     }
