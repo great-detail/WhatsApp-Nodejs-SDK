@@ -10,7 +10,8 @@
  */
 import { program } from "commander";
 import getStdin from "get-stdin";
-import Client from "./index.js";
+import Client from "./Client.js";
+import { MessageType } from "./types/Message/index.js";
 
 const WHATSAPP_ACCESS_TOKEN = process.env.WHATSAPP_ACCESS_TOKEN;
 const WHATSAPP_PHONE_NUMBER_ID = process.env.WHATSAPP_PHONE_NUMBER_ID;
@@ -103,6 +104,27 @@ mediaCommand
       phoneNumberID: options.phoneNumberId,
       mimeType: options.mimeType,
       filename: options.filename,
+    });
+    console.log(await result.json());
+  });
+
+const messageCommand = program.command("message").description("Message");
+
+messageCommand
+  .command("text")
+  .description("Send a Text message")
+  .argument("<RECIPIENT>", "Message recipient Phone Number or Phone Number ID")
+  .requiredOption("--body <BODY>", "Message body")
+  .option("--preview-url", "Enable URL previewing for the message")
+  .action(async (recipient, options) => {
+    const result = await sdk.message.createMessage({
+      to: recipient,
+      phoneNumberID: options.phoneNumberId,
+      type: MessageType.Text,
+      [MessageType.Text]: {
+        body: options.body,
+        preview_url: options.previewUrl,
+      },
     });
     console.log(await result.json());
   });

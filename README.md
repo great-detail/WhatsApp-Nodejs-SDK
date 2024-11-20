@@ -69,7 +69,7 @@ export WHATSAPP_PHONE_NUMBER_ID=""
 
 # Send a Text Message
 # TODO: Re-add with updated SDK
-# npx @great-detail/whatsapp message send text "<RECIPIENT>" --body="Hello, World!"
+npx @great-detail/whatsapp message send text "<RECIPIENT>" --body="Hello, World!"
 # Note: <RECIPIENT> may be a Phone Number ID - it may not always be the phone number itself.
 
 # Send an Image Message
