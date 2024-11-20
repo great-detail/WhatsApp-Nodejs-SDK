@@ -112,9 +112,9 @@ following versions.
 ## TODO
 
 There are a number of features supported by the WhatsApp Business Cloud API that
-are yet to be implemented in this SDK. Please feel free to contribute via a
-Pull Request, or note your interest in particular features by creating an issue
-for it.
+are yet to be implemented in this SDK. Please feel free to contribute via a Pull
+Request, or note your interest in particular features by creating an issue for
+it.
 
 - [ ] Interactive Message Types.
 - [ ] Template Message Types.
