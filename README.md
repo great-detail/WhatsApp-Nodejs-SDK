@@ -67,6 +67,11 @@ pnpm add @great-detail/whatsapp
 export WHATSAPP_ACCESS_TOKEN=""
 export WHATSAPP_PHONE_NUMBER_ID=""
 
+# NPM / Yarn / PNPM
+npx @great-detail/whatsapp ...
+yarn dlx @great-detail/whatsapp ...
+pnpx @great-detail/whatsapp ...
+
 # Send a Text Message
 # TODO: Re-add with updated SDK
 npx @great-detail/whatsapp message send text "<RECIPIENT>" --body="Hello, World!"
