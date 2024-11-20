@@ -38,9 +38,11 @@ const message = await sdk.message.createMessage({
   text: {
     body: "Hello",
   },
-  request: { headers: {
-    Authorization: "Bearer ...",
-  }},
+  request: {
+    headers: {
+      Authorization: "Bearer ...",
+    },
+  },
 });
 ```
 
@@ -106,6 +108,15 @@ Additional NodeJS versions may also work, however, automated testing runs on the
 following versions.
 
 **Tested on NodeJS**: `v21`, `v22`, `v23`.
+
+## TODO
+
+There are a number of features supported by the WhatsApp Business Cloud API that
+are yet to be implemented in this SDK.
+
+- [ ] Interactive Message Types.
+- [ ] Template Message Types.
+- [ ] Considering Authentication usage improvements.
 
 ## License
 
