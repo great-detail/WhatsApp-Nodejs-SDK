@@ -51,7 +51,10 @@ mediaCommand
     WHATSAPP_ACCESS_TOKEN,
   )
   .action(async (mediaID, options) => {
-    const result = await sdk.media.delete({ mediaID, phoneNumberID: options.phoneNumberId });
+    const result = await sdk.media.delete({
+      mediaID,
+      phoneNumberID: options.phoneNumberId,
+    });
     console.log(await result.json());
   });
 
@@ -70,7 +73,10 @@ mediaCommand
     WHATSAPP_ACCESS_TOKEN,
   )
   .action(async (mediaID, options) => {
-    const result = await sdk.media.getURL({ mediaID, phoneNumberID: options.phoneNumberId });
+    const result = await sdk.media.getURL({
+      mediaID,
+      phoneNumberID: options.phoneNumberId,
+    });
     console.log(await result.json());
   });
 
