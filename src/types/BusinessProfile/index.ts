@@ -18,12 +18,12 @@ export type GetBusinessProfileFields = {
   vertical?: boolean;
 };
 
-export type GetBusinessProfileOptions<Fields extends GetBusinessProfileFields = {}> = {
+export type GetBusinessProfileOptions<Fields extends GetBusinessProfileFields = object> = {
   phoneNumberID: PhoneNumberID;
   fields?: Fields;
 }
 
-export type GetBusinessProfilePayload<Fields extends GetBusinessProfileFields = {}> = {
+export type GetBusinessProfilePayload<Fields extends GetBusinessProfileFields = object> = {
   data: [{
     about: Fields extends { about: true } ? string : undefined;
     address: Fields extends { address: true } ? string : undefined;

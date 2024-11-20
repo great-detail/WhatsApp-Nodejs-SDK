@@ -21,7 +21,7 @@ export default class BusinessProfile {
     return encodeURIComponent(phoneNumberID) + "/whatsapp_business_profile";
   }
 
-  public getBusinessProfile<Fields extends GetBusinessProfileFields = {}>({
+  public getBusinessProfile<Fields extends GetBusinessProfileFields = object>({
     phoneNumberID,
     fields,
     request,
