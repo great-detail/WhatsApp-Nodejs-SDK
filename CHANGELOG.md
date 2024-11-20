@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 7.0.2
+
+### Patch Changes
+
+- 6d6b234: Offload authentication to use-case
+
 ## 7.0.1
 
 ### Patch Changes
