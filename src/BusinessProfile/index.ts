@@ -36,9 +36,7 @@ export default class BusinessProfile {
       ...this._request,
       method: "GET",
       searchParams: {
-        fields: Object.entries(fields ?? {})
-          .map(([key]) => key)
-          .join(","),
+        fields: Object.keys(fields ?? {}).join(","),
       },
     })<GetBusinessProfilePayload<Fields>>(
       this.getEndpoint(phoneNumberID),

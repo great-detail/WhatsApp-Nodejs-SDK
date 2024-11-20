@@ -9,6 +9,7 @@
 import BusinessProfile from "./BusinessProfile/index.js";
 import Media from "./Media/index.js";
 import Message from "./Message/index.js";
+import PhoneNumbers from "./PhoneNumbers/index.js";
 import SubscribedApps from "./SubscribedApps/index.js";
 import Webhook from "./Webhook/index.js";
 import type { Options as KyOptions } from "ky";
@@ -23,6 +24,7 @@ export default class Client {
 
   public businessProfile: BusinessProfile;
   public message: Message;
+  public phoneNumbers: PhoneNumbers;
   public subscribedApps: SubscribedApps;
   public media: Media;
   public webhook: Webhook;
@@ -37,6 +39,7 @@ export default class Client {
 
     this.businessProfile = new BusinessProfile(this._request);
     this.message = new Message(this._request);
+    this.phoneNumbers = new PhoneNumbers(this._request);
     this.subscribedApps = new SubscribedApps(this._request);
     this.media = new Media(this._request);
     this.webhook = new Webhook();
