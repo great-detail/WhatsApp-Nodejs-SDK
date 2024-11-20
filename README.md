@@ -97,7 +97,7 @@ This SDK is designed to be compatible with the Cloud API API.
 
 | SDK  | Cloud API | NodeJS (Tested) |
 | :--- | :-------: | --------------: |
-| v7.X |    v20    |            v18+ |
+| v7.x |    v20    |            v18+ |
 
 Whilst the SDK may work with alternative versions of the Graph API, it is
 designed to work with the above. If you find any compatibility issues, please
@@ -116,6 +116,13 @@ are yet to be implemented in this SDK.
 
 - [ ] Interactive Message Types.
 - [ ] Template Message Types.
+- [ ] Button Message Types.
+- [ ] Flow Message Types.
+- [ ] List Message Types.
+- [ ] WABA Webhook Subscription Management.
+- [ ] WABA Extended Credit Management.
+- [ ] WABA Phone Number Management.
+- [ ] WABA System User Management?
 - [ ] Considering Authentication usage improvements.
 
 ## License
