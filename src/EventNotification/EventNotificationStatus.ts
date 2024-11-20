@@ -31,6 +31,7 @@ export enum EventNotificationStatusReason {
    * @since 4.2.0
    */
   sent = "sent",
+  failed = "failed",
 }
 
 export enum EventNotificationStatusConversationType {
