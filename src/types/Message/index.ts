@@ -20,9 +20,7 @@ import { CreateMessageText } from "./MessageText.js";
  */
 export type MessageID = `wamid.${string}` | (string & NonNullable<unknown>);
 
-export type MessageStatusType =
-  | "read"
-  | (string & NonNullable<unknown>);
+export type MessageStatusType = "read" | (string & NonNullable<unknown>);
 
 export type MessageRecipientType =
   | "individual"
@@ -60,7 +58,7 @@ export enum MessageType {
   Video = "video", // for video messages
 }
 
-export type CreateMessageOptions =  {
+export type CreateMessageOptions = {
   phoneNumberID: PhoneNumberID;
 
   /**
@@ -100,44 +98,57 @@ export type CreateMessageOptions =  {
    */
   biz_opaque_callback_data?: string;
   [key: string]: unknown | undefined;
-} & ({
-  type: MessageType.Audio;
-  [MessageType.Audio]: Omit<CreateMessageMedia, "caption">;
-} | {
-  type: MessageType.Contacts;
-  [MessageType.Contacts]: CreateMessageContact[];
-} | {
-  type: MessageType.Document;
-  [MessageType.Document]: CreateMessageMedia;
-} | {
-  type: MessageType.Image;
-  [MessageType.Image]: CreateMessageMedia;
-} | {
-  type: MessageType.Interactive;
-  // TODO: Implement this type
-  [MessageType.Interactive]: unknown;
-} | {
-  type: MessageType.Location;
-  [MessageType.Location]: CreateMessageLocation;
-} | {
-  type: MessageType.Reaction;
-  [MessageType.Reaction]: Omit<CreateMessageMedia, "caption">;
-} | {
-  type: MessageType.Sticker;
-  [MessageType.Sticker]: Omit<CreateMessageMedia, "caption">;
-} | {
-  type: MessageType.Template;
-  // TODO: Implement this type
-  [MessageType.Template]: unknown;
-} | {
-  type: MessageType.Text;
-  [MessageType.Text]: CreateMessageText;
-} | {
-  type: MessageType.Video;
-  [MessageType.Video]: CreateMessageMedia;
-} | {
-  type: (string & NonNullable<unknown>);
-});
+} & (
+  | {
+      type: MessageType.Audio;
+      [MessageType.Audio]: Omit<CreateMessageMedia, "caption">;
+    }
+  | {
+      type: MessageType.Contacts;
+      [MessageType.Contacts]: CreateMessageContact[];
+    }
+  | {
+      type: MessageType.Document;
+      [MessageType.Document]: CreateMessageMedia;
+    }
+  | {
+      type: MessageType.Image;
+      [MessageType.Image]: CreateMessageMedia;
+    }
+  | {
+      type: MessageType.Interactive;
+      // TODO: Implement this type
+      [MessageType.Interactive]: unknown;
+    }
+  | {
+      type: MessageType.Location;
+      [MessageType.Location]: CreateMessageLocation;
+    }
+  | {
+      type: MessageType.Reaction;
+      [MessageType.Reaction]: Omit<CreateMessageMedia, "caption">;
+    }
+  | {
+      type: MessageType.Sticker;
+      [MessageType.Sticker]: Omit<CreateMessageMedia, "caption">;
+    }
+  | {
+      type: MessageType.Template;
+      // TODO: Implement this type
+      [MessageType.Template]: unknown;
+    }
+  | {
+      type: MessageType.Text;
+      [MessageType.Text]: CreateMessageText;
+    }
+  | {
+      type: MessageType.Video;
+      [MessageType.Video]: CreateMessageMedia;
+    }
+  | {
+      type: string & NonNullable<unknown>;
+    }
+);
 
 export type CreateMessagePayload = {
   messaging_product: "whatsapp";
@@ -147,9 +158,7 @@ export type CreateMessagePayload = {
   }[];
   messages: {
     id: MessageID;
-    message_status:
-      | "accepted"
-      | "held_for_quality_assessment"
+    message_status: "accepted" | "held_for_quality_assessment";
   }[];
   error: WhatsappError;
 };

@@ -7,14 +7,14 @@
  */
 
 import { createHmac } from "node:crypto";
+import { WebhookEventNotification } from "../types/Webhook/WebhookEventNotification.js";
 import IncorrectMethodWebhookError from "./WebhookError/IncorrectMethodWebhookError.js";
+import WebhookError from "./WebhookError/index.js";
 import InvalidHubChallengeWebhookError from "./WebhookError/InvalidHubChallengeWebhookError.js";
 import InvalidHubModeWebhookError from "./WebhookError/InvalidHubModeWebhookError.js";
 import InvalidHubSignatureWebhookError from "./WebhookError/InvalidHubSignatureWebhookError.js";
 import InvalidHubVerifyTokenWebhookError from "./WebhookError/InvalidHubVerifyTokenWebhookError.js";
 import MissingBodyWebhookError from "./WebhookError/MissingBodyWebhookError.js";
-import WebhookError from "./WebhookError/index.js";
-import { WebhookEventNotification } from "../types/Webhook/WebhookEventNotification.js";
 
 export interface IncomingRequest {
   method: string;
@@ -85,9 +85,7 @@ export default class Webhook {
    *
    * @throws {WebhookError}
    */
-  public async register(
-    request: IncomingRequest
-  ) {
+  public async register(request: IncomingRequest) {
     if (request.method.toLowerCase() !== "get") {
       throw new IncorrectMethodWebhookError(
         "Webhook Registration Requests must use the GET request method.",
@@ -173,9 +171,7 @@ export default class Webhook {
    * });
    * ```
    */
-  public async eventNotification(
-    request: IncomingRequest,
-  ) {
+  public async eventNotification(request: IncomingRequest) {
     const xHubSignature256 = request.headers["x-hub-signature-256"]
       ?.toString()
       .replace("sha256=", "");
@@ -193,7 +189,9 @@ export default class Webhook {
 
     // Async request body buffering
     const bodyString = Buffer.from(request.body).toString("utf8");
-    const eventNotification = JSON.parse(bodyString) as WebhookEventNotification;
+    const eventNotification = JSON.parse(
+      bodyString,
+    ) as WebhookEventNotification;
 
     return {
       eventNotification,

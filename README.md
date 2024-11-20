@@ -24,6 +24,7 @@ An unofficial SDK for Meta's WhatsApp Business Messaging APIs - Cloud API.
 
 ```typescript
 // ESM
+
 import Client from "@great-detail/whatsapp";
 
 // CJS

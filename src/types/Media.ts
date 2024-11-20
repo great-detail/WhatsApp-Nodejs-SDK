@@ -19,12 +19,12 @@ export interface MediaUploadOptions {
 
 export type MediaUploadPayload = {
   id: MediaID;
-}
+};
 
 export type MediaGetURLOptions = {
   phoneNumberID?: PhoneNumberID;
   mediaID: MediaID;
-}
+};
 
 export type MediaGetURLPayload = {
   messaging_product: "whatsapp";
@@ -33,13 +33,13 @@ export type MediaGetURLPayload = {
   sha256: string;
   file_size: string | number;
   id: MediaID;
-}
+};
 
 export type MediaDeleteOptions = {
   phoneNumberID?: PhoneNumberID;
   mediaID: MediaID;
-}
+};
 
 export type MediaDeletePayload = {
   success: boolean;
-}
+};

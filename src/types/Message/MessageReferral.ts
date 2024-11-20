@@ -16,10 +16,7 @@ export type EventNotificationMessageReferral = {
   /**
    * The type of the ad's source.
    */
-  source_type:
-    | "ad"
-    | "post"
-    | (string & NonNullable<unknown>);
+  source_type: "ad" | "post" | (string & NonNullable<unknown>);
 
   /**
    * Meta ID for an ad or a post.
@@ -39,10 +36,7 @@ export type EventNotificationMessageReferral = {
   /**
    * Media present in the ad or post.
    */
-  media_type:
-    | "image"
-    | "video"
-    | (string & NonNullable<unknown>);
+  media_type: "image" | "video" | (string & NonNullable<unknown>);
 
   /**
    * URL of the image, when media_type is an image.

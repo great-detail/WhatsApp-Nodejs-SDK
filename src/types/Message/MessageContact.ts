@@ -14,10 +14,7 @@ export type CreateMessageContact = {
    * Full contact address(es) formatted as an addresses object.
    */
   addresses: {
-    type:
-      | "HOME"
-      | "WORK"
-      | (string & NonNullable<unknown>);
+    type: "HOME" | "WORK" | (string & NonNullable<unknown>);
 
     /**
      * Street number and name.
@@ -73,10 +70,7 @@ export type CreateMessageContact = {
    * Contact email address(es) formatted as an emails object.
    */
   emails: {
-    type:
-      | "HOME"
-      | "WORK"
-      | (string & NonNullable<unknown>);
+    type: "HOME" | "WORK" | (string & NonNullable<unknown>);
 
     /**
      * Email address.
@@ -167,10 +161,7 @@ export type CreateMessageContact = {
   }[];
 
   urls: {
-    type?:
-      | "HOME"
-      | "WORK"
-      | (string & NonNullable<unknown>);
+    type?: "HOME" | "WORK" | (string & NonNullable<unknown>);
 
     /**
      * URL.

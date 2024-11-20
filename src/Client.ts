@@ -6,10 +6,10 @@
  * @see    https://greatdetail.com
  */
 
-import type { Options as KyOptions } from "ky";
-import Message from "./Message/index.js";
 import Media from "./Media/index.js";
+import Message from "./Message/index.js";
 import Webhook from "./Webhook/index.js";
+import type { Options as KyOptions } from "ky";
 
 export interface Options {
   accessToken?: string;
@@ -30,7 +30,9 @@ export default class Client {
     graphVersion = "v20.0",
   }: Options = {}) {
     if (!accessToken) {
-      throw new Error("No access token set in process.env.WHATSAPP_ACCESS_TOKEN");
+      throw new Error(
+        "No access token set in process.env.WHATSAPP_ACCESS_TOKEN",
+      );
     }
 
     this._request = {

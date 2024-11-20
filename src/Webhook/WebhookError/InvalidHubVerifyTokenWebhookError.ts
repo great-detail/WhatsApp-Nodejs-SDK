@@ -1,4 +1,3 @@
-
 /**
  * WhatsApp NodeJS SDK.
  *

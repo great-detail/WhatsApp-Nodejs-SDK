@@ -32,4 +32,4 @@ export type WhatsappError = {
    * @deprecated Since Graph API v16.0.
    */
   error_subcode?: number;
-}
+};

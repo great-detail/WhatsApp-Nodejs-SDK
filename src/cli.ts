@@ -35,11 +35,10 @@ mediaCommand
     WHATSAPP_ACCESS_TOKEN,
   )
   .action(async (mediaURL) => {
-    const result = await oraPromise(
-      () =>
-        sdk.media.download(mediaURL),
-      { ...oraOptions, text: "Downloading media" },
-    );
+    const result = await oraPromise(() => sdk.media.download(mediaURL), {
+      ...oraOptions,
+      text: "Downloading media",
+    });
 
     const file = await result.arrayBuffer();
     const fileBuffer = Buffer.from(file);
@@ -62,9 +61,7 @@ mediaCommand
   )
   .action(async (mediaID, options) => {
     const result = await oraPromise(
-      () =>
-        sdk.media
-          .delete({ mediaID, phoneNumberID: options.phoneNumberId }),
+      () => sdk.media.delete({ mediaID, phoneNumberID: options.phoneNumberId }),
       { ...oraOptions, text: "Deleting media" },
     );
 
@@ -87,9 +84,7 @@ mediaCommand
   )
   .action(async (mediaID, options) => {
     const result = await oraPromise(
-      () =>
-        sdk.media
-          .getURL({ mediaID, phoneNumberID: options.phoneNumberId }),
+      () => sdk.media.getURL({ mediaID, phoneNumberID: options.phoneNumberId }),
       { ...oraOptions, text: "Getting media URL" },
     );
 
@@ -117,13 +112,12 @@ mediaCommand
 
     const result = await oraPromise(
       () =>
-        sdk.media
-          .upload({
-            file: stdinBlob,
-            phoneNumberID: options.phoneNumberId,
-            mimeType: options.mimeType,
-            filename: options.filename,
-          }),
+        sdk.media.upload({
+          file: stdinBlob,
+          phoneNumberID: options.phoneNumberId,
+          mimeType: options.mimeType,
+          filename: options.filename,
+        }),
       { ...oraOptions, text: "Uploading media" },
     );
 

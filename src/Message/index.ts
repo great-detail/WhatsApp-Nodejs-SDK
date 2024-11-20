@@ -7,9 +7,12 @@
  */
 
 import ky, { Options as KyOptions } from "ky";
-import { CreateMessageOptions, CreateMessagePayload } from "../types/Message/index.js";
-import { CreateStatusOptions, CreateStatusPayload } from "../types/Status.js";
+import {
+  CreateMessageOptions,
+  CreateMessagePayload,
+} from "../types/Message/index.js";
 import { PhoneNumberID } from "../types/PhoneNumber.js";
+import { CreateStatusOptions, CreateStatusPayload } from "../types/Status.js";
 
 interface MethodOptions {
   request?: KyOptions;
@@ -34,10 +37,7 @@ export default class Message {
         messaging_product: "whatsapp",
         ...status,
       },
-    })<CreateStatusPayload>(
-      this.getEndpoint(phoneNumberID),
-      request,
-    );
+    })<CreateStatusPayload>(this.getEndpoint(phoneNumberID), request);
   }
 
   public createMessage({
@@ -59,9 +59,6 @@ export default class Message {
 
         ...message,
       },
-    })<CreateMessagePayload>(
-      this.getEndpoint(phoneNumberID),
-      request,
-    );
+    })<CreateMessagePayload>(this.getEndpoint(phoneNumberID), request);
   }
 }

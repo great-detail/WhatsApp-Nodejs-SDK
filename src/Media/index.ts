@@ -7,8 +7,15 @@
  */
 
 import ky, { Options as KyOptions } from "ky";
+import {
+  MediaDeleteOptions,
+  MediaDeletePayload,
+  MediaGetURLOptions,
+  MediaGetURLPayload,
+  MediaUploadOptions,
+  MediaUploadPayload,
+} from "../types/Media.js";
 import { PhoneNumberID } from "../types/PhoneNumber.js";
-import { MediaDeleteOptions, MediaDeletePayload, MediaGetURLOptions, MediaGetURLPayload, MediaUploadOptions, MediaUploadPayload } from "../types/Media.js";
 
 interface MethodOptions {
   request?: KyOptions;
@@ -46,10 +53,7 @@ export default class Media {
       ...this._request,
       method: "POST",
       body: formData,
-    })<MediaUploadPayload>(
-      this.getEndpoint(phoneNumberID),
-      request,
-    );
+    })<MediaUploadPayload>(this.getEndpoint(phoneNumberID), request);
   }
 
   /**
@@ -73,18 +77,13 @@ export default class Media {
         "Content-Type": "application/json",
       },
       searchParams: {
-        ...(
-          phoneNumberID
-            ? {
+        ...(phoneNumberID
+          ? {
               phone_number_id: phoneNumberID,
             }
-            : {}
-        ),
+          : {}),
       },
-    })<MediaGetURLPayload>(
-      encodeURIComponent(mediaID),
-      request,
-    );
+    })<MediaGetURLPayload>(encodeURIComponent(mediaID), request);
   }
 
   public delete({
@@ -99,18 +98,13 @@ export default class Media {
         "Content-Type": "application/json",
       },
       searchParams: {
-        ...(
-          phoneNumberID
-            ? {
+        ...(phoneNumberID
+          ? {
               phone_number_id: phoneNumberID,
             }
-            : {}
-        ),
+          : {}),
       },
-    })<MediaDeletePayload>(
-      encodeURIComponent(mediaID),
-      request,
-    );
+    })<MediaDeletePayload>(encodeURIComponent(mediaID), request);
   }
 
   /**
@@ -135,10 +129,7 @@ export default class Media {
    * const file = await download.arrayBuffer();
    * fs.writeFile("filename.ext", Buffer.from(file));
    */
-  public download({
-    mediaURL,
-    request,
-  }: MethodOptions & DownloadOptions) {
+  public download({ mediaURL, request }: MethodOptions & DownloadOptions) {
     return ky.create({
       method: "GET",
       headers: {
@@ -147,9 +138,6 @@ export default class Media {
         // Work-around for issues regarding server-sent User-Agents
         Host: "lookaside.fbsbx.com",
       },
-    })(
-      mediaURL,
-      request,
-    );
+    })(mediaURL, request);
   }
 }

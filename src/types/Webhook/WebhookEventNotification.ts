@@ -25,7 +25,6 @@ export type ConversationType =
   | "referral_conversation"
   | (string & NonNullable<unknown>);
 
-
 export type WebhookEventNotification = {
   /**
    * The specific webhook a business is subscribed to. The webhook is
@@ -179,58 +178,78 @@ export type WebhookEventNotification = {
            */
           referral?: EventNotificationMessageReferral;
         } & (
-          {
-            type: MessageType.Audio;
-            [MessageType.Audio]: Omit<EventNotificationMessageMedia, "caption" | "filename" | "sha256">;
-          } | {
-            type: MessageType.Button;
-            [MessageType.Button]: {
-              payload: string;
-              text: string;
-            };
-          } | {
-            type: MessageType.Contacts;
-            // TODO: Add this type
-            [MessageType.Contacts]: unknown;
-          } | {
-            type: MessageType.Document;
-            [MessageType.Document]: EventNotificationMessageMedia;
-          } | {
-            type: MessageType.Image;
-            [MessageType.Image]: EventNotificationMessageMedia;
-          } | {
-            type: MessageType.Interactive;
-            // TODO: Implement this type
-            [MessageType.Interactive]: unknown;
-          } | {
-            type: MessageType.Order;
-            // TODO: Implement this type
-            [MessageType.Order]: unknown;
-          } | {
-            type: MessageType.Location;
-            // TODO: Implement this type
-            [MessageType.Location]: unknown;
-          } | {
-            type: MessageType.Reaction | MessageType.Sticker;
-            [MessageType.Sticker]: Omit<EventNotificationMessageMedia, "caption" | "filename"> & {
-              animated: boolean;
-            };
-          } | {
-            type: MessageType.Text;
-            [MessageType.Text]: EventNotificationMessageText;
-          } | {
-            type: MessageType.Video;
-            [MessageType.Video]: Omit<EventNotificationMessageMedia, "filename">;
-          } | {
-            type: MessageType.System;
+          | {
+              type: MessageType.Audio;
+              [MessageType.Audio]: Omit<
+                EventNotificationMessageMedia,
+                "caption" | "filename" | "sha256"
+              >;
+            }
+          | {
+              type: MessageType.Button;
+              [MessageType.Button]: {
+                payload: string;
+                text: string;
+              };
+            }
+          | {
+              type: MessageType.Contacts;
+              // TODO: Add this type
+              [MessageType.Contacts]: unknown;
+            }
+          | {
+              type: MessageType.Document;
+              [MessageType.Document]: EventNotificationMessageMedia;
+            }
+          | {
+              type: MessageType.Image;
+              [MessageType.Image]: EventNotificationMessageMedia;
+            }
+          | {
+              type: MessageType.Interactive;
+              // TODO: Implement this type
+              [MessageType.Interactive]: unknown;
+            }
+          | {
+              type: MessageType.Order;
+              // TODO: Implement this type
+              [MessageType.Order]: unknown;
+            }
+          | {
+              type: MessageType.Location;
+              // TODO: Implement this type
+              [MessageType.Location]: unknown;
+            }
+          | {
+              type: MessageType.Reaction | MessageType.Sticker;
+              [MessageType.Sticker]: Omit<
+                EventNotificationMessageMedia,
+                "caption" | "filename"
+              > & {
+                animated: boolean;
+              };
+            }
+          | {
+              type: MessageType.Text;
+              [MessageType.Text]: EventNotificationMessageText;
+            }
+          | {
+              type: MessageType.Video;
+              [MessageType.Video]: Omit<
+                EventNotificationMessageMedia,
+                "filename"
+              >;
+            }
+          | {
+              type: MessageType.System;
 
-            /**
-             * When messages type is set to system, a customer has updated their phone
-             * number or profile information, this object is included in the messages
-             * object.
-             */
-            [MessageType.System]: EventNotificationMessageSystem;
-          }
+              /**
+               * When messages type is set to system, a customer has updated their phone
+               * number or profile information, this object is included in the messages
+               * object.
+               */
+              [MessageType.System]: EventNotificationMessageSystem;
+            }
         ))[];
 
         /**
@@ -275,11 +294,7 @@ export type WebhookEventNotification = {
            * is implied that a message has been delivered if it has been read. The
            * reason for this behavior is internal optimization.
            */
-          status:
-            | "delivered"
-            | "read"
-            | "sent"
-            | "failed";
+          status: "delivered" | "read" | "sent" | "failed";
 
           /**
            * Date for the status message.
@@ -351,4 +366,4 @@ export type WebhookEventNotification = {
       };
     }[];
   }[];
-}
+};
