@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 7.0.6
+
+### Patch Changes
+
+- feebb70: Add Phone Numbers' APIs
+
 ## 7.0.5
 
 ### Patch Changes
