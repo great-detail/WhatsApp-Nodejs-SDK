@@ -34,7 +34,7 @@ export default class Client {
     graphVersion = "v20.0",
   }: Options = {}) {
     this._request = {
-      prefixUrl: prefixUrl.replace(/\/$/, "") + graphVersion,
+      prefixUrl: prefixUrl.replace(/\/$/, "") + "/" + graphVersion,
     };
 
     this.businessProfile = new BusinessProfile(this._request);
