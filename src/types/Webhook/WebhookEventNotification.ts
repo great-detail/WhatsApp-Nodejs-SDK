@@ -10,12 +10,12 @@ import { AccountID } from "../Account.js";
 import { BusinessAccountID } from "../BusinessAccount.js";
 import { WhatsappError } from "../Error.js";
 import { MessageID } from "../Message/index.js";
-import { MessageType } from "../Message/MessageType.js";
 import { EventNotificationMessageIdentity } from "../Message/MessageIdentity.js";
 import { EventNotificationMessageMedia } from "../Message/MessageMedia.js";
 import { EventNotificationMessageReferral } from "../Message/MessageReferral.js";
 import { EventNotificationMessageSystem } from "../Message/MessageSystem.js";
 import { EventNotificationMessageText } from "../Message/MessageText.js";
+import { MessageType } from "../Message/MessageType.js";
 import { PhoneNumberID, PhoneNumberString } from "../PhoneNumber.js";
 
 export type ConversationType =
