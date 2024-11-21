@@ -11,7 +11,7 @@
 import { program } from "commander";
 import getStdin from "get-stdin";
 import Client from "./Client.js";
-import { MessageType } from "./types/Message/index.js";
+import { MessageType } from "./types/Message/MessageType.js";
 
 const WHATSAPP_ACCESS_TOKEN = process.env.WHATSAPP_ACCESS_TOKEN;
 const WHATSAPP_PHONE_NUMBER_ID = process.env.WHATSAPP_PHONE_NUMBER_ID;
