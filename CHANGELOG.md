@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 7.0.7
+
+### Patch Changes
+
+- ec11904: Export MessageType enum as non-type
+
 ## 7.0.6
 
 ### Patch Changes
