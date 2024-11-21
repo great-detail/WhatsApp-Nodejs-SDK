@@ -9,7 +9,8 @@
 import { AccountID } from "../Account.js";
 import { BusinessAccountID } from "../BusinessAccount.js";
 import { WhatsappError } from "../Error.js";
-import { MessageID, MessageType } from "../Message/index.js";
+import { MessageID } from "../Message/index.js";
+import { MessageType } from "../Message/MessageType.js";
 import { EventNotificationMessageIdentity } from "../Message/MessageIdentity.js";
 import { EventNotificationMessageMedia } from "../Message/MessageMedia.js";
 import { EventNotificationMessageReferral } from "../Message/MessageReferral.js";
