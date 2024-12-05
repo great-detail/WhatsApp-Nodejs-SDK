@@ -178,6 +178,10 @@ export default class Webhook {
       );
     }
 
+    const xHubSignature1 = request.headers["x-hub-signature"]
+      ?.toString()
+      .replace("sha1=", "");
+
     const xHubSignature256 = request.headers["x-hub-signature-256"]
       ?.toString()
       .replace("sha256=", "");
@@ -194,22 +198,44 @@ export default class Webhook {
     }
 
     // Async request body buffering
-    const bodyString = Buffer.from(request.body).toString("utf8");
+    const bodyString = request.body;
     const eventNotification = JSON.parse(
       bodyString,
     ) as WebhookEventNotification;
 
-    return {
-      eventNotification,
-      checkSignature: (appSecret: string) => {
-        const generatedSignature256 = createHmac("sha256", appSecret)
-          .update(bodyString)
-          .digest("hex");
+    // See: https://github.com/WhatsApp/WhatsApp-Nodejs-SDK/blob/58ca3d5fceea604e18393734578d9a7944a37b15/src/utils.ts#L77-L82
+    const getCalculatedSignature = (alg: string) => (appSecret: string) =>
+      createHmac(alg, appSecret)
+        .update(bodyString, "utf-8")
+        .digest("hex");
 
-        const isAuthentic256 = xHubSignature256 === generatedSignature256;
+    const checkSignature = (alg: string, signature: string) => {
+      const signatureCalculator = getCalculatedSignature(alg);
+
+      return (appSecret: string) => {
+        const generatedSignature = signatureCalculator(appSecret);
+
+        const isAuthentic256 = signature === generatedSignature;
 
         return isAuthentic256;
+      };
+    };
+
+    return {
+      eventNotification,
+      signature: {
+        sha1: {
+          value: xHubSignature1,
+          getCalculatedSignature: getCalculatedSignature("sha1"),
+          check: checkSignature("sha1", xHubSignature1),
+        },
+        sha256: {
+          value: xHubSignature256,
+          getCalculatedSignature: getCalculatedSignature("sha256"),
+          check: checkSignature("sha256", xHubSignature256),
+        },
       },
+      checkSignature: checkSignature("sha256", xHubSignature256),
       verifySignature(appSecret: string) {
         if (!this.checkSignature(appSecret)) {
           throw new InvalidHubSignatureWebhookError(
