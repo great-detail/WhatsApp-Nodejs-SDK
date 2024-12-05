@@ -204,6 +204,7 @@ export default class Webhook {
     ) as WebhookEventNotification;
 
     // See: https://github.com/WhatsApp/WhatsApp-Nodejs-SDK/blob/58ca3d5fceea604e18393734578d9a7944a37b15/src/utils.ts#L77-L82
+    // See: https://developers.facebook.com/docs/messenger-platform/webhooks#validate-payloads
     const getCalculatedSignature = (alg: string) => (appSecret: string) =>
       createHmac(alg, appSecret)
         .update(bodyString, "utf-8")
