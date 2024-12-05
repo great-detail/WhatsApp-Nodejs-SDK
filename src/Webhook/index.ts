@@ -64,14 +64,22 @@ export default class Webhook {
    * **Fastify**:
    *
    * ```ts
+   * // See: https://github.com/fastify/fastify/issues/707#issuecomment-817224931
+   * fastify.addContentTypeParser("application/json", { parseAs: "buffer" }, (_req, body, done) => {
+   *   done(null, body);
+   * });
+   *
    * fastify.route({
    *   method: "GET",
    *   url: "/path/to/webhook",
    *   handler: (request, reply) => {
+   *     assert(Buffer.isBuffer(request.body) || typeof request.body === "string");
+   *     const body = request.body.toString();
+   *
    *     const reg = await sdk.webhook.register({
    *       method: request.method,
    *       query: request.query,
-   *       body: JSON.stringify(request.body),
+   *       body,
    *       headers: request.headers,
    *     });
    *     // DIY: Check the reg.verifyToken value
