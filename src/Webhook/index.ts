@@ -215,7 +215,7 @@ export default class Webhook {
     // See: https://developers.facebook.com/docs/messenger-platform/webhooks#validate-payloads
     const getCalculatedSignature = (alg: string) => (appSecret: string) =>
       createHmac(alg, appSecret)
-        .update(bodyString, "utf-8")
+        .update(bodyString, "utf8")
         .digest("hex");
 
     const checkSignature = (alg: string, signature: string) => {
