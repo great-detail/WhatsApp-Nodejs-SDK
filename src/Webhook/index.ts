@@ -64,14 +64,22 @@ export default class Webhook {
    * **Fastify**:
    *
    * ```ts
+   * // See: https://github.com/fastify/fastify/issues/707#issuecomment-817224931
+   * fastify.addContentTypeParser("application/json", { parseAs: "buffer" }, (_req, body, done) => {
+   *   done(null, body);
+   * });
+   *
    * fastify.route({
    *   method: "GET",
    *   url: "/path/to/webhook",
    *   handler: (request, reply) => {
+   *     assert(Buffer.isBuffer(request.body) || typeof request.body === "string");
+   *     const body = request.body.toString();
+   *
    *     const reg = await sdk.webhook.register({
    *       method: request.method,
    *       query: request.query,
-   *       body: JSON.stringify(request.body),
+   *       body,
    *       headers: request.headers,
    *     });
    *     // DIY: Check the reg.verifyToken value
@@ -204,6 +212,7 @@ export default class Webhook {
     ) as WebhookEventNotification;
 
     // See: https://github.com/WhatsApp/WhatsApp-Nodejs-SDK/blob/58ca3d5fceea604e18393734578d9a7944a37b15/src/utils.ts#L77-L82
+    // See: https://developers.facebook.com/docs/messenger-platform/webhooks#validate-payloads
     const getCalculatedSignature = (alg: string) => (appSecret: string) =>
       createHmac(alg, appSecret)
         .update(bodyString, "utf-8")
