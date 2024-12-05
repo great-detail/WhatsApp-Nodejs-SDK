@@ -1,5 +1,17 @@
 # `@great-detail/whatsapp`
 
+## 7.0.8
+
+### Patch Changes
+
+- 4acedc2: Correct prefixUrl construction for graph version selection
+
+## 7.0.7
+
+### Patch Changes
+
+- ec11904: Export MessageType enum as non-type
+
 ## 7.0.6
 
 ### Patch Changes
