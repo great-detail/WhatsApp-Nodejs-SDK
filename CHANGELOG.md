@@ -1,5 +1,13 @@
 # `@great-detail/whatsapp`
 
+## 7.0.9
+
+### Patch Changes
+
+- 0b0122a: Return x-hub-signature-256 header alongside event notification return
+- da9832f: Update Documentation for Fastify Raw Body Parsing
+- 5669c73: Explicitly set UTF-8 encoding in signature calculation
+
 ## 7.0.8
 
 ### Patch Changes
