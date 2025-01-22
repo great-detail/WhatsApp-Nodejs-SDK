@@ -1,7 +1,7 @@
 /**
  * Great Detail Support System.
  *
- * @copyright 2024 Great Detail Ltd
+ * @copyright 2025 Great Detail Ltd
  * @author    Great Detail Ltd <info@greatdetail.com>
  * @author    Dom Webber <dom.webber@greatdetail.com>
  * @see       https://greatdetail.com
