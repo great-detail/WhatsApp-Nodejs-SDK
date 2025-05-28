@@ -74,7 +74,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "commander": "^12.1.0",
+    "commander": "^14.0.0",
     "get-stdin": "^9.0.0",
     "ky": "^1.7.2",
     "ora": "^8.1.1"
