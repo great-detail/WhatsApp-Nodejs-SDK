@@ -1,3 +1,5 @@
+permissions:
+  contents: read
 name: Test
 
 on:
@@ -30,5 +32,4 @@ jobs:
       - run: npm ci --prefer-offline --no-audit --no-fund
       - run: npm run build
       - run:
-          node --import tsx --test --test-shard=${{ matrix.shard }}
-          src/__tests__/unit/**/*.test.ts src/__tests__/unit/*.test.ts
+          node --import tsx --test --test-shard=${{ matrix
