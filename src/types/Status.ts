@@ -14,6 +14,9 @@ export type CreateStatusOptions = {
   phoneNumberID: PhoneNumberID;
   message_id: MessageID;
   status: MessageStatusType;
+  typing_indicator?: {
+    type: "text";
+  };
   [key: string]: unknown | undefined;
 };
 
