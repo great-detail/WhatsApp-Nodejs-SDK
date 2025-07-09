@@ -102,14 +102,14 @@ This SDK is designed to be compatible with the Cloud API API.
 
 | SDK  | Cloud API | NodeJS |
 | :--- | :-------: | -----: |
-| v7.x |    v20    |   v18+ |
+| v7.x |    v23    |   v18+ |
 
 Whilst the SDK may work with alternative versions of the Graph API, it is
 designed to work with the above. If you find any compatibility issues, please
 report them via
 [GitHub Issues](https://github.com/great-detail/WhatsApp-Nodejs-SDK/issues).
 
-**Tested on NodeJS**: `v21`, `v22`, `v23`.
+**Tested on NodeJS LTS Versions**: `v22`, `v24`.
 
 Additional NodeJS versions may also work, however, automated testing requires
 NodeJS' test suite, which was introduced in `v21`.
