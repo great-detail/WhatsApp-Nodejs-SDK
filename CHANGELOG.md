@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 7.1.0
+
+### Minor Changes
+
+- 306aad8: Add `typing_indicator` field support to `Message.createStatus`
+
 ## 7.0.9
 
 ### Patch Changes
