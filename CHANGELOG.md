@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 7.2.1
+
+### Patch Changes
+
+- 0c8481a: Fix WebhookEventNotification changes union type
+
 ## 7.2.0
 
 ### Minor Changes
