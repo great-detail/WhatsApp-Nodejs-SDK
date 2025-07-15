@@ -16,8 +16,7 @@ jobs:
       matrix:
         node-version: [22.x, 24.x]
         shard: [1/1]
-    name:
-      Node v${{ matrix.node-version }} on ${{ inputs.os }} ${{ matrix.shard }}
+    name: Node v${{ matrix.node-version }} on ${{ inputs.os }} ${{ matrix.shard }}
     runs-on: ${{ inputs.os }}
 
     steps:
@@ -31,6 +30,5 @@ jobs:
           cache: npm
       - run: npm ci --prefer-offline --no-audit --no-fund
       - run: npm run build
-      - run:
-          node --import tsx --test --test-shard=${{ matrix.shard }}
+      - run: node --import tsx --test --test-shard=${{ matrix.shard }}
           src/__tests__/unit/**/*.test.ts src/__tests__/unit/*.test.ts

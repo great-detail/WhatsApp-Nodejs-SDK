@@ -8,10 +8,8 @@ Originally a fork of the
 
 [npm (scoped)]: https://img.shields.io/npm/v/%40great-detail/whatsapp
 [sdk-npmjs]: https://www.npmjs.com/package/@great-detail/whatsapp
-[Lint, Format, Test & Build]:
-  https://github.com/great-detail/WhatsApp-Nodejs-SDK/actions/workflows/nodejs.ci.yml/badge.svg
-[sdk-ci]:
-  https://github.com/great-detail/WhatsApp-Nodejs-SDK/actions/workflows/nodejs.ci.yml
+[Lint, Format, Test & Build]: https://github.com/great-detail/WhatsApp-Nodejs-SDK/actions/workflows/nodejs.ci.yml/badge.svg
+[sdk-ci]: https://github.com/great-detail/WhatsApp-Nodejs-SDK/actions/workflows/nodejs.ci.yml
 
 ## Getting started
 
