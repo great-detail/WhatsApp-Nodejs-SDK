@@ -26,31 +26,11 @@ export type ConversationType =
   | "referral_conversation"
   | (string & NonNullable<unknown>);
 
-export type WebhookEventNotification = {
-  /**
-   * The specific webhook a business is subscribed to. The webhook is
-   * whatsapp_business_account.
-   */
-  object: string;
-
-  /**
-   * An array of entry objects.
-   */
-  entry: {
-    /**
-     * The WhatsApp Business Account ID for the business that is subscribed to
-     * the webhook.
-     */
-    id: BusinessAccountID;
-
-    /**
-     * An array of change objects.
-     */
-    changes: {
+export type WebhookEventNotificationMessagesChanges = {
       /**
        * Notification type. Value will be messages.
        */
-      field: "messages" | (string & NonNullable<unknown>);
+      field: "messages";
 
       /**
        * A value object.
@@ -370,6 +350,40 @@ export type WebhookEventNotification = {
           biz_opaque_callback_data?: string;
         }[];
       };
-    }[];
+};
+
+export type WebhookEventNotificationAccountUpdateChanges = {
+  field: "account_update";
+  value: {
+    event: "PARTNER_APP_INSTALLED"  | (string & NonNullable<unknown>);
+    waba_info: {
+      waba_id: AccountID;
+      owner_business_id: BusinessAccountID;
+      partner_app_id: string;
+    };
+  };
+};
+
+export type WebhookEventNotification = {
+  /**
+   * The specific webhook a business is subscribed to. The webhook is
+   * whatsapp_business_account.
+   */
+  object: string;
+
+  /**
+   * An array of entry objects.
+   */
+  entry: {
+    /**
+     * The WhatsApp Business Account ID for the business that is subscribed to
+     * the webhook.
+     */
+    id: BusinessAccountID;
+
+    /**
+     * An array of change objects.
+     */
+    changes: WebhookEventNotificationMessagesChanges | WebhookEventNotificationAccountUpdateChanges[];
   }[];
 };
