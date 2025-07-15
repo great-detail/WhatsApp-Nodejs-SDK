@@ -381,8 +381,9 @@ export type WebhookEventNotification = {
     /**
      * An array of change objects.
      */
-    changes:
+    changes: (
       | WebhookEventNotificationMessagesChanges
-      | WebhookEventNotificationAccountUpdateChanges[];
+      | WebhookEventNotificationAccountUpdateChanges
+    )[];
   }[];
 };
