@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 7.2.0
+
+### Minor Changes
+
+- 88f2a57: Add `account_update` event changes' type to WebhokEventNotification type
+
 ## 7.1.0
 
 ### Minor Changes
