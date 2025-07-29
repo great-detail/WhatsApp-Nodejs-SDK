@@ -68,6 +68,37 @@ for updates and release notes.
 Additional NodeJS versions may also work, however, automated testing requires
 NodeJS' test suite, which was introduced in `v21`.
 
+## Migrating v7 to v8
+
+v8 of this SDK increased the minimum supported NodeJS version to v20.19.0,
+alongside the release of support for
+[`require()` with ESM](https://github.com/nodejs/node/releases/tag/v20.19.0).
+This also coincides with NodeJS v18 reaching EOL, thus making the minimum LTS
+NodeJS version v20.
+
+This update to the minimum supported NodeJS version allows us to greatly
+decrease the bundle size due to releasing ESM-only builds. Consumers in a CJS
+environment should
+[still be able to use the library as before](https://github.com/nodejs/node/releases/tag/v20.19.0).
+
+v8 also removes the CLI aspect of this package. This change comes as the CLI
+aspect of this SDK hasn't been updated since early development and support for
+later functionality was not added. This too allows for a reduction in bundle
+size.
+
+v8 of this SDK also updates the default Meta Graph API version to `v23.0` -
+whilst this update should maintain compatibility, to remain on the previous
+Graph API version (`v20.0`) update instantiation of this client as follows:
+
+```ts
+// To remain on the previous Graph API version:
+const sdk = new Client({
+  // Add this line to the instantiation options:
+  graphVersion: "v20.0",
+  // ...
+});
+```
+
 ## TODO
 
 There are a number of features supported by the WhatsApp Business Cloud API that
