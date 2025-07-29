@@ -184,6 +184,5 @@ const result = await sdk.media.upload({
 import fs from "fs";
 const result = await sdk.media.download("<MEDIA_URL>");
 const file = await result.arrayBuffer();
-const file = await result.arrayBuffer();
 fs.writeFileSync("<FILE_PATH>", Buffer.from(file));
 ```
