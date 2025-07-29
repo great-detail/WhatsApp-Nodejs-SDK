@@ -52,22 +52,21 @@
   "scripts": {
     "build": "tsup --entry src/index.ts --entry src/cli.ts --format esm --minify --dts",
     "changeset": "changeset",
-    "fix": "npm-run-all fix:*",
+    "fix": "pnpm run /^fix:.*/",
     "fix:eslint": "eslint . --fix",
     "fix:prettier": "prettier --write .",
-    "lint": "npm-run-all lint:*",
+    "lint": "pnpm run /^lint:.*/",
     "lint:eslint": "eslint .",
     "lint:prettier": "prettier --check .",
     "lint:publint": "publint",
     "lint:typecheck": "npm run typecheck",
-    "prerelease": "npm-run-all build",
+    "prerelease": "pnpm run build",
     "release": "changeset publish",
     "test": "node --import tsx --test --experimental-test-coverage src/__tests__/**/*.test.ts src/__tests__/*.test.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "commander": "^14.0.0",
-    "get-stdin": "^9.0.0",
     "ky": "^1.8.2"
   },
   "devDependencies": {
@@ -75,10 +74,8 @@
     "@great-detail/eslint-config": "^1.1.0",
     "@types/node": "^24.1.0",
     "eslint": "^9.32.0",
-    "npm-run-all": "^4.1.5",
     "prettier": "^3.6.2",
     "publint": "^0.3.12",
-    "ts-node": "^10.9.2",
     "tsup": "^8.5.0",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3"

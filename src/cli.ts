@@ -9,9 +9,9 @@
  * @see    https://greatdetail.com
  */
 import { program } from "commander";
-import getStdin from "get-stdin";
 import Client from "./Client.js";
 import { MessageType } from "./types/Message/MessageType.js";
+import getStdin from "./utils/getStdin.js";
 
 const WHATSAPP_ACCESS_TOKEN = process.env.WHATSAPP_ACCESS_TOKEN;
 const WHATSAPP_PHONE_NUMBER_ID = process.env.WHATSAPP_PHONE_NUMBER_ID;
@@ -97,7 +97,7 @@ mediaCommand
     WHATSAPP_ACCESS_TOKEN,
   )
   .action(async (options) => {
-    const stdinBuffer = await getStdin.buffer();
+    const stdinBuffer = await getStdin();
     const stdinBlob = new Blob([stdinBuffer], { type: options.mimeType });
     const result = await sdk.media.upload({
       file: stdinBlob,
