@@ -10,7 +10,8 @@
 
 ### Minor Changes
 
-- 88f2a57: Add `account_update` event changes' type to WebhokEventNotification type
+- 88f2a57: Add `account_update` event changes' type to WebhokEventNotification
+  type
 
 ## 7.1.0
 

@@ -9,6 +9,10 @@ Originally a fork of the
 [npm (scoped)]: https://img.shields.io/npm/v/%40great-detail/whatsapp
 [sdk-npmjs]: https://www.npmjs.com/package/@great-detail/whatsapp
 
+See the
+[Changelog](https://github.com/great-detail/WhatsApp-Nodejs-SDK/blob/main/CHANGELOG.md)
+for updates and release notes.
+
 ## Installation
 
 Install the WhatsApp Business Platform SDK:
