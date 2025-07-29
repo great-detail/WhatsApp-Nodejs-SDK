@@ -4,59 +4,37 @@ An unofficial SDK for Meta's WhatsApp Business Messaging APIs - Cloud API.
 Originally a fork of the
 [deprecated official SDK for Meta's WhatsApp Business Messaging APIs](https://github.com/WhatsApp/WhatsApp-Nodejs-SDK).
 
-[![npm (scoped)][]][sdk-npmjs] [![Lint, Format, Test & Build][]][sdk-ci]
+[![npm (scoped)][]][sdk-npmjs]
 
 [npm (scoped)]: https://img.shields.io/npm/v/%40great-detail/whatsapp
 [sdk-npmjs]: https://www.npmjs.com/package/@great-detail/whatsapp
-[Lint, Format, Test & Build]: https://github.com/great-detail/WhatsApp-Nodejs-SDK/actions/workflows/nodejs.ci.yml/badge.svg
-[sdk-ci]: https://github.com/great-detail/WhatsApp-Nodejs-SDK/actions/workflows/nodejs.ci.yml
-
-## Getting started
-
-**ESM Import**:
-
-```ts
-import Client from "@great-detail/whatsapp";
-```
-
-**CJS Import**:
-
-```ts
-const Client = require("@great-detail/whatsapp").default;
-```
-
-**Usage**:
-
-```typescript
-const sdk = new Client();
-const message = await sdk.message.createMessage({
-  phoneNumberID: "123...809",
-  to: "1234567890",
-  type: "text",
-  text: {
-    body: "Hello",
-  },
-  request: {
-    headers: {
-      Authorization: "Bearer ...",
-    },
-  },
-});
-```
 
 ## Installation
 
 Install the WhatsApp Business Platform SDK:
 
 ```bash
-# NPM:
 npm install @great-detail/whatsapp
+# or PNPM or Yarn
+```
 
-# Yarn:
-yarn add @great-detail/whatsapp
+## Getting started
 
-# PNPM:
-pnpm add @great-detail/whatsapp
+```ts
+import Client from "@great-detail/whatsapp"; // or require("@great-detail/whatsapp");
+
+const sdk = new Client();
+const message = await sdk.message.createMessage({
+  phoneNumberID: "123...809",
+  to: "1234567890",
+  type: "text",
+  text: { body: "Hello" },
+  request: {
+    headers: {
+      Authorization: "Bearer ...",
+    },
+  },
+});
 ```
 
 ## CLI Usage
@@ -100,7 +78,7 @@ This SDK is designed to be compatible with the Cloud API API.
 
 | SDK  | Cloud API | NodeJS |
 | :--- | :-------: | -----: |
-| v7.x |    v23    |   v18+ |
+| v8.x |    v23    |   v20+ |
 
 Whilst the SDK may work with alternative versions of the Graph API, it is
 designed to work with the above. If you find any compatibility issues, please
