@@ -6,7 +6,7 @@
  * @see    https://greatdetail.com
  */
 
-import ky, { Options as KyOptions } from "ky";
+import { KyInstance, Options as KyOptions } from "ky";
 import { BusinessAccountID } from "../types/BusinessAccount.js";
 import {
   CreateSubscriptionOptions,
@@ -20,7 +20,7 @@ interface MethodOptions {
 }
 
 export default class SubscribedApps {
-  constructor(protected _request: KyOptions) {}
+  constructor(protected _transport: KyInstance) {}
 
   protected getEndpoint(businessAccountID: BusinessAccountID) {
     return encodeURIComponent(businessAccountID) + "/subscribed_apps";
@@ -30,8 +30,7 @@ export default class SubscribedApps {
     businessAccountID,
     request,
   }: MethodOptions & CreateSubscriptionOptions) {
-    return ky.create({
-      ...this._request,
+    return this._transport.extend({
       method: "POST",
     })<CreateSubscriptionPayload>(this.getEndpoint(businessAccountID), request);
   }
@@ -40,8 +39,7 @@ export default class SubscribedApps {
     businessAccountID,
     request,
   }: MethodOptions & ListSubscriptionsOptions) {
-    return ky.create({
-      ...this._request,
+    return this._transport.extend({
       method: "GET",
     })<ListSubscriptionsPayload>(this.getEndpoint(businessAccountID), request);
   }

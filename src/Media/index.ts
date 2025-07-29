@@ -6,7 +6,7 @@
  * @see    https://greatdetail.com
  */
 
-import ky, { Options as KyOptions } from "ky";
+import ky, { KyInstance, Options as KyOptions } from "ky";
 import {
   MediaDeleteOptions,
   MediaDeletePayload,
@@ -26,7 +26,7 @@ export interface DownloadOptions {
 }
 
 export default class Media {
-  constructor(protected _request: KyOptions) {}
+  constructor(protected _transport: KyInstance) {}
 
   protected getEndpoint(phoneNumberID: PhoneNumberID) {
     return encodeURIComponent(phoneNumberID) + "/media";
@@ -49,8 +49,7 @@ export default class Media {
     formData.set("file", file, filename);
     formData.set("type", mimeType);
 
-    return ky.create({
-      ...this._request,
+    return this._transport.extend({
       method: "POST",
       body: formData,
     })<MediaUploadPayload>(this.getEndpoint(phoneNumberID), request);
@@ -70,8 +69,7 @@ export default class Media {
     phoneNumberID,
     request,
   }: MethodOptions & MediaGetURLOptions) {
-    return ky.create({
-      ...this._request,
+    return this._transport.extend({
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -91,8 +89,7 @@ export default class Media {
     phoneNumberID,
     request,
   }: MethodOptions & MediaDeleteOptions) {
-    return ky.create({
-      ...this._request,
+    return this._transport.extend({
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

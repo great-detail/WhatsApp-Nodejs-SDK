@@ -6,21 +6,23 @@
  * @see    https://greatdetail.com
  */
 
+import ky from "ky";
 import BusinessProfile from "./BusinessProfile/index.js";
 import Media from "./Media/index.js";
 import Message from "./Message/index.js";
 import PhoneNumbers from "./PhoneNumbers/index.js";
 import SubscribedApps from "./SubscribedApps/index.js";
 import Webhook from "./Webhook/index.js";
-import type { Options as KyOptions } from "ky";
+import type { KyInstance, Options as KyOptions } from "ky";
 
 export interface Options {
   prefixUrl?: string;
   graphVersion?: `v${string}` | (string & NonNullable<unknown>);
+  request?: Omit<KyOptions, "prefixUrl">;
 }
 
 export default class Client {
-  protected _request: KyOptions;
+  protected _transport: KyInstance;
 
   public businessProfile: BusinessProfile;
   public message: Message;
@@ -32,16 +34,18 @@ export default class Client {
   constructor({
     prefixUrl = "https://graph.facebook.com",
     graphVersion = "v20.0",
+    request,
   }: Options = {}) {
-    this._request = {
+    this._transport = ky.create({
+      ...request,
       prefixUrl: prefixUrl.replace(/\/$/, "") + "/" + graphVersion,
-    };
+    });
 
-    this.businessProfile = new BusinessProfile(this._request);
-    this.message = new Message(this._request);
-    this.phoneNumbers = new PhoneNumbers(this._request);
-    this.subscribedApps = new SubscribedApps(this._request);
-    this.media = new Media(this._request);
+    this.businessProfile = new BusinessProfile(this._transport);
+    this.message = new Message(this._transport);
+    this.phoneNumbers = new PhoneNumbers(this._transport);
+    this.subscribedApps = new SubscribedApps(this._transport);
+    this.media = new Media(this._transport);
     this.webhook = new Webhook();
   }
 }

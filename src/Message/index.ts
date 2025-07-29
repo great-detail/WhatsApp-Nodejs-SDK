@@ -6,7 +6,7 @@
  * @see    https://greatdetail.com
  */
 
-import ky, { Options as KyOptions } from "ky";
+import { KyInstance, Options as KyOptions } from "ky";
 import {
   CreateMessageOptions,
   CreateMessagePayload,
@@ -19,7 +19,7 @@ interface MethodOptions {
 }
 
 export default class Message {
-  constructor(protected _request: KyOptions) {}
+  constructor(protected _transport: KyInstance) {}
 
   protected getEndpoint(phoneNumberID: PhoneNumberID) {
     return encodeURIComponent(phoneNumberID) + "/messages";
@@ -30,8 +30,7 @@ export default class Message {
     request,
     ...status
   }: MethodOptions & CreateStatusOptions) {
-    return ky.create({
-      ...this._request,
+    return this._transport.extend({
       method: "POST",
       json: {
         messaging_product: "whatsapp",
@@ -48,8 +47,7 @@ export default class Message {
     request,
     ...message
   }: MethodOptions & CreateMessageOptions) {
-    return ky.create({
-      ...this._request,
+    return this._transport.extend({
       method: "POST",
       json: {
         messaging_product: "whatsapp",

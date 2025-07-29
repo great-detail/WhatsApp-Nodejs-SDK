@@ -6,7 +6,7 @@
  * @see    https://greatdetail.com
  */
 
-import ky, { Options as KyOptions } from "ky";
+import { KyInstance, Options as KyOptions } from "ky";
 import {
   GetBusinessProfileFields,
   GetBusinessProfileOptions,
@@ -21,7 +21,7 @@ interface MethodOptions {
 }
 
 export default class BusinessProfile {
-  constructor(protected _request: KyOptions) {}
+  constructor(protected _transport: KyInstance) {}
 
   protected getEndpoint(phoneNumberID: PhoneNumberID) {
     return encodeURIComponent(phoneNumberID) + "/whatsapp_business_profile";
@@ -32,8 +32,7 @@ export default class BusinessProfile {
     fields,
     request,
   }: MethodOptions & GetBusinessProfileOptions<Fields>) {
-    return ky.create({
-      ...this._request,
+    return this._transport.extend({
       method: "GET",
       searchParams: {
         fields: Object.keys(fields ?? {}).join(","),
@@ -49,8 +48,7 @@ export default class BusinessProfile {
     request,
     ...json
   }: MethodOptions & UpdateBusinessProfileOptions) {
-    return ky.create({
-      ...this._request,
+    return this._transport.extend({
       method: "POST",
       json: {
         messaging_product: "whatsapp",

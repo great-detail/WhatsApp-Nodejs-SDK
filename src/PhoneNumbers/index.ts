@@ -6,7 +6,7 @@
  * @see    https://greatdetail.com
  */
 
-import ky, { Options as KyOptions } from "ky";
+import { KyInstance, Options as KyOptions } from "ky";
 import { BusinessAccountID } from "../types/BusinessAccount.js";
 import {
   GetPhoneNumberFields,
@@ -21,7 +21,7 @@ interface MethodOptions {
 }
 
 export default class PhoneNumbers {
-  constructor(protected _request: KyOptions) {}
+  constructor(protected _transport: KyInstance) {}
 
   public getEndpoint(businessAccountID: BusinessAccountID) {
     return encodeURIComponent(businessAccountID) + "/phone_numbers";
@@ -32,8 +32,7 @@ export default class PhoneNumbers {
     fields,
     request,
   }: MethodOptions & GetPhoneNumberOptions) {
-    return ky.create({
-      ...this._request,
+    return this._transport.extend({
       method: "GET",
       searchParams: {
         fields: Object.keys(fields ?? {}).join(","),
@@ -50,8 +49,7 @@ export default class PhoneNumbers {
     filtering,
     request,
   }: MethodOptions & ListPhoneNumbersOptions) {
-    return ky.create({
-      ...this._request,
+    return this._transport.extend({
       method: "GET",
       searchParams: {
         ...(sort
