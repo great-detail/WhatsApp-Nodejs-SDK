@@ -33,7 +33,7 @@ export default class Client {
 
   constructor({
     prefixUrl = "https://graph.facebook.com",
-    graphVersion = "v20.0",
+    graphVersion = "v23.0",
     request,
   }: Options = {}) {
     this._transport = ky.create({
