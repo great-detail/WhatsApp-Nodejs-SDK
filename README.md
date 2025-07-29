@@ -156,3 +156,34 @@ const message = await sdk.message.createMessage({
   text: { body: "Hello" },
 });
 ```
+
+**Upload Media Files**:
+
+```ts
+import fs from "fs";
+const fileBuffer = fs.readFileSync("<FILE_PATH>");
+const result = await sdk.media.upload({
+  phoneNumberID: "123...809",
+  mimeType: "<MIME_TYPE>",
+  file: fileBuffer,
+});
+```
+
+**Get a Media File's Download URL**:
+
+```ts
+const result = await sdk.media.upload({
+  phoneNumberID: "123...809",
+  mediaID: "<MEDIA_ID>",
+});
+```
+
+**Download Media Files**:
+
+```ts
+import fs from "fs";
+const result = await sdk.media.download("<MEDIA_URL>");
+const file = await result.arrayBuffer();
+const file = await result.arrayBuffer();
+fs.writeFileSync("<FILE_PATH>", Buffer.from(file));
+```
