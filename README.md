@@ -24,56 +24,26 @@ npm install @great-detail/whatsapp
 
 ## Getting started
 
+The primary source of documentation (at the moment) for the usage of this SDK is
+via JSDoc comments in the source code (and editor integrations).
+
 ```ts
 import Client from "@great-detail/whatsapp"; // or require("@great-detail/whatsapp");
 
-const sdk = new Client();
+// Instantiate the SDK Client
+const sdk = new Client({
+  request: {
+    headers: { Authorization: "Bearer ..." },
+  },
+});
+
+// Use it!
 const message = await sdk.message.createMessage({
   phoneNumberID: "123...809",
   to: "1234567890",
   type: "text",
   text: { body: "Hello" },
-  request: {
-    headers: {
-      Authorization: "Bearer ...",
-    },
-  },
 });
-```
-
-## CLI Usage
-
-```bash
-export WHATSAPP_ACCESS_TOKEN=""
-export WHATSAPP_PHONE_NUMBER_ID=""
-
-# NPM / Yarn / PNPM
-npx @great-detail/whatsapp ...
-yarn dlx @great-detail/whatsapp ...
-pnpx @great-detail/whatsapp ...
-
-# Send a Text Message
-# TODO: Re-add with updated SDK
-npx @great-detail/whatsapp message send text "<RECIPIENT>" --body="Hello, World!"
-# Note: <RECIPIENT> may be a Phone Number ID - it may not always be the phone number itself.
-
-# Send an Image Message
-# TODO: Re-add with updated SDK
-# npx @great-detail/whatsapp message send image "<RECIPIENT>" --media-id="<MEDIA_ID>"
-# Use --filename="..." to set the filename of the image.
-# Use --caption="..." to set a caption on the image.
-
-# Upload a Media File
-npx @great-detail/whatsapp media upload --mime-type="<MIME_TYPE>" < "<FILE_FROM_STDIN>"
-
-# Get a Media File's URL
-npx @great-detail/whatsapp media get-url "<MEDIA_ID>"
-# Note: With WHATSAPP_PHONE_NUMBER_ID set, the request will check if the media
-# is available for that phone number. To prevent this check, unset the env var
-# or add --phone-number-id="" to the command.
-
-# Download a Media File
-npx @great-detail/whatsapp media download "<MEDIA_URL>" > "<FILE_TO_STDOUT>"
 ```
 
 ## Compatibility
@@ -125,3 +95,33 @@ Originally forked from the official WhatsApp SDK created by Rashed Talukder.
 ### Contact
 
 **Great Detail Ltd**: https://greatdetail.com <info@greatdetail.com>
+
+## Usage
+
+See the following usage examples for usage. Included in the source code and
+editor integrations, JSDoc comments may provide additional context and
+information.
+
+### Messaging
+
+**Create a Status Message**:
+
+```ts
+const message = await sdk.message.createStatus({
+  phoneNumberID: "123...809",
+  message_id: "...",
+  status: "read",
+  typing_indicator: { type: "text" },
+});
+```
+
+**Create a Text Message**:
+
+```ts
+const message = await sdk.message.createMessage({
+  phoneNumberID: "123...809",
+  to: "1234567890",
+  type: "text",
+  text: { body: "Hello" },
+});
+```

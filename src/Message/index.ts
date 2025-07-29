@@ -25,6 +25,18 @@ export default class Message {
     return encodeURIComponent(phoneNumberID) + "/messages";
   }
 
+  /**
+   * Create a Status Message.
+   *
+   * ```ts
+   * const message = await sdk.message.createStatus({
+   *   phoneNumberID: "123...809",
+   *   message_id: "...",
+   *   status: "read",
+   *   typing_indicator: { type: "text" },
+   * });
+   * ```
+   */
   public createStatus({
     phoneNumberID,
     request,
@@ -39,6 +51,18 @@ export default class Message {
     })<CreateStatusPayload>(this.getEndpoint(phoneNumberID), request);
   }
 
+  /**
+   * Create a Message.
+   *
+   * ```ts
+   * const message = await sdk.message.createMessage({
+   *   phoneNumberID: "123...809",
+   *   to: "1234567890",
+   *   type: "text",
+   *   text: { body: "Hello" },
+   * });
+   * ```
+   */
   public createMessage({
     to,
     phoneNumberID,

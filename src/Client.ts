@@ -21,14 +21,47 @@ export interface Options {
   request?: Omit<KyOptions, "prefixUrl">;
 }
 
+/**
+ * The (Unofficial) WhatsApp SDK.
+ *
+ * ```ts
+ * // Instantiate the SDK Client
+ * const sdk = new Client({
+ *   request: {
+ *     headers: { Authorization: "Bearer ..." },
+ *   },
+ * });
+ *
+ * // Use it!
+ * const message = await sdk.message.createMessage({
+ *   phoneNumberID: "123...809",
+ *   to: "1234567890",
+ *   type: "text",
+ *   text: { body: "Hello" },
+ * });
+ * ```
+ *
+ * @see https://github.com/great-detail/WhatsApp-Nodejs-SDK
+ */
 export default class Client {
   protected _transport: KyInstance;
 
+  /** Business-Profile APIs */
   public businessProfile: BusinessProfile;
+
+  /** Messaging APIs */
   public message: Message;
+
+  /** Phone Number APIs */
   public phoneNumbers: PhoneNumbers;
+
+  /** Subscribed App APIs */
   public subscribedApps: SubscribedApps;
+
+  /** Media APIs */
   public media: Media;
+
+  /** Webhook APIs */
   public webhook: Webhook;
 
   constructor({
