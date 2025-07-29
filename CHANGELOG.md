@@ -1,5 +1,144 @@
 # `@great-detail/whatsapp`
 
+## 8.0.0
+
+### Major Changes
+
+- 9950d1d: Increase minimum NodeJS version to latest LTS (v20.x)
+- 9950d1d: Reduce bundle size by removing CJS build. NodeJS v20.19.0 and above
+  supports
+  [`require()` for ESM](https://github.com/nodejs/node/releases/tag/v20.19.0) -
+  consumers in a CJS environment should still be able to use library as before,
+  with the current latest LTS NodeJS version.
+
+  This update coincides with dropping support for EOL NodeJS v18, thus the
+  minimum supported NodeJS version is now v20.
+
+- c8186d9: Update default Meta Graph API version to `v23.0`.
+
+  ```ts
+  // To remain on the previous Graph API version:
+  const sdk = new Client({
+    // Add this line to the instantiation options:
+    graphVersion: "v20.0",
+    // ...
+  });
+  ```
+
+- 7d655f0: Remove CLI usage. This change comes as the CLI aspect of this SDK
+  hasn't been updated since early development and support for later
+  functionality was not added.
+
+  **Sending Text Messages**:
+
+  ```bash
+  # Before:
+  npx @great-detail/whatsapp message send text "<RECIPIENT>" --body="Hello, World!"
+  ```
+
+  ```ts
+  // After:
+  const result = await sdk.message.createMessage({
+    phoneNumberID: "123...809",
+    to: "1234567890",
+    type: "text",
+    text: {
+      body: "Hello, World!",
+      preview_url: true,
+    },
+  });
+  ```
+
+  **Upload Media Files**:
+
+  ```bash
+  # Before:
+  npx @great-detail/whatsapp media upload --mime-type="<MIME_TYPE>" < "<FILE_FROM_STDIN>"
+  ```
+
+  ```ts
+  // After:
+  import fs from "fs";
+  const fileBuffer = fs.readFileSync("<FILE_PATH>");
+  const result = await sdk.media.upload({
+    phoneNumberID: "123...809",
+    mimeType: "<MIME_TYPE>",
+    file: fileBuffer,
+  });
+  ```
+
+  **Get a Media File's Download URL**:
+
+  ```bash
+  # Before:
+  npx @great-detail/whatsapp media get-url "<MEDIA_ID>"
+  ```
+
+  ```ts
+  // After:
+  const result = await sdk.media.upload({
+    phoneNumberID: "123...809",
+    mediaID: "<MEDIA_ID>",
+  });
+  ```
+
+  **Download Media Files**:
+
+  ```bash
+  # Before:
+  npx @great-detail/whatsapp media download "<MEDIA_URL>" > "<FILE_PATH>"
+  ```
+
+  ```ts
+  // After:
+  import fs from "fs";
+  const result = await sdk.media.download("<MEDIA_URL>");
+  const file = await result.arrayBuffer();
+  const file = await result.arrayBuffer();
+  fs.writeFileSync("<FILE_PATH>", Buffer.from(file));
+  ```
+
+### Minor Changes
+
+- c8e4aab: Use PNPM interally for package management
+- ae7416e: Allow authentication headers to be set globally, on SDK client
+  instantiation:
+
+  ```ts
+  // The following is now supported:
+  const sdk = new Client({
+    request: {
+      headers: {
+        Authorization: "Bearer ...",
+      },
+    },
+  });
+
+  const message = await sdk.message.createMessage({
+    // ...
+    // request: {...} can be omitted
+  });
+
+  // The older method remains supported and allows authentication to be overriden
+  // at a per-request level:
+  const sdk = new Client();
+  const message = await sdk.message.createMessage({
+    // ...
+    request: {
+      headers: {
+        Authorization: "Bearer ...",
+      },
+    },
+  });
+  ```
+
+- c1478bb: Added types for outbound `template` messages
+
+### Patch Changes
+
+- 6a9d042: Remove unused dependencies and dependencies that can be replaced with
+  built-in functionality
+
 ## 7.2.1
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "@great-detail/whatsapp",
-  "version": "7.2.1",
+  "version": "8.0.0",
   "type": "module",
   "description": "SDK for interfacing with WhatsApp Business Platform in Typescript or Node.js using the Cloud API, hosted by Meta.",
   "repository": {
