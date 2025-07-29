@@ -29,7 +29,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: npm
+          cache: pnpm
       - run: pnpm install --prefer-offline --frozen-lockfile
       - run: pnpm run build
       - run: node --import tsx --test --test-shard=${{ matrix.shard }}
