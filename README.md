@@ -99,34 +99,6 @@ const sdk = new Client({
 });
 ```
 
-## TODO
-
-There are a number of features supported by the WhatsApp Business Cloud API that
-are yet to be implemented in this SDK. Please feel free to contribute via a Pull
-Request, or note your interest in particular features by creating an issue for
-it.
-
-- [ ] Interactive Message Types.
-- [ ] Template Message Types.
-- [ ] Button Message Types.
-- [ ] Flow Message Types.
-- [ ] List Message Types.
-- [x] WABA Webhook Subscription Management.
-- [ ] WABA Extended Credit Management.
-- [x] WABA Phone Number Management.
-- [ ] WABA System User Management?
-- [ ] Considering Authentication usage improvements.
-
-## License
-
-[MIT © Great Detail Ltd](https://github.com/great-detail/WhatsApp-Nodejs-SDK/blob/main/LICENSE)
-
-Originally forked from the official WhatsApp SDK created by Rashed Talukder.
-
-### Contact
-
-**Great Detail Ltd**: https://greatdetail.com <info@greatdetail.com>
-
 ## Usage
 
 See the following usage examples for usage. Included in the source code and
@@ -186,3 +158,31 @@ const result = await sdk.media.download("<MEDIA_URL>");
 const file = await result.arrayBuffer();
 fs.writeFileSync("<FILE_PATH>", Buffer.from(file));
 ```
+
+## License
+
+[MIT © Great Detail Ltd](https://github.com/great-detail/WhatsApp-Nodejs-SDK/blob/main/LICENSE)
+
+Originally forked from the official WhatsApp SDK created by Rashed Talukder.
+
+### Contact
+
+**Great Detail Ltd**: https://greatdetail.com <info@greatdetail.com>
+
+## TODO
+
+There are a number of features supported by the WhatsApp Business Cloud API that
+are yet to be implemented in this SDK. Please feel free to contribute via a Pull
+Request, or note your interest in particular features by creating an issue for
+it.
+
+- [ ] Interactive Message Types.
+- [ ] Template Message Types.
+- [ ] Button Message Types.
+- [ ] Flow Message Types.
+- [ ] List Message Types.
+- [x] WABA Webhook Subscription Management.
+- [ ] WABA Extended Credit Management.
+- [x] WABA Phone Number Management.
+- [ ] WABA System User Management?
+- [ ] Considering Authentication usage improvements.
