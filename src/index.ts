@@ -17,6 +17,7 @@ export type * from "./types/Message/MessageLocation.js";
 export type * from "./types/Message/MessageMedia.js";
 export type * from "./types/Message/MessageReferral.js";
 export type * from "./types/Message/MessageSystem.js";
+export type * from "./types/Message/MessageTemplate.js";
 export type * from "./types/Message/MessageText.js";
 export * from "./types/Message/MessageType.js";
 

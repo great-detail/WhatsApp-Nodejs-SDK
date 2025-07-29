@@ -12,6 +12,7 @@ import { PhoneNumberID, PhoneNumberString } from "../PhoneNumber.js";
 import { CreateMessageContact } from "./MessageContact.js";
 import { CreateMessageLocation } from "./MessageLocation.js";
 import { CreateMessageMedia } from "./MessageMedia.js";
+import { CreateMessageTemplate } from "./MessageTemplate.js";
 import { CreateMessageText } from "./MessageText.js";
 import { MessageType } from "./MessageType.js";
 
@@ -104,8 +105,7 @@ export type CreateMessageOptions = {
     }
   | {
       type: MessageType.Template;
-      // TODO: Implement this type
-      [MessageType.Template]: unknown;
+      [MessageType.Template]: CreateMessageTemplate;
     }
   | {
       type: MessageType.Text;
