@@ -19,7 +19,7 @@
   ],
   "license": "Apache-2.0",
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "bin": "./dist/cli.js",
   "exports": {
@@ -27,20 +27,12 @@
       "import": {
         "types": "./dist/index.d.ts",
         "default": "./dist/index.js"
-      },
-      "require": {
-        "types": "./dist/index.d.cts",
-        "default": "./dist/index.cjs"
       }
     },
     "./cli": {
       "import": {
         "types": "./dist/cli.d.ts",
         "default": "./dist/cli.js"
-      },
-      "require": {
-        "types": "./dist/cli.d.cts",
-        "default": "./dist/cli.cjs"
       }
     }
   },
@@ -58,7 +50,7 @@
     "Cloud API"
   ],
   "scripts": {
-    "build": "tsup --entry src/index.ts --entry src/cli.ts --format cjs,esm --minify --dts",
+    "build": "tsup --entry src/index.ts --entry src/cli.ts --format esm --minify --dts",
     "changeset": "changeset",
     "fix": "npm-run-all fix:*",
     "fix:eslint": "eslint . --fix",
