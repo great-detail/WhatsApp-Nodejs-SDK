@@ -110,5 +110,10 @@ it.
 
 ## License
 
-The WhatsApp Business Platform Node.js SDK for the Cloud API is Meta Platforms
-licensed, as found in the LICENSE file.
+[MIT © Great Detail Ltd](https://github.com/great-detail/WhatsApp-Nodejs-SDK/blob/main/LICENSE)
+
+Originally forked from the official WhatsApp SDK created by Rashed Talukder.
+
+### Contact
+
+**Great Detail Ltd**: https://greatdetail.com <info@greatdetail.com>
