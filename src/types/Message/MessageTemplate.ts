@@ -213,8 +213,3 @@ export type CreateMessageTemplate = {
    */
   namespace?: string;
 };
-
-/** @deprecated TODO :) */
-export type EventNotificationMessageTemplate = {
-  body: string;
-};
