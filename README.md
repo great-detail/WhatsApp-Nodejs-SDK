@@ -9,7 +9,7 @@ Originally a fork of the
 [npm (scoped)]: https://img.shields.io/npm/v/%40great-detail/whatsapp
 [sdk-npmjs]: https://www.npmjs.com/package/@great-detail/whatsapp
 
-See the
+See this SDK's
 [Changelog](https://github.com/great-detail/WhatsApp-Nodejs-SDK/blob/main/CHANGELOG.md)
 for updates and release notes.
 
@@ -88,6 +88,10 @@ Whilst the SDK may work with alternative versions of the Graph API, it is
 designed to work with the above. If you find any compatibility issues, please
 report them via
 [GitHub Issues](https://github.com/great-detail/WhatsApp-Nodejs-SDK/issues).
+
+See this SDK's
+[Changelog](https://github.com/great-detail/WhatsApp-Nodejs-SDK/blob/main/CHANGELOG.md)
+for updates and release notes.
 
 **Tested on NodeJS LTS Versions**: `v22`, `v24`.
 
