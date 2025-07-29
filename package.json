@@ -21,18 +21,11 @@
   "engines": {
     "node": ">=20"
   },
-  "bin": "./dist/cli.js",
   "exports": {
     ".": {
       "import": {
         "types": "./dist/index.d.ts",
         "default": "./dist/index.js"
-      }
-    },
-    "./cli": {
-      "import": {
-        "types": "./dist/cli.d.ts",
-        "default": "./dist/cli.js"
       }
     }
   },
@@ -50,7 +43,7 @@
     "Cloud API"
   ],
   "scripts": {
-    "build": "tsup --entry src/index.ts --entry src/cli.ts --format esm --minify --dts",
+    "build": "tsup src/index.ts --format esm --minify --dts",
     "changeset": "changeset",
     "fix": "pnpm run /^fix:.*/",
     "fix:eslint": "eslint . --fix",
