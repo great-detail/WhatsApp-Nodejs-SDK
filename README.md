@@ -48,7 +48,10 @@ const message = await sdk.message.createMessage({
 
 ## Compatibility
 
-This SDK is designed to be compatible with the Cloud API API.
+This SDK is designed to be compatible with the Cloud API API. Some fields used
+by the
+[On-Premises API](https://developers.facebook.com/docs/whatsapp/on-premises/sunset/)
+may be included, however, no on-premises-only functionality is implemented.
 
 | SDK  | Cloud API | NodeJS |
 | :--- | :-------: | -----: |
