@@ -111,13 +111,13 @@ export type MessageTemplateHeaderLocationParameter<T> = {
 } & T;
 
 export type MessageTemplateBodyParameter<T> =
+  // | MessageTemplateHeaderLocationParameter<T>
   | MessageTemplateTextParameter<T>
   | MessageTemplateImageParameter<T>
   | MessageTemplateDocumentParameter<T>
   | MessageTemplateVideoParameter<T>
   | MessageTemplateCurrencyParameter<T>
-  | MessageTemplateDateTimeParameter<T>
-  | MessageTemplateHeaderLocationParameter<T>;
+  | MessageTemplateDateTimeParameter<T>;
 
 export type MessageTemplateHeaderParameter<T> =
   | MessageTemplateTextParameter<T>
