@@ -1,5 +1,12 @@
 # `@great-detail/whatsapp`
 
+## 8.0.1
+
+### Patch Changes
+
+- 07e1823: Remove location type parameter from body-supported component
+  parameters type
+
 ## 8.0.0
 
 ### Major Changes
