@@ -6,6 +6,7 @@
  * @see    https://greatdetail.com
  */
 
+import { TemplateLanguage } from "../Templates/TemplateLanguage.js";
 import { CreateMessageMedia } from "./MessageMedia.js";
 import { MessageType } from "./MessageType.js";
 
@@ -198,7 +199,7 @@ export type CreateMessageTemplate = {
      *
      * @see https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages
      */
-    code: string;
+    code: TemplateLanguage;
   };
 
   /** Array of components objects containing the parameters of the message. */
