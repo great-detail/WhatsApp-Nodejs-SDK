@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 8.0.2
+
+### Patch Changes
+
+- 3fc20d3: Export default Meta Graph API Base URL and Version constants
+
 ## 8.0.1
 
 ### Patch Changes
