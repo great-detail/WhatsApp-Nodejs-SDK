@@ -16,11 +16,16 @@ export const TEMPLATE_STATUSES = [
   "DELETED",
   "DISABLED",
   "LIMIT_EXCEEDED",
-];
+] as const;
 
 export type TemplateStatus = (typeof TEMPLATE_STATUSES)[number];
 
-export const TEMPLATE_QUALITY_SCORES = ["GREEN", "YELLOW", "RED", "UNKNOWN"];
+export const TEMPLATE_QUALITY_SCORES = [
+  "GREEN",
+  "YELLOW",
+  "RED",
+  "UNKNOWN",
+] as const;
 
 export type TemplateQualityScore = (typeof TEMPLATE_QUALITY_SCORES)[number];
 

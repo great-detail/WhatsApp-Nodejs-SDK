@@ -67,6 +67,6 @@ export const TEMPLATE_USECASES = [
   "RETURN_CONFIRMATION",
   "STATEMENT_ATTACHMENT",
   "TRANSACTION_ALERT",
-];
+] as const;
 
 export type TemplateUseCase = (typeof TEMPLATE_USECASES)[number];
