@@ -6,8 +6,8 @@
  * @see    https://greatdetail.com
  */
 
-import { createHmac } from "node:crypto";
 import { WebhookEventNotification } from "../types/Webhook/WebhookEventNotification.js";
+import { arrayBufferToHex, strToArrayBuffer } from "../utils/buffer.js";
 import IncorrectMethodWebhookError from "./WebhookError/IncorrectMethodWebhookError.js";
 import WebhookError from "./WebhookError/index.js";
 import InvalidHubChallengeWebhookError from "./WebhookError/InvalidHubChallengeWebhookError.js";
@@ -217,25 +217,60 @@ export default class Webhook {
       bodyString,
     ) as WebhookEventNotification;
 
-    // See: https://github.com/WhatsApp/WhatsApp-Nodejs-SDK/blob/58ca3d5fceea604e18393734578d9a7944a37b15/src/utils.ts#L77-L82
-    // See: https://developers.facebook.com/docs/messenger-platform/webhooks#validate-payloads
-    const getCalculatedSignature = (alg: string) => (appSecret: string) =>
-      createHmac(alg, appSecret).update(bodyString, "utf8").digest("hex");
+    // Returns a Promise<string> (hex signature)
+    function getCalculatedSignature(alg: string) {
+      let algorithm: string | undefined;
+      switch (alg.toLowerCase()) {
+        case "sha1":
+        case "sha-1": {
+          algorithm = "SHA-1";
+          break;
+        }
 
-    const checkSignature = (alg: string, signature: string) => {
+        case "sha256":
+        case "sha-256": {
+          algorithm = "SHA-256";
+          break;
+        }
+      }
+
+      if (!algorithm) throw new Error("Unsupported algorithm: " + alg);
+
+      return async (appSecret: string): Promise<string> => {
+        const key = await globalThis.crypto.subtle.importKey(
+          "raw",
+          strToArrayBuffer(appSecret),
+          { name: "HMAC", hash: { name: algorithm } },
+          false,
+          ["sign"],
+        );
+
+        const sig = await globalThis.crypto.subtle.sign(
+          "HMAC",
+          key,
+          strToArrayBuffer(bodyString),
+        );
+
+        return arrayBufferToHex(sig);
+      };
+    }
+
+    function checkSignature(alg: string, signature: string) {
       const signatureCalculator = getCalculatedSignature(alg);
 
-      return (appSecret: string) => {
-        const generatedSignature = signatureCalculator(appSecret);
-
-        const isAuthentic256 = signature === generatedSignature;
-
-        return isAuthentic256;
+      return async (appSecret: string): Promise<boolean> => {
+        const generatedSignature = await signatureCalculator(appSecret);
+        return signature === generatedSignature;
       };
-    };
+    }
+
+    const checkSignatureSHA256 = checkSignature("sha256", xHubSignature256);
 
     return {
+      /** Webhook Data */
       eventNotification,
+
+      /** Algorithm-Specific X-Hub-Signatures */
       signature: {
         sha1: {
           value: xHubSignature1,
@@ -245,17 +280,23 @@ export default class Webhook {
         sha256: {
           value: xHubSignature256,
           getCalculatedSignature: getCalculatedSignature("sha256"),
-          check: checkSignature("sha256", xHubSignature256),
+          check: checkSignatureSHA256,
         },
       },
-      checkSignature: checkSignature("sha256", xHubSignature256),
-      verifySignature(appSecret: string) {
-        if (!this.checkSignature(appSecret)) {
+
+      /** Check X-Hub-Signature Validity */
+      checkSignature: checkSignatureSHA256,
+
+      /** Asset X-Hub-Signature Validity */
+      async verifySignature(appSecret: string) {
+        if (!(await this.checkSignature(appSecret))) {
           throw new InvalidHubSignatureWebhookError(
             "Webhook Event Notification Signature doesn't match received body",
           );
         }
       },
+
+      /** HTTP Response Content for Webhook Event Acceptance */
       accept: () => {},
     };
   }
