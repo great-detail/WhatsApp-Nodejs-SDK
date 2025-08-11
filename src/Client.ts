@@ -44,6 +44,9 @@ export interface Options {
  * @see https://github.com/great-detail/WhatsApp-Nodejs-SDK
  */
 export default class Client {
+  public static DEFAULT_GRAPH_BASE_URL = "https://graph.facebook.com";
+  public static DEFAULT_GRAPH_VERSION = "v23.0";
+
   protected _transport: KyInstance;
 
   /** Business-Profile APIs */
@@ -65,8 +68,8 @@ export default class Client {
   public webhook: Webhook;
 
   constructor({
-    prefixUrl = "https://graph.facebook.com",
-    graphVersion = "v23.0",
+    prefixUrl = Client.DEFAULT_GRAPH_BASE_URL,
+    graphVersion = Client.DEFAULT_GRAPH_VERSION,
     request,
   }: Options = {}) {
     this._transport = ky.create({
