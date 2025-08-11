@@ -55,7 +55,7 @@
     "lint:typecheck": "npm run typecheck",
     "prerelease": "pnpm run build",
     "release": "changeset publish",
-    "test": "node --import tsx --test --experimental-test-coverage src/__tests__/**/*.test.ts src/__tests__/*.test.ts",
+    "test": "node --import tsx --test src/__tests__/**/*.test.ts src/__tests__/*.test.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
