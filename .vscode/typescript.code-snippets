@@ -1,0 +1,16 @@
+{
+  "File Signature": {
+    "scope": "typescript",
+    "description": "WhatsApp SDK File Signature",
+    "prefix": ["sig"],
+    "body": [
+      "/**",
+      " * WhatsApp NodeJS SDK.",
+      " *",
+      " * @author    Great Detail Ltd <info@greatdetail.com>",
+      " * @author    Dom Webber <dom.webber@greatdetail.com>",
+      " * @see       https://greatdetail.com",
+      " */",
+    ],
+  }
+}
