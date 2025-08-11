@@ -9,3 +9,4 @@
 export * from "./TemplateLanguage.js";
 export * from "./TemplateStatus.js";
 export * from "./TemplateCategory.js";
+export * from "./TemplateButton.js";
