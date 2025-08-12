@@ -31,7 +31,7 @@ export default class PhoneNumbers {
     phoneNumberID,
     fields,
     request,
-  }: MethodOptions & GetPhoneNumberOptions) {
+  }: MethodOptions & GetPhoneNumberOptions<Fields>) {
     return this._transport.extend({
       method: "GET",
       searchParams: {

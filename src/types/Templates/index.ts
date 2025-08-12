@@ -130,6 +130,27 @@ export type LibraryTemplate = {
   buttons: TemplateButton[];
 };
 
+export type GetTemplateFields = {
+  name?: boolean;
+  parameter_format?: boolean;
+  components?: boolean;
+  category?: boolean;
+  correct_category?: boolean;
+  previous_category?: boolean;
+  sub_category?: boolean;
+  rejected_reason?: boolean;
+  language?: boolean;
+  library_template_name?: boolean;
+  quality_score?: boolean;
+  status?: boolean;
+};
+
+export type GetTemplateOptions<Fields extends GetTemplateFields = object> = {
+  fields?: Fields;
+};
+
+export type GetTemplatePayload = AccountTemplate;
+
 export type CreateCustomTemplateOptions = {
   parameter_format: TemplateParameterFormat;
   components: unknown[];

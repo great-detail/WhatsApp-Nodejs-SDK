@@ -13,6 +13,9 @@ import {
   CreateTemplatePayload,
   DeleteTemplateOptions,
   DeleteTemplatePayload,
+  GetTemplateFields,
+  GetTemplateOptions,
+  GetTemplatePayload,
 } from "../types/Templates/index.js";
 
 interface MethodOptions {
@@ -24,6 +27,28 @@ export default class Template {
 
   protected getEndpoint(businessAccountID: BusinessAccountID) {
     return encodeURIComponent(businessAccountID) + "/message_templates";
+  }
+
+  /**
+   * Get a Template.
+   *
+   * ```ts
+   * const { success } = await sdk.template.get(
+   *   "123...456",
+   *   { fields: { name: true } }
+   * );
+   * ```
+   */
+  get<Fields extends GetTemplateFields>(
+    templateID: string,
+    { fields, request }: MethodOptions & GetTemplateOptions<Fields>,
+  ) {
+    return this._transport.extend({
+      method: "GET",
+      searchParams: {
+        fields: Object.keys(fields ?? {}).join(","),
+      },
+    })<GetTemplatePayload>(encodeURIComponent(templateID), request);
   }
 
   /**
