@@ -232,14 +232,18 @@ Originally forked from the official WhatsApp SDK created by Rashed Talukder.
 
 ### Contact
 
+This SDK was originally forked from the
+[deprecated official SDK](https://github.com/WhatsApp/WhatsApp-Nodejs-SDK) and
+is now maintained by Great Detail.
+
 **Great Detail Ltd**: https://greatdetail.com <info@greatdetail.com>
 
 ## TODO
 
-There are a number of features supported by the WhatsApp Business Cloud API that
-are yet to be implemented in this SDK. Please feel free to contribute via a Pull
-Request, or note your interest in particular features by creating an issue for
-it.
+There are a number of features supported by the WhatsApp Business Cloud API and
+WhatsApp Business Management API that are yet to be implemented in this SDK.
+Please feel free to contribute via a Pull Request, or note your interest in
+particular features by creating an issue for it.
 
 - [ ] Interactive Message Types,
 - [x] Template Message Types,
