@@ -208,6 +208,22 @@ const file = await result.arrayBuffer();
 fs.writeFileSync("<FILE_PATH>", Buffer.from(file));
 ```
 
+## Contributing
+
+We welcome contributions! To get started:
+
+1. **Fork** the repository and create your branch from `main`.
+2. **Write clear, well-documented code** and include tests where possible.
+3. **Open a pull request** describing your changes and referencing any related
+   issues.
+
+Please review our
+[Code of Conduct](https://github.com/great-detail/WhatsApp-Nodejs-SDK/blob/main/CODE_OF_CONDUCT.md)
+before submitting.
+
+If you find a bug or have a feature request, please
+[open an issue](https://github.com/great-detail/WhatsApp-Nodejs-SDK/issues).
+
 ## License
 
 [MIT © Great Detail Ltd](https://github.com/great-detail/WhatsApp-Nodejs-SDK/blob/main/LICENSE)
