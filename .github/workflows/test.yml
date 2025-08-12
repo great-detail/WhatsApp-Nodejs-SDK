@@ -26,13 +26,22 @@ jobs:
           persist-credentials: false
       - name: Install pnpm
         uses: pnpm/action-setup@v4
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           cache: pnpm
+
+      - uses: oven-sh/setup-bun@v2
+      - name: Install Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
       - run: pnpm install --prefer-offline --frozen-lockfile
       - run: pnpm run build
       - run:
           node --import tsx --test --test-shard=${{ matrix.shard }}
           src/__tests__/unit/**/*.test.ts src/__tests__/unit/*.test.ts
+      - run: pnpm run test:integration
