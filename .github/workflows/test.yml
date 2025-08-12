@@ -67,7 +67,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        bun-version: [22.x, 24.x]
+        bun-version: [1.2.20]
         shard: [1/1]
     name: Bun v${{ matrix.bun-version }} on ${{ inputs.os }} ${{ matrix.shard }}
     runs-on: ${{ inputs.os }}
