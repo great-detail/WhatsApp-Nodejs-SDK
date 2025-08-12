@@ -41,7 +41,7 @@ export interface Options {
  * });
  * ```
  *
- * @see https://github.com/great-detail/WhatsApp-Nodejs-SDK
+ * @see https://github.com/great-detail/WhatsApp-JS-SDK
  */
 export default class Client {
   public static DEFAULT_GRAPH_BASE_URL = "https://graph.facebook.com";

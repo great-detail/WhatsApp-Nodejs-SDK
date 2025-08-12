@@ -2,7 +2,7 @@
 
 An unofficial SDK for Meta's WhatsApp Business Messaging APIs - Cloud API.
 Originally a fork of the
-[deprecated official SDK for Meta's WhatsApp Business Messaging APIs](https://github.com/WhatsApp/WhatsApp-Nodejs-SDK).
+[deprecated official SDK for Meta's WhatsApp Business Messaging APIs](https://github.com/WhatsApp/WhatsApp-JS-SDK).
 
 [![npm (scoped)][]][sdk-npmjs]
 
@@ -10,7 +10,7 @@ Originally a fork of the
 [sdk-npmjs]: https://www.npmjs.com/package/@great-detail/whatsapp
 
 See this SDK's
-[Changelog](https://github.com/great-detail/WhatsApp-Nodejs-SDK/blob/main/CHANGELOG.md)
+[Changelog](https://github.com/great-detail/WhatsApp-JS-SDK/blob/main/CHANGELOG.md)
 for updates and release notes.
 
 ## Installation
@@ -66,10 +66,10 @@ may be included, however, no on-premises-only functionality is implemented.
 Whilst the SDK may work with alternative versions of the Graph API, it is
 designed to work with the above. If you find any compatibility issues, please
 report them via
-[GitHub Issues](https://github.com/great-detail/WhatsApp-Nodejs-SDK/issues).
+[GitHub Issues](https://github.com/great-detail/WhatsApp-JS-SDK/issues).
 
 See this SDK's
-[Changelog](https://github.com/great-detail/WhatsApp-Nodejs-SDK/blob/main/CHANGELOG.md)
+[Changelog](https://github.com/great-detail/WhatsApp-JS-SDK/blob/main/CHANGELOG.md)
 for updates and release notes.
 
 - **Tested on NodeJS LTS Versions**: `v22`, `v24`,
@@ -218,15 +218,15 @@ We welcome contributions! To get started:
    issues.
 
 Please review our
-[Code of Conduct](https://github.com/great-detail/WhatsApp-Nodejs-SDK/blob/main/CODE_OF_CONDUCT.md)
+[Code of Conduct](https://github.com/great-detail/WhatsApp-JS-SDK/blob/main/CODE_OF_CONDUCT.md)
 before submitting.
 
 If you find a bug or have a feature request, please
-[open an issue](https://github.com/great-detail/WhatsApp-Nodejs-SDK/issues).
+[open an issue](https://github.com/great-detail/WhatsApp-JS-SDK/issues).
 
 ## License
 
-[MIT © Great Detail Ltd](https://github.com/great-detail/WhatsApp-Nodejs-SDK/blob/main/LICENSE)
+[MIT © Great Detail Ltd](https://github.com/great-detail/WhatsApp-JS-SDK/blob/main/LICENSE)
 
 Originally forked from the official WhatsApp SDK created by Rashed Talukder.
 
