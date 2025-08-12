@@ -1,7 +1,7 @@
 # Acknowledgements
 
-- <https://github.com/WhatsApp/WhatsApp-JS-SDK> for the base source code of this
-  SDK.
+- <https://github.com/WhatsApp/WhatsApp-Nodejs-SDK> for the base source code of
+  this SDK.
 - <https://github.com/MarcosNicolau/whatsapp-business-sdk>,
   <https://github.com/emingure/whatsapp-business-api-ts>, and
   <https://github.com/Lexuil/ws-cloud-api> for some of the types used in this
