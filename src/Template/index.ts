@@ -75,16 +75,25 @@ export default class Template {
       request,
     }: MethodOptions & ListTemplatesOptions,
   ) {
+    function singleOrCSV(array: string | string[]): string {
+      if (typeof array === "string") return array;
+      return array.length === 1 ? array[0] : JSON.stringify(array);
+    }
+
     return this._transport.extend({
       method: "GET",
       searchParams: {
         ...(name_or_content ? { name_or_content } : {}),
-        ...(category ? { category } : {}),
+        ...(category
+          ? {
+              category: singleOrCSV(category),
+            }
+          : {}),
         ...(limit ? { limit: limit.toString() } : {}),
         ...(fields ? { fields: fields.join(",") } : {}),
-        ...(language ? { language } : {}),
-        ...(status ? { status } : {}),
-        ...(quality_score ? { quality_score } : {}),
+        ...(language ? { language: singleOrCSV(language) } : {}),
+        ...(status ? { status: singleOrCSV(status) } : {}),
+        ...(quality_score ? { quality_score: singleOrCSV(quality_score) } : {}),
       },
     })<ListTemplatesPayload>(this.getEndpoint(businessAccountID), request);
   }

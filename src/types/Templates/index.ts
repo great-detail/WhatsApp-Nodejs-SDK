@@ -154,10 +154,10 @@ export type ListTemplatesFields = GetTemplateFields;
 
 export type ListTemplatesOptions = {
   name_or_content?: string;
-  category?: TemplateCategory;
-  language?: TemplateLanguage;
-  status?: TemplateStatus;
-  quality_score?: TemplateQualityScore;
+  category?: TemplateCategory | TemplateCategory[];
+  language?: TemplateLanguage | TemplateLanguage[];
+  status?: TemplateStatus | TemplateStatus[];
+  quality_score?: TemplateQualityScore | TemplateQualityScore[];
   limit?: number;
   fields?: ListTemplatesFields[];
 };
