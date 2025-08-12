@@ -10,10 +10,11 @@ on:
         type: string
 
 jobs:
-  build_and_test:
+  node_test:
     strategy:
       fail-fast: false
       matrix:
+        runtime: []
         node-version: [22.x, 24.x]
         shard: [1/1]
     name:
@@ -33,15 +34,55 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: pnpm
 
-      - uses: oven-sh/setup-bun@v2
-      - name: Install Deno
-        uses: denoland/setup-deno@v2
-        with:
-          deno-version: v2.x
-
       - run: pnpm install --prefer-offline --frozen-lockfile
       - run: pnpm run build
       - run:
           node --import tsx --test --test-shard=${{ matrix.shard }}
           src/__tests__/unit/**/*.test.ts src/__tests__/unit/*.test.ts
-      - run: pnpm run test:integration
+
+  deno_test:
+    strategy:
+      fail-fast: false
+      matrix:
+        deno-version: [v2.x]
+        shard: [1/1]
+    name:
+      Deno v${{ matrix.node-version }} on ${{ inputs.os }} ${{ matrix.shard }}
+    runs-on: ${{ inputs.os }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: pnpm/action-setup@v4
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: ${{ matrix.deno-version }}
+
+      - run: pnpm install --prefer-offline --frozen-lockfile
+      - run: pnpm run build
+      - run: pnpm run test:integration:deno
+
+  bun_test:
+    strategy:
+      fail-fast: false
+      matrix:
+        bun-version: [22.x, 24.x]
+        shard: [1/1]
+    name: Bun v${{ matrix.bun-version }} on ${{ inputs.os }} ${{ matrix.shard }}
+    runs-on: ${{ inputs.os }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: pnpm/action-setup@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: ${{ matrix.bun-version }}
+
+      - run: pnpm install --prefer-offline --frozen-lockfile
+      - run: pnpm run build
+      - run: pnpm run test:integration:bun
