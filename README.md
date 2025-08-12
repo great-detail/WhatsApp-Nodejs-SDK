@@ -32,7 +32,9 @@ The primary source of documentation (at the moment) for the usage of this SDK is
 via JSDoc comments in the source code (and editor integrations).
 
 ```ts
-import Client from "@great-detail/whatsapp"; // or require("@great-detail/whatsapp");
+import Client from "@great-detail/whatsapp"; // for ESM environments
+// require("@great-detail/whatsapp"); // for CJS environments
+// import Client from "npm:@great-detail/whatsapp"; // for Deno
 
 // Instantiate the SDK Client
 const sdk = new Client({
