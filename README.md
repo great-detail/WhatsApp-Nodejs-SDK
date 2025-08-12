@@ -219,13 +219,13 @@ are yet to be implemented in this SDK. Please feel free to contribute via a Pull
 Request, or note your interest in particular features by creating an issue for
 it.
 
-- [ ] Interactive Message Types.
-- [ ] Template Message Types.
-- [ ] Button Message Types.
-- [ ] Flow Message Types.
-- [ ] List Message Types.
-- [x] WABA Webhook Subscription Management.
-- [ ] WABA Extended Credit Management.
-- [x] WABA Phone Number Management.
+- [ ] Interactive Message Types,
+- [x] Template Message Types,
+- [ ] Template Management,
+- [ ] Button Message Types,
+- [ ] Flow Message Types,
+- [ ] List Message Types,
+- [x] WABA Webhook Subscription Management,
+- [ ] WABA Extended Credit Management,
+- [x] WABA Phone Number Management,
 - [ ] WABA System User Management?
-- [ ] Considering Authentication usage improvements.
