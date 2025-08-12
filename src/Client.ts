@@ -78,6 +78,7 @@ export default class Client {
   }: Options = {}) {
     this._transport = ky.create({
       ...request,
+      timeout: 72_000,
       prefixUrl: prefixUrl.replace(/\/$/, "") + "/" + graphVersion,
     });
 
