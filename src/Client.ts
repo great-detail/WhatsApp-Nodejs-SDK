@@ -13,6 +13,7 @@ import Message from "./Message/index.js";
 import PhoneNumbers from "./PhoneNumbers/index.js";
 import SubscribedApps from "./SubscribedApps/index.js";
 import Webhook from "./Webhook/index.js";
+import Template from "./Template/index.js";
 import type { KyInstance, Options as KyOptions } from "ky";
 
 export interface Options {
@@ -52,6 +53,9 @@ export default class Client {
   /** Business-Profile APIs */
   public businessProfile: BusinessProfile;
 
+  /** Media APIs */
+  public media: Media;
+
   /** Messaging APIs */
   public message: Message;
 
@@ -61,8 +65,8 @@ export default class Client {
   /** Subscribed App APIs */
   public subscribedApps: SubscribedApps;
 
-  /** Media APIs */
-  public media: Media;
+  /** Template APIs */
+  public template: Template;
 
   /** Webhook APIs */
   public webhook: Webhook;
@@ -78,10 +82,11 @@ export default class Client {
     });
 
     this.businessProfile = new BusinessProfile(this._transport);
+    this.media = new Media(this._transport);
     this.message = new Message(this._transport);
     this.phoneNumbers = new PhoneNumbers(this._transport);
     this.subscribedApps = new SubscribedApps(this._transport);
-    this.media = new Media(this._transport);
+    this.template = new Template(this._transport);
     this.webhook = new Webhook();
   }
 }

@@ -6,6 +6,7 @@
  * @see    https://greatdetail.com
  */
 
+import { BusinessAccountID } from "../BusinessAccount.js";
 import { TemplateButton } from "./TemplateButton.js";
 import {
   TemplateCategory,
@@ -128,4 +129,27 @@ export type LibraryTemplate = {
 
   /** Array of buttons (quick replies, URLs, phone numbers, etc.) associated with the template */
   buttons: TemplateButton[];
+};
+
+export type CreateCustomTemplateOptions = {
+  components: unknown[];
+};
+
+export type CreateLibraryTemplateOptions = {
+  library_template_name: string;
+  library_template_button_inputs?: string;
+};
+
+export type CreateTemplateOptions = {
+  businessAccountID: BusinessAccountID;
+  name: string;
+  category: TemplateCategory;
+  parameter_format: TemplateParameterFormat;
+  language: TemplateLanguage;
+} & (CreateCustomTemplateOptions | CreateLibraryTemplateOptions);
+
+export type CreateTemplatePayload = {
+  id: string;
+  status: TemplateStatus;
+  category: TemplateCategory;
 };
