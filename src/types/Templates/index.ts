@@ -130,39 +130,37 @@ export type LibraryTemplate = {
   buttons: TemplateButton[];
 };
 
-export type GetTemplateFields = {
-  name?: boolean;
-  parameter_format?: boolean;
-  components?: boolean;
-  category?: boolean;
-  correct_category?: boolean;
-  previous_category?: boolean;
-  sub_category?: boolean;
-  rejected_reason?: boolean;
-  language?: boolean;
-  library_template_name?: boolean;
-  quality_score?: boolean;
-  status?: boolean;
-};
+export type GetTemplateFields =
+  | "name"
+  | "parameter_format"
+  | "components"
+  | "category"
+  | "correct_category"
+  | "previous_category"
+  | "sub_category"
+  | "rejected_reason"
+  | "language"
+  | "library_template_name"
+  | "quality_score"
+  | "status";
 
-export type GetTemplateOptions<Fields extends GetTemplateFields = object> = {
-  fields?: Fields;
+export type GetTemplateOptions = {
+  fields?: GetTemplateFields[];
 };
 
 export type GetTemplatePayload = AccountTemplate;
 
 export type ListTemplatesFields = GetTemplateFields;
 
-export type ListTemplatesOptions<Fields extends ListTemplatesFields = object> =
-  {
-    name_or_content?: string;
-    category?: TemplateCategory;
-    language?: TemplateLanguage;
-    status?: TemplateStatus;
-    quality_score?: TemplateQualityScore;
-    limit?: number;
-    fields?: Fields;
-  };
+export type ListTemplatesOptions = {
+  name_or_content?: string;
+  category?: TemplateCategory;
+  language?: TemplateLanguage;
+  status?: TemplateStatus;
+  quality_score?: TemplateQualityScore;
+  limit?: number;
+  fields?: ListTemplatesFields[];
+};
 
 export type ListTemplatesPayload = AccountTemplate[];
 

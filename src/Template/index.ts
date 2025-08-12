@@ -47,7 +47,7 @@ export default class Template {
     return this._transport.extend({
       method: "GET",
       searchParams: {
-        fields: Object.keys(fields ?? {}).join(","),
+        ...(fields ? { fields: fields.join(",") } : {}),
       },
     })<GetTemplatePayload>(encodeURIComponent(templateID), request);
   }
@@ -81,7 +81,7 @@ export default class Template {
         ...(name_or_content ? { name_or_content } : {}),
         ...(category ? { category } : {}),
         ...(limit ? { limit: limit.toString() } : {}),
-        ...(fields ? { fields: Object.keys(fields ?? {}).join(",") } : {}),
+        ...(fields ? { fields: fields.join(",") } : {}),
         ...(language ? { language } : {}),
         ...(status ? { status } : {}),
         ...(quality_score ? { quality_score } : {}),
