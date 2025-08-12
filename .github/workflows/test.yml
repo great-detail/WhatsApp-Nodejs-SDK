@@ -46,7 +46,7 @@ jobs:
         deno-version: [v2.x]
         shard: [1/1]
     name:
-      Deno v${{ matrix.node-version }} on ${{ inputs.os }} ${{ matrix.shard }}
+      Deno v${{ matrix.deno-version }} on ${{ inputs.os }} ${{ matrix.shard }}
     runs-on: ${{ inputs.os }}
 
     steps:
