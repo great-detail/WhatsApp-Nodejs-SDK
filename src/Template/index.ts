@@ -11,6 +11,8 @@ import { BusinessAccountID } from "../types/BusinessAccount.js";
 import {
   CreateTemplateOptions,
   CreateTemplatePayload,
+  DeleteTemplateOptions,
+  DeleteTemplatePayload,
 } from "../types/Templates/index.js";
 
 interface MethodOptions {
@@ -24,6 +26,21 @@ export default class Template {
     return encodeURIComponent(businessAccountID) + "/message_templates";
   }
 
+  /**
+   * Create a Template.
+   *
+   * ```ts
+   * const { success } = await sdk.template.create(
+   *   "123...456",
+   *   {
+   *     name: "example_template_1",
+   *     library_template_name: "hello_world_1",
+   *     category: "UTILITY",
+   *     language: "en_US",
+   *   }
+   * );
+   * ```
+   */
   public create(
     businessAccountID: BusinessAccountID,
     { request, ...template }: MethodOptions & CreateTemplateOptions,
@@ -32,5 +49,28 @@ export default class Template {
       method: "POST",
       json: template,
     })<CreateTemplatePayload>(this.getEndpoint(businessAccountID), request);
+  }
+
+  /**
+   * Delete a Template.
+   *
+   * ```ts
+   * const { success } = await sdk.template.delete(
+   *   "123...456",
+   *   {
+   *     hsm_id: "optional-template-id",
+   *     name: "required-template-name",
+   *   }
+   * );
+   * ```
+   */
+  delete(
+    businessAccountID: BusinessAccountID,
+    { request, ...template }: MethodOptions & DeleteTemplateOptions,
+  ) {
+    return this._transport.extend({
+      method: "DELETE",
+      searchParams: template,
+    })<DeleteTemplatePayload>(this.getEndpoint(businessAccountID), request);
   }
 }

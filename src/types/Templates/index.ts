@@ -164,3 +164,10 @@ export type CreateTemplatePayload = {
   status: TemplateStatus;
   category: TemplateCategory;
 };
+
+export type DeleteTemplateOptions = {
+  hsm_id?: string;
+  name: string;
+};
+
+export type DeleteTemplatePayload = { success: boolean };
