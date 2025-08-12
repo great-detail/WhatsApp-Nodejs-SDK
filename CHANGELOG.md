@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 8.1.1
+
+### Patch Changes
+
+- 9d5bf51: Update repository URLs
+
 ## 8.1.0
 
 ### Minor Changes
