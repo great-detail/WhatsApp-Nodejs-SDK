@@ -64,9 +64,7 @@ export default class Message {
    * ```
    */
   public createMessage({
-    to,
     phoneNumberID,
-    context,
     recipientType = "individual",
     request,
     ...message
@@ -76,9 +74,6 @@ export default class Message {
       json: {
         messaging_product: "whatsapp",
         recipient_type: recipientType,
-        context,
-        to,
-
         ...message,
       },
     })<CreateMessagePayload>(this.getEndpoint(phoneNumberID), request);
