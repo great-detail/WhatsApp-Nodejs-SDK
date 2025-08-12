@@ -29,6 +29,12 @@ export type MessageRecipientType =
   | "group"
   | (string & NonNullable<unknown>);
 
+export type CreateMessageMessageBase<T extends string, O> = {
+  type: T;
+} & {
+  [K in T]: O;
+};
+
 export type CreateMessageOptions = {
   phoneNumberID: PhoneNumberID;
 
@@ -70,54 +76,27 @@ export type CreateMessageOptions = {
   biz_opaque_callback_data?: string;
   [key: string]: unknown | undefined;
 } & (
-  | {
-      type: MessageType.Audio;
-      [MessageType.Audio]: Omit<CreateMessageMedia, "caption">;
-    }
-  | {
-      type: MessageType.Contacts;
-      [MessageType.Contacts]: CreateMessageContact[];
-    }
-  | {
-      type: MessageType.Document;
-      [MessageType.Document]: CreateMessageMedia;
-    }
-  | {
-      type: MessageType.Image;
-      [MessageType.Image]: CreateMessageMedia;
-    }
-  | {
-      type: MessageType.Interactive;
-      // TODO: Implement this type
-      [MessageType.Interactive]: unknown;
-    }
-  | {
-      type: MessageType.Location;
-      [MessageType.Location]: CreateMessageLocation;
-    }
-  | {
-      type: MessageType.Reaction;
-      [MessageType.Reaction]: Omit<CreateMessageMedia, "caption">;
-    }
-  | {
-      type: MessageType.Sticker;
-      [MessageType.Sticker]: Omit<CreateMessageMedia, "caption">;
-    }
-  | {
-      type: MessageType.Template;
-      [MessageType.Template]: CreateMessageTemplate;
-    }
-  | {
-      type: MessageType.Text;
-      [MessageType.Text]: CreateMessageText;
-    }
-  | {
-      type: MessageType.Video;
-      [MessageType.Video]: CreateMessageMedia;
-    }
-  | {
-      type: string & NonNullable<unknown>;
-    }
+  | CreateMessageMessageBase<
+      MessageType.Audio,
+      Omit<CreateMessageMedia, "caption">
+    >
+  | CreateMessageMessageBase<MessageType.Contacts, CreateMessageContact[]>
+  | CreateMessageMessageBase<MessageType.Document, CreateMessageMedia>
+  | CreateMessageMessageBase<MessageType.Image, CreateMessageMedia>
+  | CreateMessageMessageBase<MessageType.Interactive, unknown> // TODO: Implement this type
+  | CreateMessageMessageBase<MessageType.Location, CreateMessageLocation>
+  | CreateMessageMessageBase<
+      MessageType.Reaction,
+      Omit<CreateMessageMedia, "caption">
+    >
+  | CreateMessageMessageBase<
+      MessageType.Sticker,
+      Omit<CreateMessageMedia, "caption">
+    >
+  | CreateMessageMessageBase<MessageType.Template, CreateMessageTemplate>
+  | CreateMessageMessageBase<MessageType.Text, CreateMessageText>
+  | CreateMessageMessageBase<MessageType.Video, CreateMessageMedia>
+  | { type: string & NonNullable<unknown> }
 );
 
 export type CreateMessagePayload = {
