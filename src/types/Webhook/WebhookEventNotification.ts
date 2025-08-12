@@ -10,6 +10,7 @@ import { AccountID } from "../Account.js";
 import { BusinessAccountID } from "../BusinessAccount.js";
 import { WhatsappError } from "../Error.js";
 import { MessageID } from "../Message/index.js";
+import { EventNotificationMessageButton } from "../Message/MessageButton.js";
 import { EventNotificationMessageIdentity } from "../Message/MessageIdentity.js";
 import { EventNotificationMessageMedia } from "../Message/MessageMedia.js";
 import { EventNotificationMessageReferral } from "../Message/MessageReferral.js";
@@ -190,6 +191,10 @@ export type WebhookEventNotificationMessagesChanges = {
       | {
           type: MessageType.Image;
           [MessageType.Image]: EventNotificationMessageMedia;
+        }
+      | {
+          type: MessageType.Button;
+          [MessageType.Button]: EventNotificationMessageButton;
         }
       | {
           type: MessageType.Interactive;
