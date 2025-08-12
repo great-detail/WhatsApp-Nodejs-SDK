@@ -1,5 +1,19 @@
 # `@great-detail/whatsapp`
 
+## 8.1.0
+
+### Minor Changes
+
+- 0fc4a70: Replace `node:crypto` use with `globalThis.crypto`
+- 187798e: Added support for Deno and Bun
+
+  Note: Previous versions may also work, however, from now onwards this support
+  is validated.
+
+### Patch Changes
+
+- 540d5e3: Add types for WhatsApp Templates
+
 ## 8.0.2
 
 ### Patch Changes
