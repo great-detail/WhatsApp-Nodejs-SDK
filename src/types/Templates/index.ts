@@ -151,6 +151,21 @@ export type GetTemplateOptions<Fields extends GetTemplateFields = object> = {
 
 export type GetTemplatePayload = AccountTemplate;
 
+export type ListTemplatesFields = GetTemplateFields;
+
+export type ListTemplatesOptions<Fields extends ListTemplatesFields = object> =
+  {
+    name_or_content?: string;
+    category?: TemplateCategory;
+    language?: TemplateLanguage;
+    status?: TemplateStatus;
+    quality_score?: TemplateQualityScore;
+    limit?: number;
+    fields?: Fields;
+  };
+
+export type ListTemplatesPayload = AccountTemplate[];
+
 export type CreateCustomTemplateOptions = {
   parameter_format: TemplateParameterFormat;
   components: unknown[];

@@ -13,9 +13,10 @@ import {
   CreateTemplatePayload,
   DeleteTemplateOptions,
   DeleteTemplatePayload,
-  GetTemplateFields,
   GetTemplateOptions,
   GetTemplatePayload,
+  ListTemplatesOptions,
+  ListTemplatesPayload,
 } from "../types/Templates/index.js";
 
 interface MethodOptions {
@@ -39,9 +40,9 @@ export default class Template {
    * );
    * ```
    */
-  get<Fields extends GetTemplateFields>(
+  get(
     templateID: string,
-    { fields, request }: MethodOptions & GetTemplateOptions<Fields>,
+    { fields, request }: MethodOptions & GetTemplateOptions,
   ) {
     return this._transport.extend({
       method: "GET",
@@ -49,6 +50,43 @@ export default class Template {
         fields: Object.keys(fields ?? {}).join(","),
       },
     })<GetTemplatePayload>(encodeURIComponent(templateID), request);
+  }
+
+  /**
+   * List Templates.
+   *
+   * ```ts
+   * const { success } = await sdk.template.list(
+   *   "123...456",
+   *   { fields: { name: true } }
+   * );
+   * ```
+   */
+  list(
+    businessAccountID: BusinessAccountID,
+    {
+      name_or_content,
+      category,
+      language,
+      status,
+      quality_score,
+      limit,
+      fields,
+      request,
+    }: MethodOptions & ListTemplatesOptions,
+  ) {
+    return this._transport.extend({
+      method: "GET",
+      searchParams: {
+        ...(name_or_content ? { name_or_content } : {}),
+        ...(category ? { category } : {}),
+        ...(limit ? { limit: limit.toString() } : {}),
+        ...(fields ? { fields: Object.keys(fields ?? {}).join(",") } : {}),
+        ...(language ? { language } : {}),
+        ...(status ? { status } : {}),
+        ...(quality_score ? { quality_score } : {}),
+      },
+    })<ListTemplatesPayload>(this.getEndpoint(businessAccountID), request);
   }
 
   /**
