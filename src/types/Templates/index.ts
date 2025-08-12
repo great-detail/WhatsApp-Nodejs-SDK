@@ -164,6 +164,18 @@ export type ListTemplatesOptions = {
 
 export type ListTemplatesPayload = AccountTemplate[];
 
+export type ListLibraryTemplatesOptions = {
+  search?: string;
+  category?: TemplateCategory | TemplateCategory[];
+  language?: TemplateLanguage | TemplateLanguage[];
+  topic?: TemplateTopic | TemplateTopic[];
+  usecase?: TemplateUseCase | TemplateUseCase[];
+  industry?: TemplateIndustry | TemplateIndustry[];
+  limit?: number;
+};
+
+export type ListLibraryTemplatesPayload = LibraryTemplate[];
+
 export type CreateCustomTemplateOptions = {
   parameter_format: TemplateParameterFormat;
   components: unknown[];

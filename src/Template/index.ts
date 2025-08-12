@@ -15,6 +15,8 @@ import {
   DeleteTemplatePayload,
   GetTemplateOptions,
   GetTemplatePayload,
+  ListLibraryTemplatesOptions,
+  ListLibraryTemplatesPayload,
   ListTemplatesOptions,
   ListTemplatesPayload,
 } from "../types/Templates/index.js";
@@ -34,7 +36,7 @@ export default class Template {
    * Get a Template.
    *
    * ```ts
-   * const { success } = await sdk.template.get(
+   * const template = await sdk.template.get(
    *   "123...456",
    *   { fields: { name: true } }
    * );
@@ -56,7 +58,7 @@ export default class Template {
    * List Templates.
    *
    * ```ts
-   * const { success } = await sdk.template.list(
+   * const templates = await sdk.template.list(
    *   "123...456",
    *   { fields: { name: true } }
    * );
@@ -99,10 +101,50 @@ export default class Template {
   }
 
   /**
+   * List Library Templates.
+   *
+   * ```ts
+   * const libraryTemplates = await sdk.template.listLibrary();
+   * ```
+   */
+  listLibrary({
+    search,
+    category,
+    language,
+    topic,
+    usecase,
+    industry,
+    limit,
+    request,
+  }: MethodOptions & ListLibraryTemplatesOptions) {
+    function singleOrCSV(array: string | string[]): string {
+      if (typeof array === "string") return array;
+      return array.length === 1 ? array[0] : JSON.stringify(array);
+    }
+
+    return this._transport.extend({
+      method: "GET",
+      searchParams: {
+        ...(search ? { search } : {}),
+        ...(category
+          ? {
+              category: singleOrCSV(category),
+            }
+          : {}),
+        ...(language ? { language: singleOrCSV(language) } : {}),
+        ...(topic ? { topic: singleOrCSV(topic) } : {}),
+        ...(usecase ? { usecase: singleOrCSV(usecase) } : {}),
+        ...(industry ? { industry: singleOrCSV(industry) } : {}),
+        ...(limit ? { limit: limit.toString() } : {}),
+      },
+    })<ListLibraryTemplatesPayload>("message_template_library", request);
+  }
+
+  /**
    * Create a Template.
    *
    * ```ts
-   * const { success } = await sdk.template.create(
+   * const { id } = await sdk.template.create(
    *   "123...456",
    *   {
    *     name: "example_template_1",
