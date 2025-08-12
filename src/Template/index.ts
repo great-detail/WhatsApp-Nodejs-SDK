@@ -24,11 +24,10 @@ export default class Template {
     return encodeURIComponent(businessAccountID) + "/message_templates";
   }
 
-  public create({
-    businessAccountID,
-    request,
-    ...template
-  }: MethodOptions & CreateTemplateOptions) {
+  public create(
+    businessAccountID: BusinessAccountID,
+    { request, ...template }: MethodOptions & CreateTemplateOptions,
+  ) {
     return this._transport.extend({
       method: "POST",
       json: template,

@@ -6,7 +6,6 @@
  * @see    https://greatdetail.com
  */
 
-import { BusinessAccountID } from "../BusinessAccount.js";
 import { TemplateButton } from "./TemplateButton.js";
 import {
   TemplateCategory,
@@ -144,7 +143,6 @@ export type CreateLibraryTemplateOptions = {
 };
 
 export type CreateTemplateBaseOptions = {
-  businessAccountID: BusinessAccountID;
   name: string;
   category: TemplateCategory;
   parameter_format: TemplateParameterFormat;
