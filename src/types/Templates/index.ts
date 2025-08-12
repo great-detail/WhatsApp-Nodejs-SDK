@@ -131,21 +131,24 @@ export type LibraryTemplate = {
 };
 
 export type CreateCustomTemplateOptions = {
+  parameter_format: TemplateParameterFormat;
+  components: unknown[];
+
   library_template_name?: never;
   library_template_button_inputs?: never;
-  components: unknown[];
 };
 
 export type CreateLibraryTemplateOptions = {
   library_template_name: string;
   library_template_button_inputs?: string;
+
   components?: never;
+  parameter_format?: never;
 };
 
 export type CreateTemplateBaseOptions = {
   name: string;
   category: TemplateCategory;
-  parameter_format: TemplateParameterFormat;
   language: TemplateLanguage;
 };
 
