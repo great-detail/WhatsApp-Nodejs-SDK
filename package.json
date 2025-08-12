@@ -55,7 +55,11 @@
     "lint:typecheck": "npm run typecheck",
     "prerelease": "pnpm run build",
     "release": "changeset publish",
-    "test": "node --import tsx --test src/__tests__/**/*.test.ts src/__tests__/*.test.ts",
+    "test": "pnpm run /^test:.*/",
+    "test:unit": "node --import tsx --test ./src/**/*.test.ts ./src/*.test.ts",
+    "test:integration": "pnpm run /^test:integration:.*/",
+    "test:integration:deno": "cd tests/deno && deno test && cd -",
+    "test:integration:bun": "cd tests/bun && bun test && cd -",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

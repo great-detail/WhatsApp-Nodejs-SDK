@@ -1,0 +1,37 @@
+{
+  "version": "5",
+  "specifiers": {
+    "jsr:@std/assert@1": "1.0.10",
+    "jsr:@std/internal@^1.0.5": "1.0.10",
+    "npm:@great-detail/whatsapp@*": "8.0.2",
+    "npm:ky@^1.8.2": "1.8.2"
+  },
+  "jsr": {
+    "@std/assert@1.0.10": {
+      "integrity": "59b5cbac5bd55459a19045d95cc7c2ff787b4f8527c0dd195078ff6f9481fbb3",
+      "dependencies": [
+        "jsr:@std/internal"
+      ]
+    },
+    "@std/internal@1.0.10": {
+      "integrity": "e3be62ce42cab0e177c27698e5d9800122f67b766a0bea6ca4867886cbde8cf7"
+    }
+  },
+  "npm": {
+    "@great-detail/whatsapp@8.0.2": {
+      "integrity": "sha512-qONVM8nI8IoqW/0XRD+uTI1AlFcICAiU6E/Fe0k/LRfBIOYLkRdNEdFnoHmnFI8Zi/TBrj7oxMlZCGsCre7m2g==",
+      "dependencies": [
+        "ky"
+      ]
+    },
+    "ky@1.8.2": {
+      "integrity": "sha512-XybQJ3d4Ea1kI27DoelE5ZCT3bSJlibYTtQuMsyzKox3TMyayw1asgQdl54WroAm+fIA3ZCr8zXW2RpR7qWVpA=="
+    }
+  },
+  "workspace": {
+    "dependencies": [
+      "jsr:@std/assert@1",
+      "npm:ky@^1.8.2"
+    ]
+  }
+}

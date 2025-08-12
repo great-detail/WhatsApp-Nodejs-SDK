@@ -1,4 +1,4 @@
-# Node.js SDK for WhatsApp Business Platform APIs
+# WhatsApp Business Platform API SDK for Node.JS, Deno & Bun
 
 An unofficial SDK for Meta's WhatsApp Business Messaging APIs - Cloud API.
 Originally a fork of the
@@ -53,9 +53,9 @@ by the
 [On-Premises API](https://developers.facebook.com/docs/whatsapp/on-premises/sunset/)
 may be included, however, no on-premises-only functionality is implemented.
 
-| SDK  | Cloud API | NodeJS |
-| :--- | :-------: | -----: |
-| v8.x |    v23    |   v20+ |
+| SDK  | Cloud API |
+| :--- | --------: |
+| v8.x |       v23 |
 
 Whilst the SDK may work with alternative versions of the Graph API, it is
 designed to work with the above. If you find any compatibility issues, please
@@ -66,10 +66,13 @@ See this SDK's
 [Changelog](https://github.com/great-detail/WhatsApp-Nodejs-SDK/blob/main/CHANGELOG.md)
 for updates and release notes.
 
-**Tested on NodeJS LTS Versions**: `v22`, `v24`.
+- **Tested on NodeJS LTS Versions**: `v22`, `v24`,
+- **Tested on Deno LTS Versions**: `v2.4`,
+- **Tested on Bun Versions**: `v1.2`.
 
 Additional NodeJS versions may also work, however, automated testing requires
-NodeJS' test suite, which was introduced in `v21`.
+NodeJS' test suite, which was introduced in `v21`. Other versions of Deno/Bun
+may also work, regardless of NodeJS polyfill support - uses SubtleCrypto.
 
 ## Migrating v7 to v8
 
