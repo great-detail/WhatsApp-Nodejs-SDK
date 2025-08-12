@@ -18,8 +18,12 @@ for updates and release notes.
 Install the WhatsApp Business Platform SDK:
 
 ```bash
+# NPM:
 npm install @great-detail/whatsapp
-# or PNPM or Yarn
+# ^ or use PNPM, Yarn, Bun
+
+# Deno:
+deno add npm:@great-detail/whatsapp
 ```
 
 ## Getting started
