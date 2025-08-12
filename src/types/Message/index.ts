@@ -9,11 +9,19 @@
 import { AccountID } from "../Account.js";
 import { WhatsappError } from "../Error.js";
 import { PhoneNumberID, PhoneNumberString } from "../PhoneNumber.js";
+import { EventNotificationMessageButton } from "./MessageButton.js";
 import { CreateMessageContact } from "./MessageContact.js";
 import { CreateMessageLocation } from "./MessageLocation.js";
-import { CreateMessageMedia } from "./MessageMedia.js";
+import {
+  CreateMessageMedia,
+  EventNotificationMessageMedia,
+} from "./MessageMedia.js";
+import { EventNotificationMessageSystem } from "./MessageSystem.js";
 import { CreateMessageTemplate } from "./MessageTemplate.js";
-import { CreateMessageText } from "./MessageText.js";
+import {
+  CreateMessageText,
+  EventNotificationMessageText,
+} from "./MessageText.js";
 import { MessageType } from "./MessageType.js";
 
 /**
@@ -111,3 +119,67 @@ export type CreateMessagePayload = {
   }[];
   error: WhatsappError;
 };
+
+export type EventNotificationMessageMessageBase<T extends string, O> = {
+  type: T;
+} & {
+  [K in T]: O;
+};
+
+export type EventNotificationMessageMessage =
+  | EventNotificationMessageMessageBase<
+      MessageType.Audio,
+      Omit<EventNotificationMessageMedia, "caption" | "filename" | "sha256">
+    >
+  | EventNotificationMessageMessageBase<
+      MessageType.Button,
+      EventNotificationMessageButton
+    >
+  | EventNotificationMessageMessageBase<
+      MessageType.Contacts,
+      unknown // TODO: Add this type
+    >
+  | EventNotificationMessageMessageBase<
+      MessageType.Document,
+      EventNotificationMessageMedia
+    >
+  | EventNotificationMessageMessageBase<
+      MessageType.Image,
+      EventNotificationMessageMedia
+    >
+  | EventNotificationMessageMessageBase<
+      MessageType.Interactive,
+      unknown // TODO: Implement this type
+    >
+  | EventNotificationMessageMessageBase<
+      MessageType.Order,
+      unknown // TODO: Implement this type
+    >
+  | EventNotificationMessageMessageBase<
+      MessageType.Location,
+      unknown // TODO: Implement this type
+    >
+  | EventNotificationMessageMessageBase<
+      MessageType.Reaction,
+      Omit<EventNotificationMessageMedia, "caption" | "filename"> & {
+        animated: boolean;
+      }
+    >
+  | EventNotificationMessageMessageBase<
+      MessageType.Sticker,
+      Omit<EventNotificationMessageMedia, "caption" | "filename"> & {
+        animated: boolean;
+      }
+    >
+  | EventNotificationMessageMessageBase<
+      MessageType.Text,
+      EventNotificationMessageText
+    >
+  | EventNotificationMessageMessageBase<
+      MessageType.Video,
+      Omit<EventNotificationMessageMedia, "filename">
+    >
+  | EventNotificationMessageMessageBase<
+      MessageType.System,
+      EventNotificationMessageSystem
+    >;
