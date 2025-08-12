@@ -6,14 +6,8 @@
  * @see    https://greatdetail.com
  */
 
-/**
- * A Phone Number. **Not** a Phone Number ID.
- */
+/** A Phone Number. **Not** a Phone Number ID.  */
 export type PhoneNumberString = `+${string}` | (string & NonNullable<unknown>);
 
-/**
- * WhatsApp Phone Number ID.
- *
- * @since 7.0.0
- */
+/** WhatsApp Phone Number ID. **Not** necessarily a Phone Number. */
 export type PhoneNumberID = string;
