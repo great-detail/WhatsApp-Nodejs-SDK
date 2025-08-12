@@ -135,6 +135,43 @@ const message = await sdk.message.createMessage({
 });
 ```
 
+**Create a Template Message**:
+
+```ts
+const message = await sdk.message.createMessage({
+  phoneNumberID: "123...809",
+  to: "1234567890",
+  type: "template",
+  template: {
+    name: "test_1",
+    language: { code: "en_US" },
+    components: [
+      {
+        type: "body",
+        parameters: [
+          // Add some parameters:
+          { type: "text", text: "Example" },
+          {
+            type: "currency",
+            currency: {
+              fallback_value: "£100",
+              code: "GBP",
+              amount_1000: 100_000,
+            },
+          },
+          {
+            type: "date_time",
+            date_time: {
+              fallback_value: "2026-01-01",
+            },
+          },
+        ],
+      },
+    ],
+  },
+});
+```
+
 **Upload Media Files**:
 
 ```ts
