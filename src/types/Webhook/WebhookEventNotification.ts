@@ -26,14 +26,10 @@ export type ConversationType =
   | (string & NonNullable<unknown>);
 
 export type WebhookEventNotificationMessagesChanges = {
-  /**
-   * Notification type. Value will be messages.
-   */
+  /** Notification type. Value will be messages. */
   field: "messages";
 
-  /**
-   * A value object.
-   */
+  /** A value object. */
   value: {
     /**
      * Array of contact objects with information for the customer who sent a
@@ -47,25 +43,17 @@ export type WebhookEventNotificationMessagesChanges = {
        */
       wa_id: AccountID;
 
-      /**
-       * Additional unique, alphanumeric identifier for a WhatsApp user.
-       */
+      /** Additional unique, alphanumeric identifier for a WhatsApp user. */
       user_id?: string;
 
-      /**
-       * A customer profile object.
-       */
+      /** A customer profile object. */
       profile: {
-        /**
-         * The customer's name.
-         */
+        /** The customer's name. */
         name: string;
       };
     }[];
 
-    /**
-     * An array of error objects describing the error.
-     */
+    /** An array of error objects describing the error. */
     errors: WhatsappError[];
 
     /**
@@ -104,9 +92,7 @@ export type WebhookEventNotificationMessagesChanges = {
        * your messages.
        */
       context?: {
-        /**
-         * Set to true if the message received by the business has been forwarded.
-         */
+        /** Set to true if the message received by the business has been forwarded. */
         forwarded: boolean;
 
         /**
@@ -115,14 +101,10 @@ export type WebhookEventNotificationMessagesChanges = {
          */
         frequently_forwarded: boolean;
 
-        /**
-         * The WhatsApp ID for the customer who replied to an inbound message.
-         */
+        /** The WhatsApp ID for the customer who replied to an inbound message. */
         from: AccountID;
 
-        /**
-         * The message ID for the sent message for an inbound reply.
-         */
+        /** The message ID for the sent message for an inbound reply. */
         id: MessageID;
 
         /**
@@ -168,9 +150,7 @@ export type WebhookEventNotificationMessagesChanges = {
      * A metadata object describing the business subscribed to the webhook.
      */
     metadata: {
-      /**
-       * The phone number that is displayed for a business.
-       */
+      /** The phone number that is displayed for a business. */
       display_phone_number: PhoneNumberString;
 
       /**
@@ -208,25 +188,15 @@ export type WebhookEventNotificationMessagesChanges = {
        */
       status: "delivered" | "read" | "sent" | "failed";
 
-      /**
-       * Date for the status message.
-       */
+      /** Date for the status message. */
       timestamp: number;
 
-      /**
-       * An object containing pricing information.
-       */
+      /** An object containing pricing information. */
       pricing: {
-        /**
-         * Indicates the conversation category.
-         *
-         * @since 4.2.0
-         */
+        /** Indicates the conversation category.  */
         category: ConversationType;
 
-        /**
-         * Type of pricing model used by the business.
-         */
+        /** Type of pricing model used by the business. */
         pricing_model: "CBP" | (string & NonNullable<unknown>);
 
         /**
@@ -242,9 +212,7 @@ export type WebhookEventNotificationMessagesChanges = {
         billable: boolean;
       };
 
-      /**
-       * Information about the conversation.
-       */
+      /** Information about the conversation. */
       conversation: {
         /**
          * Represents the ID of the conversation the given status notification
@@ -258,9 +226,7 @@ export type WebhookEventNotificationMessagesChanges = {
          */
         expiration_timestamp?: number;
 
-        /**
-         * Describes conversation category
-         */
+        /** Describes conversation category. */
         origin: {
           /**
            * Indicates conversation category. This can also be referred to as a
@@ -270,9 +236,7 @@ export type WebhookEventNotificationMessagesChanges = {
         };
       };
 
-      /**
-       * Arbitrary string included in sent message.
-       */
+      /** Arbitrary string included in sent message. */
       biz_opaque_callback_data?: string;
     }[];
   };
@@ -297,9 +261,7 @@ export type WebhookEventNotification = {
    */
   object: string;
 
-  /**
-   * An array of entry objects.
-   */
+  /** An array of entry objects. */
   entry: {
     /**
      * The WhatsApp Business Account ID for the business that is subscribed to
@@ -307,9 +269,7 @@ export type WebhookEventNotification = {
      */
     id: BusinessAccountID;
 
-    /**
-     * An array of change objects.
-     */
+    /** An array of change objects. */
     changes: (
       | WebhookEventNotificationMessagesChanges
       | WebhookEventNotificationAccountUpdateChanges
