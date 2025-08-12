@@ -140,6 +140,8 @@ export type CreateCustomTemplateOptions = {
 
 export type CreateLibraryTemplateOptions = {
   library_template_name: string;
+
+  /** Use `JSON.stringify([...])` to stringify */
   library_template_button_inputs?: string;
 
   components?: never;
@@ -148,6 +150,8 @@ export type CreateLibraryTemplateOptions = {
 
 export type CreateTemplateBaseOptions = {
   name: string;
+
+  /** Set to "UTILITY" for Library Templates */
   category: TemplateCategory;
   language: TemplateLanguage;
 };
