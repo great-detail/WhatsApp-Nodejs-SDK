@@ -132,21 +132,27 @@ export type LibraryTemplate = {
 };
 
 export type CreateCustomTemplateOptions = {
+  library_template_name?: never;
+  library_template_button_inputs?: never;
   components: unknown[];
 };
 
 export type CreateLibraryTemplateOptions = {
   library_template_name: string;
   library_template_button_inputs?: string;
+  components?: never;
 };
 
-export type CreateTemplateOptions = {
+export type CreateTemplateBaseOptions = {
   businessAccountID: BusinessAccountID;
   name: string;
   category: TemplateCategory;
   parameter_format: TemplateParameterFormat;
   language: TemplateLanguage;
-} & (CreateCustomTemplateOptions | CreateLibraryTemplateOptions);
+};
+
+export type CreateTemplateOptions = CreateTemplateBaseOptions &
+  (CreateCustomTemplateOptions | CreateLibraryTemplateOptions);
 
 export type CreateTemplatePayload = {
   id: string;
