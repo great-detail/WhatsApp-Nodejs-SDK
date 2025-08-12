@@ -1,5 +1,16 @@
 # `@great-detail/whatsapp`
 
+## 8.2.0
+
+### Minor Changes
+
+- 7564c46: Add Webhook Event types for Button-type messages
+- 1d2f459: Add WhatsApp Template APIs
+
+### Patch Changes
+
+- 8edf574: Increase default timeout for HTTP requests to `72000`
+
 ## 8.1.1
 
 ### Patch Changes
