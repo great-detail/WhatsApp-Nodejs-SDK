@@ -119,18 +119,12 @@ export type WebhookEventNotificationMessagesChanges = {
            */
           catalog_id: string;
 
-          /**
-           * Unique identifier of the product in a catalog.
-           */
+          /** Unique identifier of the product in a catalog. */
           product_retailer_id: string;
         };
       };
 
-      /**
-       * An array of error objects describing the error.
-       *
-       * @since 4.2.0
-       */
+      /** An array of error objects describing the error. */
       errors?: WhatsappError[];
 
       /**
