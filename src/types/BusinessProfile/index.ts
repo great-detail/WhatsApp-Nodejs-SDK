@@ -9,6 +9,8 @@
 import { PhoneNumberID } from "../PhoneNumber.js";
 
 export type BusinessProfileFields =
+  | "id"
+  | "messaging_product"
   | "about"
   | "address"
   | "description"
