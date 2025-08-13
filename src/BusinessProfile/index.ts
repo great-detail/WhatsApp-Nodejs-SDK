@@ -8,7 +8,6 @@
 
 import { KyInstance, Options as KyOptions } from "ky";
 import {
-  GetBusinessProfileFields,
   GetBusinessProfileOptions,
   GetBusinessProfilePayload,
   UpdateBusinessProfileOptions,
@@ -27,20 +26,17 @@ export default class BusinessProfile {
     return encodeURIComponent(phoneNumberID) + "/whatsapp_business_profile";
   }
 
-  public getBusinessProfile<Fields extends GetBusinessProfileFields = object>({
+  public getBusinessProfile({
     phoneNumberID,
     fields,
     request,
-  }: MethodOptions & GetBusinessProfileOptions<Fields>) {
+  }: MethodOptions & GetBusinessProfileOptions) {
     return this._transport.extend({
       method: "GET",
       searchParams: {
         fields: Object.keys(fields ?? {}).join(","),
       },
-    })<GetBusinessProfilePayload<Fields>>(
-      this.getEndpoint(phoneNumberID),
-      request,
-    );
+    })<GetBusinessProfilePayload>(this.getEndpoint(phoneNumberID), request);
   }
 
   public updateBusinessProfile({
