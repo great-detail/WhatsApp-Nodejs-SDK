@@ -8,7 +8,7 @@
 
 export { default, default as CloudAPI, default as Client } from "./Client.js";
 
-export type * from "./BusinessProfile/index.js";
+export type * from "./types/BusinessProfile/index.js";
 export * from "./types/Templates/index.js";
 export type * from "./types/Message/index.js";
 export type * from "./types/Message/MessageContact.js";
