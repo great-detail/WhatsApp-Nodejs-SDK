@@ -1,13 +1,17 @@
 # WhatsApp Business Platform API SDK for Node.JS, Deno & Bun
 
-An unofficial SDK for Meta's WhatsApp Business Messaging APIs - Cloud API.
-Originally a fork of the
-[deprecated official SDK for Meta's WhatsApp Business Messaging APIs](https://github.com/WhatsApp/WhatsApp-Nodejs-SDK).
-
 [![npm (scoped)][]][sdk-npmjs]
 
 [npm (scoped)]: https://img.shields.io/npm/v/%40great-detail/whatsapp
 [sdk-npmjs]: https://www.npmjs.com/package/@great-detail/whatsapp
+
+An unofficial SDK for Meta's WhatsApp Business Messaging APIs - Cloud API.
+Originally a fork of the
+[deprecated official SDK for Meta's WhatsApp Business Messaging APIs](https://github.com/WhatsApp/WhatsApp-Nodejs-SDK).
+
+If you find a bug or have a feature request, please
+[open an issue](https://github.com/great-detail/WhatsApp-JS-SDK/issues).
+[Contributions](#contributing) are **greatly** appreciated too!
 
 See this SDK's
 [Changelog](https://github.com/great-detail/WhatsApp-JS-SDK/blob/main/CHANGELOG.md)
@@ -210,7 +214,8 @@ fs.writeFileSync("<FILE_PATH>", Buffer.from(file));
 
 ## Contributing
 
-We welcome contributions! To get started:
+Contributions are **greatly** appreciated - especially surrounding API updates
+and type correction! To get started:
 
 1. **Fork** the repository and create your branch from `main`.
 2. **Write clear, well-documented code** and include tests where possible.
