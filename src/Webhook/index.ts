@@ -83,6 +83,25 @@ export default class Webhook {
    * });
    * ```
    *
+   * **Oak**:
+   *
+   * ```ts
+   * router.get("/path/to/webhook", async (context) => {
+   *   const reg = await sdk.webhook.register({
+   *     method: context.request.method,
+   *     query: Object.fromEntries(context.request.url.searchParams),
+   *     body: undefined,
+   *     headers: Object.fromEntries(context.request.headers),
+   *   });
+   *   // DIY: Check the reg.verifyToken value
+   *   if (reg.verifyToken !== "abcd") {
+   *     context.response.body = reg.reject();
+   *     return;
+   *   }
+   *   context.response.body = reg.accept();
+   * });
+   * ```
+   *
    * @throws {WebhookError}
    */
   public async register(request: IncomingRequest) {
@@ -182,6 +201,30 @@ export default class Webhook {
    *     }
    *     return reply.send(event.accept());
    *   }
+   * });
+   * ```
+   *
+   * **Oak**;
+   *
+   * ```ts
+   * router.post("/path/to/webhook", async (context) => {
+   *   const body = await context.request.body({ type: "text" }).value;
+   *   const event = sdk.webhook.eventNotification({
+   *     method: context.request.method,
+   *     query: Object.fromEntries(context.request.url.searchParams),
+   *     body,
+   *     headers: Object.fromEntries(context.request.headers),
+   *   });
+   *   // DIY: Load the Meta App Secret
+   *   event.verifySignature("abcd-app-secret");
+   *   // Non-200 status codes will be retried
+   *   // You may want to use the dreaded "successful error"
+   *   if (someFailedCondition) {
+   *     context.response.status = 400;
+   *     context.response.body = "";
+   *     return;
+   *   }
+   *   context.response.body = event.accept();
    * });
    * ```
    */

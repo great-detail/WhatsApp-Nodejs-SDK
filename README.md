@@ -212,6 +212,140 @@ const file = await result.arrayBuffer();
 fs.writeFileSync("<FILE_PATH>", Buffer.from(file));
 ```
 
+**Listen for Webhook Requests with Express**:
+
+```ts
+// Registration requests:
+app.get("/path/to/webhook", async (req, res) => {
+  const reg = await sdk.webhook.register({
+    method: request.method,
+    query: req.query,
+    body: req.body,
+    headers: req.headers,
+  });
+  // DIY: Check the reg.verifyToken value
+  if (reg.verifyToken !== "abcd") {
+    return res.end(reg.reject());
+  }
+  return res.end(reg.accept());
+});
+
+// Event Notification requests:
+app.use(express.raw()); // Important <-
+app.post("/path/to/webhook", async (req, res) => {
+  const event = sdk.webhook.eventNotification({
+    method: request.method,
+    query: req.query,
+    body: req.body.toString(),
+    headers: req.headers,
+  });
+  // DIY: Load the Meta App Secret
+  event.verifySignature("abcd-app-secret");
+  // Non-200 status codes will be retried
+  // You may want to use the dreaded "successful error"
+  if (someFailedCondition) {
+    res.status(400);
+    return res.end();
+  }
+  return res.end(event.accept());
+});
+```
+
+**Listen for Webhook Requests with Fastify**:
+
+```ts
+// Registration requests:
+fastify.route({
+  method: "GET",
+  url: "/path/to/webhook",
+  handler: (request, reply) => {   *
+    const reg = await sdk.webhook.register({
+      method: request.method,
+      query: request.query,
+      body: undefined,
+      headers: request.headers,
+    });
+    // DIY: Check the reg.verifyToken value
+    if (reg.verifyToken !== "abcd") {
+      return reply.send(reg.reject());
+    }
+    return reply.send(reg.accept());
+  }
+});
+
+// Event Notification requests:
+// See: https://github.com/fastify/fastify/issues/707#issuecomment-817224931
+fastify.addContentTypeParser("application/json", { parseAs: "buffer" }, (_req, body, done) => {
+  done(null, body);
+});
+
+fastify.route({
+  method: "POST",
+  url: "/path/to/webhook",
+  handler: (request, reply) => {
+    // This SDK handles inbound webhook requests from a string for signature verification
+    assert(Buffer.isBuffer(request.body) || typeof request.body === "string");
+    const body = request.body.toString();
+
+    const event = sdk.webhook.eventNotification({
+      method: request.method,
+      query: request.query,
+      body,
+      headers: request.headers,
+    });
+    // DIY: Load the Meta App Secret
+    event.verifySignature("abcd-app-secret");
+    // Non-200 status codes will be retried
+    // You may want to use the dreaded "successful error"
+    if (someFailedCondition) {
+      return reply.code(400).send();
+    }
+    return reply.send(event.accept());
+  }
+});
+```
+
+**Listen for Webhook Requests with Oak**:
+
+```ts
+// Registration requests:
+router.get("/path/to/webhook", async (context) => {
+  const reg = await sdk.webhook.register({
+    method: context.request.method,
+    query: Object.fromEntries(context.request.url.searchParams),
+    body: undefined,
+    headers: Object.fromEntries(context.request.headers),
+  });
+  // DIY: Check the reg.verifyToken value
+  if (reg.verifyToken !== "abcd") {
+    context.response.body = reg.reject();
+    return;
+  }
+  context.response.body = reg.accept();
+});
+
+// Event Notification requests:
+router.post("/path/to/webhook", async (context) => {
+  const body = await context.request.body({ type: "text" }).value;
+  const event = sdk.webhook.eventNotification({
+    method: context.request.method,
+    query: Object.fromEntries(context.request.url.searchParams),
+    body,
+    headers: Object.fromEntries(context.request.headers),
+  });
+  // DIY: Load the Meta App Secret
+  event.verifySignature("abcd-app-secret");
+  // Non-200 status codes will be retried
+  // You may want to use the dreaded "successful error"
+  if (someFailedCondition) {
+    context.response.status = 400;
+    context.response.body = "";
+    return;
+  }
+  context.response.body = event.accept();
+});
+```
+
 ## Contributing
 
 Contributions are **greatly** appreciated - especially surrounding API updates
