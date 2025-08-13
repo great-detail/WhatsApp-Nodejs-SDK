@@ -5,9 +5,11 @@
 [npm (scoped)]: https://img.shields.io/npm/v/%40great-detail/whatsapp
 [sdk-npmjs]: https://www.npmjs.com/package/@great-detail/whatsapp
 
-An unofficial SDK for Meta's WhatsApp Business Messaging APIs - Cloud API.
+The unofficial SDK for Meta's WhatsApp Business Messaging APIs - Cloud API.
 Originally a fork of the
 [deprecated official SDK for Meta's WhatsApp Business Messaging APIs](https://github.com/WhatsApp/WhatsApp-Nodejs-SDK).
+Supports webhooks, phone number management, whatsapp business account
+management, template management, messaging, webhook subscription management.
 
 If you find a bug or have a feature request, please
 [open an issue](https://github.com/great-detail/WhatsApp-JS-SDK/issues).
