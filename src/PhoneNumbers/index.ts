@@ -7,7 +7,7 @@
  */
 
 import { KyInstance, Options as KyOptions } from "ky";
-import { BusinessAccountID } from "../types/BusinessAccount.js";
+import { BusinessAccountID } from "../types/BusinessAccount/index.js";
 import {
   GetPhoneNumberOptions,
   GetPhoneNumberPayload,

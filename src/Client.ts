@@ -15,6 +15,7 @@ import SubscribedApps from "./SubscribedApps/index.js";
 import Webhook from "./Webhook/index.js";
 import Template from "./Template/index.js";
 import type { KyInstance, Options as KyOptions } from "ky";
+import BusinessAccount from "./BusinessAccount/index.js";
 
 export interface Options {
   prefixUrl?: string;
@@ -50,6 +51,9 @@ export default class Client {
 
   protected _transport: KyInstance;
 
+  /** Business Account APIs */
+  public businessAccount: BusinessAccount;
+
   /** Business-Profile APIs */
   public businessProfile: BusinessProfile;
 
@@ -82,6 +86,7 @@ export default class Client {
       prefixUrl: prefixUrl.replace(/\/$/, "") + "/" + graphVersion,
     });
 
+    this.businessAccount = new BusinessAccount(this._transport);
     this.businessProfile = new BusinessProfile(this._transport);
     this.media = new Media(this._transport);
     this.message = new Message(this._transport);

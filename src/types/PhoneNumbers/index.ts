@@ -6,7 +6,7 @@
  * @see    https://greatdetail.com
  */
 
-import { BusinessAccountID } from "../BusinessAccount.js";
+import { BusinessAccountID } from "../BusinessAccount/index.js";
 import {
   BusinessProfile,
   BusinessProfileFields,
