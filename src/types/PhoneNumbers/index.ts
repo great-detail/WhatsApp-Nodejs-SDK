@@ -7,7 +7,35 @@
  */
 
 import { BusinessAccountID } from "../BusinessAccount.js";
+import {
+  BusinessProfile,
+  BusinessProfileFields,
+} from "../BusinessProfile/index.js";
 import { PhoneNumberID } from "../PhoneNumber.js";
+
+export type PhoneNumberFields =
+  | "id"
+  | "account_mode"
+  | "code_verification_status"
+  | "conversational_automation"
+  | "display_phone_number"
+  | "quality_rating"
+  | "verified_name"
+  | "name_status"
+  | "eligibility_for_api_business_global_search"
+  | "health_status"
+  | "is_official_business_account"
+  | "is_on_biz_app"
+  | "is_pin_enabled"
+  | "is_preverified_number"
+  | "last_onboarded_time"
+  | "messaging_limit_tier"
+  | "platform_type"
+  | "quality_score"
+  | "status"
+  | "throughput"
+  | "webhook_configuration"
+  | ["whatsapp_business_profile", BusinessProfileFields[]];
 
 export const PHONE_NUMBER_STATUS = [
   "PENDING",

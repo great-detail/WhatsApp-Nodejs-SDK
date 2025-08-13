@@ -34,6 +34,18 @@ export default class PhoneNumbers {
     return this._transport.extend({
       method: "GET",
       searchParams: {
+        ...(fields
+          ? {
+              fields: fields
+                .map((field) =>
+                  Array.isArray(field)
+                    ? `${field[0]}{${field[1].join(",")}}`
+                    : field,
+                )
+                .join(","),
+            }
+          : {}),
+      },
     })<GetPhoneNumberPayload>(encodeURIComponent(phoneNumberID), request);
   }
 
@@ -41,11 +53,23 @@ export default class PhoneNumbers {
     businessAccountID,
     sort,
     filtering,
+    fields,
     request,
   }: MethodOptions & ListPhoneNumbersOptions) {
     return this._transport.extend({
       method: "GET",
       searchParams: {
+        ...(fields
+          ? {
+              fields: fields
+                .map((field) =>
+                  Array.isArray(field)
+                    ? `${field[0]}{${field[1].join(",")}}`
+                    : field,
+                )
+                .join(","),
+            }
+          : {}),
         ...(sort
           ? {
               sort,
