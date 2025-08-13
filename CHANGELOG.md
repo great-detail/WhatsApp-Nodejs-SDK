@@ -1,5 +1,30 @@
 # `@great-detail/whatsapp`
 
+## 8.3.0
+
+### Minor Changes
+
+- 93d04aa: Add WebhookEventNotification types for events: `account_alerts`,
+  `template_category_update`, `message_template_components_update`,
+  `message_template_quality_update`, `message_template_status_update`,
+  `phone_number_name_update`, `phone_number_quality_update`,
+  `account_review_update`, `payment_configuration_update`, `calls`
+- 5fe6548: Add WhatsApp Business Account APIs
+- bb30891: Adjust PhoneNumber listing and retrieval fields to support arrays and
+  sub-arrays for edge inclusion
+- f2ed440: Add WhatsApp Phone Number Update API with `new_display_name` field
+  support
+
+### Patch Changes
+
+- 28a3ef0: Add missing fields to BusinessProfileFields: `id`,
+  `messaging_product`
+- ae778b2: Fix type export for BusinessProfile types
+- 9696fd6: Add missing enum for Business Profile `vertical` field
+- fb4a900: Fix WhatsApp Phone Numbers' type exports
+- d124704: Add missing `override_callback_uri` and `verify_token` fields in
+  SubscribedApps.createSubscription options
+
 ## 8.2.0
 
 ### Minor Changes
