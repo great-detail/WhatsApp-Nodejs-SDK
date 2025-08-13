@@ -13,6 +13,8 @@ import {
   GetPhoneNumberPayload,
   ListPhoneNumbersOptions,
   ListPhoneNumbersPaylod,
+  UpdatePhoneNumberOptions,
+  UpdatePhoneNumberPayload,
 } from "../types/PhoneNumbers/index.js";
 
 interface MethodOptions {
@@ -82,5 +84,18 @@ export default class PhoneNumbers {
           : {}),
       },
     })<ListPhoneNumbersPaylod>(this.getEndpoint(businessAccountID), request);
+  }
+
+  public updatePhoneNumber({
+    phoneNumberID,
+    new_display_name,
+    request,
+  }: MethodOptions & UpdatePhoneNumberOptions) {
+    return this._transport.extend({
+      method: "POST",
+      searchParams: {
+        ...(new_display_name ? { new_display_name } : {}),
+      },
+    })<UpdatePhoneNumberPayload>(encodeURIComponent(phoneNumberID), request);
   }
 }

@@ -188,3 +188,10 @@ export type GetPhoneNumberOptions = {
 };
 
 export type GetPhoneNumberPayload = PhoneNumber;
+
+export type UpdatePhoneNumberOptions = {
+  phoneNumberID: PhoneNumberID;
+  new_display_name?: string;
+};
+
+export type UpdatePhoneNumberPayload = { success: boolean };
