@@ -6,18 +6,27 @@
  * @see    https://greatdetail.com
  */
 
-import { BusinessAccountID } from "../WhatsappBusinessAccount/index.js";
+import { WhatsappBusinessAccountID } from "../WhatsappBusinessAccount/index.js";
 
 export type CreateSubscriptionOptions = {
-  businessAccountID: BusinessAccountID;
-};
+  businessAccountID: WhatsappBusinessAccountID;
+} & (
+  | {
+      override_callback_uri: string;
+      verify_token: string;
+    }
+  | {
+      override_callback_uri?: never;
+      verify_token?: string;
+    }
+);
 
 export type CreateSubscriptionPayload = {
   success: boolean;
 };
 
 export type ListSubscriptionsOptions = {
-  businessAccountID: BusinessAccountID;
+  businessAccountID: WhatsappBusinessAccountID;
 };
 
 export type ListSubscriptionsPayload = {

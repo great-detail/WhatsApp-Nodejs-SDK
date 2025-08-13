@@ -29,9 +29,11 @@ export default class SubscribedApps {
   public createSubscription({
     businessAccountID,
     request,
+    ...subscription
   }: MethodOptions & CreateSubscriptionOptions) {
     return this._transport.extend({
       method: "POST",
+      json: subscription,
     })<CreateSubscriptionPayload>(this.getEndpoint(businessAccountID), request);
   }
 
