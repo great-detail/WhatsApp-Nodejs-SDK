@@ -15,7 +15,7 @@ import SubscribedApps from "./SubscribedApps/index.js";
 import Webhook from "./Webhook/index.js";
 import Template from "./Template/index.js";
 import type { KyInstance, Options as KyOptions } from "ky";
-import BusinessAccount from "./BusinessAccount/index.js";
+import WhatsappBusinessAccount from "./WhatsappBusinessAccount/index.js";
 
 export interface Options {
   prefixUrl?: string;
@@ -50,10 +50,6 @@ export default class Client {
   public static DEFAULT_GRAPH_VERSION = "v23.0";
 
   protected _transport: KyInstance;
-
-  /** Business Account APIs */
-  public businessAccount: BusinessAccount;
-
   /** Business-Profile APIs */
   public businessProfile: BusinessProfile;
 
@@ -75,6 +71,9 @@ export default class Client {
   /** Webhook APIs */
   public webhook: Webhook;
 
+  /** WhatsApp Business Account APIs */
+  public whatsappBusinessAccount: WhatsappBusinessAccount;
+
   constructor({
     prefixUrl = Client.DEFAULT_GRAPH_BASE_URL,
     graphVersion = Client.DEFAULT_GRAPH_VERSION,
@@ -86,7 +85,6 @@ export default class Client {
       prefixUrl: prefixUrl.replace(/\/$/, "") + "/" + graphVersion,
     });
 
-    this.businessAccount = new BusinessAccount(this._transport);
     this.businessProfile = new BusinessProfile(this._transport);
     this.media = new Media(this._transport);
     this.message = new Message(this._transport);
@@ -94,5 +92,6 @@ export default class Client {
     this.subscribedApps = new SubscribedApps(this._transport);
     this.template = new Template(this._transport);
     this.webhook = new Webhook();
+    this.whatsappBusinessAccount = new WhatsappBusinessAccount(this._transport);
   }
 }

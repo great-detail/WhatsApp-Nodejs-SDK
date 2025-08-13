@@ -8,21 +8,21 @@
 
 import { KyInstance, Options as KyOptions } from "ky";
 import {
-  BusinessAccountID,
-  GetBusinessAccountOptions,
-  GetBusinessAccountPayload,
-} from "../types/BusinessAccount/index.js";
+  WhatsappBusinessAccountID,
+  GetWhatsappBusinessAccountOptions,
+  GetWhatsappBusinessAccountPayload,
+} from "../types/WhatsappBusinessAccount/index.js";
 
 interface MethodOptions {
   request?: KyOptions;
 }
 
-export default class BusinessAccount {
+export default class WhatsappBusinessAccount {
   constructor(protected _transport: KyInstance) {}
 
   public get(
-    businessAccountID: BusinessAccountID,
-    { fields, request }: MethodOptions & GetBusinessAccountOptions = {},
+    businessAccountID: WhatsappBusinessAccountID,
+    { fields, request }: MethodOptions & GetWhatsappBusinessAccountOptions = {},
   ) {
     return this._transport.extend({
       method: "GET",
@@ -33,7 +33,7 @@ export default class BusinessAccount {
             }
           : {}),
       },
-    })<GetBusinessAccountPayload>(
+    })<GetWhatsappBusinessAccountPayload>(
       encodeURIComponent(businessAccountID),
       request,
     );

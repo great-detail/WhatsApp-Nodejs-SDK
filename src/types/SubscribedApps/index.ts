@@ -6,7 +6,7 @@
  * @see    https://greatdetail.com
  */
 
-import { BusinessAccountID } from "../BusinessAccount/index.js";
+import { BusinessAccountID } from "../WhatsappBusinessAccount/index.js";
 
 export type CreateSubscriptionOptions = {
   businessAccountID: BusinessAccountID;

@@ -6,10 +6,12 @@
  * @see    https://greatdetail.com
  */
 
+/** @deprecated */
+export type BusinessAccountID = WhatsappBusinessAccountID;
 /** WhatsApp Business Account ID */
-export type BusinessAccountID = string;
+export type WhatsappBusinessAccountID = string;
 
-export const BUSINESS_ACCOUNT_VERIFICATION_STATUS = [
+export const WHATSAPP_BUSINESS_ACCOUNT_VERIFICATION_STATUS = [
   "not_verified",
   "expired",
   "failed",
@@ -21,10 +23,10 @@ export const BUSINESS_ACCOUNT_VERIFICATION_STATUS = [
   "revoked",
   "verified",
 ] as const;
-export type BusinessAccountVerificationStatus =
-  (typeof BUSINESS_ACCOUNT_VERIFICATION_STATUS)[number];
+export type WhatsappBusinessAccountVerificationStatus =
+  (typeof WHATSAPP_BUSINESS_ACCOUNT_VERIFICATION_STATUS)[number];
 
-export type BusinessAccountFields =
+export type WhatsappBusinessAccountFields =
   | "account_review_status"
   | "id"
   | "name"
@@ -45,8 +47,8 @@ export type BusinessAccountFields =
   | "ownership_type"
   | "status";
 
-export type BusinessAccount = {
-  id: BusinessAccountID;
+export type WhatsappBusinessAccount = {
+  id: WhatsappBusinessAccountID;
   name: string;
   account_review_status: string;
   message_template_namespace?: string;
@@ -61,7 +63,7 @@ export type BusinessAccount = {
     status: string;
     type: string;
   };
-  business_verification_status: BusinessAccountVerificationStatus;
+  business_verification_status: WhatsappBusinessAccountVerificationStatus;
   country?: string;
   currency: string;
   is_enabled_for_insights: boolean;
@@ -87,8 +89,8 @@ export type BusinessAccount = {
   // TODO: Add health_status
 };
 
-export type GetBusinessAccountOptions = {
-  fields?: BusinessAccountFields[];
+export type GetWhatsappBusinessAccountOptions = {
+  fields?: WhatsappBusinessAccountFields[];
 };
 
-export type GetBusinessAccountPayload = BusinessAccount;
+export type GetWhatsappBusinessAccountPayload = WhatsappBusinessAccount;

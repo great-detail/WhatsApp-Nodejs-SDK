@@ -7,7 +7,7 @@
  */
 
 import { AccountID } from "../Account.js";
-import { BusinessAccountID } from "../BusinessAccount/index.js";
+import { BusinessAccountID } from "../WhatsappBusinessAccount/index.js";
 import { WhatsappError } from "../Error.js";
 import {
   EventNotificationMessageMessage,
