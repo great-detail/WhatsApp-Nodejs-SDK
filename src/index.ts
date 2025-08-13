@@ -20,7 +20,7 @@ export type * from "./types/Message/MessageSystem.js";
 export type * from "./types/Message/MessageTemplate.js";
 export type * from "./types/Message/MessageText.js";
 export * from "./types/Message/MessageType.js";
-export type * from "./PhoneNumbers/index.js";
+export type * from "./types/PhoneNumbers/index.js";
 export type * from "./types/SubscribedApps/index.js";
 export type * from "./types/Webhook/WebhookEventNotification.js";
 export type * from "./types/WhatsappBusinessAccount/index.js";

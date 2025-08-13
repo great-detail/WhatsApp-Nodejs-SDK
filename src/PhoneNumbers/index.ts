@@ -7,7 +7,7 @@
  */
 
 import { KyInstance, Options as KyOptions } from "ky";
-import { BusinessAccountID } from "../types/WhatsappBusinessAccount/index.js";
+import { WhatsappBusinessAccountID } from "../types/WhatsappBusinessAccount/index.js";
 import {
   GetPhoneNumberOptions,
   GetPhoneNumberPayload,
@@ -22,7 +22,7 @@ interface MethodOptions {
 export default class PhoneNumbers {
   constructor(protected _transport: KyInstance) {}
 
-  public getEndpoint(businessAccountID: BusinessAccountID) {
+  public getEndpoint(businessAccountID: WhatsappBusinessAccountID) {
     return encodeURIComponent(businessAccountID) + "/phone_numbers";
   }
 
