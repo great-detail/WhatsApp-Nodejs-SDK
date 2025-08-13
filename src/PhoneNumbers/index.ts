@@ -9,7 +9,6 @@
 import { KyInstance, Options as KyOptions } from "ky";
 import { BusinessAccountID } from "../types/BusinessAccount.js";
 import {
-  GetPhoneNumberFields,
   GetPhoneNumberOptions,
   GetPhoneNumberPayload,
   ListPhoneNumbersOptions,
@@ -27,20 +26,15 @@ export default class PhoneNumbers {
     return encodeURIComponent(businessAccountID) + "/phone_numbers";
   }
 
-  public getPhoneNumber<Fields extends GetPhoneNumberFields = object>({
+  public getPhoneNumber({
     phoneNumberID,
     fields,
     request,
-  }: MethodOptions & GetPhoneNumberOptions<Fields>) {
+  }: MethodOptions & GetPhoneNumberOptions) {
     return this._transport.extend({
       method: "GET",
       searchParams: {
-        fields: Object.keys(fields ?? {}).join(","),
-      },
-    })<GetPhoneNumberPayload<Fields>>(
-      encodeURIComponent(phoneNumberID),
-      request,
-    );
+    })<GetPhoneNumberPayload>(encodeURIComponent(phoneNumberID), request);
   }
 
   public listPhoneNumbers({
