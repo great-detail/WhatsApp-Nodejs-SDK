@@ -34,7 +34,13 @@ export default class BusinessProfile {
     return this._transport.extend({
       method: "GET",
       searchParams: {
-        fields: Object.keys(fields ?? {}).join(","),
+        ...(fields
+          ? {
+              fields: Array.isArray(fields)
+                ? fields.join(",")
+                : Object.keys(fields ?? {}).join(","),
+            }
+          : {}),
       },
     })<GetBusinessProfilePayload>(this.getEndpoint(phoneNumberID), request);
   }

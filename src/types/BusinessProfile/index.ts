@@ -63,18 +63,16 @@ export type BusinessProfile = {
   vertical: BusinessProfileVertical;
 
   /** URLs associated with the business, such as a website, Facebook Page, or Instagram profile. */
-  websites?: [string] | [string, string];
+  websites?: [string] | [string, string] | (string[] & NonNullable<unknown>);
 };
 
-export type GetBusinessProfileFields = Partial<
-  Record<BusinessProfileFields, boolean>
->;
+export type GetBusinessProfileFields =
+  | Partial<Record<BusinessProfileFields, boolean>>
+  | BusinessProfileFields[];
 
-export type GetBusinessProfileOptions<
-  Fields extends GetBusinessProfileFields = object,
-> = {
+export type GetBusinessProfileOptions = {
   phoneNumberID: PhoneNumberID;
-  fields?: Fields;
+  fields?: GetBusinessProfileFields;
 };
 
 export type GetBusinessProfilePayload = {
@@ -84,11 +82,19 @@ export type GetBusinessProfilePayload = {
 export type UpdateBusinessProfileOptions = {
   phoneNumberID: PhoneNumberID;
   about?: string;
+
+  /** Business address. Maximum 256 characters. */
   address?: string;
   description?: string;
+
+  /** Business email address. Must be in valid email format. Maximum 128 characters. */
   email?: string;
   profile_picture_handle?: string;
-  vertical?: "" | (string & NonNullable<unknown>);
+
+  /** Business category. These values map to the following strings, which are displayed in the business profile in the WhatsApp client. */
+  vertical?: BusinessProfileVertical;
+
+  /** URLs associated with the business, such as a website, Facebook Page, or Instagram profile. */
   websites?: [string] | [string, string] | (string[] & NonNullable<unknown>);
 };
 
