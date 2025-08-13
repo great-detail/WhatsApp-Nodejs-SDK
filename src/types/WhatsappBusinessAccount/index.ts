@@ -11,6 +11,14 @@ export type BusinessAccountID = WhatsappBusinessAccountID;
 /** WhatsApp Business Account ID */
 export type WhatsappBusinessAccountID = string;
 
+export const WHATSAPP_BUSINESS_ACCOUNT_MESSAGE_ELIGIBILITY = [
+  "BLOCKED",
+  "LIMITED",
+  "AVAILABLE",
+] as const;
+export type WhatsappBusinessAccountMessageEligibility =
+  (typeof WHATSAPP_BUSINESS_ACCOUNT_MESSAGE_ELIGIBILITY)[number];
+
 export const WHATSAPP_BUSINESS_ACCOUNT_VERIFICATION_STATUS = [
   "not_verified",
   "expired",
@@ -86,7 +94,22 @@ export type WhatsappBusinessAccount = {
     | "ONBOARDED";
   ownership_type: "CLIENT_OWNED" | unknown;
   status: "ACTIVE";
-  // TODO: Add health_status
+
+  health_status: {
+    can_send_message: WhatsappBusinessAccountMessageEligibility;
+    entities: {
+      id: string;
+      entity_type: // | "PHONE_NUMBER"
+      "WABA" | "BUSINESS" | "APP" | (string & NonNullable<unknown>);
+      can_send_message: WhatsappBusinessAccountMessageEligibility;
+      additional_info?: string[];
+      errors?: {
+        error_code?: string;
+        error_description: string;
+        possible_solution?: string;
+      }[];
+    }[];
+  };
 };
 
 export type GetWhatsappBusinessAccountOptions = {
