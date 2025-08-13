@@ -49,13 +49,21 @@ export type BusinessProfileVertical =
 
 export type BusinessProfile = {
   about?: string;
+
+  /** Business address. Maximum 256 characters. */
   address?: string;
   description?: string;
+
+  /** Business email address. Must be in valid email format. Maximum 128 characters. */
   email?: string;
   messaging_product: "whatsapp";
   profile_picture_url?: string;
+
+  /** Business category. These values map to the following strings, which are displayed in the business profile in the WhatsApp client. */
   vertical: BusinessProfileVertical;
-  websites?: [string] | [string, string] | (string[] & NonNullable<unknown>);
+
+  /** URLs associated with the business, such as a website, Facebook Page, or Instagram profile. */
+  websites?: [string] | [string, string];
 };
 
 export type GetBusinessProfileFields = Partial<
