@@ -16,6 +16,11 @@ import {
 import { EventNotificationMessageIdentity } from "../Message/MessageIdentity.js";
 import { EventNotificationMessageReferral } from "../Message/MessageReferral.js";
 import { PhoneNumberID, PhoneNumberString } from "../PhoneNumber.js";
+import { PhoneNumberMessagingLimitTier } from "../PhoneNumbers/index.js";
+import { TemplateButtonTypes } from "../Templates/TemplateButton.js";
+import { TemplateCategory } from "../Templates/TemplateCategory.js";
+import { TemplateLanguage } from "../Templates/TemplateLanguage.js";
+import { TemplateQualityScore } from "../Templates/TemplateStatus.js";
 
 export type ConversationType =
   | "authentication"
@@ -240,12 +245,191 @@ export type WebhookEventNotificationAccountUpdateChanges = {
   field: "account_update";
   value: {
     event: "PARTNER_APP_INSTALLED" | (string & NonNullable<unknown>);
+    phone_number?: string;
+    ban_info?: {
+      waba_ban_state: string; // TODO: Enum?
+      waba_ban_date: string;
+    };
+
+    /** Information about a violation on the account */
+    violation_info?: {
+      violation_type: string; // TODO: Enum?
+    };
+    lock_info?: {
+      // TODO: IS this a string or number? datetime?
+      expiration: string | number;
+    };
+
+    /** Information about the restrictions on the account */
+    restriction_info?: {
+      restriction_type: string; // TODO: Enum?
+      // TODO: IS this a string or number? datetime?
+      expiration: string | number;
+    };
+
+    /** Business verification status */
+    business_verification_status: string; // TODO: Enum?
+
+    /** Information about the status of the partner's self certification for a client */
+    partner_client_certification_info?: {
+      client_business_id: string;
+
+      /** Status of certification */
+      status: "PENDING" | "APPROVED" | "FAILED" | "DISCARDED" | "REVOKED";
+
+      /** List of rejection reasons for why the request did not pass verification. */
+      rejection_reasons: (
+        | "LEGAL NAME NOT MATCHING"
+        | "WEBSITE NOT MATCHING"
+        | "NONE"
+        | "BUSINESS NOT ELIGIBLE"
+        | "LEGAL NAME NOT FOUND IN DOCUMENTS"
+        | "MALFORMED DOCUMENTS"
+        | "ADDRESS NOT MATCHING"
+      )[];
+    };
+
+    /** Information about a waba for business webhooks */
     waba_info: {
       waba_id: AccountID;
+
+      /** WABA owner business ID */
       owner_business_id: BusinessAccountID;
+
+      /** The id of the solution through which this WABA was onboarded */
+      solution_id?: string;
+
+      /** List of partner business ids part of the solution */
+      solution_partner_business_ids?: string[];
+      is_obo_to_shared_migrated?: boolean;
+      ad_account_id?: string;
+      partner_data?: string;
       partner_app_id: string;
     };
+
+    /** List of countries where two tier price wll be enforced on different time. */
+    auth_international_rate_eligibility?: {
+      /** The unixtimestamp when the business will be enforced on the two tier pricing for the autentication message. */
+      start: number;
+
+      exception_countries: {
+        /** Country code for the country where the two tier price will be enforced on a different time stamp. */
+        country_code: string;
+
+        /** The actual timestamp that two tier price will be enforced on the country */
+        start_time: number;
+      }[];
+    };
   };
+};
+
+export type WebhookEventNotificationAccountAlertsChanges = {
+  field: "account_alerts";
+  // TODO: Is there any fields?
+};
+
+export type WebhookEventNotificationMessageTemplateCategoryUpdateChanges = {
+  field: "template_category_update";
+  value: {
+    message_template_id: number;
+    message_template_name: string;
+    message_template_language: TemplateLanguage;
+    previous_category: TemplateCategory;
+    new_category: TemplateCategory;
+    correct_category: TemplateCategory;
+  };
+};
+
+export type WebhookEventNotificationMessageTemplateComponentsUpdateChanges = {
+  field: "message_template_components_update";
+  value: {
+    message_template_id: number;
+    message_template_name: string;
+    message_template_language: string;
+    message_template_title: string;
+    message_template_element: string;
+    message_template_footer: string;
+    message_template_buttons: {
+      message_template_button_type: TemplateButtonTypes;
+      message_template_button_text: string;
+      message_template_button_url?: string;
+      message_template_button_phone_number?: string;
+    }[];
+  };
+};
+
+export type WebhookEventNotificationMessageTemplateQualityUpdateChanges = {
+  field: "message_template_quality_update";
+  value: {
+    message_template_id: number;
+    message_template_name: string;
+    message_template_language: string;
+    previous_quality_score: TemplateQualityScore;
+    new_quality_score: TemplateQualityScore;
+  };
+};
+
+export type WebhookEventNotificationMessageTemplateStatusUpdateChanges = {
+  field: "message_template_status_update";
+  value: {
+    message_template_id: number;
+    message_template_name: string;
+    message_template_language: string;
+    event: string; // TODO: Enum?
+    reason: string; // TODO: Enum?
+    disable_info?: {
+      disable_date: string;
+    };
+    other_info?: {
+      title?: string;
+      description?: string;
+    };
+  };
+};
+
+export type WebhookEventNotificationPhoneNumberNameUpdateChanges = {
+  field: "phone_number_name_update";
+  value: {
+    display_phone_number: string;
+    decision: string; // TODO: Enum?
+    requested_verified_name?: string;
+    rejection_reason: string; // TODO: Enum? NONE?
+  };
+};
+
+export type WebhookEventNotificationPhoneNumberQualityUpdateChanges = {
+  field: "phone_number_quality_update";
+  value: {
+    display_phone_number: string;
+    event: string; // TODO: Enum?
+    current_limit: PhoneNumberMessagingLimitTier;
+    old_limit: PhoneNumberMessagingLimitTier;
+    max_daily_conversations_per_business: string; // TODO: Enum?
+  };
+};
+
+export type WebhookEventNotificationAccountReviewUpdateChanges = {
+  field: "account_review_update";
+  value: {
+    decision: string; // TODO: Enum?
+  };
+};
+
+export type WebhookEventNotificationPaymentConfigurationUpdateChanges = {
+  field: "payment_configuration_update";
+  value: {
+    configuration_name: string;
+    provider_name: string;
+    provider_mid: string;
+    status: string; // TODO: Enum?
+    created_timestamp: number;
+    updated_timestamp: number;
+  };
+};
+
+export type WebhookEventNotificationCallsChanges = {
+  field: "calls";
+  // TODO: Is there any fields?
 };
 
 export type WebhookEventNotification = {
@@ -267,6 +451,16 @@ export type WebhookEventNotification = {
     changes: (
       | WebhookEventNotificationMessagesChanges
       | WebhookEventNotificationAccountUpdateChanges
+      | WebhookEventNotificationAccountReviewUpdateChanges
+      | WebhookEventNotificationAccountAlertsChanges
+      | WebhookEventNotificationMessageTemplateStatusUpdateChanges
+      | WebhookEventNotificationMessageTemplateCategoryUpdateChanges
+      | WebhookEventNotificationMessageTemplateComponentsUpdateChanges
+      | WebhookEventNotificationMessageTemplateQualityUpdateChanges
+      | WebhookEventNotificationPhoneNumberNameUpdateChanges
+      | WebhookEventNotificationPhoneNumberQualityUpdateChanges
+      | WebhookEventNotificationPaymentConfigurationUpdateChanges
+      | WebhookEventNotificationCallsChanges
     )[];
   }[];
 };
