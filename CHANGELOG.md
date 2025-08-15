@@ -1,5 +1,14 @@
 # `@great-detail/whatsapp`
 
+## 8.3.2
+
+### Patch Changes
+
+- 4cbf0b0: Add missing export of `TEMPLATE_REJECTION_REASONS`
+- 8cc2560: Add missing deprecated `allow_category_change` field to
+  CreateTemplateBaseOptions type
+- 201d1fb: Add missing export of `TEMPLATE_PARAMETER_FORMATS`
+
 ## 8.3.1
 
 ### Patch Changes
