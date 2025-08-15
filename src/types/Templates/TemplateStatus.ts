@@ -29,13 +29,17 @@ export const TEMPLATE_QUALITY_SCORES = [
 
 export type TemplateQualityScore = (typeof TEMPLATE_QUALITY_SCORES)[number];
 
+export const TEMPLATE_REJECTION_REASONS = [
+  "ABUSIVE_CONTENT",
+  "INVALID_FORMAT",
+  "PROMOTIONAL",
+  "TAG_CONTENT_MISMATCH",
+  "SCAM",
+  "NONE",
+] as const;
+
 export type TemplateRejectionReason =
-  | "ABUSIVE_CONTENT"
-  | "INVALID_FORMAT"
-  | "PROMOTIONAL"
-  | "TAG_CONTENT_MISMATCH"
-  | "SCAM"
-  | "NONE";
+  (typeof TEMPLATE_REJECTION_REASONS)[number];
 
 export const TEMPLATE_PARAMETER_FORMATS = ["POSITIONAL", "NAMED"] as const;
 
