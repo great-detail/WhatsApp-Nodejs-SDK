@@ -37,4 +37,7 @@ export type TemplateRejectionReason =
   | "SCAM"
   | "NONE";
 
-export type TemplateParameterFormat = "POSITIONAL" | "NAMED";
+export const TEMPLATE_PARAMETER_FORMATS = ["POSITIONAL", "NAMED"] as const;
+
+export type TemplateParameterFormat =
+  (typeof TEMPLATE_PARAMETER_FORMATS)[number];
