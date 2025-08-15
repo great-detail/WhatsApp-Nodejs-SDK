@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 8.3.1
+
+### Patch Changes
+
+- 3024ca9: Fix missing `main` field in `package.json` for CJS interop support
+
 ## 8.3.0
 
 ### Minor Changes
