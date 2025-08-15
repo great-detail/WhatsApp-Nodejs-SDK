@@ -200,6 +200,9 @@ export type CreateTemplateBaseOptions = {
   /** Set to "UTILITY" for Library Templates */
   category: TemplateCategory;
   language: TemplateLanguage;
+
+  /** @deprecated */
+  allow_category_change?: boolean;
 };
 
 export type CreateTemplateOptions = CreateTemplateBaseOptions &
