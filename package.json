@@ -21,6 +21,8 @@
   "engines": {
     "node": ">=20"
   },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "exports": {
     ".": {
       "import": {

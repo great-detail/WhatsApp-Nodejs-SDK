@@ -7,7 +7,7 @@
  */
 
 import { KyInstance, Options as KyOptions } from "ky";
-import { BusinessAccountID } from "../types/WhatsappBusinessAccount/index.js";
+import { WhatsappBusinessAccountID } from "../types/WhatsappBusinessAccount/index.js";
 import {
   CreateTemplateOptions,
   CreateTemplatePayload,
@@ -28,7 +28,7 @@ interface MethodOptions {
 export default class Template {
   constructor(protected _transport: KyInstance) {}
 
-  protected getEndpoint(businessAccountID: BusinessAccountID) {
+  protected getEndpoint(businessAccountID: WhatsappBusinessAccountID) {
     return encodeURIComponent(businessAccountID) + "/message_templates";
   }
 
@@ -65,7 +65,7 @@ export default class Template {
    * ```
    */
   list(
-    businessAccountID: BusinessAccountID,
+    businessAccountID: WhatsappBusinessAccountID,
     {
       name_or_content,
       category,
@@ -156,7 +156,7 @@ export default class Template {
    * ```
    */
   public create(
-    businessAccountID: BusinessAccountID,
+    businessAccountID: WhatsappBusinessAccountID,
     { request, ...template }: MethodOptions & CreateTemplateOptions,
   ) {
     return this._transport.extend({
@@ -179,7 +179,7 @@ export default class Template {
    * ```
    */
   delete(
-    businessAccountID: BusinessAccountID,
+    businessAccountID: WhatsappBusinessAccountID,
     { request, ...template }: MethodOptions & DeleteTemplateOptions,
   ) {
     return this._transport.extend({
