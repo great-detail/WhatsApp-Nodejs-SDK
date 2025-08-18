@@ -32,7 +32,7 @@ export type HeaderTemplateComponent = BaseTemplateComponent<{
   text?: string;
   example?:
     | {
-        header_text: string[];
+        header_text: [string[]];
         header_text_named_params?: never;
       }
     | {
@@ -57,7 +57,7 @@ export type CreateTextHeaderTemplateComponent = BaseTemplateComponent<{
   text?: string;
   example?:
     | {
-        header_text: [string[]];
+        header_text: string[];
         header_text_named_params?: never;
       }
     | {
