@@ -17,7 +17,7 @@ import { EventNotificationMessageIdentity } from "../Message/MessageIdentity.js"
 import { EventNotificationMessageReferral } from "../Message/MessageReferral.js";
 import { PhoneNumberID, PhoneNumberString } from "../PhoneNumber.js";
 import { PhoneNumberMessagingLimitTier } from "../PhoneNumbers/index.js";
-import { TemplateButtonTypes } from "../Templates/TemplateButton.js";
+import { TemplateButtonType } from "../Templates/TemplateButton.js";
 import { TemplateCategory } from "../Templates/TemplateCategory.js";
 import { TemplateLanguage } from "../Templates/TemplateLanguage.js";
 import { TemplateQualityScore } from "../Templates/TemplateStatus.js";
@@ -350,7 +350,7 @@ export type WebhookEventNotificationMessageTemplateComponentsUpdateChanges = {
     message_template_element: string;
     message_template_footer: string;
     message_template_buttons: {
-      message_template_button_type: TemplateButtonTypes;
+      message_template_button_type: TemplateButtonType;
       message_template_button_text: string;
       message_template_button_url?: string;
       message_template_button_phone_number?: string;
