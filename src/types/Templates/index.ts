@@ -28,6 +28,7 @@ import {
 
 export * from "./TemplateLanguage.js";
 export * from "./TemplateStatus.js";
+export * from "./TemplateComponents.js";
 export * from "./TemplateCategory.js";
 export * from "./TemplateButton.js";
 
@@ -169,6 +170,12 @@ export type CreateTemplateBaseOptions = {
   /** Set to "UTILITY" for Library Templates */
   category: TemplateCategory;
   language: TemplateLanguage;
+
+  add_contact_number?: boolean;
+  add_learn_more_link?: boolean;
+  add_security_recommendation?: boolean;
+  add_track_package_link?: boolean;
+  code_expiration_minutes?: number;
 
   /** @deprecated */
   allow_category_change?: boolean;
