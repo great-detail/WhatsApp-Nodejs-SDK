@@ -133,39 +133,49 @@ export type MessageTemplateButtonParameter<T> =
   | MessageTemplateButtonPayloadParameter<T>
   | MessageTemplateButtonTextParameter<T>;
 
-export type HeaderMessageComponent<T> = {
-  type: "header";
-  parameters: MessageTemplateHeaderParameter<T>[];
-};
+export type MessageComponentType = "header" | "body" | "footer" | "button";
+type BaseMessageComponent<T extends MessageComponentType, O extends object> = {
+  type: T;
+} & O;
 
-export type BodyMessageComponent<T> = {
-  type: "body";
-  parameters: MessageTemplateBodyParameter<T>[];
-};
+export type HeaderMessageComponent<T> = BaseMessageComponent<
+  "header",
+  {
+    parameters: MessageTemplateHeaderParameter<T>[];
+  }
+>;
 
-// export type FooterMessageComponent<T> = {
-//   type: "footer";
+export type BodyMessageComponent<T> = BaseMessageComponent<
+  "body",
+  {
+    parameters: MessageTemplateBodyParameter<T>[];
+  }
+>;
+
+// export type FooterMessageComponent<T> = BaseMessageComponent<"footer", {
 //   parameters: MessageTemplateFooterParameter<T>[];
-// };
+// }>;
 
-export type ButtonMessageComponent<T> = {
-  type: "button";
-  /** Numeric string */
-  index: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
-} & (
-  | {
-      sub_type: "quick_reply";
-      parameters: (MessageTemplateButtonParameter<T> & {
-        payload: Required<MessageTemplateButtonParameter<T>["payload"]>;
-      })[];
-    }
-  | {
-      sub_type: "url";
-      parameters: (MessageTemplateButtonParameter<T> & {
-        text: Required<MessageTemplateButtonParameter<T>["text"]>;
-      })[];
-    }
-);
+export type ButtonMessageComponent<T> = BaseMessageComponent<
+  "button",
+  {
+    /** Numeric string */
+    index: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
+  } & (
+    | {
+        sub_type: "quick_reply";
+        parameters: (MessageTemplateButtonParameter<T> & {
+          payload: Required<MessageTemplateButtonParameter<T>["payload"]>;
+        })[];
+      }
+    | {
+        sub_type: "url";
+        parameters: (MessageTemplateButtonParameter<T> & {
+          text: Required<MessageTemplateButtonParameter<T>["text"]>;
+        })[];
+      }
+  )
+>;
 
 // Catalog buttons are inbound only.
 // | {
