@@ -109,12 +109,12 @@ export type CreateBodyTemplateComponent = BaseTemplateComponent<{
   add_security_recommendation?: boolean;
   example?:
     | {
-        header_text: string[];
-        header_text_named_params?: never;
+        body_text: string[];
+        body_text_named_params?: never;
       }
     | {
-        header_text?: never;
-        header_text_named_params: {
+        body_text?: never;
+        body_text_named_params: {
           param_name: string;
           example: string;
         }[];
