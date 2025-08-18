@@ -14,6 +14,7 @@ import {
   TemplateTopic,
   TemplateUseCase,
 } from "./TemplateCategory.js";
+import { TemplateComponent } from "./TemplateComponents.js";
 import { TemplateLanguage } from "./TemplateLanguage.js";
 import {
   TemplateParameterFormat,
@@ -46,42 +47,7 @@ export type AccountTemplate = {
     date: number;
     score: TemplateQualityScore;
   };
-  components: (
-    | {
-        type: "HEADER";
-        format: "TEXT";
-        text?: string;
-        example?: {
-          header_text:
-            | string[]
-            | {
-                param_name: string;
-                example: string;
-              }[];
-        };
-      }
-    | {
-        type: "BODY";
-        text?: string;
-        example?: {
-          body_text: [
-            | string[]
-            | {
-                param_name: string;
-                example: string;
-              }[],
-          ];
-        };
-      }
-    | {
-        type: "FOOTER";
-        text?: string;
-      }
-    | {
-        type: "BUTTONS";
-        buttons: TemplateButton[];
-      }
-  )[];
+  components: TemplateComponent[];
 };
 
 export type LibraryTemplate = {
