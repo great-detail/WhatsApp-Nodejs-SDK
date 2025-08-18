@@ -14,7 +14,10 @@ import {
   TemplateTopic,
   TemplateUseCase,
 } from "./TemplateCategory.js";
-import { TemplateComponent } from "./TemplateComponents.js";
+import {
+  CreateTemplateComponent,
+  TemplateComponent,
+} from "./TemplateComponents.js";
 import { TemplateLanguage } from "./TemplateLanguage.js";
 import {
   TemplateParameterFormat,
@@ -144,7 +147,7 @@ export type ListLibraryTemplatesPayload = LibraryTemplate[];
 
 export type CreateCustomTemplateOptions = {
   parameter_format: TemplateParameterFormat;
-  components: unknown[];
+  components: CreateTemplateComponent[];
 
   library_template_name?: never;
   library_template_button_inputs?: never;
