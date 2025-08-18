@@ -27,6 +27,74 @@ export * from "./TemplateStatus.js";
 export * from "./TemplateCategory.js";
 export * from "./TemplateButton.js";
 
+export const TEMPLATE_COMPONENT_TYPES = [
+  "HEADER",
+  "BODY",
+  "FOOTER",
+  "BUTTONS",
+] as const;
+
+export type TemplateComponentType = (typeof TEMPLATE_COMPONENT_TYPES)[number];
+
+type BaseTemplateComponent<
+  T extends TemplateComponentType,
+  P extends object,
+> = {
+  type: T;
+} & P;
+
+export type HeaderTemplateComponent = BaseTemplateComponent<
+  "HEADER",
+  {
+    format: "TEXT";
+    text?: string;
+    example?: {
+      header_text:
+        | string[]
+        | {
+            param_name: string;
+            example: string;
+          }[];
+    };
+  }
+>;
+
+export type BodyTemplateComponent = BaseTemplateComponent<
+  "BODY",
+  {
+    text?: string;
+    example?: {
+      body_text: [
+        | string[]
+        | {
+            param_name: string;
+            example: string;
+          }[],
+      ];
+    };
+  }
+>;
+
+export type FooterTemplateComponent = BaseTemplateComponent<
+  "FOOTER",
+  {
+    text?: string;
+  }
+>;
+
+export type ButtonsTemplateComponent = BaseTemplateComponent<
+  "BUTTONS",
+  {
+    buttons: TemplateButton[];
+  }
+>;
+
+export type TemplateComponent =
+  | HeaderTemplateComponent
+  | BodyTemplateComponent
+  | FooterTemplateComponent
+  | ButtonsTemplateComponent;
+
 export type AccountTemplate = {
   id: string;
   name: string;
@@ -46,42 +114,7 @@ export type AccountTemplate = {
     date: number;
     score: TemplateQualityScore;
   };
-  components: (
-    | {
-        type: "HEADER";
-        format: "TEXT";
-        text?: string;
-        example?: {
-          header_text:
-            | string[]
-            | {
-                param_name: string;
-                example: string;
-              }[];
-        };
-      }
-    | {
-        type: "BODY";
-        text?: string;
-        example?: {
-          body_text: [
-            | string[]
-            | {
-                param_name: string;
-                example: string;
-              }[],
-          ];
-        };
-      }
-    | {
-        type: "FOOTER";
-        text?: string;
-      }
-    | {
-        type: "BUTTONS";
-        buttons: TemplateButton[];
-      }
-  )[];
+  components: TemplateComponent[];
 };
 
 export type LibraryTemplate = {
@@ -175,6 +208,108 @@ export type ListLibraryTemplatesOptions = {
 };
 
 export type ListLibraryTemplatesPayload = LibraryTemplate[];
+
+export type CreateHeaderTemplateComponent = BaseTemplateComponent<
+  "HEADER",
+  {
+    format: "TEXT";
+    text?: string;
+    example?:
+      | {
+          header_text: string[];
+          header_text_named_params?: never;
+        }
+      | {
+          header_text?: never;
+          header_text_named_params: {
+            param_name: string;
+            example: string;
+          }[];
+        };
+  }
+>;
+
+export type CreateBodyTemplateComponent = BaseTemplateComponent<
+  "BODY",
+  {
+    text: string;
+    example?:
+      | {
+          header_text: string[];
+          header_text_named_params?: never;
+        }
+      | {
+          header_text?: never;
+          header_text_named_params: {
+            param_name: string;
+            example: string;
+          }[];
+        };
+  }
+>;
+
+export type CreateFooterTemplateComponent = BaseTemplateComponent<
+  "FOOTER",
+  {
+    text: string;
+  }
+>;
+
+export const CREATE_BUTTONS_TEMPLATE_COMPONENT_TYPES = [
+  "QUICK_REPLY",
+  "URL",
+  "PHONE_NUMBER",
+  "COPY_CODE",
+] as const;
+
+export type CreateButtonsTemplateComponentType =
+  (typeof CREATE_BUTTONS_TEMPLATE_COMPONENT_TYPES)[number];
+
+type BaseButton<T extends CreateButtonsTemplateComponentType, B> = {
+  type: T;
+} & B;
+
+export type CreateButtonsTemplateComponent = BaseTemplateComponent<
+  "BUTTONS",
+  {
+    buttons: (
+      | BaseButton<
+          "QUICK_REPLY",
+          {
+            text: string;
+            payload?: string;
+          }
+        >
+      | BaseButton<
+          "URL",
+          {
+            text: string;
+            url?: string;
+          }
+        >
+      | BaseButton<
+          "PHONE_NUMBER",
+          {
+            text: string;
+            phone_number?: string;
+          }
+        >
+      | BaseButton<
+          "COPY_CODE",
+          {
+            text: string;
+            code?: string;
+          }
+        >
+    )[];
+  }
+>;
+
+export type CreateTemplateComponent =
+  | CreateHeaderTemplateComponent
+  | CreateBodyTemplateComponent
+  | CreateFooterTemplateComponent
+  | CreateButtonsTemplateComponent;
 
 export type CreateCustomTemplateOptions = {
   parameter_format: TemplateParameterFormat;

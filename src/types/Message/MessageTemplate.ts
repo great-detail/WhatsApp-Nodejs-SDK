@@ -133,19 +133,31 @@ export type MessageTemplateButtonParameter<T> =
   | MessageTemplateButtonPayloadParameter<T>
   | MessageTemplateButtonTextParameter<T>;
 
-export type MessageComponentType = "header" | "body" | "footer" | "button";
-type BaseMessageComponent<T extends MessageComponentType, O extends object> = {
+export const MESSAGE_TEMPLATE_COMPONENT_TYPES = [
+  "header",
+  "body",
+  "footer",
+  "button",
+] as const;
+
+export type MessageTemplateComponentType =
+  (typeof MESSAGE_TEMPLATE_COMPONENT_TYPES)[number];
+
+type BaseMessageTemplateComponent<
+  T extends MessageTemplateComponentType,
+  O extends object,
+> = {
   type: T;
 } & O;
 
-export type HeaderMessageComponent<T> = BaseMessageComponent<
+export type HeaderMessageTemplateComponent<T> = BaseMessageTemplateComponent<
   "header",
   {
     parameters: MessageTemplateHeaderParameter<T>[];
   }
 >;
 
-export type BodyMessageComponent<T> = BaseMessageComponent<
+export type BodyMessageTemplateComponent<T> = BaseMessageTemplateComponent<
   "body",
   {
     parameters: MessageTemplateBodyParameter<T>[];
@@ -156,7 +168,7 @@ export type BodyMessageComponent<T> = BaseMessageComponent<
 //   parameters: MessageTemplateFooterParameter<T>[];
 // }>;
 
-export type ButtonMessageComponent<T> = BaseMessageComponent<
+export type ButtonMessageTemplateComponent<T> = BaseMessageTemplateComponent<
   "button",
   {
     /** Numeric string */
@@ -183,11 +195,11 @@ export type ButtonMessageComponent<T> = BaseMessageComponent<
 //     parameters: MessageTemplateButtonParameter<T>[];
 //   }
 
-export type MessageComponent<T> =
-  | HeaderMessageComponent<T>
-  | BodyMessageComponent<T>
+export type MessageTemplateComponent<T> =
+  | HeaderMessageTemplateComponent<T>
+  | BodyMessageTemplateComponent<T>
   // | FooterMessageComponent<T>
-  | ButtonMessageComponent<T>;
+  | ButtonMessageTemplateComponent<T>;
 
 export type CreateMessageTemplate = {
   /** Name of the template. */
@@ -214,8 +226,8 @@ export type CreateMessageTemplate = {
 
   /** Array of components objects containing the parameters of the message. */
   components:
-    | MessageComponent<MessageTemplateComponentNamedParameter>[]
-    | MessageComponent<MessageTemplateComponentPositionalParameter>[];
+    | MessageTemplateComponent<MessageTemplateComponentNamedParameter>[]
+    | MessageTemplateComponent<MessageTemplateComponentPositionalParameter>[];
 
   /**
    * Namespace of the template.
