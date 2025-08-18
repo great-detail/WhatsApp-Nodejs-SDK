@@ -144,33 +144,27 @@ export type MessageTemplateComponentType =
   (typeof MESSAGE_TEMPLATE_COMPONENT_TYPES)[number];
 
 type BaseMessageTemplateComponent<
-  T extends MessageTemplateComponentType,
-  O extends object,
-> = {
-  type: T;
-} & O;
+  T extends { type: MessageTemplateComponentType },
+> = T;
 
-export type HeaderMessageTemplateComponent<T> = BaseMessageTemplateComponent<
-  "header",
-  {
-    parameters: MessageTemplateHeaderParameter<T>[];
-  }
->;
+export type HeaderMessageTemplateComponent<T> = BaseMessageTemplateComponent<{
+  type: "header";
+  parameters: MessageTemplateHeaderParameter<T>[];
+}>;
 
-export type BodyMessageTemplateComponent<T> = BaseMessageTemplateComponent<
-  "body",
-  {
-    parameters: MessageTemplateBodyParameter<T>[];
-  }
->;
+export type BodyMessageTemplateComponent<T> = BaseMessageTemplateComponent<{
+  type: "body";
+  parameters: MessageTemplateBodyParameter<T>[];
+}>;
 
-// export type FooterMessageComponent<T> = BaseMessageComponent<"footer", {
+// export type FooterMessageComponent<T> = BaseMessageComponent<{
+//   type: "footer",
 //   parameters: MessageTemplateFooterParameter<T>[];
 // }>;
 
 export type ButtonMessageTemplateComponent<T> = BaseMessageTemplateComponent<
-  "button",
   {
+    type: "button";
     /** Numeric string */
     index: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
   } & (
