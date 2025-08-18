@@ -229,26 +229,26 @@ export type CreateTextHeaderTemplateComponent = BaseTemplateComponent<
   }
 >;
 
-export type CreateImageHeaderTemplateComponent = BaseTemplateComponent<
+export type CreateMediaHeaderTemplateComponent<
+  T extends "IMAGE" | "VIDEO" | "DOCUMENT",
+> = BaseTemplateComponent<
   "HEADER",
   {
-    format: "IMAGE";
+    format: T;
+    exmaple: {
+      header_handle: [string];
+    };
   }
 >;
 
-export type CreateVideoHeaderTemplateComponent = BaseTemplateComponent<
-  "HEADER",
-  {
-    format: "VIDEO";
-  }
->;
+export type CreateImageHeaderTemplateComponent =
+  CreateMediaHeaderTemplateComponent<"IMAGE">;
 
-export type CreateDocumentHeaderTemplateComponent = BaseTemplateComponent<
-  "HEADER",
-  {
-    format: "DOCUMENT";
-  }
->;
+export type CreateVideoHeaderTemplateComponent =
+  CreateMediaHeaderTemplateComponent<"VIDEO">;
+
+export type CreateDocumentHeaderTemplateComponent =
+  CreateMediaHeaderTemplateComponent<"DOCUMENT">;
 
 export type CreateLocationHeaderTemplateComponent = BaseTemplateComponent<
   "HEADER",
