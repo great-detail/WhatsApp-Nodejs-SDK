@@ -209,7 +209,7 @@ export type ListLibraryTemplatesOptions = {
 
 export type ListLibraryTemplatesPayload = LibraryTemplate[];
 
-export type CreateHeaderTemplateComponent = BaseTemplateComponent<
+export type CreateTextHeaderTemplateComponent = BaseTemplateComponent<
   "HEADER",
   {
     format: "TEXT";
@@ -228,6 +228,41 @@ export type CreateHeaderTemplateComponent = BaseTemplateComponent<
         };
   }
 >;
+
+export type CreateImageHeaderTemplateComponent = BaseTemplateComponent<
+  "HEADER",
+  {
+    format: "IMAGE";
+  }
+>;
+
+export type CreateVideoHeaderTemplateComponent = BaseTemplateComponent<
+  "HEADER",
+  {
+    format: "VIDEO";
+  }
+>;
+
+export type CreateDocumentHeaderTemplateComponent = BaseTemplateComponent<
+  "HEADER",
+  {
+    format: "DOCUMENT";
+  }
+>;
+
+export type CreateLocationHeaderTemplateComponent = BaseTemplateComponent<
+  "HEADER",
+  {
+    format: "LOCATION";
+  }
+>;
+
+export type CreateHeaderTemplateComponent =
+  | CreateTextHeaderTemplateComponent
+  | CreateImageHeaderTemplateComponent
+  | CreateVideoHeaderTemplateComponent
+  | CreateDocumentHeaderTemplateComponent
+  | CreateLocationHeaderTemplateComponent;
 
 export type CreateBodyTemplateComponent = BaseTemplateComponent<
   "BODY",
