@@ -349,6 +349,39 @@ router.post("/path/to/webhook", async (context) => {
 });
 ```
 
+## Request Options
+
+Under the hood, this SDK uses [ky](https://github.com/sindresorhus/ky) as a
+fetch wrapper. This means that all of the quality-of-life features provided by
+ky can be available to this SDK, including: retries, hooks, auto-throwing on
+HTTP errors, etc. A number of these features are used under-the-hood already,
+e.g. auto-throwing on HTTP errors.
+
+**Request Retries**:
+
+- Default retries: 3
+
+```ts
+const sdk = new Client({
+  request: {
+    // ...
+    retry: 5, // E.g. 5 retries (6 requests total)
+  },
+});
+
+// or at a method level
+const message = await sdk.message.createMessage({
+  phoneNumberID: "123...809",
+  to: "1234567890",
+  type: "text",
+  text: { body: "Hello" },
+  request: {
+    // ...
+    retry: 5, // E.g. 5 retries (6 requests total)
+  },
+});
+```
+
 ## Contributing
 
 Contributions are **greatly** appreciated - especially surrounding API updates

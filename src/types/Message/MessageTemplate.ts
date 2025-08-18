@@ -133,39 +133,55 @@ export type MessageTemplateButtonParameter<T> =
   | MessageTemplateButtonPayloadParameter<T>
   | MessageTemplateButtonTextParameter<T>;
 
-export type HeaderMessageComponent<T> = {
+export const MESSAGE_TEMPLATE_COMPONENT_TYPES = [
+  "header",
+  "body",
+  "footer",
+  "button",
+] as const;
+
+export type MessageTemplateComponentType =
+  (typeof MESSAGE_TEMPLATE_COMPONENT_TYPES)[number];
+
+type BaseMessageTemplateComponent<
+  T extends { type: MessageTemplateComponentType },
+> = T;
+
+export type HeaderMessageTemplateComponent<T> = BaseMessageTemplateComponent<{
   type: "header";
   parameters: MessageTemplateHeaderParameter<T>[];
-};
+}>;
 
-export type BodyMessageComponent<T> = {
+export type BodyMessageTemplateComponent<T> = BaseMessageTemplateComponent<{
   type: "body";
   parameters: MessageTemplateBodyParameter<T>[];
-};
+}>;
 
-// export type FooterMessageComponent<T> = {
-//   type: "footer";
+// export type FooterMessageComponent<T> = BaseMessageComponent<{
+//   type: "footer",
 //   parameters: MessageTemplateFooterParameter<T>[];
-// };
+// }>;
 
-export type ButtonMessageComponent<T> = {
-  type: "button";
-  /** Numeric string */
-  index: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
-} & (
-  | {
-      sub_type: "quick_reply";
-      parameters: (MessageTemplateButtonParameter<T> & {
-        payload: Required<MessageTemplateButtonParameter<T>["payload"]>;
-      })[];
-    }
-  | {
-      sub_type: "url";
-      parameters: (MessageTemplateButtonParameter<T> & {
-        text: Required<MessageTemplateButtonParameter<T>["text"]>;
-      })[];
-    }
-);
+export type ButtonMessageTemplateComponent<T> = BaseMessageTemplateComponent<
+  {
+    type: "button";
+    /** Numeric string */
+    index: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
+  } & (
+    | {
+        sub_type: "quick_reply";
+        parameters: (MessageTemplateButtonParameter<T> & {
+          payload: Required<MessageTemplateButtonParameter<T>["payload"]>;
+        })[];
+      }
+    | {
+        sub_type: "url";
+        parameters: (MessageTemplateButtonParameter<T> & {
+          text: Required<MessageTemplateButtonParameter<T>["text"]>;
+        })[];
+      }
+  )
+>;
 
 // Catalog buttons are inbound only.
 // | {
@@ -173,11 +189,11 @@ export type ButtonMessageComponent<T> = {
 //     parameters: MessageTemplateButtonParameter<T>[];
 //   }
 
-export type MessageComponent<T> =
-  | HeaderMessageComponent<T>
-  | BodyMessageComponent<T>
+export type MessageTemplateComponent<T> =
+  | HeaderMessageTemplateComponent<T>
+  | BodyMessageTemplateComponent<T>
   // | FooterMessageComponent<T>
-  | ButtonMessageComponent<T>;
+  | ButtonMessageTemplateComponent<T>;
 
 export type CreateMessageTemplate = {
   /** Name of the template. */
@@ -204,8 +220,8 @@ export type CreateMessageTemplate = {
 
   /** Array of components objects containing the parameters of the message. */
   components:
-    | MessageComponent<MessageTemplateComponentNamedParameter>[]
-    | MessageComponent<MessageTemplateComponentPositionalParameter>[];
+    | MessageTemplateComponent<MessageTemplateComponentNamedParameter>[]
+    | MessageTemplateComponent<MessageTemplateComponentPositionalParameter>[];
 
   /**
    * Namespace of the template.
