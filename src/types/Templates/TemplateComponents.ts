@@ -44,7 +44,7 @@ type BaseHeaderTemplateComponent<
 export type HeaderTemplateComponent = BaseTemplateComponent<{
   type: "HEADER";
   format: "TEXT";
-  text?: string;
+  text: string;
   example?:
     | {
         header_text: [string[]];
@@ -69,7 +69,7 @@ export type CreateHeaderTemplateComponent =
 export type CreateTextHeaderTemplateComponent = BaseHeaderTemplateComponent<{
   type: "HEADER";
   format: "TEXT";
-  text?: string;
+  text: string;
   example?:
     | {
         header_text: string[];
