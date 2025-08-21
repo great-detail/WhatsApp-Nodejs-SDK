@@ -82,7 +82,7 @@ export type CreateCopyCodeTemplateButton = CreateTemplateButtonBase<{
 
 export type URLTemplateButton = TemplateButtonBase<{
   type: "URL";
-  text?: string;
+  text: string;
   url: string;
 }>;
 
@@ -95,7 +95,7 @@ export type CreateURLTemplateButton = CreateTemplateButtonBase<{
 
 export type PhoneNumberTemplateButton = TemplateButtonBase<{
   type: "PHONE_NUMBER";
-  text?: string;
+  text: string;
   phone_number: string;
 }>;
 
