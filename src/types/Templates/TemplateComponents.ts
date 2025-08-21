@@ -95,7 +95,7 @@ export type CreateLocationHeaderTemplateComponent = BaseTemplateComponent<{
 
 export type BodyTemplateComponent = BaseTemplateComponent<{
   type: "BODY";
-  text?: string;
+  text: string;
   example?:
     | {
         body_text: [string[]];
@@ -140,7 +140,7 @@ export type CreateBodyTemplateComponent = BaseTemplateComponent<{
 
 export type FooterTemplateComponent = BaseTemplateComponent<{
   type: "FOOTER";
-  text?: string;
+  text: string;
 }>;
 
 export type CreateFooterTemplateComponent = BaseTemplateComponent<{
