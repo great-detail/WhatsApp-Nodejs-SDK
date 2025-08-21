@@ -139,7 +139,8 @@ export type CreateOTPTemplateButton =
 
 export type MPMTemplateButton = TemplateButtonBase<{
   type: "MPM";
-  text?: string; // TODO: Clarify this field
+  /** Display text for the button (required) */
+  text: string;
 }>;
 
 export type CreateMPMTemplateButton = CreateTemplateButtonBase<{
@@ -158,12 +159,14 @@ export type CreateSPMTemplateButton = CreateTemplateButtonBase<{
 
 export type CatalogTemplateButton = TemplateButtonBase<{
   type: "CATALOG";
-  text?: string; // TODO: Clarify this field
+  /** Display text for the button (required) */
+  text: string;
 }>;
 
 export type FlowTemplateButton = TemplateButtonBase<{
   type: "FLOW";
-  text?: string; // TODO: Clarify this field
+  /** Display text for the button (required) */
+  text: string;
 }>;
 
 export type CreateFlowTemplateButton = CreateTemplateButtonBase<{
@@ -179,10 +182,12 @@ export type CreateFlowTemplateButton = CreateTemplateButtonBase<{
 
 export type VoiceCallTemplateButton = TemplateButtonBase<{
   type: "VOICE_CALL";
-  text?: string; // TODO: Clarify this field
+  /** Display text for the button (required) */
+  text: string;
 }>;
 
 export type AppTemplateButton = TemplateButtonBase<{
   type: "APP";
-  text?: string; // TODO: Clarify this field
+  /** Display text for the button (required) */
+  text: string;
 }>;

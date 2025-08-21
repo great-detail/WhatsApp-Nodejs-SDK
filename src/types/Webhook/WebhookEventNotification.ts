@@ -7,7 +7,7 @@
  */
 
 import { AccountID } from "../Account.js";
-import { BusinessAccountID } from "../WhatsappBusinessAccount/index.js";
+import { BusinessAccountID, WhatsappBusinessAccountVerificationStatus } from "../WhatsappBusinessAccount/index.js";
 import { WhatsappError } from "../Error.js";
 import {
   EventNotificationMessageMessage,
@@ -29,6 +29,127 @@ export type ConversationType =
   | "service"
   | "referral_conversation"
   | (string & NonNullable<unknown>);
+
+export const WABA_ACCOUNT_BAN_STATES = [
+  "NOT_BANNED",
+  "BANNED",
+  "SCHEDULE_FOR_DELETION",
+] as const;
+export type WabaAccountBanState = (typeof WABA_ACCOUNT_BAN_STATES)[number];
+
+export const ACCOUNT_VIOLATION_TYPES = [
+  "DEFAMATORY_CONTENT",
+  "DISCRIMINATORY_CONTENT", 
+  "FRAUDULENT_CONTENT",
+  "HATE_SPEECH",
+  "INTELLECTUAL_PROPERTY_VIOLATION",
+  "MISINFORMATION",
+  "NON_COMPLIANT_CONTENT",
+  "PHISHING",
+  "SPAM",
+  "UNSAFE_CONTENT",
+  "VIOLENCE_CONTENT",
+] as const;
+export type AccountViolationType = (typeof ACCOUNT_VIOLATION_TYPES)[number];
+
+export const ACCOUNT_RESTRICTION_TYPES = [
+  "TEMPORARY_RESTRICTION", 
+  "PERMANENT_RESTRICTION",
+  "FEATURE_RESTRICTION",
+  "MESSAGING_RESTRICTION",
+] as const;
+export type AccountRestrictionType = (typeof ACCOUNT_RESTRICTION_TYPES)[number];
+
+export const TEMPLATE_STATUS_EVENTS = [
+  "APPROVED",
+  "REJECTED", 
+  "PENDING",
+  "DELETED",
+  "DISABLED",
+  "PAUSED",
+  "LIMIT_EXCEEDED",
+  "PENDING_DELETION",
+  "IN_APPEAL",
+] as const;
+export type TemplateStatusEvent = (typeof TEMPLATE_STATUS_EVENTS)[number];
+
+export const TEMPLATE_STATUS_REASONS = [
+  "ABUSIVE_CONTENT",
+  "INVALID_FORMAT", 
+  "PROMOTIONAL",
+  "TAG_CONTENT_MISMATCH",
+  "SCAM",
+  "SPAM",
+  "NONE",
+  "INCORRECT_CATEGORY",
+  "FLAGGED_CONTENT",
+  "QUALITY_RATING",
+  "POLICY_VIOLATION",
+] as const;
+export type TemplateStatusReason = (typeof TEMPLATE_STATUS_REASONS)[number];
+
+export const PHONE_NUMBER_NAME_DECISIONS = [
+  "APPROVED",
+  "PENDING_REVIEW",
+  "DECLINED", 
+  "EXPIRED",
+  "AVAILABLE_WITHOUT_REVIEW",
+] as const;
+export type PhoneNumberNameDecision = (typeof PHONE_NUMBER_NAME_DECISIONS)[number];
+
+export const PHONE_NUMBER_NAME_REJECTION_REASONS = [
+  "NONE",
+  "NOT_MATCHING_BUSINESS_NAME",
+  "TRADEMARK_VIOLATION", 
+  "GENERIC_NAME",
+  "UNCLEAR_NAME",
+  "CONTAINS_PROFANITY",
+  "MISREPRESENTATION",
+] as const;
+export type PhoneNumberNameRejectionReason = (typeof PHONE_NUMBER_NAME_REJECTION_REASONS)[number];
+
+export const PHONE_NUMBER_QUALITY_EVENTS = [
+  "FLAGGED",
+  "RATE_LIMITED", 
+  "RESTRICTED",
+  "UNRESTRICTED",
+  "TIER_CHANGE",
+] as const;
+export type PhoneNumberQualityEvent = (typeof PHONE_NUMBER_QUALITY_EVENTS)[number];
+
+export const ACCOUNT_REVIEW_DECISIONS = [
+  "APPROVED",
+  "DECLINED",
+  "PENDING",
+] as const;
+export type AccountReviewDecision = (typeof ACCOUNT_REVIEW_DECISIONS)[number];
+
+export const PAYMENT_CONFIGURATION_STATUSES = [
+  "ENABLED",
+  "DISABLED",
+  "PENDING",
+  "SUSPENDED",
+] as const;
+export type PaymentConfigurationStatus = (typeof PAYMENT_CONFIGURATION_STATUSES)[number];
+
+export const ACCOUNT_ALERT_TYPES = [
+  "TIER_LIMIT_EXCEEDED",
+  "RATE_LIMIT_HIT",
+  "MESSAGE_DELIVERED_SLOWLY",
+  "TEMPLATE_QUALITY_DOWNGRADE",
+  "BUSINESS_VERIFICATION_REMINDER",
+] as const;
+export type AccountAlertType = (typeof ACCOUNT_ALERT_TYPES)[number];
+
+export const CALL_STATUSES = [
+  "INITIATED",
+  "RINGING", 
+  "CONNECTED",
+  "ENDED",
+  "FAILED",
+  "REJECTED",
+] as const;
+export type CallStatus = (typeof CALL_STATUSES)[number];
 
 export type WebhookEventNotificationMessagesChanges = {
   /** Notification type. Value will be messages. */
@@ -247,28 +368,28 @@ export type WebhookEventNotificationAccountUpdateChanges = {
     event: "PARTNER_APP_INSTALLED" | (string & NonNullable<unknown>);
     phone_number?: string;
     ban_info?: {
-      waba_ban_state: string; // TODO: Enum?
+      waba_ban_state: WabaAccountBanState;
       waba_ban_date: string;
     };
 
     /** Information about a violation on the account */
     violation_info?: {
-      violation_type: string; // TODO: Enum?
+      violation_type: AccountViolationType;
     };
     lock_info?: {
-      // TODO: IS this a string or number? datetime?
-      expiration: string | number;
+      /** Unix timestamp when the lock expires */
+      expiration: number;
     };
 
     /** Information about the restrictions on the account */
     restriction_info?: {
-      restriction_type: string; // TODO: Enum?
-      // TODO: IS this a string or number? datetime?
-      expiration: string | number;
+      restriction_type: AccountRestrictionType;
+      /** Unix timestamp when the restriction expires */
+      expiration: number;
     };
 
     /** Business verification status */
-    business_verification_status: string; // TODO: Enum?
+    business_verification_status: WhatsappBusinessAccountVerificationStatus;
 
     /** Information about the status of the partner's self certification for a client */
     partner_client_certification_info?: {
@@ -325,7 +446,15 @@ export type WebhookEventNotificationAccountUpdateChanges = {
 
 export type WebhookEventNotificationAccountAlertsChanges = {
   field: "account_alerts";
-  // TODO: Is there any fields?
+  value: {
+    alert_type: AccountAlertType;
+    phone_number?: string;
+    display_phone_number?: string;
+    /** Details about the alert */
+    details?: string;
+    /** Unix timestamp when the alert was triggered */
+    timestamp?: number;
+  };
 };
 
 export type WebhookEventNotificationMessageTemplateCategoryUpdateChanges = {
@@ -375,8 +504,8 @@ export type WebhookEventNotificationMessageTemplateStatusUpdateChanges = {
     message_template_id: number;
     message_template_name: string;
     message_template_language: string;
-    event: string; // TODO: Enum?
-    reason: string; // TODO: Enum?
+    event: TemplateStatusEvent;
+    reason: TemplateStatusReason;
     disable_info?: {
       disable_date: string;
     };
@@ -391,9 +520,9 @@ export type WebhookEventNotificationPhoneNumberNameUpdateChanges = {
   field: "phone_number_name_update";
   value: {
     display_phone_number: string;
-    decision: string; // TODO: Enum?
+    decision: PhoneNumberNameDecision;
     requested_verified_name?: string;
-    rejection_reason: string; // TODO: Enum? NONE?
+    rejection_reason: PhoneNumberNameRejectionReason;
   };
 };
 
@@ -401,17 +530,18 @@ export type WebhookEventNotificationPhoneNumberQualityUpdateChanges = {
   field: "phone_number_quality_update";
   value: {
     display_phone_number: string;
-    event: string; // TODO: Enum?
+    event: PhoneNumberQualityEvent;
     current_limit: PhoneNumberMessagingLimitTier;
     old_limit: PhoneNumberMessagingLimitTier;
-    max_daily_conversations_per_business: string; // TODO: Enum?
+    /** The maximum number of daily conversations per business allowed */
+    max_daily_conversations_per_business: number;
   };
 };
 
 export type WebhookEventNotificationAccountReviewUpdateChanges = {
   field: "account_review_update";
   value: {
-    decision: string; // TODO: Enum?
+    decision: AccountReviewDecision;
   };
 };
 
@@ -421,7 +551,7 @@ export type WebhookEventNotificationPaymentConfigurationUpdateChanges = {
     configuration_name: string;
     provider_name: string;
     provider_mid: string;
-    status: string; // TODO: Enum?
+    status: PaymentConfigurationStatus;
     created_timestamp: number;
     updated_timestamp: number;
   };
@@ -429,7 +559,18 @@ export type WebhookEventNotificationPaymentConfigurationUpdateChanges = {
 
 export type WebhookEventNotificationCallsChanges = {
   field: "calls";
-  // TODO: Is there any fields?
+  value: {
+    /** The WhatsApp ID for the customer */
+    from: AccountID;
+    /** Call ID */
+    id: string;
+    /** Status of the call */
+    status: CallStatus;
+    /** Unix timestamp when the call was initiated */
+    timestamp: number;
+    /** Duration of the call in seconds (for ended calls) */
+    duration?: number;
+  };
 };
 
 export type WebhookEventNotification = {
