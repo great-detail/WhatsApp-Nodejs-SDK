@@ -26,6 +26,21 @@ export type TemplateComponent =
   | FooterTemplateComponent
   | ButtonsTemplateComponent;
 
+export const HEADER_TEMPLATE_COMPONENT_FORMATS = [
+  "TEXT",
+  "IMAGE",
+  "VIDEO",
+  "DOCUMENT",
+  "LOCATION",
+] as const;
+
+export type HeaderTemplateComponentFormat =
+  (typeof HEADER_TEMPLATE_COMPONENT_FORMATS)[number];
+
+type BaseHeaderTemplateComponent<
+  T extends { type: "HEADER"; format: HeaderTemplateComponentFormat },
+> = BaseTemplateComponent<T>;
+
 export type HeaderTemplateComponent = BaseTemplateComponent<{
   type: "HEADER";
   format: "TEXT";
@@ -51,7 +66,7 @@ export type CreateHeaderTemplateComponent =
   | CreateDocumentHeaderTemplateComponent
   | CreateLocationHeaderTemplateComponent;
 
-export type CreateTextHeaderTemplateComponent = BaseTemplateComponent<{
+export type CreateTextHeaderTemplateComponent = BaseHeaderTemplateComponent<{
   type: "HEADER";
   format: "TEXT";
   text?: string;
@@ -71,7 +86,7 @@ export type CreateTextHeaderTemplateComponent = BaseTemplateComponent<{
 
 export type CreateMediaHeaderTemplateComponent<
   T extends "IMAGE" | "VIDEO" | "DOCUMENT",
-> = BaseTemplateComponent<{
+> = BaseHeaderTemplateComponent<{
   type: "HEADER";
   format: T;
   exmaple: {
@@ -88,10 +103,11 @@ export type CreateVideoHeaderTemplateComponent =
 export type CreateDocumentHeaderTemplateComponent =
   CreateMediaHeaderTemplateComponent<"DOCUMENT">;
 
-export type CreateLocationHeaderTemplateComponent = BaseTemplateComponent<{
-  type: "HEADER";
-  format: "LOCATION";
-}>;
+export type CreateLocationHeaderTemplateComponent =
+  BaseHeaderTemplateComponent<{
+    type: "HEADER";
+    format: "LOCATION";
+  }>;
 
 export type BodyTemplateComponent = BaseTemplateComponent<{
   type: "BODY";
