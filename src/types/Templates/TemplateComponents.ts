@@ -89,7 +89,7 @@ export type CreateMediaHeaderTemplateComponent<
 > = BaseHeaderTemplateComponent<{
   type: "HEADER";
   format: T;
-  exmaple: {
+  example: {
     header_handle: [string];
   };
 }>;
