@@ -132,7 +132,15 @@ export type ListTemplatesOptions = {
   fields?: ListTemplatesFields[];
 };
 
-export type ListTemplatesPayload = AccountTemplate[];
+export type ListTemplatesPayload = {
+  data: AccountTemplate[];
+  paging: {
+    cursors?: {
+      before?: string;
+      after?: string;
+    };
+  };
+};
 
 export type ListLibraryTemplatesOptions = {
   search?: string;
