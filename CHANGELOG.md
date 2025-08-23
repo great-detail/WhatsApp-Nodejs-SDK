@@ -1,5 +1,11 @@
 # `@great-detail/whatsapp`
 
+## 8.4.0
+
+### Minor Changes
+
+- cbcd44b: Add Template Management types
+
 ## 8.3.2
 
 ### Patch Changes
