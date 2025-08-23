@@ -199,8 +199,8 @@ export type CreateTemplatePayload = {
 };
 
 export type UpdateTemplateOptions = {
-  category: TemplateCategory;
-  components: CreateTemplateComponent[];
+  category?: TemplateCategory;
+  components?: CreateTemplateComponent[];
 };
 
 export type UpdateTemplatePayload = { success: boolean };
