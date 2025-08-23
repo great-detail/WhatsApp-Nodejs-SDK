@@ -6,7 +6,7 @@
  * @see    https://greatdetail.com
  */
 
-/** @deprecated */
+/** @deprecated use WhatsappBusinessAccountID */
 export type BusinessAccountID = WhatsappBusinessAccountID;
 /** WhatsApp Business Account ID */
 export type WhatsappBusinessAccountID = string;

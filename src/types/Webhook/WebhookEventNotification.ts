@@ -7,7 +7,7 @@
  */
 
 import { AccountID } from "../Account.js";
-import { BusinessAccountID } from "../WhatsappBusinessAccount/index.js";
+import { WhatsappBusinessAccountID } from "../WhatsappBusinessAccount/index.js";
 import { WhatsappError } from "../Error.js";
 import {
   EventNotificationMessageMessage,
@@ -294,7 +294,7 @@ export type WebhookEventNotificationAccountUpdateChanges = {
       waba_id: AccountID;
 
       /** WABA owner business ID */
-      owner_business_id: BusinessAccountID;
+      owner_business_id: WhatsappBusinessAccountID;
 
       /** The id of the solution through which this WABA was onboarded */
       solution_id?: string;
@@ -369,14 +369,38 @@ export type WebhookEventNotificationMessageTemplateQualityUpdateChanges = {
   };
 };
 
+export const TEMPLATE_STATUS_UPDATE_EVENTS = [
+  "APPROVED",
+  "DISABLED",
+  "IN_APPEAL",
+  "PENDING",
+  "REINSTATED",
+  "REJECTED",
+  "FLAGGED",
+] as const;
+
+export type TemplateStatusUpdateEvent =
+  (typeof TEMPLATE_STATUS_UPDATE_EVENTS)[number];
+
+export const TEMPLATE_STATUS_UPDATE_REASONS = [
+  "ABUSIVE_CONTENT",
+  "INCORRECT_CATEGORY",
+  "INVALID_FORMAT",
+  "NONE",
+  "SCAM",
+] as const;
+
+export type TemplateStatusUpdateReason =
+  (typeof TEMPLATE_STATUS_UPDATE_REASONS)[number];
+
 export type WebhookEventNotificationMessageTemplateStatusUpdateChanges = {
   field: "message_template_status_update";
   value: {
     message_template_id: number;
     message_template_name: string;
     message_template_language: string;
-    event: string; // TODO: Enum?
-    reason: string; // TODO: Enum?
+    event: TemplateStatusUpdateEvent;
+    reason: TemplateStatusUpdateReason;
     disable_info?: {
       disable_date: string;
     };
@@ -445,7 +469,7 @@ export type WebhookEventNotification = {
      * The WhatsApp Business Account ID for the business that is subscribed to
      * the webhook.
      */
-    id: BusinessAccountID;
+    id: WhatsappBusinessAccountID;
 
     /** An array of change objects. */
     changes: (
