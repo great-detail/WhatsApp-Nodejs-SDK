@@ -19,6 +19,8 @@ import {
   ListLibraryTemplatesPayload,
   ListTemplatesOptions,
   ListTemplatesPayload,
+  UpdateTemplateOptions,
+  UpdateTemplatePayload,
 } from "../types/Templates/index.js";
 
 interface MethodOptions {
@@ -163,6 +165,34 @@ export default class Template {
       method: "POST",
       json: template,
     })<CreateTemplatePayload>(this.getEndpoint(businessAccountID), request);
+  }
+
+  /**
+   * Update a Template.
+   *
+   * ```ts
+   * const { success } = await sdk.template.delete(
+   *   "123...456",
+   *   {
+   *     category: "UTILITY",
+   *     components: [
+   *       {
+   *         type: "TEXT",
+   *         text: "Hello, world!"
+   *       }
+   *     ]
+   *   }
+   * );
+   * ```
+   */
+  update(
+    templateID: string,
+    { request, ...template }: MethodOptions & UpdateTemplateOptions,
+  ) {
+    return this._transport.extend({
+      method: "POST",
+      json: template,
+    })<UpdateTemplatePayload>(encodeURIComponent(templateID), request);
   }
 
   /**

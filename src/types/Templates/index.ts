@@ -198,6 +198,13 @@ export type CreateTemplatePayload = {
   category: TemplateCategory;
 };
 
+export type UpdateTemplateOptions = {
+  category: TemplateCategory;
+  components: CreateTemplateComponent[];
+};
+
+export type UpdateTemplatePayload = { success: boolean };
+
 export type DeleteTemplateOptions = {
   hsm_id?: string;
   name: string;
